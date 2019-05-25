@@ -1,0 +1,103 @@
+<html>
+
+
+<head>
+    <title>ConvNetJS demo: Classify toy 2D data</title>
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+
+    <script src="./jquery-1.8.3.min.js"></script>
+    <script src="./npgmain.js"></script>
+    <script src="../build/convnet-min.js"></script>
+    <script src="../build/utils.js"></script>
+    <script src="../src/function.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    </link>
+
+
+
+
+<script type="text/javascript">
+
+        var ArrayInput = [];
+        var ArrayOutput = [];
+        var ss = 50.0; // scale for drawing
+
+        // create neural net
+        var layer_defs, net, trainer;
+        var t = "\n\
+    layer_defs = [];\n\
+    layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
+    layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
+    layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
+    layer_defs.push({type:'regression', num_neurons:1});\n\
+    \n\
+    net = new convnetjs.Net();\n\
+    net.makeLayers(layer_defs);\n\
+    \n\
+    trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});\n\
+    ";
+
+
+$(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
+    viscanvas = document.getElementById('viscanvas');
+    visctx = viscanvas.getContext('2d');
+    visWIDTH = viscanvas.width;
+    visHEIGHT = viscanvas.height;
+
+
+    circle_data();
+    $("#layerdef").val(t);
+    reload();
+
+    NPGinit(20);
+
+});
+
+</script>
+
+<body>
+
+    <div id="wrap">
+        <div id=title>
+            <p>Configurazione Rete neurale</p>
+        </div>
+        <div id=configurazione_rete>
+            <textarea id="layerdef" style="width:85em; height:15em;">
+    </textarea>
+            <input id="button_change" type="submit" value="change network" onclick="reload();" />
+            <!--aggiornamento della rete-->
+        </div>
+
+
+        <div class="panes">
+            <div id="pannello_rete">
+                <canvas id="NPGcanvas" width="1140em" height="500em">Browser not supported for Canvas. Get a real
+                    browser.</canvas>
+            </div>
+
+            <div id="pannello_inserimentodati">
+                <canvas id="viscanvas" width="0" height="0">Browser not supported for Canvas. Get a real browser.</canvas>
+                <!--inserimento dei box aggiornamento coordinate di un punto-->
+                <div id="controls">
+                    <div id=title>
+                        <p>Inserimento dati di addestramento</p>
+                    </div>
+
+
+                    <form method="post" name="myForm" id="myForm" onsubmit="return false">
+                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
+                        <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
+                        <div id="container"></div>
+                    </form>
+
+
+                    </form>
+                </div>
+            </div>
+
+
+
+</body>
+
+</html>
