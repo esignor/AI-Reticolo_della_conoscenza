@@ -41,6 +41,7 @@
           $("#layer_ixes").html(t);
           $("#button"+lix).css('background-color', '#FFA');
           $("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
+          console.log("reload");
         }
 
 
@@ -83,9 +84,11 @@
           data.push([0.8 ,   3.2  ]); labels.push(1);
           data.push([1.0 ,   -2.2  ]); labels.push(1);
           N = labels.length;
+          console.log("data");
         }
         
         function circle_data() {
+          console.log("circle");
           data = [];
           labels = [];
           for(var i=0;i<50;i++) {
@@ -107,6 +110,7 @@
          
         function update(){ // permette di fare il training del dato
           // forward prop the data
+          console.log("debug");
         
           var start = new Date().getTime();
         
@@ -116,6 +120,7 @@
           for(var iters=0;iters<20;iters++) {//itero per 20 volte
             for(var ix=0;ix<N;ix++) { // scorro il numero di punti
               x.w = data[ix]; // x.w contiene il punto attuale
+              //console.log("debug"+x+labels[ix]);
               var stats = trainer.train(x, labels[ix]); // passo all'addestramento gli input di vol e la classe, il trainer avviene dal calcolo della labels
               avloss += stats.loss;
             }

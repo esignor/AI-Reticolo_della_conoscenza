@@ -42,6 +42,7 @@
     ";
 
 
+
 $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
     viscanvas = document.getElementById('viscanvas');
     visctx = viscanvas.getContext('2d');
@@ -49,13 +50,14 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
     visHEIGHT = viscanvas.height;
 
 
-    circle_data();
-    $("#layerdef").val(t);
-    reload();
+    //circle_data();
+    $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
+    //reload();
 
-    NPGinit(20);
+    //NPGinit(20);
 
 });
+
 
 </script>
 
@@ -98,6 +100,13 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
 
                 </div>
             </div>
+
+
+
+
+
+
+
 
 
 
