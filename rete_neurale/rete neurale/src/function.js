@@ -150,51 +150,39 @@ function draw() {
     }
 }
 
+// una volta premuto il pulsante di save nel form relativo agli Output/Input questi vengono salvati nell'apposito array
+function formSubmit(operazione) { 
+    var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
+    var i;
+    for (i = 0; i < x.length; i++) {
+        if(operazione == "input"){
+          var number = x[i].value;
+          console.log("number "+number);
+          if(controlValue(number))
+            ArrayInput[i] = number;
+          else return;
+        }
+        else
+          ArrayOutput[i] = x[i].value;
 
-
-function deleteForm(form) {
-    //console.log(Array.prototipe.slice.call(arguments));
-    if (form.value == 'input')
-        document.myFormInp.inp_coord.value = ""; // reset della coordinata input
-    else
-        document.myFormOut.out_coord.value = ""; // reset della coordinata output
+    }
+    console.log(ArrayInput + " " + ArrayOutput);
 }
 
 
-
-// una volta premuto il pulsante di save nel form relativo agli Input questi vengono salvati
-function formSubmitInput() {  // stampo il contenuto dell'array
-    console.log("sveglia_submit input");
-
-    var x = document.getElementsByClassName("input"); // per avere il contenuto delle celle di input
-    var i;
-    for (i = 0; i < x.length; i++) {
-        ArrayInput[i] = x[i].value;
+function controlValue(number){
+    if (number == "" || isNaN(number) || parseInt(number)<0 || parseInt(number.value) > 9999){
+      alert("Inserire un intero  positivo");
+      return false;
     }
-    console.log(ArrayInput);
-}
-
-// una volta premuto il pulsante di save nel form relativo agli Output questi vengono salvati
-function formSubmitOutput() { 
-    console.log("sveglia_submit output");
-    var x = document.getElementsByClassName("output"); // per avere il contenuto delle celle di  output
-    var i;
-    for (i = 0; i < x.length; i++) {
-        ArrayOutput[i] = x[i].value;
-    }
-    console.log(ArrayOutput);
+    return true;
 }
 
 // metodo che si preoccupa di aggiungere n campi nei box di Input e Output
 function addFields() {
     // Number of inputs to create
     var number = document.getElementById("member").value;
-    console.log(number);
-    //controllo field: deve essere stato inserito un numero
-    if (number == "" || isNaN(number) || parseInt(number)<0 || parseInt(number.value) > 9999){
-      alert("Inserire un numero di fields numerico intero");
-      return;
-    }
+    if(!controlValue(number)) return;;//controllo field: deve essere stato inserito un numero
 
     // Container <div> where dynamic content will be placed
     var container = document.getElementById("container");
@@ -223,7 +211,7 @@ function addFields() {
     input.type = "submit";
     input.name = "save";
     input.value = "save";
-    input.setAttribute('onclick', 'formSubmitInput()'); // premo save, salvo i valori di input su un array
+    input.setAttribute('onclick', 'formSubmit("input")'); // premo save, salvo i valori di input su un array
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
     div.appendChild(input); //appendo save a box_input
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
@@ -256,7 +244,7 @@ function addFields() {
     input.type = "submit";
     input.name = "save";
     input.value = "save";
-    input.setAttribute('onclick', 'formSubmitOutput()'); // premo save, salvo i valori di output su un array
+    input.setAttribute('onclick', 'formSubmit("output")'); // premo save, salvo i valori di output su un array
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
     div.appendChild(input); //appendo save a box_output
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti   
