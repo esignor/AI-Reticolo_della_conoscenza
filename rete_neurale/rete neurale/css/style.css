@@ -29,7 +29,7 @@ canvas {
   margin-left: 18em;
 }
 
-#button_change, #button_newfield{
+#button_change, #button_newfield, #button_trainer{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -49,6 +49,13 @@ canvas {
 
   #button_newfield{
     margin-top:1em;
+  }
+
+  #button_trainer{
+    display:none;
+    margin-left: 63em;
+    color:#007ba7;
+    border:0.8em solid #007ba7;
   }
 
   #title{
