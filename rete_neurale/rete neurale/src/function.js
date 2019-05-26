@@ -162,7 +162,7 @@ function deleteForm(form) {
 
 
 
-
+// una volta premuto il pulsante di save nel form relativo agli Input questi vengono salvati
 function formSubmitInput() {  // stampo il contenuto dell'array
     console.log("sveglia_submit input");
 
@@ -174,8 +174,8 @@ function formSubmitInput() {  // stampo il contenuto dell'array
     console.log(ArrayInput);
 }
 
-
-function formSubmitOutput() {
+// una volta premuto il pulsante di save nel form relativo agli Output questi vengono salvati
+function formSubmitOutput() { 
     console.log("sveglia_submit output");
     var x = document.getElementsByClassName("output"); // per avere il contenuto delle celle di  output
     var i;
@@ -185,7 +185,7 @@ function formSubmitOutput() {
     console.log(ArrayOutput);
 }
 
-
+// metodo che si preoccupa di aggiungere n campi nei box di Input e Output
 function addFields() {
     // Number of inputs to create
     var number = document.getElementById("member").value;
@@ -202,7 +202,7 @@ function addFields() {
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
-
+    // creazione box di Input
     var div = document.createElement("div"); // creo box per la form di input
     div.id="box_input";
     for (i = 0; i < number; i++) {
@@ -215,12 +215,7 @@ function addFields() {
         console.log("inp" + input.name);
         input.classList.add("input");
 
-
-
-
         div.appendChild(input);
-        // Append a line break 
-
     }
 
     var input = document.createElement("input"); //appendo save a box_input
@@ -236,25 +231,24 @@ function addFields() {
     container.appendChild(div); // appendo box_input a container
 
 
-
+    // creazione box di Output
     var div = document.createElement("div"); // creo box per la form di output
     div.id="box_output";
     for (var j = 0; j < number; j++) {
         // Append a node with a random text
         div.appendChild(document.createTextNode("Output" + (j + 1)));
         // Create an <input> element, set its type and name attributes
-        var input = document.createElement("input");
-        input.type = "number";
-        input.name = "member" + (j + i);
-        console.log("out" + input.name);
-        input.classList.add('output');
+        var select= document.createElement("select"); // creo la select
+        select.name="field_value"; //attributo della select
+        select.classList.add("output");
+        for(n=-1; n<2; ++n){
+          var option = document.createElement("option");
+          option.value = n;
 
-
-
-
-        div.appendChild(input);
-        // Append a line break 
-
+        div.appendChild(select); //al div ci appendo la select
+        select.appendChild(option); //al select ci appendo option
+        option.appendChild(document.createTextNode(n)); //a option ci appendo la label
+        }
     }
 
     var input = document.createElement("input");
@@ -268,5 +262,15 @@ function addFields() {
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti   
 
     container.appendChild(div); // appendo box_output a container
-
 }
+
+/*<form>
+<fieldset>
+<legend>Siti per webmaster</legend>
+<select name="siti" >
+<option value="http://www.html.it" selected="selected">www.html.it </option>
+<option value="http://freephp.html.it">frephp.html.it </option>
+<option value="http://freasp.html.it">freasp.html.it </option>
+</select>
+</fieldset>
+</form>*/
