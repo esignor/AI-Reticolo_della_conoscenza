@@ -19,11 +19,14 @@
 
 <script type="text/javascript">
 
-        var ArrayInput = [];
-        var ArrayOutput = [];
-        var ss = 50.0; // scale for drawing
 
-        // create neural net
+        var ArrayInput = [];  //array di input
+        var ArrayOutput = []; //array do output
+        var N = 0; //contratore dimesnione array
+        //var ss = 50.0; // scale for drawing
+
+         // //codice della rete neurale
+
         var layer_defs, net, trainer;
         var t = "\n\
     layer_defs = [];\n\
@@ -89,10 +92,10 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
                         <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
                         <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
                         <div id="container"></div>
+                        <input id="button_trainer" type="submit" value="start trainer" onclick="update()" />
                     </form>
 
 
-                    </form>
                 </div>
             </div>
 
