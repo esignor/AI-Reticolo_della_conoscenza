@@ -3,44 +3,44 @@ function reload() {
     eval($("#layerdef").val());
 
     // enter buttons for layers
-    var t = '';
-    for (var i = 1; i < net.layers.length - 1; i++) { // ignore input and regression layers (first and last)
-        var butid = "button" + i;
-        t += "<input id=\"" + butid + "\" value=\"" + net.layers[i].layer_type + "(" + net.layers[i].out_depth + ")" + "\" type=\"submit\" onclick=\"updateLix(" + i + ")\" style=\"width:80px; height: 30px; margin:5px;\";>";
+   // var t = '';
+    //for (var i = 1; i < net.layers.length - 1; i++) { // ignore input and regression layers (first and last)
+        //var butid = "button" + i;
+        //t += "<input id=\"" + butid + "\" value=\"" + net.layers[i].layer_type + "(" + net.layers[i].out_depth + ")" + "\" type=\"submit\" onclick=\"updateLix(" + i + ")\" style=\"width:80px; height: 30px; margin:5px;\";>";
     }
-    $("#layer_ixes").html(t);
-    $("#button" + lix).css('background-color', '#FFA');
-    $("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
-}
+  // $("#layer_ixes").html(t);
+   // $("#button" + lix).css('background-color', '#FFA');
+   //$("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
+//}
 
 
-function updateLix(newlix) {
-    $("#button" + lix).css('background-color', ''); // erase highlight
-    lix = newlix;
-    d0 = 0;
-    d1 = 1; // reset these
-    $("#button" + lix).css('background-color', '#FFA');
+//function updateLix(newlix) {
+    //$("#button" + lix).css('background-color', ''); // erase highlight
+    //lix = newlix;
+    //d0 = 0;
+    //d1 = 1; // reset these
+    //$("#button" + lix).css('background-color', '#FFA');
 
-    $("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
-}
-
-
-
-function random_data() {
-    data = [];
-    labels = [];
-    for (var k = 0; k < 40; k++) {
-        data.push([convnetjs.randf(-3, 3), convnetjs.randf(-3, 3)]); labels.push(convnetjs.randf(0, 1) > 0.5 ? 1 : 0);
-    }
-    N = labels.length;
-}
+    //$("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
+//}
 
 
-function circle_data() {
-    data = [];
-    labels = [];
-    for (var i = 0; i < 50; i++) {
-        var r = convnetjs.randf(0.0, 2.0);
+
+//function random_data() {
+    //data = [];
+    //labels = [];
+    //for (var k = 0; k < 40; k++) {
+       // data.push([convnetjs.randf(-3, 3), convnetjs.randf(-3, 3)]); labels.push(convnetjs.randf(0, 1) > 0.5 ? 1 : 0);
+   // }
+    //N = labels.length;
+//}
+
+
+//function circle_data() {
+    //data = [];
+    //labels = [];
+    //for (var i = 0; i < 50; i++) {
+       /* var r = convnetjs.randf(0.0, 2.0);
         var t = convnetjs.randf(0.0, 2 * Math.PI);
         data.push([r * Math.sin(t), r * Math.cos(t)]);
         labels.push(1);
@@ -53,11 +53,14 @@ function circle_data() {
         labels.push(0);
     }
     N = data.length;
-}
+}*/
 
 
 function update() { // permette di fare il training del dato
-    // forward prop the data
+  
+    console.log("inizio dell'allenamento per i dati inseriti");
+
+    N = ArrayInput.length;
 
     var start = new Date().getTime();
 
@@ -82,7 +85,7 @@ function update() { // permette di fare il training del dato
 
 
 
-function draw() {
+/*function draw() {
 
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -148,7 +151,21 @@ function draw() {
         drawCircle(data[i][0] * ss + WIDTH / 2, data[i][1] * ss + HEIGHT / 2, 5.0); // per posizionare i punti
 
     }
+}*/
+
+
+/** function abilita_trainer()
+ *  metodo che ha il compito di rendere visibile all'utente il pulsante che abilita il trainer set dei dati
+ */
+function abilita_trainer(){
+console.log("bottone di trainer abilitato?");
+console.log(ArrayInput[0] + ArrayOutput[0] + ArrayInput.length +  ArrayOutput.length);
+if(ArrayInput[0] != "" && ArrayOutput[0] != "" && ArrayInput.length == ArrayOutput.length){ // controllo dei dati di allenameto, devono essere inseriti e salvati negli appositi contenitori
+  document.myForm.button_trainer.style.display= "inline";
+  console.log("bottone di trainer abilitato");
 }
+}
+
 
 
 /** function formSubmit(operazione)
@@ -158,6 +175,7 @@ function draw() {
  **/
 function formSubmit(operazione) {
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
+    console.log("x"+x.length);
     var i;
     for (i = 0; i < x.length; i++) {
         if (operazione == "input") {
@@ -167,16 +185,20 @@ function formSubmit(operazione) {
                 ArrayInput[i] = number;
             else return;
         }
-        else
+        else{
             ArrayOutput[i] = x[i].value;
+        }
+
 
     }
     console.log(ArrayInput + " " + ArrayOutput);
+    abilita_trainer(); // rendo accessibile il pulsante di allenamento
+
 }
 
 /** function number
  *  @param {number} number 
- *  metodo cohe ha il compito di controllare la validità del parametro passato alla funzione
+ *  metodo che ha il compito di controllare la validità del parametro passato alla funzione
  * return true sse il parametro è di natura non vuota, intera e positiva e non superiore a 9999, altrimenti viene stampato a video un messaggio di errore
  * e viene ritornato false
  */
