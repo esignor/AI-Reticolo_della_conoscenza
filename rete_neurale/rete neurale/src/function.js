@@ -1,15 +1,15 @@
 
-function reload() {
-    eval($("#layerdef").val());
+//function reload() {
+    //eval($("#layerdef").val());
 
-    // enter buttons for layers
-   // var t = '';
-    //for (var i = 1; i < net.layers.length - 1; i++) { // ignore input and regression layers (first and last)
-        //var butid = "button" + i;
-        //t += "<input id=\"" + butid + "\" value=\"" + net.layers[i].layer_type + "(" + net.layers[i].out_depth + ")" + "\" type=\"submit\" onclick=\"updateLix(" + i + ")\" style=\"width:80px; height: 30px; margin:5px;\";>";
+     //enter buttons for layers
+   /*var t = '';
+    for (var i = 1; i < net.layers.length - 1; i++) { // ignore input and regression layers (first and last)
+        var butid = "button" + i;
+        t += "<input id=\"" + butid + "\" value=\"" + net.layers[i].layer_type + "(" + net.layers[i].out_depth + ")" + "\" type=\"submit\" onclick=\"updateLix(" + i + ")\" style=\"width:80px; height: 30px; margin:5px;\";>";
     }
-  // $("#layer_ixes").html(t);
-   // $("#button" + lix).css('background-color', '#FFA');
+   $("#layer_ixes").html(t);
+   $("#button" + lix).css('background-color', '#FFA');*/
    //$("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
 //}
 
@@ -55,7 +55,6 @@ function reload() {
     N = data.length;
 }*/
 
-
 function update() { // permette di fare il training del dato
   
     console.log("inizio dell'allenamento per i dati inseriti");
@@ -66,10 +65,12 @@ function update() { // permette di fare il training del dato
 
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita')
     //x.w = data[ix];
+    console.log("array "+ ArrayInput.length);
     var avloss = 0.0; // calcolo della perdita
     for (var iters = 0; iters < 20; iters++) { // ho il dubbio che iteri solo per perfezionare l'apprendimento
         for (var ix = 0; ix < N; ix++) {
             x.w = ArrayInput[ix];
+            console.log("x "+ x + ArrayOutput[ix]);
             var stats = trainer.train(x, ArrayOutput[ix]);
             avloss += stats.loss;
         }
@@ -78,7 +79,6 @@ function update() { // permette di fare il training del dato
 
     var end = new Date().getTime();
     var time = end - start;
-
 }
 
 
