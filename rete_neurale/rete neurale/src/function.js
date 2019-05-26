@@ -151,29 +151,29 @@ function draw() {
 }
 
 // una volta premuto il pulsante di save nel form relativo agli Output/Input questi vengono salvati nell'apposito array
-function formSubmit(operazione) { 
+function formSubmit(operazione) {
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
     var i;
     for (i = 0; i < x.length; i++) {
-        if(operazione == "input"){
-          var number = x[i].value;
-          console.log("number "+number);
-          if(controlValue(number))
-            ArrayInput[i] = number;
-          else return;
+        if (operazione == "input") {
+            var number = x[i].value;
+            console.log("number " + number);
+            if (controlValue(number))
+                ArrayInput[i] = number;
+            else return;
         }
         else
-          ArrayOutput[i] = x[i].value;
+            ArrayOutput[i] = x[i].value;
 
     }
     console.log(ArrayInput + " " + ArrayOutput);
 }
 
 
-function controlValue(number){
-    if (number == "" || isNaN(number) || parseInt(number)<0 || parseInt(number.value) > 9999){
-      alert("Inserire un intero  positivo");
-      return false;
+function controlValue(number) {
+    if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number.value) > 9999) {
+        alert("Inserire un intero  positivo");
+        return false;
     }
     return true;
 }
@@ -182,7 +182,7 @@ function controlValue(number){
 function addFields() {
     // Number of inputs to create
     var number = document.getElementById("member").value;
-    if(!controlValue(number)) return;;//controllo field: deve essere stato inserito un numero
+    if (!controlValue(number)) return;;//controllo field: deve essere stato inserito un numero
 
     // Container <div> where dynamic content will be placed
     var container = document.getElementById("container");
@@ -192,7 +192,7 @@ function addFields() {
     }
     // creazione box di Input
     var div = document.createElement("div"); // creo box per la form di input
-    div.id="box_input";
+    div.id = "box_input";
     for (i = 0; i < number; i++) {
         // Append a node with a random text
         div.appendChild(document.createTextNode("Input" + (i + 1)));
@@ -207,7 +207,7 @@ function addFields() {
     }
 
     var input = document.createElement("input"); //appendo save a box_input
-    input.id ="button_newfield";
+    input.id = "button_newfield";
     input.type = "submit";
     input.name = "save";
     input.value = "save";
@@ -215,32 +215,32 @@ function addFields() {
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
     div.appendChild(input); //appendo save a box_input
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
-    
+
     container.appendChild(div); // appendo box_input a container
 
 
     // creazione box di Output
     var div = document.createElement("div"); // creo box per la form di output
-    div.id="box_output";
+    div.id = "box_output";
     for (var j = 0; j < number; j++) {
         // Append a node with a random text
         div.appendChild(document.createTextNode("Output" + (j + 1)));
         // Create an <input> element, set its type and name attributes
-        var select= document.createElement("select"); // creo la select
-        select.name="field_value"; //attributo della select
+        var select = document.createElement("select"); // creo la select
+        select.name = "field_value"; //attributo della select
         select.classList.add("output");
-        for(n=-1; n<2; ++n){
-          var option = document.createElement("option");
-          option.value = n;
+        for (n = -1; n < 2; ++n) {
+            var option = document.createElement("option");
+            option.value = n;
 
-        div.appendChild(select); //al div ci appendo la select
-        select.appendChild(option); //al select ci appendo option
-        option.appendChild(document.createTextNode(n)); //a option ci appendo la label
+            div.appendChild(select); //al div ci appendo la select
+            select.appendChild(option); //al select ci appendo option
+            option.appendChild(document.createTextNode(n)); //a option ci appendo la label
         }
     }
 
     var input = document.createElement("input");
-    input.id ="button_newfield";
+    input.id = "button_newfield";
     input.type = "submit";
     input.name = "save";
     input.value = "save";
