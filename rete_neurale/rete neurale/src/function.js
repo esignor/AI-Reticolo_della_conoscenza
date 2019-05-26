@@ -150,7 +150,12 @@ function draw() {
     }
 }
 
-// una volta premuto il pulsante di save nel form relativo agli Output/Input questi vengono salvati nell'apposito array
+
+/** function formSubmit(operazione)
+ * @param {String} operazione contenente la voce input oppure output
+ * metodo che ha il compito, una volta che l'utente ha premuto il pulsante di save di salvare i dati all'interno degli array specifici
+ *  (ArrayInput e ArrayOutput). Metodo che viene chiamato da addFields
+ **/
 function formSubmit(operazione) {
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
     var i;
@@ -169,7 +174,12 @@ function formSubmit(operazione) {
     console.log(ArrayInput + " " + ArrayOutput);
 }
 
-
+/** function number
+ *  @param {number} number 
+ *  metodo cohe ha il compito di controllare la validità del parametro passato alla funzione
+ * return true sse il parametro è di natura non vuota, intera e positiva e non superiore a 9999, altrimenti viene stampato a video un messaggio di errore
+ * e viene ritornato false
+ */
 function controlValue(number) {
     if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number.value) > 9999) {
         alert("Inserire un intero  positivo");
@@ -178,7 +188,10 @@ function controlValue(number) {
     return true;
 }
 
-// metodo che si preoccupa di aggiungere n campi nei box di Input e Output
+/** function addFields
+ * metodo che ha il compito di aggiungere n campi definiti dall'utente nei box di Input e di Output, di istanziare i rispettivi pulsanti di save e di, a
+ * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
+ */
 function addFields() {
     // Number of inputs to create
     var number = document.getElementById("member").value;
@@ -252,13 +265,4 @@ function addFields() {
     container.appendChild(div); // appendo box_output a container
 }
 
-/*<form>
-<fieldset>
-<legend>Siti per webmaster</legend>
-<select name="siti" >
-<option value="http://www.html.it" selected="selected">www.html.it </option>
-<option value="http://freephp.html.it">frephp.html.it </option>
-<option value="http://freasp.html.it">freasp.html.it </option>
-</select>
-</fieldset>
-</form>*/
+
