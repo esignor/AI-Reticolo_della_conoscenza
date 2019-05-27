@@ -17,15 +17,16 @@
 
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
 
         var ArrayInput = [];  //array di input
         var ArrayOutput = []; //array do output
+        var ArrayInputSession = []; //array che memorizza tutti gli id delle domande della stessa sessione
         var N = 0; //contratore dimesnione array
         //var ss = 50.0; // scale for drawing
 
-         // //codice della rete neurale
+        // //codice della rete neurale
 
         var layer_defs, net, trainer;
         var t = "\n\
@@ -43,23 +44,18 @@
 
 
 
-$(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
-    viscanvas = document.getElementById('viscanvas');
-    visctx = viscanvas.getContext('2d');
-    visWIDTH = viscanvas.width;
-    visHEIGHT = viscanvas.height;
+        $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
+            viscanvas = document.getElementById('viscanvas');
+            visctx = viscanvas.getContext('2d');
+            visWIDTH = viscanvas.width;
+            visHEIGHT = viscanvas.height;
+
+            $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
+
+        });
 
 
-    //circle_data();
-    $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
-    //reload();
-
-    //NPGinit(20);
-
-});
-
-
-</script>
+    </script>
 
 <body>
 
@@ -91,10 +87,10 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
 
 
                     <form method="post" name="myForm" id="myForm" onsubmit="return false">
-                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
-                        <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
+                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member"
+                                value="">
+                            <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
                         <div id="container"></div>
-                        <input id="button_trainer" type="submit" value="start trainer" onclick="update()" />
                     </form>
 
 
