@@ -1,3 +1,6 @@
+/** function update()
+ * funzione che ha il compito di effettuare l'apprendimento della rete
+ */
 function update() { // permette di fare il training del dato
 
     console.log("inizio dell'allenamento per i dati inseriti");
@@ -19,7 +22,10 @@ function update() { // permette di fare il training del dato
 
 }
 
-
+/** function prevision()
+ * metodo che ha il compito, data un id di domanda nella form di input, di prevedere se il candidato, in base a cio' che la rete ha imparato sara' in grado di 
+ * rispondervi o meno
+ */
 function prevision() {
     var id_prevision = document.getElementsByClassName("id_prevision");
     var net = new convnetjs.Net();
@@ -46,7 +52,9 @@ function prevision() {
     console.log("previsione" + scores.w[0]);
 }
 
-
+/** function abilita_trainer()
+ * metodo che ha il compito di abilitare la funzionalita' di apprendimento della rete
+ */
 function abilita_trainer() {
     console.log(ArrayInput[0] + ArrayOutput[0] + ArrayInput.length + ArrayOutput.length);
     if (ArrayInput[0] != "" && ArrayOutput[0] != "" && ArrayInput.length == ArrayOutput.length) { // controllo dei dati di allenameto, devono essere inseriti e salvati negli appositi contenitori
