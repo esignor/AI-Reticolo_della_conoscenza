@@ -31,6 +31,7 @@
         
         function reload() {
           eval($("#layerdef").val());
+  
         
           // enter buttons for layers
           var t = '';
@@ -120,7 +121,7 @@
           for(var iters=0;iters<20;iters++) {//itero per 20 volte
             for(var ix=0;ix<N;ix++) { // scorro il numero di punti
               x.w = data[ix]; // x.w contiene il punto attuale
-              //console.log("debug"+x+labels[ix]);
+              console.log("print"+data[ix]+labels[ix])
               var stats = trainer.train(x, labels[ix]); // passo all'addestramento gli input di vol e la classe, il trainer avviene dal calcolo della labels
               avloss += stats.loss;
             }
