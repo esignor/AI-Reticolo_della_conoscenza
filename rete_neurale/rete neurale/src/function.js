@@ -19,6 +19,12 @@ function update() { // permette di fare il training del dato
         }
     }
     avloss /= N * iters;
+    document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
+    document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
+    document.getElementById("id_question").style.display = "inline";
+    document.getElementById("id_question_label").style.display = "inline";
+
+    ArrayInput = [], ArrayOutput = []; //gli array di supporto devono essere vuoti per il prossimo set di dati
 
 }
 
@@ -58,10 +64,8 @@ function prevision() {
 function abilita_trainer() {
     console.log(ArrayInput[0] + ArrayOutput[0] + ArrayInput.length + ArrayOutput.length);
     if (ArrayInput[0] != "" && ArrayOutput[0] != "" && ArrayInput.length == ArrayOutput.length) { // controllo dei dati di allenameto, devono essere inseriti e salvati negli appositi contenitori
-        document.myForm.button_trainer.style.display = "inline"; // abilito i pulsanti
-        document.myForm.button_prevision.style.display = "inline";
-        document.myForm.id_question.style.display = "inline";
-        document.getElementById('id_question_label').style.display = "inline";
+        document.getElementById("button_trainer").style.display = "inline"; // visualizzazione dei pulsanti
+        document.getElementById("button_trainer").disabled = false;
         console.log("bottone di trainer abilitato");
     }
 }
