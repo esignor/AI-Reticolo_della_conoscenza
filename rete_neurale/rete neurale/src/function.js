@@ -11,20 +11,20 @@ function update() { // permette di fare il training del dato
 
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
     var avloss = 0.0; // calcolo della perdita
-    for (var iters = 0; iters < 20; iters++) { // ho il dubbio che iteri solo per perfezionare l'apprendimento
+    //for (var iters = 0; iters < 20; iters++) { // ho il dubbio che iteri solo per perfezionare l'apprendimento
         for (var ix = 0; ix < N; ix++) {
-            x.w = ArrayInput[ix];
-            var stats = trainer.train(x, ArrayOutput[ix]);
+            x.w = ArrayInput[ix]; // gli passo l'input
+            var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato
             avloss += stats.loss;
         }
-    }
-    avloss /= N * iters;
+   // }
+    //avloss /= N * iters;
     document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
     document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
     document.getElementById("id_question").style.display = "inline";
     document.getElementById("id_question_label").style.display = "inline";
 
-    ArrayInput = [], ArrayOutput = []; //gli array di supporto devono essere vuoti per il prossimo set di dati
+    ArrayInput = [], ArrayOutput = []; //gli array di supporto per il singolo test devono essere vuoti per il prossimo set di dati
 
 }
 
@@ -37,9 +37,9 @@ function prevision() {
     var net = new convnetjs.Net();
     net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 6);
-    x.w[0] = id_prevision[0].value;
+    x.w[0] = id_prevision[0].value; // salvo il valore dell'input
 
-    if (!controlValue(x.w[0]))//controllo del contenuto della form
+    if (!controlValueInput(x.w[0]))//controllo del contenuto della form
         return; //inserimento non valido
 
     var trovato = false; //controllo che i'identificativo in input sia stato inserito mediante vettore
@@ -54,7 +54,8 @@ function prevision() {
 
     //altrimenti inserimento id valido
     console.log("id domanda da prevedere: " + x.w[0]);
-    var scores = net.forward(x);
+
+    var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta
     console.log("previsione" + scores.w[0]);
 }
 
@@ -76,7 +77,7 @@ function abilita_trainer() {
  * @param {String} operazione contenente la voce input oppure output
  * metodo che ha il compito, una volta che l'utente ha premuto il pulsante di save di salvare i dati all'interno degli array specifici
  *  (ArrayInput e ArrayOutput). Metodo che viene chiamato da addFields
- **/
+ */
 function formSubmit(operazione) {
     var count = 0;
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
@@ -85,16 +86,22 @@ function formSubmit(operazione) {
     for (i = 0; i < x.length; i++) {
         var number = x[i].value;
         console.log("number " + number);
-        if (!controlValue(number))
-            return;
 
         if (operazione == "input") {
+
+            if (!controlValueInput(number))
+              return;
+
             ArrayInput[i] = number;
             ArrayInputSession[count] = number;
             count = count + 1;
 
         }
         else {
+
+            if (!controlValueOutput(number))
+              return;
+
             ArrayOutput[i] = number;
         }
 
@@ -105,14 +112,28 @@ function formSubmit(operazione) {
 
 }
 
-/** function number
+/** function controlValueInput
  *  @param {number} number 
- *  metodo che ha il compito di controllare la validità del parametro passato alla funzione
+ *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di input dell'id della domanda)
  * return true sse il parametro è di natura non vuota, intera e positiva e non superiore a 9999, altrimenti viene stampato a video un messaggio di errore
  * e viene ritornato false
  */
-function controlValue(number) {
-    if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number.value) > 9999) {
+function controlValueInput(number) {
+    if (number == "" || isNaN(number) || parseInt(number) <= 0 || parseInt(number.value) > 9999) {
+        alert("Inserire un numero intero positivo valido");
+        return false;
+    }
+    return true;
+}
+
+/** function controlValueOutput
+ *  @param {number} number 
+ *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di output del valore della domanda)
+ * return true sse il parametro è di natura non vuota, altrimenti viene stampato a video un messaggio di errore  e viene ritornato false
+ */
+
+function controlValueOutput(number) {
+    if (number == "") {
         alert("Inserire un numero intero valido");
         return false;
     }
@@ -125,7 +146,7 @@ function controlValue(number) {
  */
 function addFields() {
     var number = document.getElementById("member").value;
-    if (!controlValue(number)) return;//controllo field: deve essere stato inserito un numero
+    if (!controlValueInput(number)) return;//controllo field: deve essere stato inserito un numero
 
     var container = document.getElementById("container");
     while (container.hasChildNodes()) {
