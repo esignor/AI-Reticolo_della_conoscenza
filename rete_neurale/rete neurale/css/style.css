@@ -88,12 +88,8 @@ canvas {
     padding-top: 2em;
   }
 
-  .input, .output{
+  .risposta_input{
     margin-left: 0.5em;
     margin-top: 3em;
-    margin-right:1em;
+    margin-right: 12.5em;
     }
-
-   .output{
-      margin-right: 12.5em;
-      }

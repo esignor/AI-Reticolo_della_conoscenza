@@ -1,6 +1,5 @@
-var ArrayInput = [];  //array di input
-var ArrayOutput = []; //array do output
-var ArrayInputSession = []; //array che memorizza tutti gli id delle domande della stessa sessione
+var ArrayInput = [];  //array di input da usare per l'allenamento dei dati
+var ArrayOutput = []; //array do output indispensabile per l'autoencoder
 var N = 0; //contratore dimesnione array
 
 // codice della rete neurale
@@ -33,6 +32,7 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
 function update() { // permette di fare il training del dato
+    //stampa sul box di log
     layer_exe = layer_exe + "\n\Inizio allenamento della rete ...";
     $("#layerexe").val(layer_exe);
 
@@ -44,7 +44,7 @@ function update() { // permette di fare il training del dato
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
     for (var ix = 0; ix < N; ix++) {
        x.w = ArrayInput[ix]; // gli passo l'input
-       var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato
+       var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
     }
 
     document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
@@ -52,7 +52,7 @@ function update() { // permette di fare il training del dato
     document.getElementById("id_question").style.display = "inline";
     document.getElementById("id_question_label").style.display = "inline";
 
-    ArrayInput = [], ArrayOutput = []; //gli array di supporto per il singolo test devono essere vuoti per il prossimo set di dati
+    ArrayInput = []; ArrayOutput = []; //array di supporto per il singolo test che devono essere vuoto per il prossimo set di dati
 
 }
 
@@ -60,7 +60,8 @@ function update() { // permette di fare il training del dato
  * metodo che ha il compito, data un id di domanda nella form di input, di prevedere se il candidato, in base a cio' che la rete ha imparato sara' in grado di 
  * rispondervi o meno
  */
-function prevision() {
+/*function prevision() {
+    // stampa di connessione della rete
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
 
@@ -72,26 +73,7 @@ function prevision() {
     var x = new convnetjs.Vol(1, 1, 6);
     x.w[0] = id_prevision[0].value; // salvo il valore dell'input
 
-    if (!controlValueInput(x.w[0])){//controllo del contenuto della form
-        layer_exe = layer_exe + "\n\Richiesta di previsione rifiutata";
-        $("#layerexe").val(layer_exe);
-        return; //inserimento non valido
-    }
-
-    var trovato = false; //controllo che i'identificativo in input sia stato inserito mediante vettore
-    for (var i = 0; i < ArrayInputSession.length & !trovato; ++i) {
-        if (ArrayInputSession[i] == x.w[0])
-            trovato = true;
-    }
-    if (!trovato) {
-        layer_exe = layer_exe + "\n\Richiesta di previsione rifiutata";
-        $("#layerexe").val(layer_exe);
-
-        alert("id domanda non inserito in input");
-        return;
-    }
-
-    //altrimenti inserimento id valido
+    //altrimenti inserimento valido
     layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
     $("#layerexe").val(layer_exe);
 
@@ -99,14 +81,16 @@ function prevision() {
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
     layer_exe = layer_exe + "\n\La domanda con id " + x.w[0] + " ha previsione calcolata di " + scores.w[0] + "\n\Rete Neurale in attesa ...";
-    $("#layerexe").val(layer_exe);
-}
+    $("#layerexe").val(layer_exe);}
+
+    */
+
 
 /** function abilita_trainer()
  * metodo che ha il compito di abilitare la funzionalita' di apprendimento della rete
  */
 function abilita_trainer() {
-    if (ArrayInput[0] != "" && ArrayOutput[0] != "" && ArrayInput.length == ArrayOutput.length) { // controllo dei dati di allenameto, devono essere inseriti e salvati negli appositi contenitori
+    if (ArrayInput[0] != "") { // controllo dei dati di allenameto, devono essere inseriti e salvati negli apposito array specifico
         document.getElementById("button_trainer").style.display = "inline"; // visualizzazione dei pulsanti
         document.getElementById("button_trainer").disabled = false;
     }
@@ -114,56 +98,38 @@ function abilita_trainer() {
 
 
 
-/** function formSubmit(operazione)
- * @param {String} operazione contenente la voce input oppure output
- * metodo che ha il compito, una volta che l'utente ha premuto il pulsante di save di salvare i dati all'interno degli array specifici
- *  (ArrayInput e ArrayOutput). Metodo che viene chiamato da addFields
+/** function formSubmit()
+ * metodo che ha il compito, una volta che l'utente ha premuto il pulsante di save di salvare i dati all'interno dell'array specifico
+ *  (ArrayInput). Metodo che viene chiamato da addFields
  */
-function formSubmit(operazione) {
-    var count = 0;
-    var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
+function formSubmit() {
+    var x = document.getElementsByClassName("risposta_input"); // per avere il contenuto delle celle di dati
     for (var i = 0; i < x.length; i++) {
         var number = x[i].value;
 
-        if (operazione == "input") {
-
-            if (!controlValueInput(number))
+            if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
               return;
 
-            ArrayInput[i] = number;
-            ArrayInputSession[count] = number;
-            count = count + 1;
-
-        }
-        else {
-
-            if (!controlValueOutput(number))
-              return;
-
-            ArrayOutput[i] = number;
-        }
-
-
+            ArrayInput[i] = number; // salvataggio del contenuto della cella in esame nell'array di supporto
+            ArrayOutput[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
     }
-    layer_exe = layer_exe + "\n\Inserimento dati del test di " + operazione + " andato a buon fine"
+    // stampa dei risultati sul box di log
+    layer_exe = layer_exe + "\n\Inserimento risposte alle domande del test andato a buon fine"
     $("#layerexe").val(layer_exe);
-
-    if(ArrayInput.lenght == x.lenght && ArrayOutput.length && ArrayInput.length == ArrayOutput.length){
-      layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "\n\Id delle domande inserite [" + ArrayInput +"], Risposte ottenute ["  + ArrayOutput +"]"
-      $("#layerexe").val(layer_exe);
-    }
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  ["  + ArrayInput +"]"
+    $("#layerexe").val(layer_exe);
     
-      abilita_trainer(); // rendo accessibile il pulsante di allenamento
+    abilita_trainer(); // rendo accessibile il pulsante di allenamento
 
 }
 
-/** function controlValueInput
+/** function controlValueFields
  *  @param {number} number 
- *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di input dell'id della domanda)
+ *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel numero di fields di input)
  * return true sse il parametro è di natura non vuota, intera e positiva e non superiore a 9999, altrimenti viene stampato a video un messaggio di errore
  * e viene ritornato false
  */
-function controlValueInput(number) {
+function controlValueFields(number) {
     if (number == "" || isNaN(number) || parseInt(number) <= 0 || parseInt(number.value) > 9999) {
         alert("Inserire un numero intero positivo valido");
         return false;
@@ -171,13 +137,13 @@ function controlValueInput(number) {
     return true;
 }
 
-/** function controlValueOutput
+/** function controlValueInput
  *  @param {number} number 
- *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di output del valore della domanda)
+ *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di input del valore della domanda)
  * return true sse il parametro è di natura non vuota, altrimenti viene stampato a video un messaggio di errore  e viene ritornato false
  */
 
-function controlValueOutput(number) {
+function controlValueInput(number) {
     if (number == "") {
         alert("Inserire un numero intero valido");
         return false;
@@ -186,57 +152,32 @@ function controlValueOutput(number) {
 }
 
 /** function addFields
- * metodo che ha il compito di aggiungere n campi definiti dall'utente nei box di Input e di Output, di istanziare i rispettivi pulsanti di save e di, a
+ * metodo che ha il compito di aggiungere n campi definiti dall'utente nei box di input, di istanziare i rispettivi pulsanti di save e di, a
  * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
  */
 function addFields() {
-    layer_exe = "Rete Neurale in attesa ..."
+    layer_exe = "Rete Neurale in attesa. Inserire risultati dei test..."
     $("#layerexe").val(layer_exe);
 
 
     var number = document.getElementById("member").value;
-    if (!controlValueInput(number)) return;//controllo field: deve essere stato inserito un numero
+    if (!controlValueFields(number)) return;//controllo field: deve essere stato inserito un numero
 
     var container = document.getElementById("container");
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
-    // creazione box di Input
-    var div = document.createElement("div"); // creo box per la form di input
-    div.id = "box_input";
-    for (i = 0; i < number; i++) {
-        div.appendChild(document.createTextNode("Input" + (i + 1)));
-        var input = document.createElement("input");
-        input.type = "number";
-        input.name = "member" + i;
-        input.classList.add("input");
 
-        div.appendChild(input);
-    }
-
-    var input = document.createElement("input"); //appendo save a box_input
-    input.id = "button_newfield";
-    input.type = "submit";
-    input.name = "save";
-    input.value = "save";
-    input.setAttribute('onclick', 'formSubmit("input")'); // premo save, salvo i valori di input su un array
-    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
-    div.appendChild(input); //appendo save a box_input
-    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
-
-    container.appendChild(div); // appendo box_input a container
-
-
-    // creazione box di Output
+    // creazione box di risposta alle domande di un test
     var div = document.createElement("div"); // creo box per la form di output
     div.id = "box_output";
     for (var j = 0; j < number; j++) {
         // Append a node with a random text
-        div.appendChild(document.createTextNode("Output" + (j + 1)));
+        div.appendChild(document.createTextNode("Input" + (j + 1)));
         // Create an <input> element, set its type and name attributes
         var select = document.createElement("select"); // creo la select
         select.name = "field_value"; //attributo della select
-        select.classList.add("output");
+        select.classList.add("risposta_input");
 
         //carattere vuoto di default
         var option = document.createElement("option");
@@ -261,7 +202,7 @@ function addFields() {
     input.type = "submit";
     input.name = "save";
     input.value = "save";
-    input.setAttribute('onclick', 'formSubmit("output")'); // premo save, salvo i valori di output su un array
+    input.setAttribute('onclick', 'formSubmit()'); // premo save, salvo i valori di input di risposta alle domande su un array
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
     div.appendChild(input); //appendo save a box_output
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
@@ -273,7 +214,7 @@ function addFields() {
     input.setAttribute('onclick', 'update()'); // 
     div.appendChild(input); //appendo save a box_output
 
-    var label = document.createElement("label"); // bottone che crea la label
+    /*var label = document.createElement("label"); // bottone che crea la label
     label.for = "id_question";
     label.id = "id_question_label";
     label.appendChild(document.createTextNode("Id domanda:"));
@@ -292,9 +233,9 @@ function addFields() {
     input.type = "submit";
     input.value = "prevision trainer";
     input.setAttribute('onclick', 'prevision()'); // 
-    div.appendChild(input); //appendo save a box_output
+    div.appendChild(input); //appendo save a box_output*/
 
-    container.appendChild(div); // appendo box_output a container
+    container.appendChild(div); // appendo box in input delle domande a container
 
 
 
