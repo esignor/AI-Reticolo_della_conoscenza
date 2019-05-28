@@ -1,9 +1,41 @@
+var ArrayInput = [];  //array di input
+var ArrayOutput = []; //array do output
+var ArrayInputSession = []; //array che memorizza tutti gli id delle domande della stessa sessione
+var N = 0; //contratore dimesnione array
+
+// codice della rete neurale
+
+var layer_defs, layer_exe, net, trainer;
+var t = "\n\
+layer_defs = [];\n\
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
+layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
+layer_defs.push({type:'regression', num_neurons:1});\n\
+\n\
+net = new convnetjs.Net();\n\
+net.makeLayers(layer_defs);\n\
+\n\
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});\n\
+";
+
+
+
+$(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
+
+    $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
+
+});
+
+
+
 /** function update()
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
 function update() { // permette di fare il training del dato
+    layer_exe = layer_exe + "\n\Inizio allenamento della rete ...";
+    $("#layerexe").val(layer_exe);
 
-    console.log("inizio dell'allenamento per i dati inseriti");
     eval($("#layerdef").val()); // mi serve per attivare train
 
     N = ArrayInput.length;
@@ -33,14 +65,20 @@ function update() { // permette di fare il training del dato
  * rispondervi o meno
  */
 function prevision() {
+    layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
+    $("#layerexe").val(layer_exe);
+
     var id_prevision = document.getElementsByClassName("id_prevision");
     var net = new convnetjs.Net();
     net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 6);
     x.w[0] = id_prevision[0].value; // salvo il valore dell'input
 
-    if (!controlValueInput(x.w[0]))//controllo del contenuto della form
+    if (!controlValueInput(x.w[0])){//controllo del contenuto della form
+        layer_exe = layer_exe + "\n\Richiesta di previsione rifiutata";
+        $("#layerexe").val(layer_exe);
         return; //inserimento non valido
+    }
 
     var trovato = false; //controllo che i'identificativo in input sia stato inserito mediante vettore
     for (var i = 0; i < ArrayInputSession.length & !trovato; ++i) {
@@ -48,26 +86,29 @@ function prevision() {
             trovato = true;
     }
     if (!trovato) {
+        layer_exe = layer_exe + "\n\Richiesta di previsione rifiutata";
+        $("#layerexe").val(layer_exe);
+
         alert("id domanda non inserito in input");
         return;
     }
 
     //altrimenti inserimento id valido
-    console.log("id domanda da prevedere: " + x.w[0]);
+    layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
+    $("#layerexe").val(layer_exe);
 
-    var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta
-    console.log("previsione" + scores.w[0]);
+    var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
+    layer_exe = layer_exe + "\n\La domanda con id " + x.w[0] + " ha previsione calcolata di " + scores.w[0] + "\n\Rete Neurale in attesa ...";
+    $("#layerexe").val(layer_exe);
 }
 
 /** function abilita_trainer()
  * metodo che ha il compito di abilitare la funzionalita' di apprendimento della rete
  */
 function abilita_trainer() {
-    console.log(ArrayInput[0] + ArrayOutput[0] + ArrayInput.length + ArrayOutput.length);
     if (ArrayInput[0] != "" && ArrayOutput[0] != "" && ArrayInput.length == ArrayOutput.length) { // controllo dei dati di allenameto, devono essere inseriti e salvati negli appositi contenitori
         document.getElementById("button_trainer").style.display = "inline"; // visualizzazione dei pulsanti
         document.getElementById("button_trainer").disabled = false;
-        console.log("bottone di trainer abilitato");
     }
 }
 
@@ -81,11 +122,8 @@ function abilita_trainer() {
 function formSubmit(operazione) {
     var count = 0;
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
-    console.log("x" + x.length);
-    var i;
     for (i = 0; i < x.length; i++) {
         var number = x[i].value;
-        console.log("number " + number);
 
         if (operazione == "input") {
 
@@ -107,8 +145,15 @@ function formSubmit(operazione) {
 
 
     }
-    console.log(ArrayInput + " " + ArrayOutput);
-    abilita_trainer(); // rendo accessibile il pulsante di allenamento
+    layer_exe = layer_exe + "\n\Inserimento dati del test di " + operazione + " andato a buon fine"
+    $("#layerexe").val(layer_exe);
+
+    if(ArrayInput.lenght == x.lenght && ArrayOutput.length && ArrayInput.length == ArrayOutput.length){
+      layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "\n\Id delle domande inserite [" + ArrayInput +"], Risposte ottenute ["  + ArrayOutput +"]"
+      $("#layerexe").val(layer_exe);
+    }
+    
+      abilita_trainer(); // rendo accessibile il pulsante di allenamento
 
 }
 
@@ -145,6 +190,10 @@ function controlValueOutput(number) {
  * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
  */
 function addFields() {
+    layer_exe = "Rete Neurale in attesa ..."
+    $("#layerexe").val(layer_exe);
+
+
     var number = document.getElementById("member").value;
     if (!controlValueInput(number)) return;//controllo field: deve essere stato inserito un numero
 
@@ -160,7 +209,6 @@ function addFields() {
         var input = document.createElement("input");
         input.type = "number";
         input.name = "member" + i;
-        console.log("inp" + input.name);
         input.classList.add("input");
 
         div.appendChild(input);
