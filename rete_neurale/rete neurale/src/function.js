@@ -11,7 +11,7 @@ layer_defs = [];\n\
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
 layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
 layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
-layer_defs.push({type:'regression', num_neurons:1});\n\
+layer_defs.push({type:'regression', num_neurons:2});\n\
 \n\
 net = new convnetjs.Net();\n\
 net.makeLayers(layer_defs);\n\
@@ -40,17 +40,13 @@ function update() { // permette di fare il training del dato
 
     N = ArrayInput.length;
 
-
+   //apprendimento della rete
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
-    var avloss = 0.0; // calcolo della perdita
-    //for (var iters = 0; iters < 20; iters++) { // ho il dubbio che iteri solo per perfezionare l'apprendimento
-        for (var ix = 0; ix < N; ix++) {
-            x.w = ArrayInput[ix]; // gli passo l'input
-            var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato
-            avloss += stats.loss;
-        }
-   // }
-    //avloss /= N * iters;
+    for (var ix = 0; ix < N; ix++) {
+       x.w = ArrayInput[ix]; // gli passo l'input
+       var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato
+    }
+
     document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
     document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
     document.getElementById("id_question").style.display = "inline";
@@ -70,6 +66,8 @@ function prevision() {
 
     var id_prevision = document.getElementsByClassName("id_prevision");
     var net = new convnetjs.Net();
+
+    // dati per effettuare la previsione sulla rete
     net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 6);
     x.w[0] = id_prevision[0].value; // salvo il valore dell'input
@@ -97,7 +95,9 @@ function prevision() {
     layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
     $("#layerexe").val(layer_exe);
 
+    //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
+
     layer_exe = layer_exe + "\n\La domanda con id " + x.w[0] + " ha previsione calcolata di " + scores.w[0] + "\n\Rete Neurale in attesa ...";
     $("#layerexe").val(layer_exe);
 }
@@ -122,7 +122,7 @@ function abilita_trainer() {
 function formSubmit(operazione) {
     var count = 0;
     var x = document.getElementsByClassName(operazione); // per avere il contenuto delle celle di  output
-    for (i = 0; i < x.length; i++) {
+    for (var i = 0; i < x.length; i++) {
         var number = x[i].value;
 
         if (operazione == "input") {
