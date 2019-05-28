@@ -11,52 +11,7 @@
     <script src="../build/convnet-min.js"></script>
     <script src="../build/utils.js"></script>
     <script src="../src/function.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    </link>
-
-
-
-
-    <script type="text/javascript">
-
-
-        var ArrayInput = [];  //array di input
-        var ArrayOutput = []; //array do output
-        var ArrayInputSession = []; //array che memorizza tutti gli id delle domande della stessa sessione
-        var N = 0; //contratore dimesnione array
-        //var ss = 50.0; // scale for drawing
-
-        // //codice della rete neurale
-
-        var layer_defs, net, trainer;
-        var t = "\n\
-    layer_defs = [];\n\
-    layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
-    layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
-    layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
-    layer_defs.push({type:'regression', num_neurons:1});\n\
-    \n\
-    net = new convnetjs.Net();\n\
-    net.makeLayers(layer_defs);\n\
-    \n\
-    trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});\n\
-    ";
-
-
-
-        $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
-            viscanvas = document.getElementById('viscanvas');
-            visctx = viscanvas.getContext('2d');
-            visWIDTH = viscanvas.width;
-            visHEIGHT = viscanvas.height;
-
-            $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
-
-        });
-
-
-    </script>
-
+    <link rel="stylesheet" href="../css/style.css"></link>
 <body>
 
     <div id="wrap">
@@ -73,13 +28,11 @@
 
         <div class="panes">
             <div id="pannello_rete">
-                <canvas id="NPGcanvas" width="1140em" height="500em">Browser not supported for Canvas. Get a real
-                    browser.</canvas>
+                <!--permette di visualizzare le operazioni di rete-->
+                    <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
             </div>
 
             <div id="pannello_inserimentodati">
-                <canvas id="viscanvas" width="0" height="0">Browser not supported for Canvas. Get a real browser.</canvas>
-                <!--inserimento dei box aggiornamento coordinate di un punto-->
                 <div id="controls">
                     <div id=title>
                         <p>Inserimento dati di addestramento</p>
@@ -96,15 +49,6 @@
 
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
 
 </body>
 
