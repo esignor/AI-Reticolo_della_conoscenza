@@ -3,7 +3,6 @@ var ArrayOutput = []; //array do output indispensabile per l'autoencoder
 var N = 0; //contratore dimesnione array
 
 // codice della rete neurale
-
 var layer_defs, layer_exe, net, trainer;
 var t = "\n\
 layer_defs = [];\n\
@@ -40,11 +39,11 @@ function update() { // permette di fare il training del dato
 
     N = ArrayInput.length;
 
-   //apprendimento della rete
+    //apprendimento della rete
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
     for (var ix = 0; ix < N; ix++) {
-       x.w = ArrayInput[ix]; // gli passo l'input
-       var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
+        x.w = ArrayInput[ix]; // gli passo l'input
+        var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
     }
 
     document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
@@ -107,18 +106,18 @@ function formSubmit() {
     for (var i = 0; i < x.length; i++) {
         var number = x[i].value;
 
-            if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
-              return;
+        if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
+            return;
 
-            ArrayInput[i] = number; // salvataggio del contenuto della cella in esame nell'array di supporto
-            ArrayOutput[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
+        ArrayInput[i] = number; // salvataggio del contenuto della cella in esame nell'array di supporto
+        ArrayOutput[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
     }
     // stampa dei risultati sul box di log
     layer_exe = layer_exe + "\n\Inserimento risposte alle domande del test andato a buon fine"
     $("#layerexe").val(layer_exe);
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  ["  + ArrayInput +"]"
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
     $("#layerexe").val(layer_exe);
-    
+
     abilita_trainer(); // rendo accessibile il pulsante di allenamento
 
 }
