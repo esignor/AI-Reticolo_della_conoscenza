@@ -8,10 +8,6 @@ body,html{
 canvas { 
     border: 1px solid  #555;
 }
-#wrap {
-  margin-bottom: 20em;
-}
-
 
 .panes{
   display: inline-block;
@@ -56,8 +52,8 @@ canvas {
   }
 
 
-  #button_trainer, #button_prevision{
-    margin-top:5em;
+  #button_trainer, #button_prevision, #id_question, #id_question_label{
+    margin-top:2em;
   }
 
   #button_trainer{
@@ -69,10 +65,6 @@ canvas {
     color:#ff7f50;
     border:0.8em solid #ff7f50;
     margin-left:-2em; 
-  }
-
-  #id_question, #id_question_label{
-    margin-top:5em; 
   }
 
   #id_question_label{
@@ -96,17 +88,12 @@ canvas {
     padding-top: 2em;
   }
 
-  #myForm{
-    margin-bottom: 20em; 
-
-  }
-
   .input, .output{
     margin-left: 0.5em;
     margin-top: 3em;
     margin-right:1em;
     }
 
-      .output{
+   .output{
       margin-right: 12.5em;
       }
