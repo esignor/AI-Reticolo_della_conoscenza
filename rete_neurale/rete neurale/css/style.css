@@ -38,21 +38,25 @@ canvas {
     margin-left: 38em;
   }
 
+  #button_trainer{
+    margin-left: 60em;   
+  }
+
   #button_change{
     margin-top: 2em;
     margin-bottom: 2em;
   }
 
-  #button_newfield{
+  #button_newfield,  #button_prevision{
     margin-top:1em;
   }
 
-  #id_question, #id_question_label, #button_trainer, #button_prevision{
+  #box_vettore, #button_trainer, #button_prevision{
     display:none;
   }
 
 
-  #button_trainer, #button_prevision, #id_question, #id_question_label{
+  #button_trainer, #box_vettore{
     margin-top:2em;
   }
 
@@ -61,18 +65,11 @@ canvas {
     border:0.8em solid #007ba7;
   }
 
+
+
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50;
-    margin-left:-2em; 
-  }
-
-  #id_question_label{
-    margin-left:2em;
-  }
-
-  #id_question{
-    margin-right:2em;
   }
 
   #title{
@@ -88,7 +85,7 @@ canvas {
     padding-top: 2em;
   }
 
-  .risposta_input{
+  .risposta_input, .vettore_input{
     margin-left: 0.5em;
     margin-top: 3em;
     margin-right: 12.5em;

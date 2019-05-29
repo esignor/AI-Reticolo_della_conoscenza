@@ -7,9 +7,9 @@ var layer_defs, layer_exe, net, trainer;
 var t = "\n\
 layer_defs = [];\n\
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
-layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:1, activation: 'tanh'});\n\
 layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
-layer_defs.push({type:'regression', num_neurons:2});\n\
+layer_defs.push({type:'regression', num_neurons:6});\n\
 \n\
 net = new convnetjs.Net();\n\
 net.makeLayers(layer_defs);\n\
@@ -17,13 +17,144 @@ net.makeLayers(layer_defs);\n\
 trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});\n\
 ";
 
-
+// ho 6 output della rete, mi servono 6 neuroni
 
 $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati
 
     $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
-
+    insertDati();
 });
+
+function insertDati(){
+  
+    layer_exe = "Inizilizzazione addestramento della rete"
+    $("#layerexe").val(layer_exe);
+    ArrayInput = [1, 0, 1, 1, 0, 0]; ArrayOutput = [1, 0, 1, 1, 0, 0];
+    layer_exe =  layer_exe + "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, 0, 0, 1, 0]; ArrayOutput = [1, 1, 0, 0, 1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 0, -1, 1, 0, 0]; ArrayOutput = [1, 0, -1, 1, 0, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, -1, 1, 1, 0, 0]; ArrayOutput = [1, -1, 1, 1, 0, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, -1, 0, -1, 0]; ArrayOutput = [0, 1, -1, 0, -1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, 1, -1, -1, 0]; ArrayOutput = [1, 1, 1, -1, -1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [-1, 0, 1, 1, 0, 1]; ArrayOutput = [-1, 0, 1, 1, 0, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 0, 1, -1, 1, 0]; ArrayOutput = [1, 0, 1, -1, 1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, -1, 1, 1, 1, 1]; ArrayOutput = [1, -1, 1, 1, 1, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, 0, 1, 1, -1]; ArrayOutput = [0, 1, 0, 1, 1, -1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 0, 0, 0, -1, 0]; ArrayOutput = [0, 0, 0, 0, -1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [-1, 1, 0, 1, 1, 0]; ArrayOutput = [-1, 1, 0, 1, 1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 0, -1, 1, 1, 1]; ArrayOutput = [1, 0, -1, 1, 1, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+
+    ArrayInput = [1, -1, 1, 1, -1, 1]; ArrayOutput = [1, -1, 1, 1, -1, 1];
+    layer_exe = "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, 0, 1, -1, 0]; ArrayOutput = [1, 1, 0, 1, -1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, 0, -1, 0, 0]; ArrayOutput = [1, 1, 0, -1, 0, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 0, 1, 1, -1, 1]; ArrayOutput = [0, 0, 1, 1, -1, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, -1, 0, 0, 0, 0]; ArrayOutput = [1, -1, 0, 0, 0, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 0, 1, 1, 0, -1]; ArrayOutput = [1, 0, 1, 1, 0, -1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
+    layer_exe = layer_exe + "n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [-1, 0, 0, 1, 0, 0]; ArrayOutput = [-1, 0, 0, 1, 0, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, 0, 0, 1, 0, -1]; ArrayOutput = [1, 0, 0, 1, 0, -1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [0, 1, -1, 0, 1, 0]; ArrayOutput = [0, 1, -1, 0, 1, 0];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
+    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
+    $("#layerexe").val(layer_exe);
+    update();
+
+    
+
+    prevision();
+}
 
 
 
@@ -45,11 +176,16 @@ function update() { // permette di fare il training del dato
         x.w = ArrayInput[ix]; // gli passo l'input
         var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
     }
+    
 
-    document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
-    document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
-    document.getElementById("id_question").style.display = "inline";
-    document.getElementById("id_question_label").style.display = "inline";
+    if(document.getElementById("button_trainer") && document.getElementById("button_prevision")){
+      document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
+   
+      document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
+      document.getElementById("box_vettore").style.display = "inline";
+     }
+
+
 
     ArrayInput = []; ArrayOutput = []; //array di supporto per il singolo test che devono essere vuoto per il prossimo set di dati
 
@@ -59,18 +195,34 @@ function update() { // permette di fare il training del dato
  * metodo che ha il compito, data un id di domanda nella form di input, di prevedere se il candidato, in base a cio' che la rete ha imparato sara' in grado di 
  * rispondervi o meno
  */
-/*function prevision() {
+function prevision() {
     // stampa di connessione della rete
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
 
-    var id_prevision = document.getElementsByClassName("id_prevision");
+    var vettore_prevision = document.getElementsByClassName("id_prevision");
     var net = new convnetjs.Net();
 
     // dati per effettuare la previsione sulla rete
     net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 6);
-    x.w[0] = id_prevision[0].value; // salvo il valore dell'input
+
+
+    /*for (var i = 0; i < x.length; i++) {
+        var number = vettore_previsione[i].value;
+
+        if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
+            return;
+        x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder*/
+
+
+    x.w[0] = 0; 
+    x.w[1] = 1; 
+    x.w[2] = 0; 
+    x.w[3] = 0; 
+    x.w[4] = 0;
+    x.w[5] = 0; 
+
 
     //altrimenti inserimento valido
     layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
@@ -79,10 +231,10 @@ function update() { // permette di fare il training del dato
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
-    layer_exe = layer_exe + "\n\La domanda con id " + x.w[0] + " ha previsione calcolata di " + scores.w[0] + "\n\Rete Neurale in attesa ...";
+    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," +x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," +scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete Neurale in attesa ...";
     $("#layerexe").val(layer_exe);}
 
-    */
+
 
 
 /** function abilita_trainer()
@@ -102,6 +254,7 @@ function abilita_trainer() {
  *  (ArrayInput). Metodo che viene chiamato da addFields
  */
 function formSubmit() {
+    console.log("log");
     var x = document.getElementsByClassName("risposta_input"); // per avere il contenuto delle celle di dati
     for (var i = 0; i < x.length; i++) {
         var number = x[i].value;
@@ -118,7 +271,9 @@ function formSubmit() {
     layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
     $("#layerexe").val(layer_exe);
 
+    document.getElementById("box_vettore").style.display = "inline";
     abilita_trainer(); // rendo accessibile il pulsante di allenamento
+    
 
 }
 
@@ -171,9 +326,7 @@ function addFields() {
     var div = document.createElement("div"); // creo box per la form di output
     div.id = "box_output";
     for (var j = 0; j < number; j++) {
-        // Append a node with a random text
         div.appendChild(document.createTextNode("Input" + (j + 1)));
-        // Create an <input> element, set its type and name attributes
         var select = document.createElement("select"); // creo la select
         select.name = "field_value"; //attributo della select
         select.classList.add("risposta_input");
@@ -196,6 +349,8 @@ function addFields() {
         }
     }
 
+    container.appendChild(div); // appendo box in input delle domande a container
+
     var input = document.createElement("input");
     input.id = "button_newfield";
     input.type = "submit";
@@ -204,8 +359,8 @@ function addFields() {
     input.setAttribute('onclick', 'formSubmit()'); // premo save, salvo i valori di input di risposta alle domande su un array
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
     div.appendChild(input); //appendo save a box_output
-    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti  
-
+    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
+    
     var input = document.createElement("input"); // bottone che attiva l'apprendimento
     input.id = "button_trainer";
     input.type = "submit";
@@ -213,18 +368,35 @@ function addFields() {
     input.setAttribute('onclick', 'update()'); // 
     div.appendChild(input); //appendo save a box_output
 
-    /*var label = document.createElement("label"); // bottone che crea la label
-    label.for = "id_question";
-    label.id = "id_question_label";
-    label.appendChild(document.createTextNode("Id domanda:"));
-    div.appendChild(label); //appendo save a box_output
 
-    var input = document.createElement("input"); // bottone che crea il box della label
-    input.name = "id_question";
-    input.id = "id_question";
-    input.type = "number";
-    input.classList.add("id_prevision");
-    div.appendChild(input); //appendo save a box_output
+    var div = document.createElement("div"); // creo box per la form di output
+    div.id = "box_vettore";
+    for (var i = 0; i < number; i++) {
+        // Append a node with a random text
+        div.appendChild(document.createTextNode("Risposta" + (i + 1)));
+        // Create an <input> element, set its type and name attributes
+        var select = document.createElement("select"); // creo la select
+        select.name = "field_value"; //attributo della select
+        select.classList.add("vettore_input");
+
+        //carattere vuoto di default
+        var option = document.createElement("option");
+        option.value = "";
+
+        div.appendChild(select); //al div ci appendo la select
+        select.appendChild(option); //al select ci appendo option
+        option.appendChild(document.createTextNode("")); //a option ci appendo la label
+
+        for (n = -1; n < 2; ++n) {
+            var option = document.createElement("option");
+            option.value = n;
+
+            div.appendChild(select); //al div ci appendo la select
+            select.appendChild(option); //al select ci appendo option
+            option.appendChild(document.createTextNode(n)); //a option ci appendo la label
+        }
+    }
+    container.appendChild(div); // appendo box in input delle domande a container
 
 
     var input = document.createElement("input"); // bottone che attiva la previsione
@@ -232,9 +404,12 @@ function addFields() {
     input.type = "submit";
     input.value = "prevision trainer";
     input.setAttribute('onclick', 'prevision()'); // 
-    div.appendChild(input); //appendo save a box_output*/
+    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
+    div.appendChild(input); //appendo save a box_output
 
-    container.appendChild(div); // appendo box in input delle domande a container
+
+
+   
 
 
 
