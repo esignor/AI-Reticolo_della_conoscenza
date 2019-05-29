@@ -7,7 +7,6 @@
         <script src="../build/npgmain.js"></script>
         <script src="../build/convnet-min.js"></script>
         <script src="../build/utils.js"></script>
-        <script src="../src/function.js"></script>
         <link rel="stylesheet" href="../css/style_rete.css"></link>
         <script type="text/javascript">
         
@@ -42,7 +41,6 @@
           $("#layer_ixes").html(t);
           $("#button"+lix).css('background-color', '#FFA');
           $("#cyclestatus").html('drawing neurons ' + d0 + ' and ' + d1 + ' of layer with index ' + lix + ' (' + net.layers[lix].layer_type + ')');
-          console.log("reload");
         }
 
 
@@ -85,11 +83,9 @@
           data.push([0.8 ,   3.2  ]); labels.push(1);
           data.push([1.0 ,   -2.2  ]); labels.push(1);
           N = labels.length;
-          console.log("data");
         }
         
         function circle_data() {
-          console.log("circle");
           data = [];
           labels = [];
           for(var i=0;i<50;i++) {
@@ -111,7 +107,6 @@
          
         function update(){ // permette di fare il training del dato
           // forward prop the data
-          console.log("debug");
         
           var start = new Date().getTime();
         
@@ -121,7 +116,6 @@
           for(var iters=0;iters<20;iters++) {//itero per 20 volte
             for(var ix=0;ix<N;ix++) { // scorro il numero di punti
               x.w = data[ix]; // x.w contiene il punto attuale
-              console.log("print"+data[ix]+labels[ix])
               var stats = trainer.train(x, labels[ix]); // passo all'addestramento gli input di vol e la classe, il trainer avviene dal calcolo della labels
               avloss += stats.loss;
             }
@@ -213,12 +207,10 @@ function draw(){
     
           data.push([xt, yt]); // posiziono il punto nella rete
           N += 1; //incremento il numero di punti
-          console.log("x"+x+" y"+y);
         }
 
 
         function formSubmit(){
-            console.log(document.myForm.x_coord.value+" "+document.myForm.y_coord.value);
 
            if(document.myForm.x_coord.value != "" && document.myForm.y_coord.value != ""){
               mouseClick(document.myForm.x_coord.value,document.myForm.y_coord.value);
