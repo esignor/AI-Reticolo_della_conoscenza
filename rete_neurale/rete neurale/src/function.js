@@ -7,8 +7,8 @@ var layer_defs, layer_exe, net, trainer;
 var t = "\n\
 layer_defs = [];\n\
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});\n\
-layer_defs.push({type:'fc', num_neurons:1, activation: 'tanh'});\n\
-layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});\n\
 layer_defs.push({type:'regression', num_neurons:6});\n\
 \n\
 net = new convnetjs.Net();\n\
@@ -25,9 +25,27 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
     insertDati();
 });
 
+/** @function insertDati
+ * inserimento dei dati per  compiere l'addestramento della rete
+ */
+
 function insertDati(){
   
-    layer_exe = "Inizilizzazione addestramento della rete"
+layer_exe = "Inizilizzazione addestramento della rete"
+$("#layerexe").val(layer_exe);
+for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+
+
+    var ArrayInput = generator_input(6);
+
+    ArrayOutput = ArrayInput;
+    console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
+    layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
+    $("#layerexe").val(layer_exe);
+    update();
+}
+
+    /*layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
     ArrayInput = [1, 0, 1, 1, 0, 0]; ArrayOutput = [1, 0, 1, 1, 0, 0];
     layer_exe =  layer_exe + "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
@@ -149,7 +167,7 @@ function insertDati(){
     ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
     layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
     $("#layerexe").val(layer_exe);
-    update();
+    update();*/
 
     
 
@@ -158,7 +176,7 @@ function insertDati(){
 
 
 
-/** function update()
+/** @function update
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
 function update() { // permette di fare il training del dato
@@ -191,7 +209,7 @@ function update() { // permette di fare il training del dato
 
 }
 
-/** function prevision()
+/** @function prevision
  * metodo che ha il compito, data un id di domanda nella form di input, di prevedere se il candidato, in base a cio' che la rete ha imparato sara' in grado di 
  * rispondervi o meno
  */
@@ -237,7 +255,7 @@ function prevision() {
 
 
 
-/** function abilita_trainer()
+/** @function abilita_trainer
  * metodo che ha il compito di abilitare la funzionalita' di apprendimento della rete
  */
 function abilita_trainer() {
@@ -249,12 +267,11 @@ function abilita_trainer() {
 
 
 
-/** function formSubmit()
+/** @function formSubmit
  * metodo che ha il compito, una volta che l'utente ha premuto il pulsante di save di salvare i dati all'interno dell'array specifico
  *  (ArrayInput). Metodo che viene chiamato da addFields
  */
 function formSubmit() {
-    console.log("log");
     var x = document.getElementsByClassName("risposta_input"); // per avere il contenuto delle celle di dati
     for (var i = 0; i < x.length; i++) {
         var number = x[i].value;
@@ -277,7 +294,7 @@ function formSubmit() {
 
 }
 
-/** function controlValueFields
+/** @function controlValueFields
  *  @param {number} number 
  *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel numero di fields di input)
  * return true sse il parametro è di natura non vuota, intera e positiva e non superiore a 9999, altrimenti viene stampato a video un messaggio di errore
@@ -291,7 +308,7 @@ function controlValueFields(number) {
     return true;
 }
 
-/** function controlValueInput
+/** @function controlValueInput
  *  @param {number} number 
  *  metodo che ha il compito di controllare la validità del parametro passato alla funzione (relative all'inserimento nel box di input del valore della domanda)
  * return true sse il parametro è di natura non vuota, altrimenti viene stampato a video un messaggio di errore  e viene ritornato false
@@ -305,10 +322,11 @@ function controlValueInput(number) {
     return true;
 }
 
-/** function addFields
+/** @function addFields
  * metodo che ha il compito di aggiungere n campi definiti dall'utente nei box di input, di istanziare i rispettivi pulsanti di save e di, a
  * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
  */
+
 function addFields() {
     layer_exe = "Rete Neurale in attesa. Inserire risultati dei test..."
     $("#layerexe").val(layer_exe);
