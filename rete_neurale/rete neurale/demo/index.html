@@ -3,7 +3,7 @@
 
 <head>
 
-
+    <title>Questions test - Prevision Neural Net</title>
     <script src="../build/jquery-1.8.3.min.js"></script>
     <script src="../build/npgmain.js"></script>
     <script src="../build/convnet-min.js"></script>
@@ -11,10 +11,21 @@
     <script src="../src/function.js"></script>
     <script src="../src/generator_input.js"></script>
     <script src="../src/generator_input_probability.js"></script>
-    <link rel="stylesheet" href="../css/style.css"></link>
+    <script src="../src/insertDati.js"></script>
+    <script src="../src/update.js"></script>
+    <script src="../src/prevision.js"></script>
+    <script src="../src/addFields.js"></script>
+    <script src="../src/abilita_trainer.js"></script>
+    <script src="../src/controlValueFields.js"></script>
+    <script src="../src/controlValueInput.js"></script>
+    <script src="../src/formSubmit.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    </link>
+
 <body>
 
     <div id="wrap">
+        <h1 id=primary_title>Questions test - Prevision Neural Net</h1>
         <div id=title>
             <p>Configurazione Rete neurale</p>
         </div>
@@ -29,7 +40,7 @@
         <div class="panes">
             <div id="pannello_rete">
                 <!--permette di visualizzare le operazioni di rete-->
-                    <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
+                <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
             </div>
 
             <div id="pannello_inserimentodati">
