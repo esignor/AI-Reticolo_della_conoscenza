@@ -1,10 +1,10 @@
 /** @function generator_input
  *  @param dim_vettore dimensione del vettore che dovra' essere generato 
  *  @returns vector ritorna un vettore con dim_vettore di dimensione, ove per ogni cella si trova uno tra i seguenti valori:
- *  - -1: in un numero randomico di celle.
- *  - 0:  se una domanda ha valore 0 significa che gli eventuali fratelli avranno valore 0 come i padri perche' di pari e superiore complessita', 
+ *  - -1: domanda non fatta -> in un numero randomico di celle.
+ *  - 0:  domanda a cui il canditato ha risposto sbagliato -> se una domanda ha valore 0 significa che gli eventuali fratelli avranno valore 0 come i padri perche' di pari e superiore complessita', 
      per i figli non puo' ancora nulla perche' di difficolta' inferiore.
-    - 1: se una domanda ha valore 1 significa che tutte le eventuali domande figlie  e fratelli avranno valore 1 perche' di pari o inferiore 
+    - 1: domanda a cui il candidato a risposto correttamente -> se una domanda ha valore 1 significa che tutte le eventuali domande figlie  e fratelli avranno valore 1 perche' di pari o inferiore 
     difficolta', per i padri non posso ancora dire nulla perche' di difficolta' superiore.
  */
 
@@ -12,7 +12,7 @@
 function generator_input(dim_vettore) {
     var vector = [];
     var valore = -1;
-    var numero_meno1 = Math.floor(Math.random() * 2); // generazione numero di -1 che devranno essere presenti nel vettore di training del dato
+    var numero_meno1 = Math.floor(Math.random() * 3); // generazione numero di -1 che devranno essere presenti nel vettore di training del dato da 0 a 2
     // posizionati in vector gli 1 e gli 0
     var i = 0;
     while (i < dim_vettore - numero_meno1) {
@@ -23,9 +23,8 @@ function generator_input(dim_vettore) {
             valore = 0;
 
       
-        var posizione_random = Math.floor(Math.random() * 5); // generazione di un numero casuale intero compreso tra 0 e 5 in qui allocare il primo valore del vettore di training
-
-        if (vector[posizione_random] == null) { // controllo che la cella non sia gia' occupata ;
+        var posizione_random = Math.floor(Math.random() * 6); // generazione di un numero casuale intero compreso tra 0 e 5 in qui allocare il primo valore del vettore di training
+        if (vector[posizione_random] == null) { // controllo che la cella non sia gia' occupata
             vector[posizione_random] = valore;
             i = i + 1;// nuova cella occupata
 
