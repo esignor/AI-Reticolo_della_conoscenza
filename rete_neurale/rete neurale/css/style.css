@@ -47,7 +47,7 @@ body,html{
     margin-top:1em;
   }
 
-  #box_vettore, #button_trainer, #button_prevision{
+  #box_vettore, #button_trainer, #button_prevision, #title_vettore{
     display:none;
   }
 
@@ -57,10 +57,13 @@ body,html{
   }
 
   #button_trainer{
+    margin-bottom:2em;
+  }
+
+  #button_trainer{
     color:#007ba7;
     border:0.8em solid #007ba7;
   }
-
 
 
   #button_prevision{
@@ -68,12 +71,19 @@ body,html{
     border:0.8em solid #ff7f50;
   }
 
-  #title{
+  #title, #title_vettore{
     padding-bottom:1em;
     color:#0f1934;
     font-style:italic;
     font-weight:bold;  
+  }
+
+  #title{
     text-transform:uppercase;
+  }
+
+  #title_vettore{
+    color:#ff7f50;
   }
   
 
@@ -84,5 +94,8 @@ body,html{
   .risposta_input, .vettore_input{
     margin-left: 0.5em;
     margin-top: 3em;
+  }
+
+  .risposta_input{
     margin-right: 12.5em;
-    }
+  }

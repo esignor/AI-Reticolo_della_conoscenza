@@ -29,23 +29,24 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
  * inserimento dei dati per  compiere l'addestramento della rete
  */
 
-function insertDati(){
-  
-layer_exe = "Inizilizzazione addestramento della rete"
-$("#layerexe").val(layer_exe);
-/*for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+function insertDati() {
 
-    // generatore standard
-    var ArrayInput = generator_input(6);
-
-    ArrayOutput = ArrayInput;
-    console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
-    layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
+    layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-    update();*/
+    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+
+        // generatore standard
+        var ArrayInput = generator_input(6);
+
+        ArrayOutput = ArrayInput;
+        console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
+        layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]";
+        $("#layerexe").val(layer_exe);
+        update();
+    }
 
 
-    for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+    /*for(var n = 0; n<1000; ++n){ // genero n vettori per il training
 
        // generatore con probabilita'
         var ArrayInput = generator_input_probability(6);
@@ -55,7 +56,7 @@ $("#layerexe").val(layer_exe);
         layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
         $("#layerexe").val(layer_exe);
         update();
-}
+}*/
 
     /*layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
@@ -181,10 +182,10 @@ $("#layerexe").val(layer_exe);
     $("#layerexe").val(layer_exe);
     update();*/
 
-    
+
 
     prevision();
-    }
+}
 
 
 
@@ -202,18 +203,22 @@ function update() { // permette di fare il training del dato
 
     //apprendimento della rete
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
+
+
     for (var ix = 0; ix < N; ix++) {
+
         x.w = ArrayInput[ix]; // gli passo l'input
         var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
     }
-    
 
-    if(document.getElementById("button_trainer") && document.getElementById("button_prevision")){
-      document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
-   
-      document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
-      document.getElementById("box_vettore").style.display = "inline";
-     }
+
+    if (document.getElementById("button_trainer") && document.getElementById("button_prevision")) {
+        document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
+
+        document.getElementById("button_prevision").style.display = "inline"; //fino a quando i dati non sono stati inseriti e non si e' dato il via al trainer non si puo' procedere alla previsione
+        document.getElementById("box_vettore").style.display = "inline";
+        document.getElementById("title_vettore").style.display = "inline";
+    }
 
 
 
@@ -230,7 +235,7 @@ function prevision() {
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
 
-    var vettore_prevision = document.getElementsByClassName("id_prevision");
+
     var net = new convnetjs.Net();
 
     // dati per effettuare la previsione sulla rete
@@ -238,21 +243,23 @@ function prevision() {
     var x = new convnetjs.Vol(1, 1, 6);
 
 
-    /*for (var i = 0; i < x.length; i++) {
+    var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
+    for (var i = 0; i < vettore_previsione.length; i++) {
         var number = vettore_previsione[i].value;
 
-        if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
-            return;
-        x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder*/
 
-
-    x.w[0] = 0; 
-    x.w[1] = 1; 
-    x.w[2] = 0; 
-    x.w[3] = 0; 
-    x.w[4] = 0;
-    x.w[5] = 0; 
-
+            if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
+                return;
+            x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
+    }
+    if(vettore_previsione.length == 0){  // entra quando carica random gli array dei dati
+        x.w[0] = 0;
+        x.w[1] = 1;
+        x.w[2] = 0;
+        x.w[3] = 0;
+        x.w[4] = 0;
+        x.w[5] = 0;
+    }
 
     //altrimenti inserimento valido
     layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
@@ -261,8 +268,9 @@ function prevision() {
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
-    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," +x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," +scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete Neurale in attesa ...";
-    $("#layerexe").val(layer_exe);}
+    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," + x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," + scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete Neurale in attesa ...";
+    $("#layerexe").val(layer_exe);
+}
 
 
 
@@ -300,9 +308,8 @@ function formSubmit() {
     layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
     $("#layerexe").val(layer_exe);
 
-    document.getElementById("box_vettore").style.display = "inline";
     abilita_trainer(); // rendo accessibile il pulsante di allenamento
-    
+
 
 }
 
@@ -340,7 +347,7 @@ function controlValueInput(number) {
  */
 
 function addFields() {
-    layer_exe = "Rete Neurale in attesa. Inserire risultati dei test..."
+    layer_exe = layer_exe + "Rete Neurale in attesa. Inserire risultati dei test..."
     $("#layerexe").val(layer_exe);
 
 
@@ -390,7 +397,7 @@ function addFields() {
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
     div.appendChild(input); //appendo save a box_output
     div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
-    
+
     var input = document.createElement("input"); // bottone che attiva l'apprendimento
     input.id = "button_trainer";
     input.type = "submit";
@@ -400,11 +407,13 @@ function addFields() {
 
 
     var div = document.createElement("div"); // creo box per la form di output
+    var p = document.createElement("p");
     div.id = "box_vettore";
+    p.id = "title_vettore";
+    p.appendChild(document.createTextNode("Vettore di previsione"));
+    div.appendChild(p);
     for (var i = 0; i < number; i++) {
         // Append a node with a random text
-        div.appendChild(document.createTextNode("Risposta" + (i + 1)));
-        // Create an <input> element, set its type and name attributes
         var select = document.createElement("select"); // creo la select
         select.name = "field_value"; //attributo della select
         select.classList.add("vettore_input");
@@ -412,7 +421,7 @@ function addFields() {
         //carattere vuoto di default
         var option = document.createElement("option");
         option.value = "";
-
+         
         div.appendChild(select); //al div ci appendo la select
         select.appendChild(option); //al select ci appendo option
         option.appendChild(document.createTextNode("")); //a option ci appendo la label
@@ -439,7 +448,7 @@ function addFields() {
 
 
 
-   
+
 
 
 
