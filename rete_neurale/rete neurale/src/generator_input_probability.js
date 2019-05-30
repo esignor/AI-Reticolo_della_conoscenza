@@ -1,6 +1,6 @@
 /** @function generator_input_probability
  *  @param dim dimensione del vettore che dovra' essere generato 
- *  @returns
+ *  @returns cun vettore ranfom che mappa le risposte del candidato sulla rete
 **/
 
 
