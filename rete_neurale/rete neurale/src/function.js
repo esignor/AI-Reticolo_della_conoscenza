@@ -33,16 +33,28 @@ function insertDati(){
   
 layer_exe = "Inizilizzazione addestramento della rete"
 $("#layerexe").val(layer_exe);
-for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+/*for(var n = 0; n<1000; ++n){ // genero n vettori per il training
 
-
+    // generatore standard
     var ArrayInput = generator_input(6);
 
     ArrayOutput = ArrayInput;
     console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
     layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
     $("#layerexe").val(layer_exe);
-    update();
+    update();*/
+
+
+    for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+
+       // generatore con probabilita'
+        var ArrayInput = generator_input_probability(6);
+    
+        ArrayOutput = ArrayInput;
+        console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
+        layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
+        $("#layerexe").val(layer_exe);
+        update();
 }
 
     /*layer_exe = "Inizilizzazione addestramento della rete"
@@ -172,7 +184,7 @@ for(var n = 0; n<1000; ++n){ // genero n vettori per il training
     
 
     prevision();
-}
+    }
 
 
 
