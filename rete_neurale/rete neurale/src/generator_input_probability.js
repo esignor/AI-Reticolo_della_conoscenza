@@ -168,20 +168,20 @@ function generator_input_probability(dim_vettore) {
 
 function calcolo_risposta_probabilita() {
 
-    // uso che s0 + s1 + s2 = 1 -> s0 = 0, s1+s2 = 1 e s1 = -s2+1
+    // uso che s0 + s1 + s2 = 1 -> s0 = 0, s1+s2 = 1 e s1 = -s2+1 uso P(A) = 1/3 + 1/6 s1 + 2/3 s2
     // capire se il candidato sa ha la conoscenza per rispondere correttamente alla domanda o meno
 
     //valuta  la capacita' quando un candidato non sa la domanda per certo/parzialmente/non la sa proprio o  la sa
 
     var candidato_scarto1 = Math.floor(Math.random() * 2); // il candidato e' in grado di scartarne 1?
     if (!candidato_scarto1) // non ne sa scartare nessuna, calcolo il fattore fortuna
-        return Math.floor(1 / 3 * ((Math.floor(Math.random() * 3) + 1))); // ha una possibilta' su 3 di azzeccare la risposta
+        return Math.floor(1 / 3 * ((Math.floor(Math.random() * 3) + 1))); // ha una possibilta' su 3 di azzeccare la risposta  -> 1/3
     else { // ne sa scartare una
         var candidato_scarto2 = Math.floor(Math.random() * 3); // il candidato e' in grado di scartarne 2?
         if (!candidato_scarto2) // ne sa scartare una; ma non 2
-            return Math.floor(1 / 2 * ((Math.floor(Math.random() * 2) + 1)));// ha 1 possibilita' su 2 di saper rispondere giusto + il fattore fortuna
+            return Math.floor(1 / 2 * ((Math.floor(Math.random() * 2) + 1)));// ha 1 possibilita' su 2 di saper rispondere giusto + il fattore fortuna -> 1/3 + 1/6 s1 -> s1 = 1 allora 1/3 + 1/6 = (2+1)/6 = 1/2
         else // ne sa scartare 2
-            return 1;
+            return 1;  // -> 1/3 + 2/3 s2 -> s2 = 1 allore 1/3 + 2/3 = 3/3 =1
     }
 
 }
