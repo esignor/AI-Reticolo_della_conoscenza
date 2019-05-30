@@ -308,6 +308,7 @@ function formSubmit() {
     layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
     $("#layerexe").val(layer_exe);
 
+
     abilita_trainer(); // rendo accessibile il pulsante di allenamento
 
 
