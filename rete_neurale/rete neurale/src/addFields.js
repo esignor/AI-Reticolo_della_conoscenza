@@ -5,7 +5,7 @@
  */
 
 function addFields() {
-    layer_exe = layer_exe + "Rete Neurale in attesa. Inserire risultati dei test..."
+    layer_exe = layer_exe + " Inserire risultati dei test..."
     $("#layerexe").val(layer_exe);
 
 

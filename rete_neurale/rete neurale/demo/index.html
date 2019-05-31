@@ -30,17 +30,17 @@
             <p>Configurazione Rete neurale</p>
         </div>
         <div id=configurazione_rete>
-            <textarea id="layerdef" style="width:85em; height:15em;">
+            <textarea id="layerdef" style="width:85em; height:15em;" onFocus="this.blur()">
     </textarea>
-            <input id="button_change" type="submit" value="change network" onclick="reload();" />
-            <!--aggiornamento della rete-->
         </div>
 
 
         <div class="panes">
+            <div id=title>
+                <p>Output della rete</p>
+            </div>
             <div id="pannello_rete">
-                <!--permette di visualizzare le operazioni di rete-->
-                <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
+                <textarea id="layerexe" style="width:85em; height:15em;" onFocus="this.blur()"></textarea>
             </div>
 
             <div id="pannello_inserimentodati">

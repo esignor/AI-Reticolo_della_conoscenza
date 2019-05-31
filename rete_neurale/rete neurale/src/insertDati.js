@@ -6,7 +6,7 @@ function insertDati() {
 
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+   for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
 
         // generatore standard
         var ArrayInput = generator_input(6);
@@ -19,7 +19,7 @@ function insertDati() {
     }
 
 
-    /*for(var n = 0; n<1000; ++n){ // genero n vettori per il training
+    /*for(var n = 0; n<2000; ++n){ // genero n vettori per il training
 
        // generatore con probabilita'
         var ArrayInput = generator_input_probability(6);
