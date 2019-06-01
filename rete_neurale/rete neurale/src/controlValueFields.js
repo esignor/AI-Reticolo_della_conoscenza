@@ -6,7 +6,7 @@
  * e viene ritornato false
  */
 function controlValueFields(number) {
-    if (number == "" || isNaN(number) || parseInt(number) <= 0 || parseInt(number.value) > 9999) {
+    if (number == "" || isNaN(number) || parseInt(number) <= 0 || parseInt(number) > 9999) {
         alert("Inserire un numero intero positivo valido");
         return false;
     }
