@@ -37,7 +37,7 @@ function generator_input_probability(dim_vettore) {
                     i = i + 1;
                 }
 
-                if (vector[3] == 0 && vector[1] == 0) { // sia la domanda 4 che 1 sono state date sbagliate, i padri che sono piu' complessi saranno sicuramente errati
+                if (vector[3] == 0 && vector[0] == 0) { // sia la domanda 4 che 1 sono state date sbagliate, i padri che sono piu' complessi saranno sicuramente errati
                     if (i + numero_meno1 < dim_vettore && vector[2] == null) {
                         vector[2] = 0;
                         i = i + 1;
@@ -162,7 +162,7 @@ function generator_input_probability(dim_vettore) {
 /** @function calcolo_risposta_probabilita
  *  calcola in base alla probabilita' che un candidato ha di dare la risposta corretta se un candidato sa dare una risposta o meno ad una domanda,
  *  si fa uso della formula 1/3 + 1/6 s1 + 2/3 s2
- *  @return 0 se un candidato n non sa dare la risposta, 1 altrimenti
+ *  @return 0 se un candidato n non sa dare la risposta, 1 altriment
  */ 
 
 function calcolo_risposta_probabilita() {

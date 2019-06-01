@@ -28,8 +28,8 @@ function insertDati() {
         console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
         layer_exe =  layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"; 
         $("#layerexe").val(layer_exe);
-        update();*/
-}
+        update();
+}*/
 
     /*layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
