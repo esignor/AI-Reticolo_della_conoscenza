@@ -33,7 +33,6 @@ function generator_input_probability(dim_vettore) {
             if (posizione_random == 0) { // domanda 1
 
                 if (i + numero_meno1 < dim_vettore && vector[3] == null) { // calcolo la probabilita' che la domanda 4 sia data in modo corretto
-                    valore = calcolo_risposta_probabilita();
                     vector[3] = valore;
                     i = i + 1;
                 }
@@ -58,7 +57,6 @@ function generator_input_probability(dim_vettore) {
 
             else if (posizione_random == 1) { // domanda 2 
                 if (i + numero_meno1 < dim_vettore && vector[4] == null) {
-                    valore = calcolo_risposta_probabilita(); // calcolo la probabilita' di risposta; ma non vengono influenzate nessuna delle altre domande
                     vector[4] = valore;
                     i = i + 1;
                 }
@@ -69,7 +67,6 @@ function generator_input_probability(dim_vettore) {
             else if (posizione_random == 2) { // domanda 3
 
                 if (i + numero_meno1 < dim_vettore && vector[5] == null) {
-                    valore = calcolo_risposta_probabilita();
                     vector[5] = valore;
                     i = i + 1;
                 }
@@ -90,7 +87,6 @@ function generator_input_probability(dim_vettore) {
                 else if (posizione_random == 3) { // domanda 4
 
                     if (i + numero_meno1 < dim_vettore && vector[0] == null) {
-                        valore = calcolo_risposta_probabilita();
                         vector[0] = valore;  // sia che risulti che la domanda 1 viene data corretta o meno posso settare solo tale domanda
                         i = i + 1;
                     }
@@ -116,7 +112,6 @@ function generator_input_probability(dim_vettore) {
 
                 else if (posizione_random == 4) { // domanda 5
                     if (i + numero_meno1 < dim_vettore && vector[1] == null) {
-                        valore = calcolo_risposta_probabilita(); // non viene influenzata nessun'altra domanda
                         vector[1] = valore;
                         i = i + 1;
                     }
@@ -127,7 +122,6 @@ function generator_input_probability(dim_vettore) {
                 else if (posizione_random == 5) {
 
                     if (i + numero_meno1 < dim_vettore && vector[2] == null) {
-                        valore = calcolo_risposta_probabilita();
                         vector[2] = valore;
                         i = i + 1;
                     }
@@ -165,6 +159,11 @@ function generator_input_probability(dim_vettore) {
 
 
 }
+/** @function calcolo_risposta_probabilita
+ *  calcola in base alla probabilita' che un candidato ha di dare la risposta corretta se un candidato sa dare una risposta o meno ad una domanda,
+ *  si fa uso della formula 1/3 + 1/6 s1 + 2/3 s2
+ *  @return 0 se un candidato n non sa dare la risposta, 1 altrimenti
+ */ 
 
 function calcolo_risposta_probabilita() {
 
@@ -177,7 +176,7 @@ function calcolo_risposta_probabilita() {
     if (!candidato_scarto1) // non ne sa scartare nessuna, calcolo il fattore fortuna
         return Math.floor(1 / 3 * ((Math.floor(Math.random() * 3) + 1))); // ha una possibilta' su 3 di azzeccare la risposta  -> 1/3
     else { // ne sa scartare una
-        var candidato_scarto2 = Math.floor(Math.random() * 3); // il candidato e' in grado di scartarne 2?
+        var candidato_scarto2 = Math.floor(Math.random() * 3); // il candi+ dato e' in grado di scartarne 2?
         if (!candidato_scarto2) // ne sa scartare una; ma non 2
             return Math.floor(1 / 2 * ((Math.floor(Math.random() * 2) + 1)));// ha 1 possibilita' su 2 di saper rispondere giusto + il fattore fortuna -> 1/3 + 1/6 s1 -> s1 = 1 allora 1/3 + 1/6 = (2+1)/6 = 1/2
         else // ne sa scartare 2
