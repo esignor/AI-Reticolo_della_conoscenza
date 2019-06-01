@@ -1,6 +1,13 @@
 \section{Rete neurale}
 \label{Rete neurale}
 
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/GUI-rete-neurale.png}
+	\caption{Interfaccia utente della Rete neurale di test.}
+\end{figure}
+\noindent
 Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento ricevuti.
 \noindent
 Il problema trattato dalla rete \`e quello discusso nel precedente documento \textit{Analisi dei dati di probabilit\`a}
@@ -36,7 +43,7 @@ Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato
 Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
 Di seguito riporto quanto \`e stato rilevato in  fase di test.
 
-\subsubsection{Configurazione della rete}
+\subsubsection{Configurazione della rete  4 neuroni per 2 layers}
 \label{Configurazione della rete 4 neuroni per 2 layers}
 
 Configurazione della rete utilizzata:\\
@@ -120,7 +127,7 @@ Avendo messo 4 neuroni su una base di 2000 test, si corre il rischio che di aver
 Per fare un ulteriore verifica del sistema da me sviluppato ne ho mutato la configurazione riducendo il numero di neuroni presenti in ciascun layers.\\
 La nuova configurazione su cui ho effettuato i test \`e la seguente:
 
-\subsubsection{Configurazione della rete}
+\subsubsection{Configurazione della rete 2 neuroni per 2 layers}
 \label{Configurazione della rete 2 neuroni per 2 layers}
 Configurazione della rete utilizzata:\\
 \begin{verbatim}layer_defs = [];
@@ -203,7 +210,7 @@ Confrontando i risultati ottenuti dalla rete con i layers impostati a 4 neuroni 
 Emerge nel training standard una previsione che rispecchia pi\`u uniformemente il grafo della conoscenza utilizzato, risultano  addirittura dei set dei dati completamente conformi con le aspettative. Tale effetto \`e meno evidente quando al set viene applicata la formula della probabilit\`a di una domanda perch\`e i dati rispetto al grafo vengono "sporcati"; ma comunque le coppie che risultano ancora tali e la frequenza che vincola le domande dell'insieme A con quelle dell'insieme B rimangono di una precisione superiore rispetto alla prima configurazione della rete.
 
 
-\subsubsection{Configurazione della rete}
+\subsubsection{Configurazione della rete 4 neuroni per 1 layers}
 \label{Configurazione della rete 4 neuroni per 1 layers}
 
 Configurazione della rete utilizzata:\\
@@ -219,8 +226,8 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
  momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 
-\paragraph{Training set standard su rete a 4 neuroni per 1 unico layers}\mbox{}
-\label{Training set standard su rete a 4 neuroni per 1 unico layers}
+\paragraph{Training set standard su rete a 4 neuroni per 1 layers}\mbox{}
+\label{Training set standard su rete a 4 neuroni per 1 layers}
 \\
 \noindent
 \begin{itemize}
@@ -254,8 +261,8 @@ Gli scostamenti tra la coppia 1, 4 sono consistenti con quelle che sono le relaz
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 3; ma la regola viene sfasata dalla domanda 6 e ancora una volta la differenza oscilla tra lo 0.6 e lo 0.7 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
 \end{itemize}
 
-\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
-\label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a  2 neuroni}
+\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a 4 neuroni per 1 layers}\mbox{}
+\label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a 4 neuroni per 1 layers}
 \\
 \noindent
 \begin{itemize}
@@ -290,7 +297,7 @@ Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispett
 \end{itemize}
 
 \paragraph{Osservazioni}\mbox{}
-\label{Osservazioni su rete a 4 neuroni per 1 unico layers}
+\label{Osservazioni su rete a 4 neuroni per 1 layers}
 \\\\
 \noindent
 Rispetto a quanto osservato nei casi precedenti, mi risulta che sia nel caso di utilizzo di training set standard che con profilo di candidato la tecnica non dia dei risultati particolarmente soddisfacenti. Se con il set di dati "spuro" potrei sorvolare di pi\`u nelle oscillazioni delle previsioni; questo vale per il primo set che presenta delle anomalie molto forti con il grafo della conoscenza e non si \`e i risultati non si sono mai presentati come le aspettative richiedevano.
