@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper,italian]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -7,6 +7,300 @@
 \usepackage{float}
 \usepackage{verbatim}
 \begin{document}
+
+\setcounter{page}{1}
+%INDEX OF PAGES
+\tableofcontents \pagebreak
+
+\section{Analisi dei dati di probabilit\`a}
+\label{Analisi dei dati}
+
+\subsection{Problema in esame}
+\label{Problema in esame}
+
+Test, sottoposto ad un candidato  durante un colloquio, composto da \textit{domande a tripla risposta multipla}.\\\\ Nel suddetto  documento vengono analizzate le relazioni che intercorrono tra due domande, denominate A e B, a seconda se il candidato risulta in grado di rispondervi correttamente o meno.
+
+\subsection{Caratteristiche degli eventi di coppia}
+\label{Caratteristiche degli eventi di coppia}
+
+Tipi di eventi trattati:
+\begin{itemize}
+\item \textbf{Eventi indipendenti};
+\item \textbf{Eventi dipendenti}:
+  \begin{itemize}
+  \item A e B sono strettamente dipendenti;
+  \item A implica B.
+  \end{itemize}
+\item \textbf{Evento conosciuto ed evento indovinato}.
+\end{itemize}
+\noindent
+Struttura usata per rappresentare la probabilit\`a degli eventi di coppia:
+
+\begin{center}$AB$\end{center}
+\begin{center} /\textbackslash \end{center}
+\begin{center}$A$   $B$ \end{center}
+\begin{center} \textbackslash / \end{center}
+\begin{center}$Z$\end{center}
+con:
+
+\begin{itemize}
+\item \textit{AB} rappresenta la probabilit\`a complessiva dell'evento che si verifica sempre;
+\item \textit{A} rappresenta  la probabilit\`a che permette il verificarsi di A, ma non di B;
+\item \textit{B} rappresenta la probabilit\`a che permette il verificarsi di B, ma non di A;
+\item \textit{Z} rappresenta la probabilit\`a a zero, l'impossibilit\`a del verificarsi dell'evento.
+\end{itemize}
+\noindent
+\subsubsection{Eventi indipendenti}
+\label{Eventi indipendenti}
+A e B sono due domande la quali risposte sono completamente scorrelate tra di loro.
+
+\begin{center} $P(A)P(B)$ \end{center}
+\begin{center} /\textbackslash \end{center}
+\begin{center} $P(A)(1-P(B))$  $(1-P(A))P(B)$ \end{center}
+\begin{center} \textbackslash / \end{center}
+\begin{center} $(1-P(A))(1-P(B))$ \end{center}
+
+\paragraph{Considerazioni generali}
+\label{Considerazioni generali eventi indipendenti}
+La probabilit\`a complessiva nel caso di domande indipendenti A e B viene data da $P(A)$ per $P(B)$. \\ Se \`e conosciuta dal candidato la risposta alla domanda A ma non alla domanda B la probabilit\`a di ottenere una risposta corretta \`e $P(A)$, mentre la probabilit\`a di ottenere una risposta non corretta per B vale $1-P(B)$. Il ragionamento duale \`e svolto nel calcolo della probabilit\`a per la riposta corretta alla domanda B ma non ad A.\\
+La probabilit\`a  di non ottenere alcuna risposta corretta alle due domande  viene calcolata prendendo in considerazione gli eventi contrari a quelli coinvolti. Dunque per  A la probabilit\`a  che il candidato non conosca la soluzione \`e  $1-P(B)$, dualmente per B la probabilit\`a  \`e $1-P(A)$.
+
+\subsubsection{Eventi dipendenti}
+\label{Eventi dipendenti}
+\paragraph{A e B sono due domande fortemente correlate tra di loro} se si risponde correttamente ad una delle due domande si risponde correttamente anche all'altra.
+
+\begin{center} $P(A)^2$ \end{center}
+\begin{center} /\textbackslash \end{center}
+\begin{center} 0 0  \end{center}
+\begin{center} \textbackslash / \end{center}
+\begin{center}  $(1- P(A))^2$ \end{center}
+
+\paragraph{Considerazioni generali}
+\label{Considerazioni generali eventi dipendenti}
+La probabilit\`a complessiva nel caso di domande dipendenti A e B viene data da $P(A)$ per $P(B)$; ma $P(A)=P(B)$ dunque $P(A)^2=P(B)^2$. \\ Conseguentemente se il candidato non conosce la risposta alla domanda A non pu\`o conoscere la risposta alla domanda B percui la probabilit\`a di conoscere uno dei due eventi \`e pari a 0.\\ 
+In questo caso la probabilit\`a a 0 \`e   $(1- P(A))(1- P(B))=(1- P(A))^2$
+essendo che A=B.
+
+\paragraph{A implica B}
+\label{A implica B}
+Se si sa rispondere alla domanda A di conseguenza si \`e in grado di rispondere anche alla domanda B.\\
+Tuttavia non vale il ragionamento opposto, se si sa rispondere alla domanda B non significa che si \`e in grado di rispondere alla domanda A.
+
+\begin{center} $P(A)$ \end{center}
+\begin{center} /\textbackslash \end{center}
+\begin{center} 0  $P(B)-P(A)$ \end{center}
+\begin{center} \textbackslash / \end{center}
+\begin{center} $1-P(B)$ \end{center}
+
+\subparagraph{Considerazioni generali}
+\label{Considerazioni generali A implica B}
+\noindent
+ La probabilit\`a complessiva nel caso di domande dipendenti A e B viene data esclusivamente da $P(A)$ in quanto la conoscenza di sia di A che di B \`e  possibile solo se si ha piena conoscenza di A.\\  Dunque la probabilit\`a  che si conosca la risposta alla domanda  A ma non a B  \`e impossibile (pari a 0); mentre se si ha conoscenza della domanda B ma non di A la probabilit\`a si stanzia a $P(B)-P(A)$.\\ 
+La probabilit\`a a zero \`e $1-P(B)$ indicatore dell'impossibilit\`a  di avere la risposta corretta per A.
+
+\subsection{Evento conosciuto ed evento indovinato}
+\label{Evento conosciuto ed evento indovinato}
+Durante un test il candidato deve saper scegliere la risposta, corretta o meno, alla domanda posta. Le variabili che entrano in gioco durante l'esecuzione dell'atto non riguardano esclusivamente la conoscenza personale del singolo.
+\\
+La probabilit\`a di un evento A \`e data dalla formula:
+\begin{center} $P(A)=P(A_{C})+P(A_{I})$\end{center} 
+Le variabili in uso sono:
+\begin{itemize}
+\item $P(A_{C})$: probabilit\`a che il candidato sappia rispondere alla domanda A correttamente per sua conoscenza;
+\item $P(A_{I})$: probabilit\`a che il candidato sappia rispondere alla domanda A correttamente indovinando.
+\end{itemize}
+
+\noindent
+Per quanto appena definito sopra valgono le seguenti propriet\`a:
+\begin{enumerate}
+\item $P(B_{C}|A_{C})=1$
+
+\item $P(B_{C}|A_{I})=P(B_{C})$ 
+
+\item $P(B_{I}|A_{C})=0$
+
+\item $P(B_{I}|A_{I})=P(B_{I})$ 
+\end{enumerate}
+\noindent
+
+\subsubsection{Probabilit\`a di rispondere correttamente ad una domanda}
+\label{Probabilita di rispondere correttamente ad una domanda}
+Variabili coinvolte:
+\begin{itemize}
+\item $P(A)$: probabilit\`a necessaria perch\`e si verifichi, per la domanda A, che il candidato dia la risposta corretta.  Per la legge dei grandi numeri la frequenza porta alla probabilit\`a.
+\item $S_{0}$: insieme dei casi in cui in un domanda non viene scartata alcuna risposta dal dominio delle risposte possibili;
+\item $S_{1}$: insieme dei casi in cui in una domanda viene scartata una risposta dal dominio delle risposte possibili;
+\item $S_{2}$: insieme dei casi in cui in una domanda vengono scartate due risposte dal dominio delle risposte possibili.
+\item $P(I)$:  probabilit\`a di dare la risposta corretta alla domanda A indovinando;
+\item $P(C)$: probabilit\`a di dare la risposta corretta alla domanda A per conoscenza.
+\end{itemize}
+
+\noindent
+Sapendo che $P(I)=P(A)-P(C)$ logicamente vale anche $P(A)=P(I)+P(C)$.\\\\
+Se un candidato non \`e in grado scartare alcuna risposta dalla domanda ha 1 possibilit\`a su 3 di, indovinando, dare la risposta corretta. Se un candidato invece risulta in grado di scartare una risposta, sbagliata, alla domanda rimane con 1 possibilit\`a  su 2 di poter dare la risposta corretta. Se invece, caso ottimo, il candidato ha piena conoscenza della domanda posta risulta in grado di scartare due risposte sbagliate lasciando un'unica risposta possibile, quella esatta.
+Il ragionamento sopra espresso pu\`o venire espresso con la seguente espressione:
+
+\begin{center}$P(A)=P(S_{0})\frac{1}{3}+P(S_{1})\frac{1}{2}+P(S_{2})$\end{center} 
+
+
+\noindent
+Ora individuiamo quale \`e la probabilit\`a effettiva per un candidato di dare la risposta corretta ad una domanda A. \\
+
+$1=S_{0}+S_{1}+S_{2}$
+
+$S_0=1-S_{1}-S_{2}$ \\
+
+Sostituendo: \\
+
+P(A)= $(1-P(S_1) - P(S_2))\frac{1}{3}+P(S_1)\frac{1}{2}+P(S_2)$
+
+    = $\frac{1}{3}-\frac{1}{3}P(S_1)-\frac{1}{3}P(S_1)+\frac{1}{2}P(S_1)+P(S_2)$
+    
+    =$\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$
+   
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{image/insieme_probabilita_rispostaesatta.png}
+	\caption{Rappresentazione insiemistica della probabilit\`a di rispondere correttamente ad una domanda: P(A)}
+\end{figure}
+  
+  
+  
+ \paragraph{Considerazioni importanti} \mbox{}\\\\
+ \label{Considerazioni importanti}
+  In conclusione P(A)=$\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
+  Ovvero la probabilit\`a  per un candidato di dare in una domanda A la risposta corretta dipende dai seguenti fattori:
+  \begin{itemize}
+  \item $\frac{1}{3}$: coefficiente che rappresenta la probabilit\`a effettiva per chi non conosce la risposta alla domanda di dare la risposta corretta;
+  \item $\frac{1}{2}P(S_1)$: coefficiente che rappresenta la probabilit\`a effettiva di  dare la risposta corretta quando il candidato \`e in grado di scartare una risposta sbagliata alla domanda;
+   \item $\frac{2}{3}P(S_2)$: coefficiente che rappresenta la probabilit\`a effettiva di  dare la risposta corretta quando il candidato \`e in grado di scartare due risposte sbagliate alla domanda.
+  \end{itemize}
+  \noindent
+  Dall'analisi della tipologia di eventi di coppia e dal calcolo della probabilit\`a necessaria per poter rispondere correttamente ad una domanda, si \`e giunti alla valenza dei seguenti assiomi:
+  \begin{enumerate}
+  \item Le coppie di domande A e B devono essere fra loro disgiunte, altrimenti si genererebbero situazioni di invalidit\`a dei risultati;
+  \item Per rispondere correttamente ad una domanda non \`e necessario che il candidato abbia piena conoscenza di tutti gli argomenti richiesti dall'esame, ma bens\`i ne risultano sufficienti $n-1$;
+  \item La probabilit\`a di conoscere \`e contenuta all'interno di $S_{2}$, in quanto se un candidato conosce \`e conseguentemente in grado, da una domanda, di scartare due risposte sbagliate.
+  \end{enumerate}
+  
+\subsubsection{Il piano}
+\label{Il piano}
+\noindent
+La probabilit\`a P(A) che un candidato ha in gioco nel momento in cui si approccia a rispondere ad una domanda pu\`o venire rappresentata in un piano.\\\\
+Di seguito viene mostrata l'immagine di un modellino, rappresentativo di P(A), realizzato durante l'analisi.
+
+TODO: foto modello\\
+
+\noindent
+Ognuno dei tre assi cartesiani rappresenta un insieme dei casi di scarto ($S_0$, $S_1$, $S_2$). L'intersezione tra i punti del piano indica la regione accettabile contenente il range di valori assumibili da P(A). Tale punto proiettato su ognuno dei tre assi permette l'individuazione esatta dei coefficienti delle variabili $S_0$, $S_1$, $S_2$.\\\\
+Ogni porzione del piano viene individuata con la seguente tecnica:
+\begin{enumerate}
+\item Per individuare ogni retta passante per $S_0$, $S_1$ e $S_2$ \`e necessario assumere che $S_0+S_1+S_2=1$;
+\item La retta passante per $S_0$ \`e rappresentabile per mezzo delle seguenti equazioni:
+\begin{center}$S0=0$ e $S_1+S_2=1$\end{center}
+In questo modo l'asse $S_0$ \`e fissato a 0 e estrapolando $S_1$ e $S_2$ da $S_1=-S_2+1$  assumono valori tra (0,1). 
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.90\linewidth]{image/equazioneretta.png}
+	\caption{Rappresentazione della retta passante per $S_0=0$}
+\end{figure}
+\item Il medesimo ragionamento vale per le rette passanti per $S_1$ e $S_2$.
+
+\begin{center}$S_1=0$ e $S_0+S_2=1$\end{center}
+l'asse $S_1$ \`e fissato a 0 e $S_0$ e $S_2$ assumono valori tra (0,1).\\\\
+
+\begin{center} $S_2=0$ e $S_1+S_0=1$ \end{center}
+l'asse $S_2$ \`e fissato a 0 e $S_0$ e $S_2$ assumono valori tra (0,1).
+
+\item In questo modo l'unione di tutte le rette passanti per gli assi creano la regione accettabile dei valori di P(A).
+\end{enumerate}
+
+\noindent Avendo rappresentato il piano si ottiene nei punti di intersezioni fra le tre rette la regione accettabile per P(A). Inoltre \`e possibile, ora, individuare il fascio di rette che tangenti il piano permettono di affermare se una specifica domanda \`e, in base alla sua frequenza, ha difficolt\`a bassa, media, alta per un candidato.
+\begin{itemize}
+\item Se una domanda ha una difficolt\`a bassa la retta si situa passante per i punti $0<S_2<=1$ (molto vicino a 1) e $(S_0, S_1)<0$ (tendenti a 0);
+\item Se una domanda ha una difficolt\`a alta la retta si situa passante per i punti $S_2<=0$ (molto vicino a 0), $S_1<1$ e $S_0<=1$ (tendente a non scartare alcuna risposta);
+\item Se una domanda ha una difficolt\`a media la retta si situa nella parte centrale della regione accettabile, passante per i punti $0<=(S_0, S_1, S_2)<=1$.\end{itemize}
+
+\paragraph{Rappresentazione di P(A)}\mbox\\\\
+
+\noindent Vediamo alcuni casi di come le domande possono venire rappresentate sul piano:\\\\
+La funzione di partenza \`e:
+\begin{center}$F=\frac{1}{3}+\frac{1}{6}S_1+\frac{2}{3}S_2$\end{center}
+Va esplicitato $S_1$, i passaggi utili da fare sono i seguenti:\\\\
+$\frac{-1}{6}S_1=\frac{1}{3}+\frac{2}{3}S_2-F$ $\rightarrow$ $S_1=-4S_2-2+6F$\\\\
+Essendo  che $0<=S_2<=1$ usando $S_1=1$ e $S_2=0$ allora si ottiene che $F=\frac{1}{2}=0.5$\\
+\\
+Quanto appena calcolato pu\`o venire rappresentato graficamente impiegando la retta $S_1=1-S_2$ (responsabile di definire una porzione del piano in base alle variaibili coinvolte) e mediante la retta $S_1=-4S_2-2+6F$ (che permette di calcolare il fascio di rette tangenti alla prima retta). \\
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.90\linewidth]{image/esempio1.png}
+	\caption{Rappresentazione di P(A) per una frequenza 0.5 proiettata su assi $S_0=0$, $S_1$ e $S_2$.}
+\end{figure}
+
+\noindent
+Nella figura sopra sono rappresentati i seguenti significati:
+\begin{itemize}
+\item La linea azzurra rappresenta $S_2=1-S_1$;
+\item La linea rosa rappresenta la retta tangente $S_1=-4S_2+1$;
+\item Punto A (blu): \\
+$S_1=0.5=\frac{1}{2}$ \\
+$\frac{1}{2}=-4S_2+1$ $\rightarrow$ $4S_2=1-\frac{1}{2}$ $\rightarrow$ $S_2=\frac{1}{8}$ \\
+$S_0=1-\frac{1}{2}-\frac{1}{8}=\frac{3}{8}$\\
+\\
+Ovvero met\`a dei candidati sottoposti alla domanda sa scartare una delle risposte, lo 0.16\% sa dare la risposta corretta e lo 0.36\% non sa scartare alcune delle risposte possibili.
+\item Punto B (verde): \\
+$S_1=0$\\
+$S_2=\frac{1}{4}$\\
+$S_0=1-\frac{1}{4}=\frac{3}{4}$\\
+\\
+Ovvero nessun dei candidati sottoposti alla domanda sa scartare una delle risposte, lo 0.25\% sa dare la risposta corretta e lo 0.75\% non sa scartare alcune delle risposte possibili.
+\item Punto C (fucsia): \\
+$S_1=\frac{1}{4}$\\
+$S_2=\frac{3}{16}$\\
+$S_0=1-\frac{1}{4}-\frac{3}{16}=\frac{9}{16}$\\
+\\
+Ovvero lo 0.25\% dei candidati sottoposti alla domanda sa scartare una delle risposte, lo 0.19\% sa dare la risposta corretta e lo 0.56\% non sa scartare alcune delle risposte possibili.
+\item Punto D (arancione): \\
+$S_1=\frac{1}{3}$\\
+$S_2=\frac{1}{3}$\\
+$S_0=1-\frac{1}{3}-\frac{1}{3}=\frac{1}{3}$\\
+\\
+Osserviamo che il punto in esame fuoriesce dalla regione delimitata dalla retta tangente di frequenza 0.5 ($S_1=-4S_2+1$). Conseguenza diretta data dall'impossibilit\`a di ottenere una probabilit\`a del 50\% sulla domanda con $\frac{1}{3}$ di candidati che sa scartare 2 risposte, $\frac{1}{3}$ che ne sa scartare 1 e $\frac{1}{3}$ nessuna.
+\end{itemize}
+\noindent
+Vediamo ulteriori due esempi che permettono di valutare cosa accade nel piano nel caso di una frequenza:
+\begin{enumerate} 
+\item Quasi in prossimit\`a di 1;
+\item Pari alla soglia minima dell'indovinato.
+\end{enumerate}
+\noindent
+
+Il grafico \`e il seguente:
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.90\linewidth]{image/esempio2.png}
+	\caption{Rappresentazione di P(A) per una frequenza 0.33 e 0.8 proiettate su assi $S_0=0$, $S_1$ e $S_2$.}
+\end{figure}
+
+\begin{itemize}
+\item La linea azzurra mostra la retta tangente con frequenza 0.80\%.
+In questa abbiamo calcolato il punto E (giallo):\\
+$S_1=0$\\
+$S_2=\frac{14}{20}$\\
+$S_0=0$\\
+\\
+Quasi la totalit\`a dei candidati ha la conoscenza per poter scartare tutte le risposte sbagliate e dare la risposta giusta alla domanda.
+\item La linea viola mostra la retta tangente con frequenza 0.33\%.
+In questa abbiamo calcolato il punto F (rosa):\\
+$S_1=0$\\
+$S_2=0$\\
+$S_0=1$\\
+\\ 
+Ovvero nessuno dei candidati ha la conoscenza per poter scartare n\`e una n\`e due risposte, percui l'unica possibilit\`a per un candidato di rispondere alla domanda \`e indovinare. \`E evidente come se un candidato non sa la risposta ad una domanda ha una probabilit\`a dello 0.33\% di poter indovinare la risposta corretta.
+\end{itemize}
 
 
 \section{Rete neurale}
@@ -26,43 +320,8 @@ Il dato prodotto consiste in un vettore di 6 elementi, composto da 0, 1 e -1 con
 \noindent
 Il primo metodo che ho sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un grafo della conoscenza costruito ad hoc); il secondo metodo ripropone quanto perseguito dal primo metodo con il valore aggiunto di generazione di un profilo randomico di un candidato, che tiene conto della risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
 
-\subsection{Configurazione della rete}
-\label{Configurazione della rete}
-
-Configurazione della rete utilizzata:\\
-\begin{verbatim}layer_defs = [];
-layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
-layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
-layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
-layer_defs.push({type:'regression', num_neurons:6});
-
-net = new convnetjs.Net();
-net.makeLayers(layer_defs);
-
-trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
- momentum:0.1, batch_size:10, l2_decay:0.001});
-\end{verbatim}
-\noindent
-I layer utilizzati sono due e compositi da 4 neuroni ciascuno vista la numerosit\`a dei dati di training che ho impiegato durante l'addestramento, in modo che alla rete risulti possibile imparare in modo adeguato. Attenzione se la rete presentasse un numero d neuroni troppo elevato la previsione ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati.\\
-Il numero di neuroni in regressione devono essere 6, perch\`e l'output che ci si aspetta da un vettore di dimensione \`e composto da 6 elementi.
-\noindent
-Per costruire un dataset di dati consistente che permettesse alla rete di imparare qualcosa ho costruito un grafo con lo scopo di mettere relazione degli argomenti che coinvolgono uno o pi\`u domande.
-\begin{figure}[H]
-\centering
-	\includegraphics[width=0.60\linewidth]{image/grafo_trainset.png}
-	\caption{Grafo presentante le relazioni esistenti tra il set di domande di prova.}
-\end{figure}
-\noindent
-Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder,
-ovvero la rete impara il vettore riducendone lo spazio occupato.
-Per creare il dataset sono generati \textit{2000} vettori di risposta in modo che sia possibile compiere in maniera esaustivo l'apprendimento della rete.
-\\
-Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
-Di seguito riporto quanto \`e stato rilevato in  fase di test.
-\noindent
-
-\subsubsection{Osservazioni effettuate}
-\label{Osservazioni effettuate}
+\subsection{Test effettuati}
+\label{Test effettuati}
 
 Alcune decisioni che ho preso durante la configurazione della rete riguardano i seguenti settori:
 \begin{enumerate}
@@ -82,9 +341,9 @@ Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato
 Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
 Di seguito riporto quanto \`e stato rilevato in  fase di test.
 
-\paragraph{Configurazione della rete}\mbox{}
+\subsubsection{Configurazione della rete}
 \label{Configurazione della rete 4 neuroni per 2 layers}
-\\
+
 Configurazione della rete utilizzata:\\
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
@@ -101,9 +360,10 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 \noindent
 I layer utilizzati sono due e compositi da 4 neuroni.
 
-\subparagraph{Training set standard a 4 neuroni per 2 layers}\mbox{}
+\paragraph{Training set standard a 4 neuroni per 2 layers}\mbox{}
 \label{Training set standard su rete a 4 neuroni}
 \\
+\noindent
 \begin{itemize}
 \item \begin{verbatim}[0.18394862760524544,0.5427447874383465,0.4475798470511032,
 -0.2002756172921305,0.07023832331402126,-0.38412626496750873] \end{verbatim}
@@ -128,13 +388,13 @@ Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispett
 Appaiono in relazione 1, 4 e 2, 3, 5, 6.\\
 Gli scostamenti tra le coppie  1 e 4, 2 e 5, 3 e 6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 ;nel test in analisi tale regola viene rispettata perfettamente
-
 \end{itemize}
 
 
-\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a 4 neuroni per 2 layers}\mbox{}
+\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a 4 neuroni per 2 layers}\mbox{}
 \label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a 4 neuroni}
 \\
+\noindent
 \begin{itemize}
 \item  \begin{verbatim}[0.0581156963538111,-0.1083899001264413,0.17398947541144363,
 0.19769424910168104,-0.06865983886403393,0.06277020715810194]\end{verbatim}
@@ -157,16 +417,16 @@ Appaiono in relazione le domande 1, 2, 3, 4, 5  e 6 (a parte)\\
 Le domanda 1 ,4 e 2, 5  sono in relazione stretta, questo non vale per la coppia 3, 6 che ha una differenza circa dello 0.4. La domanda 4 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conforme alla regola, invece la domanda 1 risulta conforme solo nel rapporto con la domanda 3. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" per il effettuare il training degli stessi.
 \end{itemize}
 
-\subparagraph{Osservazioni}\mbox{}
+\paragraph{Osservazioni}\mbox{}
 \label{Osservazioni su rete a 4 neuroni}
-\\
+\\\\
+\noindent
 Avendo messo 4 neuroni su una base di 2000 test, si corre il rischio che di avere una rete che apprende troppo e come effetto negativo "veda" addirittura cose che non esistono.
 Per fare un ulteriore verifica del sistema da me sviluppato ne ho mutato la configurazione riducendo il numero di neuroni presenti in ciascun layers.\\
 La nuova configurazione su cui ho effettuato i test \`e la seguente:
 
-\paragraph{Configurazione della rete}\mbox{}
+\subsubsection{Configurazione della rete}
 \label{Configurazione della rete 2 neuroni per 2 layers}
-\\
 Configurazione della rete utilizzata:\\
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
@@ -181,9 +441,10 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
  momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 
-\subparagraph{Training set standard su rete a 2 neuroni per 2 layers}\mbox{}
+\paragraph{Training set standard su rete a 2 neuroni per 2 layers}\mbox{}
 \label{Training set standard su rete a 2 neuroni}
 \\
+\noindent
 \begin{itemize}
 \item \begin{verbatim}[1.156980429249762,0.06806851158038928,0.3113362862886465,
 0.17218787779201644,0.34650990282652194,-0.8215874801856704]\end{verbatim}
@@ -212,9 +473,10 @@ Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispett
 \end{itemize}
 
 
-\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
+\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
 \label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a  2 neuroni}
 \\
+\noindent
 \begin{itemize}
 \item  \begin{verbatim}[-0.1035508475297289,0.0633805382071866,-0.04231133040694016,
 0.037670465236242075,0.11461540750490316,-0.04359674755310973]\end{verbatim}
@@ -238,16 +500,17 @@ Le domanda 1 e 4 e 2, 5  sono in relazione stretta, questo non vale per la coppi
 La domanda sia 1 che 4 si presentano una positivit\`a superiore rispetto alla domanda sia 3 che 6 presentandosi conforme alla regola, invece la domanda 1 risulta conforme solo nel rapporto con la domanda 3. Come sopra l'utilizzo di  un set con dati "spuri" per il effettuare il training degli stessi in questo caso ha impattato marginalmente sui valori dati dal grafo della conoscenza,.
 \end{itemize}
 
-\subparagraph{Osservazioni}\mbox{}
+\paragraph{Osservazioni}\mbox{}
 \label{Osservazioni su rete a 2 neuroni}
-\\
+\\\\
+\noindent
 Confrontando i risultati ottenuti dalla rete con i layers impostati a 4 neuroni con quanto emerso dai dati risultanti dalla  rete con 2 neuroni, la layers, posso dire che sia nel caso di Training set standard che con generazione del profilo del candidato la situazioni rispetto ai valori attesi nel secondo gruppo di test sembra essere migliore.\\
 Emerge nel training standard una previsione che rispecchia pi\`u uniformemente il grafo della conoscenza utilizzato, risultano  addirittura dei set dei dati completamente conformi con le aspettative. Tale effetto \`e meno evidente quando al set viene applicata la formula della probabilit\`a di una domanda perch\`e i dati rispetto al grafo vengono "sporcati"; ma comunque le coppie che risultano ancora tali e la frequenza che vincola le domande dell'insieme A con quelle dell'insieme B rimangono di una precisione superiore rispetto alla prima configurazione della rete.
 
 
-\paragraph{Configurazione della rete}\mbox{}
+\subsubsection{Configurazione della rete}
 \label{Configurazione della rete 4 neuroni per 1 layers}
-\\
+
 Configurazione della rete utilizzata:\\
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
@@ -261,9 +524,10 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
  momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 
-\subparagraph{Training set standard su rete a 4 neuroni per 1 unico layers}\mbox{}
+\paragraph{Training set standard su rete a 4 neuroni per 1 unico layers}\mbox{}
 \label{Training set standard su rete a 4 neuroni per 1 unico layers}
 \\
+\noindent
 \begin{itemize}
 \item \begin{verbatim}[-0.8761259176456285,-0.02977868058587574,-0.27957253725011866,
 -0.04710519871769505,0.3043458705894716,0.3073462777119259]
@@ -293,13 +557,12 @@ Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispett
 Appaiono in relazione le domande 1, 2, 3, 4  e 5, 6.\\
 Gli scostamenti tra la coppia 1, 4 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per le coppia 3, 6 e 2, 5 i segni si presentano con una differenza che va da uno 0.4 ad uno 0.7 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 3; ma la regola viene sfasata dalla domanda 6 e ancora una volta la differenza oscilla tra lo 0.6 e lo 0.7 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
-
-
 \end{itemize}
 
-\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
+\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
 \label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a  2 neuroni}
 \\
+\noindent
 \begin{itemize}
 \item \begin{verbatim}[-0.26895254300638055,0.3450827488184123,-0.3614521860173131,
 0.3159370512333089,-0.4014776237136512,0.27415862143447484]
@@ -330,11 +593,14 @@ Appaiono in relazione le domande 1, 2, 4, 5, 6 e 3.\\
 Gli scostamenti tra la coppia 1, 4 e 2, 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per la coppia 3, 6 i segni si presentano con una differenza dello 0.6.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 3 ma la regola viene sfasata dalla domanda 6 per\`o la differenza \`e di poco superiore allo 0.1.
 \end{itemize}
-\subparagraph{Osservazioni}\mbox{}
+
+\paragraph{Osservazioni}\mbox{}
 \label{Osservazioni su rete a 4 neuroni per 1 unico layers}
-\\
+\\\\
+\noindent
 Rispetto a quanto osservato nei casi precedenti, mi risulta che sia nel caso di utilizzo di training set standard che con profilo di candidato la tecnica non dia dei risultati particolarmente soddisfacenti. Se con il set di dati "spuro" potrei sorvolare di pi\`u nelle oscillazioni delle previsioni; questo vale per il primo set che presenta delle anomalie molto forti con il grafo della conoscenza e non si \`e i risultati non si sono mai presentati come le aspettative richiedevano.
 \\\\
+\noindent
 \textit{Fino ad ora la configurazione di rete che ha dato i maggiori risultati di previsione risulta essere a 2 layers con 2 neuroni ognuno.}
 
 
