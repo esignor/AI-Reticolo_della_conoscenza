@@ -1,0 +1,342 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx} 
+\usepackage{float}
+\usepackage{verbatim}
+\begin{document}
+
+
+\section{Rete neurale}
+\label{Rete neurale}
+
+Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento ricevuti.
+\noindent
+Il problema trattato dalla rete \`e quello discusso nel precedente documento \textit{Analisi dei dati di probabilit\`a}
+\\\\
+Per aggevolare l'apprendimento della rete, ed ottenere delle previsioni stabili mi sono occupata di implementare due metodi di generazione randomica di dati in modo da far apprendere massiciamente la stessa.
+Il dato prodotto consiste in un vettore di 6 elementi, composto da 0, 1 e -1 con il seguente criterio:
+\begin{itemize}
+\item \textbf{-1}: la domanda x non \`e stata posta al candidato;
+\item \textbf{0}: la domanda x \`e stata posta al candidato che ha risposto in maniera errata;
+\item \textbf{1}: la domanda x \`e stata posta al candidato che ha saputo rispondere correttamente.
+\end{itemize}
+\noindent
+Il primo metodo che ho sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un grafo della conoscenza costruito ad hoc); il secondo metodo ripropone quanto perseguito dal primo metodo con il valore aggiunto di generazione di un profilo randomico di un candidato, che tiene conto della risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
+
+\subsection{Configurazione della rete}
+\label{Configurazione della rete}
+
+Configurazione della rete utilizzata:\\
+\begin{verbatim}layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:6});
+
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
+ momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+\noindent
+I layer utilizzati sono due e compositi da 4 neuroni ciascuno vista la numerosit\`a dei dati di training che ho impiegato durante l'addestramento, in modo che alla rete risulti possibile imparare in modo adeguato. Attenzione se la rete presentasse un numero d neuroni troppo elevato la previsione ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati.\\
+Il numero di neuroni in regressione devono essere 6, perch\`e l'output che ci si aspetta da un vettore di dimensione \`e composto da 6 elementi.
+\noindent
+Per costruire un dataset di dati consistente che permettesse alla rete di imparare qualcosa ho costruito un grafo con lo scopo di mettere relazione degli argomenti che coinvolgono uno o pi\`u domande.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{image/grafo_trainset.png}
+	\caption{Grafo presentante le relazioni esistenti tra il set di domande di prova.}
+\end{figure}
+\noindent
+Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder,
+ovvero la rete impara il vettore riducendone lo spazio occupato.
+Per creare il dataset sono generati \textit{2000} vettori di risposta in modo che sia possibile compiere in maniera esaustivo l'apprendimento della rete.
+\\
+Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
+Di seguito riporto quanto \`e stato rilevato in  fase di test.
+\noindent
+
+\subsubsection{Osservazioni effettuate}
+\label{Osservazioni effettuate}
+
+Alcune decisioni che ho preso durante la configurazione della rete riguardano i seguenti settori:
+\begin{enumerate}
+\item Una rete neurale non deve, per fornire dei dati attendibili, possedere un numero di neuroni troppo elevato rispetto al trainset effettuato, altrimenti la previsione  ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati;
+\item I layers ho deciso di allenarli mediante tecnica di regressione, che permette l'inserimento in input di una funzione obiettivo e di ottenere un risultato in output anche in virgola mobile e composto di tanti elementi quanti sono i neuroni di regressione dichiarati. Per la mia rete di prova \`e necessario dichiarare  6 neuroni in regressione perch\`e l'output, appunto, che ci si aspetta da dal sistema \`e di 6 elementi.
+\item Per costruire un dataset di dati consistente che permettesse alla rete di imparare qualcosa ho costruito un grafo con lo scopo di mettere relazione degli argomenti che coinvolgono uno o pi\`u domande.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{image/grafo_trainset.png}
+	\caption{Grafo presentante le relazioni esistenti tra il set di domande di prova.}
+\end{figure}
+\noindent
+Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder, ovvero la rete impara il vettore riducendone lo spazio occupato.
+\item Per creare il dataset ho ritenuto sufficiente generare \textit{2000} vettori di risposta in modo da compiere in maniera esaustivo l'apprendimento della rete.
+\end{enumerate}
+\noindent
+Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
+Di seguito riporto quanto \`e stato rilevato in  fase di test.
+
+\paragraph{Configurazione della rete}\mbox{}
+\label{Configurazione della rete 4 neuroni per 2 layers}
+\\
+Configurazione della rete utilizzata:\\
+\begin{verbatim}layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:6});
+
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
+ momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+\noindent
+I layer utilizzati sono due e compositi da 4 neuroni.
+
+\subparagraph{Training set standard a 4 neuroni per 2 layers}\mbox{}
+\label{Training set standard su rete a 4 neuroni}
+\\
+\begin{itemize}
+\item \begin{verbatim}[0.18394862760524544,0.5427447874383465,0.4475798470511032,
+-0.2002756172921305,0.07023832331402126,-0.38412626496750873] \end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 5 e 4, 6.\\
+Gli scostamenti tra le coppie 2 e 5 sono consistenti con quelle che sono le relazioni  di dipendenza fra le domande, invece per quanto concerne le coppie 2, 5 e 1, 4 con una differenza che va dallo 0.3 ad uno 0.5 circa; che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4; nel test in analisi questo vale per la domanda 1 e 4 in relazione con la domanda 6, negli altri casi non si \`e conformi a tale regola.
+
+\item \begin{verbatim}[-0.11235743604300916,-0.39879459369010783,-0.6219582601088702,
+0.22754749414916,-0.3307584554090044,-0.39007701490038627] \end{verbatim}\\
+Appaiono in relazione le domande 1, 2, 3, 5, 6 e 4.\\
+Gli scostamenti tra le coppie 3 e 6, 2 e 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande, invece per quanto concerne la coppia 1 e 4 con una differenza minima dello 0.2, sono dovuti dalla presenza di -1  all'interno dei vettori di training.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4; nel test in analisi sia la domanda 1 che 4 si presentano conformi alla regola.
+
+\item \begin{verbatim}[-0.2399988601091234,0.09747007794669733,0.5093732175811206,
+0.06546467766710193,0.05567129781511258,-0.11672474718649554]\end{verbatim}\\
+Appaiono in relazione le domande 1, 4, 6 e 2, 3, 5.\\
+Gli scostamenti tra le  coppie 1, 4 e 2 , 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande, invece per quanto concerne le coppia 3, 6 sono dovuti alla presenza di -1 all'interno dei vettori di training anche se la differenza supera lo 0.5.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4; nel test in analisi solo la domanda 4 in confronto con la domanda 6 rispetta la regola.
+
+\item \begin{verbatim}[0.21422605841447054,-0.2636944179712092,-0.3706563171790509
+,0.7764017490883244,-0.23816083562639187,-0.2524885890953481]\end{verbatim}
+Appaiono in relazione 1, 4 e 2, 3, 5, 6.\\
+Gli scostamenti tra le coppie  1 e 4, 2 e 5, 3 e 6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 ;nel test in analisi tale regola viene rispettata perfettamente
+
+\end{itemize}
+
+
+\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a 4 neuroni per 2 layers}\mbox{}
+\label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a 4 neuroni}
+\\
+\begin{itemize}
+\item  \begin{verbatim}[0.0581156963538111,-0.1083899001264413,0.17398947541144363,
+0.19769424910168104,-0.06865983886403393,0.06277020715810194]\end{verbatim}
+Appaiono in relazione le domande 1, 3, 4, 6 e 2, 4, 5\\
+Le domanda 1 e 4, 3 e 6  non sono pi\`u in relazione stretta con una differenza minima dello 0.2; le coppie 2 e 5 rimangono invece consistenti. La domanda 1 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conformi alla regola, invece la domanda 4 risulta conforme. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" calcolati mediante la probabilit\`a che un candidato ha di rispondere correttamente o meno ad una i-esima domanda (tale formula ha fatto venire meno la validit\`a parziale delle relazioni che intercorrono tra le domande) che alla presenza dei valori -1 del vettore di training. Il secondo fattore per\`o ha sicuramente un influenza inferiore rispetto al primo sui risultati ottenuti.
+
+\item  \begin{verbatim}[0.07461451161172632,-0.034052968605699584,-0.12054982977145728,
+-0.014994452072747376,-0.02387186678202946,0.037622445105928125]\end{verbatim}
+Appaiono in relazione le domande 1, 6 e 2, 3, 4, 5\\
+Le domanda 1 e 4, 3 e 6 non sono pi\`u in relazione stretta ma con una differenza massima dello 0.1; questo non vale per la coppia 2, 5 che rimane conforme alla regola. La domanda 4 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conforme alla regola, invece la domanda 1 risulta conforme. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" per il effettuare il training degli stessi.
+
+\item  \begin{verbatim}[0.009747730942870516,0.09241802945247207,-0.0925975996231829,
+-0.17029345029708107,-0.03732537178160159,0.01882705046994409]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 6 e 3, 4, 5\\
+Le domanda 1 e 4, 3 e 6, 2 e 5  non sono pi\`u in relazione stretta ma con una differenza trascurabile. La domanda 1 presenta una positivit\`a inferiore rispetto alla domanda sia 3 ma non rispetto alla domanda 6 non presentandosi parzialmente conforme alla regola, lo stesso vale per la domanda 4. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" per il effettuare il training degli stessi.
+
+\item  \begin{verbatim}[-0.03893047230734836,-0.17335152037872065,-0.12242554699039307,
+-0.1449537537507802,-0.03262368658437825,0.16259494225750007]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 4, 5  e 6 (a parte)\\
+Le domanda 1 ,4 e 2, 5  sono in relazione stretta, questo non vale per la coppia 3, 6 che ha una differenza circa dello 0.4. La domanda 4 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conforme alla regola, invece la domanda 1 risulta conforme solo nel rapporto con la domanda 3. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" per il effettuare il training degli stessi.
+\end{itemize}
+
+\subparagraph{Osservazioni}\mbox{}
+\label{Osservazioni su rete a 4 neuroni}
+\\
+Avendo messo 4 neuroni su una base di 2000 test, si corre il rischio che di avere una rete che apprende troppo e come effetto negativo "veda" addirittura cose che non esistono.
+Per fare un ulteriore verifica del sistema da me sviluppato ne ho mutato la configurazione riducendo il numero di neuroni presenti in ciascun layers.\\
+La nuova configurazione su cui ho effettuato i test \`e la seguente:
+
+\paragraph{Configurazione della rete}\mbox{}
+\label{Configurazione della rete 2 neuroni per 2 layers}
+\\
+Configurazione della rete utilizzata:\\
+\begin{verbatim}layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
+layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:6});
+
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
+ momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+
+\subparagraph{Training set standard su rete a 2 neuroni per 2 layers}\mbox{}
+\label{Training set standard su rete a 2 neuroni}
+\\
+\begin{itemize}
+\item \begin{verbatim}[1.156980429249762,0.06806851158038928,0.3113362862886465,
+0.17218787779201644,0.34650990282652194,-0.8215874801856704]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 4  e 6 a parte.\\
+Gli scostamenti tra le coppie  1 e 4, 2 e 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per la coppia 3 e 6 i segni si presentano opposti  con una differenza pesante che supera 1.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 che supera di netto la frequenza di 3 e 6, poco male per la domanda 4 che supera esclusivamente la domanda 6 ma la differenza con la frequenza della domanda 1 sta nell'ordine di centesimi sempre da poter associare a alterazioni dovuti alla presenza di valori -1 nel vettore di training.
+
+\item \begin{verbatim}[0.04982696367584444,0.11290459035591142,-0.0696298921764785, 
+0.18228607258850865,0.49713850861314235,-0.012948163156710699]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 4, 5 e 3, 6.\\
+Gli scostamenti tra le coppie 1, 4 e 2, 5  e 3, 6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene sia dalla domanda 6 che 3.
+
+\item \begin{verbatim}[0.19504797225824305,-0.2295101910352556,-0.028760245350834636,
+0.007144898117011814,-0.056011983451495176,-0.1803934455401963]\end{verbatim}
+Appaiono in relazione le domande 1, 4 e 2, 3, 5, 6.\\
+Gli scostamenti tra le coppie 1, 4 e 2, 5 e 3, 6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene non rispettata pienamente sia dalla domanda 3 che 6.
+
+\item \begin{verbatim}[0.08339384459022353,-0.15782370764467343,0.0005080967853213457,
+-0.020723132326211795,-0.03207289911077578,0.004139946640153436]
+\end{verbatim}
+Appaiono in relazione le domande 1, 3, 6 e 2, 4, 5.\\
+Gli scostamenti tra le coppie 3, 6 e 2, 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande; invece per la coppia 1 e 4 i segni sono opposti con una differenza trascurabile che posso far ricondurre la alla presenza dei valori -1 nel vettore di training essendo che la differenza di valore \`e inferiore delle 0.18.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene no rispettata dalla domanda 6 nei confronti della domanda 4  e dalla domanda 3 nei confronti con la domanda 4 ma in ogni caso la differenza \`e marginale  e posso sempre ricondurli a oscillazioni della  rete.
+\end{itemize}
+
+
+\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
+\label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a  2 neuroni}
+\\
+\begin{itemize}
+\item  \begin{verbatim}[-0.1035508475297289,0.0633805382071866,-0.04231133040694016,
+0.037670465236242075,0.11461540750490316,-0.04359674755310973]\end{verbatim}
+Appaiono in relazione le domande 1, 3, 6 e 2, 4, 5\\
+Le domanda 1, 4 non \`e pi\`u in relazione stretta con per\`o una differenza minima dello 0.1; le coppie 2, 5 e 3, 6 rimangono invece consistenti. La domanda 1 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conformi alla regola, invece la domanda 4 risulta conforme. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" calcolati mediante la probabilit\`a che un candidato ha di rispondere correttamente o meno ad una i-esima domanda (tale formula ha fatto venire meno la validit\`a parziale delle relazioni che intercorrono tra le domande) che alla presenza dei valori -1 del vettore di training. Il secondo fattore per\`o ha sicuramente un influenza inferiore rispetto al primo sui risultati ottenuti.
+
+\item  \begin{verbatim}[-0.03694505953408343,-0.11462792478438069,0.11455401234234787,
+-0.04130903688780185,-0.10017417464274732,0.23137329348272218]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 5 e 3, 4, 6\\
+Le domanda 1 e 4 non \`e pi\`u in relazione stretta per\`o con una differenza trascurabile; le coppie 2, 5 e 3, 6 rimangono invece consistenti. La domanda 4 presenta una positivit\`a inferiore rispetto alla domanda sia 3 che 6 non presentandosi conforme alla regola, lo stesso vale per la domanda 1. L'anomalia pu\`o venire ricondotta all'uso di un set con dati "spuri" per il effettuare il training degli stessi.
+
+\item  \begin{verbatim}[0.09835734578250267,0.2783003702917536,-0.5203071370347077,
+0.21074141492570442,0.0874911093414027,0.22885850762943963]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 4, 5, 6 e 3 (a parte)\\
+Le domanda 3 e 6  non sono pi\`u in relazione stretta con una differenza persante superiore allo 0.7; le coppie 2, 5 e 1, 4 rimangono invece consistenti. La domanda sia 1 che 4 si presentano con una positivit\`a superiore rispetto alla regola. L'utilizzo di  un set con dati "spuri" per il effettuare il training degli stessi in questo caso ha impattato marginalmente sui valori dati dal grafo della conoscenza,
+
+\item  \begin{verbatim}[0.02267051416257774,0.005474349898744291,0.016535957156990452
+,0.0034334957553278657,0.016359614225486967,-0.009108496312618647]\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 4, 5  e 6 (a parte)\\
+Le domanda 1 e 4 e 2, 5  sono in relazione stretta, questo non vale per la coppia 3, 6  tuttavia la differenza \`e trascurabile.
+La domanda sia 1 che 4 si presentano una positivit\`a superiore rispetto alla domanda sia 3 che 6 presentandosi conforme alla regola, invece la domanda 1 risulta conforme solo nel rapporto con la domanda 3. Come sopra l'utilizzo di  un set con dati "spuri" per il effettuare il training degli stessi in questo caso ha impattato marginalmente sui valori dati dal grafo della conoscenza,.
+\end{itemize}
+
+\subparagraph{Osservazioni}\mbox{}
+\label{Osservazioni su rete a 2 neuroni}
+\\
+Confrontando i risultati ottenuti dalla rete con i layers impostati a 4 neuroni con quanto emerso dai dati risultanti dalla  rete con 2 neuroni, la layers, posso dire che sia nel caso di Training set standard che con generazione del profilo del candidato la situazioni rispetto ai valori attesi nel secondo gruppo di test sembra essere migliore.\\
+Emerge nel training standard una previsione che rispecchia pi\`u uniformemente il grafo della conoscenza utilizzato, risultano  addirittura dei set dei dati completamente conformi con le aspettative. Tale effetto \`e meno evidente quando al set viene applicata la formula della probabilit\`a di una domanda perch\`e i dati rispetto al grafo vengono "sporcati"; ma comunque le coppie che risultano ancora tali e la frequenza che vincola le domande dell'insieme A con quelle dell'insieme B rimangono di una precisione superiore rispetto alla prima configurazione della rete.
+
+
+\paragraph{Configurazione della rete}\mbox{}
+\label{Configurazione della rete 4 neuroni per 1 layers}
+\\
+Configurazione della rete utilizzata:\\
+\begin{verbatim}layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:6});
+
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
+ momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+
+\subparagraph{Training set standard su rete a 4 neuroni per 1 unico layers}\mbox{}
+\label{Training set standard su rete a 4 neuroni per 1 unico layers}
+\\
+\begin{itemize}
+\item \begin{verbatim}[-0.8761259176456285,-0.02977868058587574,-0.27957253725011866,
+-0.04710519871769505,0.3043458705894716,0.3073462777119259]
+\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 4  e 5, 6.\\
+Gli scostamenti tra la coppia 1, 4 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per le coppia 3, 6 e 2, 5 i segni si presentano con una differenza di circa uno 0.60 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 3; ma la regola viene sfasata dalla domanda 6 e ancora una volta la differenza oscilla tra lo 0.3 e lo 0.8 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
+
+\item \begin{verbatim} [-0.5835099521808255,0.23163071240213903,0.7437628539627528,
+-0.9274060641030129,0.14517802277767292,0.2750132780436958]
+\end{verbatim}
+Appaiono in relazione le domande 1, 4 e 2, 3, 5, 6.\\
+Gli scostamenti tra le coppie 1, 4, 2, 5 e 3,6  sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola non viene rispettata n\`e dalla domanda 3 n\`e dalla 6, che anzi si presentano con una positivit\`a molto alta, a volte tendente al 1, rispetto alle domande 1 e 4; ancora una volta mi sembra eccessivo far risalire tali anomalie esclusivamente alla presenza di valori -1 nel vettore di training.
+
+\item \begin{verbatim} [0.21245357556375333,-0.14765714636636873,0.6657326535772377,
+-0.20946168513372712,0.1911180652307628,-0.22522695051912495]
+\end{verbatim}
+Appaiono in relazione le domande 1, 3, 5  e 2, 4, 6.\\
+Gli scostamenti tra la coppia 1 e 4, 3 e 6, 2 e 5 non  sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda con una differenza che varia dallo 0.40 al 1 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 6; ma la regola viene sfasata dalla domanda 3 e ancora una volta la differenza oscilla tra lo 0.3 e lo 0.8 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
+
+
+\item \begin{verbatim} [-0.18850146670992962,-0.05586297769103521,-0.0701019422477698,
+-0.329503465890325,0.20586544889669084,0.4420235238773452]
+\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 4  e 5, 6.\\
+Gli scostamenti tra la coppia 1, 4 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per le coppia 3, 6 e 2, 5 i segni si presentano con una differenza che va da uno 0.4 ad uno 0.7 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 3; ma la regola viene sfasata dalla domanda 6 e ancora una volta la differenza oscilla tra lo 0.6 e lo 0.7 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
+
+
+\end{itemize}
+
+\subparagraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a  2 neuroni per 2 layers}\mbox{}
+\label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a  2 neuroni}
+\\
+\begin{itemize}
+\item \begin{verbatim}[-0.26895254300638055,0.3450827488184123,-0.3614521860173131,
+0.3159370512333089,-0.4014776237136512,0.27415862143447484]
+\end{verbatim}
+Appaiono in relazione le domande 1, 3, 5  e 2, 4, 6.\\
+Gli scostamenti tra la coppia 1 e 4, 3 e 6, 2 e 5 non sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda con una differenza che varia dallo 0.5 a 0.7 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 3 e della domanda 6 in rapporto con la domanda 4.
+
+\item \begin{verbatim} [0.09048838569638942,0.1527168108293302,0.17371007106456693,
+-0.19673664823308423,-0.4099436697636707,0.04143088391769388]
+\end{verbatim}
+Appaiono in relazione le domande 1, 2, 3, 6 e 4, 5.\\
+Gli scostamenti tra la coppia 3,6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda;  invece per le coppia 1, 4 e 2, 5 i segni si presentano con una differenza  per la coppia la differenza \`e minima, invece per la coppia 2, 5 la differenza \`e del 0.65 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola non viene rispettata n\`e dalla domanda 3 e parzialmente dalla 6 in rapporto con la domanda 1; ancora una volta mi sembra eccessivo far risalire tali anomalie esclusivamente alla presenza di valori -1 nel vettore di training.
+
+\item \begin{verbatim} [0.21245357556375333,-0.14765714636636873,0.6657326535772377,
+-0.20946168513372712,0.1911180652307628,-0.22522695051912495]
+\end{verbatim}
+Appaiono in relazione le domande 1, 3, 5  e 2, 4, 6.\\
+Gli scostamenti tra la coppia 1 e 4, 3 e 6, 2 e 5 non sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda con una differenza che varia dallo 0.40 al 1 che mi sembra troppo per venire associata solamente alla presenza di valori -1 all'interno del vettore di training. Anche la valutazione il valore 1 nel vettore di previsione non mi sembra una motivazione sufficiente anche perch\`e tale fenomeno non ha mai avuto impatto nelle previsioni analizzate sopra.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 1 e 4 il rapporto alla domanda 6; ma la regola viene sfasata dalla domanda 3 e ancora una volta la differenza oscilla tra lo 0.3 e lo 0.8 mi sembra eccessiva se fatta risalire solo alla presenza di valori -1 nel vettore di training.
+
+
+\item \begin{verbatim} [0.12213347350818782,0.07647457700381718,-0.4346149320998538,
+0.20869222342588276,0.07353700075122034,0.23700686861462777]
+\end{verbatim}
+Appaiono in relazione le domande 1, 2, 4, 5, 6 e 3.\\
+Gli scostamenti tra la coppia 1, 4 e 2, 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domanda; invece per la coppia 3, 6 i segni si presentano con una differenza dello 0.6.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4 la regola viene rispettata nel caso della domanda 3 ma la regola viene sfasata dalla domanda 6 per\`o la differenza \`e di poco superiore allo 0.1.
+\end{itemize}
+\subparagraph{Osservazioni}\mbox{}
+\label{Osservazioni su rete a 4 neuroni per 1 unico layers}
+\\
+Rispetto a quanto osservato nei casi precedenti, mi risulta che sia nel caso di utilizzo di training set standard che con profilo di candidato la tecnica non dia dei risultati particolarmente soddisfacenti. Se con il set di dati "spuro" potrei sorvolare di pi\`u nelle oscillazioni delle previsioni; questo vale per il primo set che presenta delle anomalie molto forti con il grafo della conoscenza e non si \`e i risultati non si sono mai presentati come le aspettative richiedevano.
+\\\\
+\textit{Fino ad ora la configurazione di rete che ha dato i maggiori risultati di previsione risulta essere a 2 layers con 2 neuroni ognuno.}
+
+
+\end{document}
+
