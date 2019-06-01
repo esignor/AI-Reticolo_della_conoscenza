@@ -1,0 +1,52 @@
+lunedi 20 maggio
+
+1 SETTIMANA
+- studio documentazione ConvNet.js (https://cs.stanford.edu/people/karpathy/convnetjs/): Getting started, Documentation, intro
+- ricerca su github progetto reti neurali con uso della libreria ConvNet (da terminare);
+- inzio studio problema delle coppie di eventi (A,B domande);
+  A e B eventi indipendenti, A e B eventi dipendenti, evento A conosciuto comporta la conoscenza dell'evento B (cio' non implica il contrario), Odds Ratio, probabilita' di evento conosciuto e indovinato (da portare il latex in data 21 maggio).
+
+martedi 21 maggio
+- studio, rielaborazione, stesura in latex problema delle coppie, eventi dipendenti/eventi indipendenti, probabilita' per un candidato di dare la risposta corretta ad una domanda durante un test (analisi_dati.zip);
+- discussione rappresentazione su piano probabilita' di ottenere una risposta corretta ad una domanda (P(A)).
+
+mercoledi 22 maggio 
+- continuazione studio e stesura documento latex con trattazione della rappresentazione di P(A) su un piano nelle 3 dimensioni s0,s1,s2 con studio, argomentazioni di esempi e rappresentazione degli stessi mediante grafici in 2d;
+- inizio costruzione modello P(A) in 3d. Fissati gli assi cartesiani s0, s1 e s2 (aiuto tutor).
+
+
+giovedi 23 maggio
+- studio libreria ConvNet.js con implementazione scheletro rete neurale con addestramento;
+- continuazione modello in 3d. Fissate le rette s2=1-s1 sulle tre dimensioni con conseguente formazione di un triangolo equilatero sul piano (aiuto tutor).
+
+venerdi 24 maggio
+- inizio implementazione nuova rete neurale sulla base di uno spazio di input e output di dimesione 6.
+ L'input rappresenta il vettore del numero di domanda [1,2,3..]; l'otput rappresenta un vettore con tanti valori quanto e' la dimensione del vettore in input e un valore e' uno tra -1(risposta sbagliata), 0(risposta non data) e 1(risposta esatta) [1,0, 0, -1]. Il fine sara' addestrare la rete a comprendere se un candidato sapra' rispondere o meno, sulla base dei test di addestramento, a una specifica domanda
+
+2SETTIMANA
+lunedi 27 maggio
+- continuo sviluppo rete neurale: sistemati box (a numerosita' dinamica) per l'emissione dei dati di input e di output, creati bottoni e form per il trainer dei dati e la previsione, implementazione metodi di update (per il trainer) e prevision, documentazione e commento del codice.
+
+martedi 28 maggio
+- continuazione sviluppo rete neurale con preparazione del box di log nell'applicativo;
+- rilettura documentazione correzione errori sul documento "Analisi dei dati di probabilita'"
+- testata la rete con i primi test (banali);
+- presentazione della rete al tutor aziendale (richiesta ristrutturazione della stessa che deve avvera'  durante i prossimi giorni. I dati alla rete verranno passati gia' normalizzati causa la necessita', altrimenti, di un tempo troppo elevato di apprendimento della stessa)
+- Proseguito con il modellino di P(A)
+
+mercoledi 29 maggio
+- ristrutturazione della rete con implementazione dell'autoencoder e del metodo di previsione;
+- costruiti test di dimensione 6 per testare la bonta' dell'apprendimento, seguendo un grafo logico, prima manualmente (i primi 30), e a seguito di un'analisi dei risultati da cui e' stata riscontrata un' oscillazione delle previsioni si e' deciso di procedere all'implementazione di un metodo (1a versione) di generazione automatica dei vettori di training in modo da far apprendere in massa la rete ed evitare cosi' tali oscillazioni
+- Proseguito con il modellino di P(A)
+
+
+giovedi 30 maggio
+- implemetazione del metodo di generazione automatica dei vettori di training medainte un metodo che tiene conto anche della probabilita' che un candidato ha di dare la risposta esatta (P(A) risultante dalla 1a settimana di stage)
+- Analisi dei dati di previsione ottenuti con le diverse generazioni di array
+- Ritocchi interfaccia: sistemato vettore di inserimento previsione e concessa la possibilita' di inserimento del vettore direttamente da interfaccia
+- Separazione del file function in un file per ogni metodo implementato,
+
+venerdi 31 maggio
+- continuazione esecuzione dei test sulla rete neurale a 6 dimensioni;
+- Ritocchi all'interfaccia (tolto il bottone di change)
+- redazione di una breve sulle osservazioni riscontrare durante i test.
