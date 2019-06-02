@@ -5,46 +5,47 @@
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/GUI-rete-neurale.png}
-	\caption{Interfaccia utente della Rete neurale di test.}
+	\caption{Interfaccia utente della Rete neurale di prova.}
 \end{figure}
 \noindent
 Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento ricevuti.
 \noindent
-Il problema trattato dalla rete \`e quello discusso nel precedente documento \textit{Analisi dei dati di probabilit\`a}
+Il problema che la rete mira ad analizzare \`e quello discusso nel precedente capitolo \textit{Analisi dei dati di probabilit\`a}
 \\\\
 Per aggevolare l'apprendimento della rete, ed ottenere delle previsioni stabili mi sono occupata di implementare due metodi di generazione randomica di dati in modo da far apprendere massiciamente la stessa.
-Il dato prodotto consiste in un vettore di 6 elementi, composto da 0, 1 e -1 con il seguente criterio:
+Il dato prodotto consiste in un vettore di 6 elementi, composto da  -1, 0 e 1 con il seguente criterio:
 \begin{itemize}
 \item \textbf{-1}: la domanda x non \`e stata posta al candidato;
 \item \textbf{0}: la domanda x \`e stata posta al candidato che ha risposto in maniera errata;
 \item \textbf{1}: la domanda x \`e stata posta al candidato che ha saputo rispondere correttamente.
 \end{itemize}
 \noindent
-Il primo metodo che ho sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un grafo della conoscenza costruito ad hoc); il secondo metodo ripropone quanto perseguito dal primo metodo con il valore aggiunto di generazione di un profilo randomico di un candidato, che tiene conto della risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
+Il primo metodo che ho sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un grafo della conoscenza costruito ad hoc); il secondo metodo ripropone quanto perseguito dal primo metodo con il valore aggiunto di generazione di un profilo randomico di un candidato, che tiene conto della  probabilit\`a di risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
 
 \subsection{Test effettuati}
 \label{Test effettuati}
 
 Alcune decisioni che ho preso durante la configurazione della rete riguardano i seguenti settori:
 \begin{enumerate}
-\item Una rete neurale non deve, per fornire dei dati attendibili, possedere un numero di neuroni troppo elevato rispetto al trainset effettuato, altrimenti la previsione  ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati;
-\item I layers ho deciso di allenarli mediante tecnica di regressione, che permette l'inserimento in input di una funzione obiettivo e di ottenere un risultato in output anche in virgola mobile e composto di tanti elementi quanti sono i neuroni di regressione dichiarati. Per la mia rete di prova \`e necessario dichiarare  6 neuroni in regressione perch\`e l'output, appunto, che ci si aspetta da dal sistema \`e di 6 elementi.
-\item Per costruire un dataset di dati consistente che permettesse alla rete di imparare qualcosa ho costruito un grafo con lo scopo di mettere relazione degli argomenti che coinvolgono uno o pi\`u domande.
+\item Una rete neurale non deve, per fornire dei dati attendibili, possedere un numero di neuroni troppo elevato rispetto al trainset effettuato; altrimenti la previsione  ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati.
+\item I layers, ho deciso, di allenarli mediante tecnica di regressione, che permette l'inserimento in input di una funzione obiettivo e l'ottenimento di un risultato, in output, anche in virgola mobile e composto di tanti elementi quanti sono i neuroni di regressione dichiarati. Per la mia rete di prova \`e necessario dichiarare  6 neuroni in regressione perch\`e l'output, appunto, che ci si aspetta dal sistema \`e di 6 elementi.
+\item Per costruire un dataset di dati consistente che permettesse alla rete di imparare qualcosa ho costruito un grafo della conoscenza con lo scopo di mettere in relazione degli argomenti che coinvolgono uno o pi\`u domande.
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{./image/grafo_trainset.png}
-	\caption{Grafo presentante le relazioni esistenti tra il set di domande di prova.}
+	\caption{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}
 \end{figure}
 \noindent
 Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder, ovvero la rete impara il vettore riducendone lo spazio occupato.
 \item Per creare il dataset ho ritenuto sufficiente generare \textit{2000} vettori di risposta in modo da compiere in maniera esaustivo l'apprendimento della rete.
 \end{enumerate}
 \noindent
-Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}. 
-Di seguito riporto quanto \`e stato rilevato in  fase di test.
+Il vettore passato in input per svolgere le previsioni \`e \textit{[0,1,0,0,0,0]}\\
+\noindent. 
+Di seguito riporto quanto \`e stato rilevato in fase di test.
 
-\subsubsection{Configurazione della rete  4 neuroni per 2 layers}
-\label{Configurazione della rete 4 neuroni per 2 layers}
+\subsubsection{Configurazione della rete:  4 neuroni per ciascuno dei 2 layers}
+\label{Configurazione della rete: 4 neuroni per 2 ciascuno dei layers}
 
 Configurazione della rete utilizzata:\\
 \begin{verbatim}layer_defs = [];
@@ -62,8 +63,8 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 \noindent
 I layer utilizzati sono due e compositi da 4 neuroni.
 
-\paragraph{Training set standard a 4 neuroni ciascuno per 2 layers}\mbox{}
-\label{Training set standard su rete a 4 neuroni}
+\paragraph{Training set standard a 4 neuroni per 2 ciascuno dei layers}\mbox{}
+\label{Training set standard a 4 neuroni per 2 ciascuno dei layers}
 \\
 \noindent
 \begin{itemize}
