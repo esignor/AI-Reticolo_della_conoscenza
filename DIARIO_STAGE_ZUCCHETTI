@@ -48,5 +48,13 @@ giovedi 30 maggio
 
 venerdi 31 maggio
 - continuazione esecuzione dei test sulla rete neurale a 6 dimensioni;
-- Ritocchi all'interfaccia (tolto il bottone di change)
+- Ritocchi all'interfaccia (tolto il bottone di change).
 - redazione di una breve sulle osservazioni riscontrare durante i test.
+
+
+3 SETTIMANA
+lunedi 3 giugno
+- documentato e ottimizzato codice del rete di test.
+- create funzione createJSON con lo scopo di estrapolare il JSON della rete con i pesi.
+- inizio sviluppo metodo per normalizzare i test del db
+- documentato e continuata documentazione "Reti neurali" in base al codice ottimizzato.
