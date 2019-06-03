@@ -15,8 +15,8 @@ Il problema che la rete mira ad analizzare \`e quello discusso nel precedente ca
 Per aggevolare l'apprendimento della rete, ed ottenere delle previsioni stabili mi sono occupata di implementare due metodi di generazione randomica di dati in modo da far apprendere massiciamente la stessa.
 Il dato prodotto consiste in un vettore di 6 elementi, composto da  -1, 0 e 1 con il seguente criterio:
 \begin{itemize}
-\item \textbf{-1}: la domanda x non \`e stata posta al candidato;
-\item \textbf{0}: la domanda x \`e stata posta al candidato che ha risposto in maniera errata;
+\item \textbf{-1}: la domanda x \`e stata posta al candidato che ha risposto in maniera errata;
+\item \textbf{0}: la domanda x non \`e stata posta al candidato;
 \item \textbf{1}: la domanda x \`e stata posta al candidato che ha saputo rispondere correttamente.
 \end{itemize}
 \noindent
@@ -323,6 +323,7 @@ Rispetto a quanto osservato nei casi precedenti, mi risulta che sia nel caso di 
 \\\\
 \noindent
 \textit{Fino ad ora la configurazione di rete che ha dato i maggiori risultati di previsione risulta essere a \textbf{2 layers con 2 neuroni ognuno}.}
+Tale conclusione ha senso in quanto il grafo della conoscenza \`e composto da 3 nodi (A, B, C) il quarto neurone rappresenta un nodo con parametri in entrata e in uscita.
 
 
 
