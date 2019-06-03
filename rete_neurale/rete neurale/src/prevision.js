@@ -41,6 +41,6 @@ function prevision() {
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
-    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," + x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," + scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete Neurale in attesa ...";
+    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," + x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," + scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete neurale in attesa ...";
     $("#layerexe").val(layer_exe);
 }
