@@ -71,7 +71,6 @@ function addFields() {
     p.appendChild(document.createTextNode("Vettore di previsione"));
     div.appendChild(p);
     for (var i = 0; i < number; i++) {
-        // Append a node with a random text
         var select = document.createElement("select"); // creo la select
         select.name = "field_value"; //attributo della select
         select.classList.add("vettore_input");
