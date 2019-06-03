@@ -19,8 +19,7 @@ function update() { // permette di fare il training del dato
 
         x.w = ArrayInput[ix]; // gli passo l'input
     }
-    trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
-
+    trainer.train(x, ArrayOutput); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
 
     if (document.getElementById("button_trainer") && document.getElementById("button_prevision")) {
         document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento
