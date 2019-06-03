@@ -23,6 +23,7 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
 
     $("#layerdef").val(t); // mostra la configurazione della rete nel primo box
     insertDati();
+
 });
 
 

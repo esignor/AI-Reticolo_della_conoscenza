@@ -19,6 +19,8 @@
     <script src="../src/controlValueFields.js"></script>
     <script src="../src/controlValueInput.js"></script>
     <script src="../src/formSubmit.js"></script>
+    <script src="../src/createJSON.js"></script>
+    <script src="../src/normalization.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
@@ -38,6 +40,9 @@
         <div class="panes">
             <div id=title>
                 <p>Output della rete</p>
+                <input  id="button_JSON" type="submit" value="create JSON" onclick="createJSON()"/>
+                <input type="file" id="fileUpload" />
+                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTest()"/>
             </div>
             <div id="pannello_rete">
                 <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
@@ -51,8 +56,7 @@
 
 
                     <form method="post" name="myForm" id="myForm" onsubmit="return false">
-                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member"
-                                value="">
+                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
                             <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
                         <div id="container"></div>
                     </form>

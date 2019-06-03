@@ -43,4 +43,5 @@ function prevision() {
 
     layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," + x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," + scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete neurale in attesa ...";
     $("#layerexe").val(layer_exe);
+
 }
