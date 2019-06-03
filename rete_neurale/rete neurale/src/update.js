@@ -18,7 +18,7 @@ function update() { // permette di fare il training del dato
     for (var ix = 0; ix < N; ix++) {
 
         x.w = ArrayInput[ix]; // gli passo l'input
-        var stats = trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
+        trainer.train(x, [ArrayOutput[ix]]); // inizia ad imparare che per quel dato punto in input vale l'output passato (tecnica dell'autoencoder)
     }
 
 
