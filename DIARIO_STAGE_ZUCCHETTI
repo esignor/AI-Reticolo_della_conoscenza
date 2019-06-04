@@ -60,8 +60,8 @@ lunedi 3 giugno
 - inizio sviluppo metodo per normalizzare i test del db
 
 martedi 4 giugno
-- continuzione e termine metodo di normalizzazione dei vettori di training del db
-- montaggio rete neurale a 89 dimensioni (utilizzo come training di apprendimento il file 'risposte_logica_liv1.csv')
+- continuzione e termine metodo di normalizzazione (function normalizationVectorTest) per la creazione dei vettori di training del db
+- montaggio rete neurale a 89 dimensioni: configurazione, addestramento e pevisione (utilizzo come training di apprendimento il file 'risposte_logica_liv1.csv')
 
 
 
