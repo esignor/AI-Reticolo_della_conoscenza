@@ -17,7 +17,7 @@ function update() { // permette di fare il training del dato
 
     for (var ix = 0; ix < N; ix++) {
 
-        x.w = ArrayInput[ix]; // gli passo l'input
+        x.w[ix] = ArrayInput[ix]; // gli passo l'input
     }
     trainer.train(x, ArrayOutput); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
 
