@@ -12,7 +12,6 @@ function insertDati() {
         var ArrayInput = generator_input(6);
 
         ArrayOutput = ArrayInput;
-        console.log(n + "vector" + ArrayInput + "/" + ArrayOutput);
         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]";
         $("#layerexe").val(layer_exe);
         update();
