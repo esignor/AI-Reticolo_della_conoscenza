@@ -13,7 +13,7 @@ function prevision() {
 
     // dati per effettuare la previsione sulla rete
     net.makeLayers(layer_defs);
-    var x = new convnetjs.Vol(1, 1, 6);
+    var x = new convnetjs.Vol(1, 1, 89);
 
 
     var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
@@ -26,12 +26,12 @@ function prevision() {
             x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
     }
     if(vettore_previsione.length == 0){  // entra quando carica random gli array dei dati
+
         x.w[0] = 0;
         x.w[1] = 1;
-        x.w[2] = 0;
-        x.w[3] = 0;
-        x.w[4] = 0;
-        x.w[5] = 0;
+        for(i = 2; i<89; ++i){
+          x.w[i] = 0;
+        }
     }
 
     //altrimenti inserimento valido
@@ -41,7 +41,7 @@ function prevision() {
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
-    layer_exe = layer_exe + "\n\Il vettore [" + x.w[0] + "," + x.w[1] + "," + x.w[2] + "," + x.w[3] + "," + x.w[4] + "," + x.w[5] + "] ha previsione calcolata di [" + scores.w[0] + "," + scores.w[1] + "," + scores.w[2] + "," + scores.w[3] + "," + scores.w[4] + "," + scores.w[5] + "]" + "\n\Rete neurale in attesa ...";
+    layer_exe = layer_exe + "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]" + "\n\Rete neurale in attesa ...";
     $("#layerexe").val(layer_exe);
 
 }
