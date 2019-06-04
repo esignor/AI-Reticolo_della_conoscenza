@@ -54,7 +54,14 @@ venerdi 31 maggio
 
 3 SETTIMANA
 lunedi 3 giugno
-- documentato e ottimizzato codice del rete di test.
-- create funzione createJSON con lo scopo di estrapolare il JSON della rete con i pesi.
+- documentato e ottimizzato codice del rete di test
+- documentato e continuata documentazione "Reti neurali" in base al codice ottimizzato
+- create funzione createJSON con lo scopo di estrapolare il JSON della rete con i pesi
 - inizio sviluppo metodo per normalizzare i test del db
-- documentato e continuata documentazione "Reti neurali" in base al codice ottimizzato.
+
+martedi 4 giugno
+- continuzione e termine metodo di normalizzazione dei vettori di training del db
+- montaggio rete neurale a 89 dimensioni (utilizzo come training di apprendimento il file 'risposte_logica_liv1.csv')
+
+
+
