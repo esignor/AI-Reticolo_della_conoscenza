@@ -8,10 +8,10 @@
     <script src="../build/npgmain.js"></script>
     <script src="../build/convnet-min.js"></script>
     <script src="../build/utils.js"></script>
-    <script src="../src/function.js"></script>
+    <script src="../src/function_db.js"></script>
     <script src="../src/generator_input.js"></script>
     <script src="../src/generator_input_probability.js"></script>
-    <script src="../src/insertDati.js"></script>
+    <script src="../src/insertDati_db.js"></script>
     <script src="../src/update.js"></script>
     <script src="../src/prevision.js"></script>
     <script src="../src/addFields.js"></script>
@@ -20,11 +20,13 @@
     <script src="../src/controlValueInput.js"></script>
     <script src="../src/formSubmit.js"></script>
     <script src="../src/createJSON.js"></script>
-    <script src="../src/normalization.js"></script>
+    <script src = "../src/normalizationVectorTest.js"></script>
+    <script src = "../src/writeDocument.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
 <body>
+
 
     <div id="wrap">
         <h1 id=primary_title>Questions test - Prevision Neural Net</h1>
@@ -42,7 +44,8 @@
                 <p>Output della rete</p>
                 <input  id="button_JSON" type="submit" value="create JSON" onclick="createJSON()"/>
                 <input type="file" id="fileUpload" />
-                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTest()"/>
+                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTest()" />
+                <input  id="button_writedocument" type="submit" value="write document" onclick="writeDocument()" />
             </div>
             <div id="pannello_rete">
                 <textarea id="layerexe" style="width:85em; height:15em;"></textarea>
