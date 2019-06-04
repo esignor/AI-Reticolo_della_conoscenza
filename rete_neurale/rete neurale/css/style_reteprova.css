@@ -41,6 +41,10 @@ body,html{
     margin-left: 60em;   
   }
 
+  #button_JSON{
+    margin-left: 6em;
+  }
+
 
   #button_newfield,  #button_prevision{
     margin-top:1em;
