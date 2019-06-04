@@ -9,25 +9,31 @@ function normalizationVectorTest(){
                 if (typeof (FileReader) != "undefined") {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        var table = $("<table />");
-                        var rows = e.target.result.split("\n"); // ogni riga e' un elemento di rows
-                       // console.log("rows " + rows);
+                        var Domande = [];
+                        var count_questions = 0;
+                        var rows = e.target.result.split("\n"); // prendo il blocco 
+                        console.log(rows);
                         for (var i = 1; i < rows.length; i++) {
-                            //var row = $("<tr />");
-                            var cells = rows[i].split(" "); // splitto il contenuto di ogni riga
-                            console.log("cells" + cells);
+                            var cells = rows[i].split(" "); // splitto ogni riga
                             for (var j = 0; j < cells.length; j++) {
-                                //var cell = $("<td />");
-                                //cell.html(cells[j]); // prendo il contenuto di oogni riga
-                                //console.log(cell.html(cells[j]));
-                                //row.append(cell);
-                                var element = cells[i].split("c"); // prendo ogni elemento della riga
-                                console.log("element" + element);
-                            }
-                            //table.append(row);
-                        }
-                       // $("#dvCSV").html('');
-                       // $("#dvCSV").append(table);
+                                 var n= 1;
+                                 var element = cells[j].split(";"); // prendo il contenuto di oogni riga
+                                 if(n == 2){ // sono al numero della domanda
+                                    var trovato = false;
+                                    for(var i = 0; i < Domande.length && !trovato; ++i){
+                                        if(Domande[i] == element)
+                                          trovato = true;
+                                    }
+                                    if(!trovato)
+                                      count_questions = count_questions + 1;
+
+                                 }
+                                  n = n+1;
+
+
+                            } // fine domanda
+                        } // fine test
+                        console.log(count_questions);
                     }
                     reader.readAsText($("#fileUpload")[0].files[0]);
                 } else {
