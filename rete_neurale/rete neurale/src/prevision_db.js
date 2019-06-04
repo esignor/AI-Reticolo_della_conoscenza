@@ -13,7 +13,7 @@ function prevision() {
 
     // dati per effettuare la previsione sulla rete
     net.makeLayers(layer_defs);
-    var x = new convnetjs.Vol(1, 1, 6);
+    var x = new convnetjs.Vol(1, 1, 89);
 
 
     var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
@@ -29,11 +29,9 @@ function prevision() {
 
         x.w[0] = 0;
         x.w[1] = 1;
-        x.w[2] = 0;
-        x.w[3] = 0;
-        x.w[4] = 0;
-        x.w[5] = 0;
-       
+        for(i = 2; i<89; ++i){
+          x.w[i] = 0;
+        }
     }
 
     //altrimenti inserimento valido
