@@ -63,5 +63,10 @@ martedi 4 giugno
 - continuzione e termine metodo di normalizzazione (function normalizationVectorTest) per la creazione dei vettori di training del db
 - montaggio rete neurale a 89 dimensioni: configurazione, addestramento e pevisione (utilizzo come training di apprendimento il file 'risposte_logica_liv1.csv')
 
-
+mercoledi 5 giugno
+ - perfezionamente stile grafico dell'interfaccia per la rete db (colori pulsanti update e write document, ampliata la dimensione dei box che mostra la configurazione e le operaioni della rete sul css)
+- lavorato sul metodo writedocument: paginetta che stila i dati di training della rete di prova
+- sviluppo  funzionalita' canvas di risposta alle domande con diversi colori in base alla previsione nella rete di prova (aggiunto anche alla rete del db)
+- implementato il metoodo normalizatioVectorTestPivoting che fornisce i vettori di training partendo da un file csv ottimale (risposte_logica_liv1_pivot.csv')
+- continuazione documentazione test con diversi vettori di previsione (es [0, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]) per la rete di prova
 
