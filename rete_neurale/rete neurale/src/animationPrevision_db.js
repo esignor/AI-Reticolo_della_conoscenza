@@ -10,7 +10,7 @@ function animationPrevision(scores, dim){
     var myCanvas = document.getElementById("myCanvas"); // acquisiamo il contesto su cui lavorare
     var context = myCanvas.getContext("2d");
     
-    var x = 0;
+    var x = 5;
     var y = 5;
 
     for(var j = 0 ; j<dim; ++j){
@@ -18,22 +18,22 @@ function animationPrevision(scores, dim){
     context.rect(x, y, 5, 5);
     var colorRed, colorGreen, colorBlue;
     
-      if(parseFloat(scores.w[j]) == -1.0){ // sicuramente rosso
+      if(parseFloat(scores.w[j]) <= -1.0){ // sicuramente rosso
         colorRed = 255;
         colorGreen = 0;
-        colorRed = 0;    
+        colorBlue = 0;    
       }
 
-      else if(parseFloat(scores.w[j]) == 1.0){ // sicuramente verde
+      else if(parseFloat(scores.w[j]) >= 1.0){ // sicuramente verde
         colorRed = 0;
         colorGreen = 255;
-        colorRed = 0;
+        colorBlue = 0;
       }
 
       else if(parseFloat(scores.w[j]) == 0.0){ // sicuramente giallo
         colorRed = 255;
         colorGreen = 255;
-        colorRed = 0;
+        colorBlue = 0;
       }
       // casi borderline
       else if(parseFloat(scores.w[j]) > 0){// combinazione rgb giallo - verde
@@ -42,7 +42,7 @@ function animationPrevision(scores, dim){
        colorBlue =  parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
       }
 
-      else{//if(parseFloat(scores.w[j]) < 0){ // combinazione rgb giallo - rosso
+      else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb giallo - rosso
         colorRed = parseInt((scores.w[j]*255 + (1-scores.w[j])*255));
         colorGreen = parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
         colorBlue = parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
@@ -54,7 +54,11 @@ function animationPrevision(scores, dim){
 
       context.fill(); // applico il colore
 
-      x = x + 10
+      x = x + 10; // per aumentare - diminuire il numero di rettangolini sulla riga
+      if(j == 30 || j == 60){ // per andare a capo
+        y = y + 10;
+        x = 5;
+      }
 
     }
 

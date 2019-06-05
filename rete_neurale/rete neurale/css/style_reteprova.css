@@ -12,9 +12,6 @@ body,html{
   vertical-align: top;
 }
 
-#pannello_inserimentodati{
-  display: inline-block;
-}
 
 #layerdef{
   width:85em;
@@ -65,9 +62,7 @@ body,html{
   }
 
   #myCanvas{
-    margin-left: 38em;
-    width: 500;
-    height: 100;
+    margin-left: 45em;
   }
 
 

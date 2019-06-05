@@ -10,31 +10,31 @@ function animationPrevision(scores, dim){
     var myCanvas = document.getElementById("myCanvas"); // acquisiamo il contesto su cui lavorare
     var context = myCanvas.getContext("2d");
     
-    var x = 0;
-    var y = 50;
+    var x = 0; // larghezza
+    var y = 30; // altezza
 
     for(var j = 0 ; j<dim; ++j){
     context.beginPath();//nuovo elemento disegnato
-    context.rect(x, y, 40, 25);
+    context.rect(x, y, 25, 30);
     var colorRed, colorGreen, colorBlue;
     
 
-      if(parseFloat(scores.w[j]) == -1.0){ // sicuramente rosso
+      if(parseFloat(scores.w[j]) <= -1.0){ // sicuramente rosso
         colorRed = 255;
         colorGreen = 0;
-        colorRed = 0;    
+        colorBlue = 0;    
       }
 
-      else if(parseFloat(scores.w[j]) == 1.0){ // sicuramente verde
+      else if(parseFloat(scores.w[j]) >= 1.0){ // sicuramente verde
         colorRed = 0;
         colorGreen = 255;
-        colorRed = 0;
+        colorBlue = 0;
       }
 
       else if(parseFloat(scores.w[j]) == 0.0){ // sicuramente giallo
         colorRed = 255;
         colorGreen = 255;
-        colorRed = 0;
+        colorBlue = 0;
       }
       // casi borderline
       else if(parseFloat(scores.w[j]) > 0){// combinazione rgb giallo - verde
@@ -55,7 +55,7 @@ function animationPrevision(scores, dim){
 
       context.fill(); // applico il colore
 
-      x = x + 50;
+      x = x + 40;
 
     }
 
