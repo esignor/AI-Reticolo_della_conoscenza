@@ -16,6 +16,16 @@ body,html{
   display: inline-block;
 }
 
+#layerdef{
+  width:85em;
+  height:15em;
+}
+
+#layerexe{
+  width:85em; 
+  height:25em;
+}
+
 
 #configurazione_rete, #pannello_rete{
   display:block;

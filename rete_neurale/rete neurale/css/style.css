@@ -16,6 +16,16 @@ body,html{
   display: inline-block;
 }
 
+#layerdef{
+  width:85em;
+  height:15em;
+}
+
+#layerexe{
+  width:85em; 
+  height:25em;
+}
+
 
 #configurazione_rete, #pannello_rete{
   display:block;
@@ -34,8 +44,6 @@ body,html{
 
   #button_writedocument{
     margin-left: 4em;
-    color: #ff1493;
-    border:0.8em solid #ff1493;
   }
   
   #button_JSON{
@@ -53,8 +61,6 @@ body,html{
 
   #button_upload{
     margin-left: -2.5em;
-    color:#cc33ff;
-    border:0.8em solid #cc33ff;
   }
 
   #fileUpload{
