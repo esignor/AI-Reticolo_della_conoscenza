@@ -44,4 +44,9 @@ function prevision() {
     layer_exe = layer_exe + "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]" + "\n\Rete neurale in attesa ...";
     $("#layerexe").val(layer_exe);
 
+    document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
+    
+
+    animationPrevision(scores, 89);
+
 }

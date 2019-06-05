@@ -60,7 +60,7 @@ body,html{
   }
 
   #button_upload{
-    margin-left: -2.5em;
+    margin-left: -1.5em;
   }
 
   #fileUpload{
@@ -73,8 +73,14 @@ body,html{
     margin-top:1em;
   }
 
-  #box_vettore, #button_trainer, #button_prevision, #title_vettore, #button_JSON, #button_writedocument{
+  #box_vettore, #button_trainer, #button_prevision, #title_vettore, #button_JSON, #button_writedocument, #myCanvas{
     display:none;
+  }
+
+  #myCanvas{
+    margin-left: 38em;
+    width: 500;
+    height: 100;
   }
 
 

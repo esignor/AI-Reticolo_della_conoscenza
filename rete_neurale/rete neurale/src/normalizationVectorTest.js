@@ -1,4 +1,4 @@
-/** @function normalizationVectorTest
+/** @function normalizationVectorTestPivot
  * il metodo ha lo scopo di normalizzare un vettore in ordine. Un vettore e' un test composto da tutte le n domande con -1(risposta non data), 0 (domanda non fatta), 
  * 1 (risposta data)
  * Idea: prende in pasto un file e legge il suo contenuto tramutando i dati in trainset
@@ -6,8 +6,61 @@
 
  // i vettori servono per addestrare la rete
 
+ /**
+  * 2a versione file csv composto da n_test e valore di risposta per ogni domanda
+  */
 
-function normalizationVectorTest() {
+  var Test = []; // memorizzo gli identificativi dei test da passare alla funzionalita' di document.write
+
+ function normalizationVectorTestPivot(){
+    layer_exe = "Caricamento file CSV"
+    $("#layerexe").val(layer_exe);
+
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
+    if (regex.test($("#fileUpload").val().toLowerCase())) {
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var n_vett = 0; 
+                var test = 0;
+                var rows = e.target.result.split("\n"); // prendo ogni riga del blocco
+                for (var i = 0; i < rows.length - 1; i++) {
+                    var vectorTest = [];
+                    var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
+                    for(var j = 0; j < cells.length; ++j){
+                      if(j > 0)
+                        vectorTest[j-1] = cells[j];
+                      else{
+                        Test[test]= cells[j];
+                        test = test + 1
+                      }
+                    }
+
+                    console.log("vectorTest" + vectorTest);
+                    vectorCSV[n_vett] = vectorTest;
+                    n_vett = n_vett + 1;
+                }
+
+                insertDati_db();
+
+            }
+            reader.readAsText($("#fileUpload")[0].files[0]);
+        } else {
+            alert("Questo browser non supporta HTML5");
+        }
+    } else {
+        alert("Inserire un file con estensione CSV, per favore");
+    }
+
+}
+
+
+ /** 1a versione
+  * come precondizione il file e' composto in ordine da id_test, id_domanda, valore della risposta
+  */
+
+
+function normalizationVectorTest_standard(){
     layer_exe = "Caricamento file CSV"
     $("#layerexe").val(layer_exe);
 
@@ -48,6 +101,8 @@ function normalizationVectorTest() {
                     }
                 }
                 Domande_sort = Domande_sort.sort();
+
+                console.log("Domande sort: " + Domande_sort);
 
                 // ogni vettore ha dimensione n_domande
                 var vectorTest = [];

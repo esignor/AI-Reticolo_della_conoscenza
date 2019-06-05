@@ -22,6 +22,7 @@
     <script src="../src/createJSON.js"></script>
     <script src = "../src/normalizationVectorTest.js"></script>
     <script src = "../src/writeDocument.js"></script>
+    <script src = "../src/animationPrevision_db.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
@@ -44,7 +45,7 @@
                 <p>Output della rete</p>
                 <input  id="button_JSON" type="submit" value="create JSON" onclick="createJSON()"/>
                 <input type="file" id="fileUpload" />
-                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTest()" />
+                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot()" />
                 <input  id="button_writedocument" type="submit" value="write document" onclick="writeDocument()" />
             </div>
             <div id="pannello_rete">
@@ -52,6 +53,7 @@
             </div>
 
             <div id="pannello_inserimentodati">
+                    <canvas id = "myCanvas">Browser non supporta canvas</canvas>
                 <div id="controls">
                     <div id=title>
                         <p>Inserimento dati di addestramento</p>
