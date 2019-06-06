@@ -9,17 +9,17 @@ function update() { // permette di fare il training del dato
 
     eval($("#layerdef").val()); // mi serve per attivare train
 
-    N = ArrayInput.length;
 
     //apprendimento della rete
     var x = new convnetjs.Vol(1, 1, 6); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
 
-
-    for (var ix = 0; ix < N; ix++) {
-
+    for (var ix = 0; ix < ArrayInput.length; ix++) {
         x.w[ix] = ArrayInput[ix]; // gli passo l'input
     }
-    trainer.train(x, ArrayOutput); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
+    var star = trainer.train(x, ArrayOutput); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
+    console.log("star" + star.loss);
+
+
 
     if (document.getElementById("button_trainer") && document.getElementById("button_prevision")) {
         document.getElementById("button_trainer").disabled = true;//disabilito il pulsante di apprendimento

@@ -118,6 +118,7 @@
               x.w = data[ix]; // x.w contiene il punto attuale
               var stats = trainer.train(x, labels[ix]); // passo all'addestramento gli input di vol e la classe, il trainer avviene dal calcolo della labels
               avloss += stats.loss;
+              console.log("train" + stats);
             }
           }
           avloss /= N*iters;

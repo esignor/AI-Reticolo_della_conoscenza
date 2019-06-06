@@ -11,7 +11,7 @@ function insertDati_db() {
     for (var n = 0; n < vectorCSV.length; ++n) { // genero n vettori per il training
 
         // generatore standard
-        var ArrayInput = vectorCSV[n];
+        ArrayInput = vectorCSV[n];
         ArrayOutput = ArrayInput;
         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute " + "[" + ArrayInput + "]"
         $("#layerexe").val(layer_exe);

@@ -8,11 +8,6 @@ function prevision() {
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
 
-
-    var net = new convnetjs.Net();
-
-    // dati per effettuare la previsione sulla rete
-    net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 89);
 
 

@@ -57,7 +57,7 @@ body,html{
     margin-top:1em;
   }
 
-  #box_vettore, #button_trainer, #button_prevision, #title_vettore, #myCanvas{
+  #box_vettore, #button_trainer, #title_vettore, #myCanvas{
     display:none;
   }
 

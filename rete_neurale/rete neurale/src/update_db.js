@@ -9,13 +9,11 @@ function update() { // permette di fare il training del dato
 
     eval($("#layerdef").val()); // mi serve per attivare train
 
-    N = ArrayInput.length;
-
     //apprendimento della rete
     var x = new convnetjs.Vol(1, 1, 89); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
 
 
-    for (var ix = 0; ix < N; ix++) {
+    for (var ix = 0; ix < ArrayInput.length; ix++) {
 
         x.w[ix] = ArrayInput[ix]; // gli passo l'input
     }

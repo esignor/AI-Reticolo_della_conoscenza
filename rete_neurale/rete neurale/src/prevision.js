@@ -8,13 +8,7 @@ function prevision() {
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
 
-
-    var net = new convnetjs.Net();
-
-    // dati per effettuare la previsione sulla rete
-    net.makeLayers(layer_defs);
     var x = new convnetjs.Vol(1, 1, 6);
-
 
     var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
     for (var i = 0; i < vettore_previsione.length; i++) {
@@ -28,9 +22,9 @@ function prevision() {
     if(vettore_previsione.length == 0){  // entra quando carica random gli array dei dati
 
         x.w[0] = 0;
-        x.w[1] = 1;
+        x.w[1] = 0;
         x.w[2] = 0;
-        x.w[3] = 0;
+        x.w[3] = 1;
         x.w[4] = 0;
         x.w[5] = 0;
        

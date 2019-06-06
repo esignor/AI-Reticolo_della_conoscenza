@@ -1,7 +1,6 @@
 var ArrayInput = [];  //array di input da usare per l'allenamento dei dati
 var ArrayOutput = []; //array do output indispensabile per l'autoencoder
 var vectorCSV = []; // array che racchiude  tutti i vettori di addestramento generati da un file csv
-var N = 0; //contratore dimesnione array
 
 // codice della rete neurale
 var layer_defs, layer_exe, net, trainer;
