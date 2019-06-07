@@ -8,17 +8,16 @@ function insertDati_db() {
     $("#layerexe").val(layer_exe);
 
    
-    for (var n = 0; n < vectorCSV.length; ++n) { // genero n vettori per il training
+    for (var n = 0; n < vectorCSV.length; ++n) { // faccio la stampare dei vettori contenuti in vectorCSV
 
-        // generatore standard
-        ArrayInput = vectorCSV[n];
-        ArrayOutput = ArrayInput;
-        layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute " + "[" + ArrayInput + "]"
+        layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute " + "[" + vectorCSV[n]; + "]"
         $("#layerexe").val(layer_exe);
-        update();
+    
     }
-   
-    document.getElementById("button_writedocument").style.display = "inline"; // addestramento terminato si puo' creare il JSON
-    document.getElementById("button_JSON").style.display = "inline"; // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
-    prevision();
+    
+    update(); // chiamata all'addestramento
+
+    document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
+    document.getElementById("button_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON
+
 }

@@ -19,30 +19,15 @@ function prevision() {
                 return;
             x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
     }
-    if(vettore_previsione.length == 0){  // entra quando carica random gli array dei dati
 
-        x.w[0] = 0;
-        x.w[1] = 0;
-        x.w[2] = 0;
-        x.w[3] = 1;
-        x.w[4] = 0;
-        x.w[5] = 0;
-       
-    }
-
-    //altrimenti inserimento valido
-    layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
-    $("#layerexe").val(layer_exe);
 
     //previsione della rete
-    var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
+    net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
     layer_exe = layer_exe + "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]" + "\n\Rete neurale in attesa ...";
     $("#layerexe").val(layer_exe);
 
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
-    
-
-    animationPrevision(scores, 6);
+    animationPrevision(scores, 6); // creo il canvas
 
 }

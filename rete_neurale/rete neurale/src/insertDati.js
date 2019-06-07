@@ -2,20 +2,26 @@
  * inserimento dei dati per  compiere l'addestramento della rete
  */
 
-function insertDati() {
 
+function insertDati() {
+    // addestramento tutto in un set
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+   var AI = [], AO = [];
+   for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-         ArrayInput = generator_input(6);
+         AI= generator_input(6);
  
-         ArrayOutput = ArrayInput;
-         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]";
+         AO = AI;
+         ArrayInput[n] = AI;
+         ArrayOutput[n] = AO;
+         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + AI + "]";
          $("#layerexe").val(layer_exe);
-         update();
      }
+
+     update();
+ }
 
 
     /*for(var n = 0; n<2000; ++n){ // genero n vettori per il training
@@ -279,7 +285,3 @@ function insertDati() {
     $("#layerexe").val(layer_exe);
     update();*/
 
-
-
-    prevision();
-}

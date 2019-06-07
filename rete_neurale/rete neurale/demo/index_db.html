@@ -20,9 +20,9 @@
     <script src="../src/controlValueInput.js"></script>
     <script src="../src/formSubmit.js"></script>
     <script src="../src/createJSON.js"></script>
-    <script src = "../src/normalizationVectorTest.js"></script>
-    <script src = "../src/writeDocument.js"></script>
-    <script src = "../src/animationPrevision_db.js"></script>
+    <script src="../src/normalizationVectorTest.js"></script>
+    <script src="../src/writeDocument.js"></script>
+    <script src="../src/animationPrevision_db.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
@@ -31,40 +31,41 @@
 
     <div id="wrap">
         <h1 id=primary_title>Questions test - Prevision Neural Net</h1>
-        <div id=title>
+        <div id="title">
             <p>Configurazione Rete neurale</p>
         </div>
-        <div id=configurazione_rete>
+        <div id="configurazione_rete">
             <textarea id="layerdef">
     </textarea>
         </div>
 
 
         <div class="panes">
-            <div id=title>
+            <div id="title">
                 <p>Output della rete</p>
-                <input  id="button_JSON" type="submit" value="create JSON" onclick="createJSON()"/>
+                <input id="button_JSON" type="submit" value="create JSON" onclick="createJSON()" />
                 <input type="file" id="fileUpload" />
-                <input  id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot()" />
-                <input  id="button_writedocument" type="submit" value="write document" onclick="writeDocument()" />
+                <input id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot()" />
+                <input id="button_writedocument" type="submit" value="write document" onclick="writeDocument()" />
             </div>
             <div id="pannello_rete">
                 <textarea id="layerexe"></textarea>
             </div>
-
             <div id="pannello_inserimentodati">
-                    <canvas id = "myCanvas">Browser non supporta canvas</canvas>
+                <canvas id="myCanvas" width="1150px" height="100px">Browser non supporta canvas</canvas>
                 <div id="controls">
-                    <div id=title>
-                        <p>Inserimento dati di addestramento</p>
+                    <div>
+                        <p id="title_previsione">Inserimento dati di previsione</p>
                     </div>
 
 
                     <form method="post" name="myForm" id="myForm" onsubmit="return false">
-                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
-                            <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
+                        <div id="setter_numberfields">
+                            <a href="#" id="link_numberfields" onclick="addFields(89)">Insert fields</a><br></br></div>
                         <div id="container"></div>
                     </form>
+
+
 
 
                 </div>

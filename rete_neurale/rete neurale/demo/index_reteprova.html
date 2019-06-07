@@ -51,15 +51,14 @@
                     <canvas id = "myCanvas">Browser non supporta canvas</canvas>
                 <div id="controls">
                     <div id=title>
-                        <p>Inserimento dati di addestramento</p>
+                        <p>Inserimento dati di previsione</p>
                     </div>
 
 
                     <form method="post" name="myForm" id="myForm" onsubmit="return false">
-                        <div id="setter_numberfields">Number of fields (max 9999):<input type="text" id="member" name="member" value="">
-                            <a href="#" id="link_numberfields" onclick="addFields()">Insert fields</a><br></br></div>
+                        <div id="setter_numberfields"><!--Number of fields (max 9999):<input type="text" id="member" name="member" value=""> -->
+                            <a href="#" id="link_numberfields" onclick="addFields(6)">Insert fields</a><br></br></div>
                         <div id="container"></div>
-                        <input  id="button_prevision" type="submit" value="prevision" onclick="prevision()"/>
                     </form>
 
              

@@ -1,5 +1,3 @@
-var ArrayInput = [];  //array di input da usare per l'allenamento dei dati
-var ArrayOutput = []; //array do output indispensabile per l'autoencoder
 var vectorCSV = []; // array che racchiude  tutti i vettori di addestramento generati da un file csv
 
 // codice della rete neurale
@@ -8,8 +6,8 @@ var layer_defs, layer_exe, net, trainer;
 var t = "\n\
 layer_defs = [];\n\
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});\n\
-layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
-layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:8, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});\n\
 layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
 layer_defs.push({type:'regression', num_neurons:89});\n\
 \n\

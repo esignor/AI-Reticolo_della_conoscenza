@@ -14,24 +14,8 @@ function prevision() {
     var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
     for (var i = 0; i < vettore_previsione.length; i++) {
         var number = vettore_previsione[i].value;
-
-
-            if (!controlValueInput(number)) //controllo che il valore inserito in input non sia vuoto
-                return;
-            x.w[i] = number; // salvo il contenuto anche nell'array necessario all'autoencoder
+        x.w[i] = number; // salvo il contenuto anche nell'array necessario al metodo forward
     }
-    if(vettore_previsione.length == 0){  // entra quando carica random gli array dei dati
-
-        x.w[0] = 0;
-        x.w[1] = 1;
-        for(i = 2; i<89; ++i){
-          x.w[i] = 0;
-        }
-    }
-
-    //altrimenti inserimento valido
-    layer_exe = layer_exe + "\n\Richiesta di previsione accettata";
-    $("#layerexe").val(layer_exe);
 
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
@@ -40,8 +24,6 @@ function prevision() {
     $("#layerexe").val(layer_exe);
 
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
-    
-
-    animationPrevision(scores, 89);
+    animationPrevision(scores, 89); // chiamata al metodo che crea il canvas
 
 }

@@ -15,7 +15,9 @@
  function normalizationVectorTestPivot(){
     layer_exe = "Caricamento file CSV"
     $("#layerexe").val(layer_exe);
-
+    document.getElementById("myCanvas").style.display = "none";
+    document.getElementById("button_JSON").style.display = "none";
+    document.getElementById("button_writedocument").style.display = "none";
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
         if (typeof (FileReader) != "undefined") {

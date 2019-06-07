@@ -30,7 +30,7 @@ body,html{
   margin-left: 18em;
 }
 
-#button_newfield, #button_trainer,  #button_prevision, #button_JSON, #button_upload{
+#button_newfield, /*#button_trainer, */ #button_prevision, #button_JSON, #button_upload{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -40,24 +40,24 @@ body,html{
   }
 
  #setter_numberfields{
-    margin-left: 38em;
+    margin-left: 48em;
     margin-top: 1.5em;
   }
 
-  #button_trainer{
+  /*#button_trainer{
     margin-left: 60em;   
-  }
+  }*/
 
   #button_JSON{
     margin-left: 6em;
   }
 
 
-  #button_newfield,  #button_prevision{
+  /*#button_newfield, #button_prevision{
     margin-top:1em;
-  }
+  }*/
 
-  #box_vettore, #button_trainer, #title_vettore, #myCanvas{
+  /*#box_vettore, #button_trainer, #title_vettore,*/ #myCanvas{
     display:none;
   }
 
@@ -66,7 +66,7 @@ body,html{
   }
 
 
-  #button_trainer, #box_vettore{
+ /* #button_trainer, #box_vettore{
     margin-top:2em;
   }
 
@@ -77,12 +77,14 @@ body,html{
   #button_trainer{
     color:#007ba7;
     border:0.8em solid #007ba7;
-  }
+  }*/
 
 
   #button_prevision{
     color:#ff7f50;
-    border:0.8em solid #ff7f50;
+    border:0.8em solid #ff7f50; 
+    margin-left: 25em;
+    margin-top: -3em;
   }
 
   #title, #title_vettore, #primary_title{
@@ -100,23 +102,20 @@ body,html{
     color:#ff7f50;
   }
 
-  #title{
+  #title, #box_vettore{
     margin-left:13em;
   }
   
 
-  #container{
-    padding-top: 2em;
-  }
-
-  .risposta_input, .vettore_input{
+ /* .risposta_input, .vettore_input{
     margin-left: 0.5em;
     margin-top: 3em;
   }
+  */
 
-  .risposta_input{
+  /*.risposta_input{
     margin-right: 12.5em;
-  }
+  }*/
 
 
   #primary_title{

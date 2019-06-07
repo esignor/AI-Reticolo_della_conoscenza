@@ -11,11 +11,11 @@ function animationPrevision(scores, dim){
     var context = myCanvas.getContext("2d");
     
     var x = 5;
-    var y = 5;
+    var y = 15;
 
     for(var j = 0 ; j<dim; ++j){
     context.beginPath();//nuovo elemento disegnato
-    context.rect(x, y, 5, 5);
+    context.rect(x, y, 20, 20);
     var colorRed, colorGreen, colorBlue;
     
       if(parseFloat(scores.w[j]) <= -1.0){ // sicuramente rosso
@@ -53,10 +53,11 @@ function animationPrevision(scores, dim){
 
 
       context.fill(); // applico il colore
-
-      x = x + 10; // per aumentare - diminuire il numero di rettangolini sulla riga
-      if(j == 30 || j == 60){ // per andare a capo
-        y = y + 10;
+      
+      
+      x = x + 35; // per aumentare - diminuire il numero di rettangolini sulla riga
+      if(j == 33 || j == 64){ // per andare a capo
+        y = y + 25;
         x = 5;
       }
 
