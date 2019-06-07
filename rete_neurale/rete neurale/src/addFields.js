@@ -35,7 +35,7 @@ function addFields(number) {
 
         //carattere vuoto di default
         var option = document.createElement("option");
-        option.value = "0";
+        option.value = " ";
          
         div.appendChild(select); //al div ci appendo la select
         select.appendChild(option); //al select ci appendo option
@@ -43,7 +43,7 @@ function addFields(number) {
 
         for (n = -1; n < 2; n=n+2) {
             var option = document.createElement("option");
-            option.value = 0;
+            option.value = n;
 
             div.appendChild(select); //al div ci appendo la select
             select.appendChild(option); //al select ci appendo option
