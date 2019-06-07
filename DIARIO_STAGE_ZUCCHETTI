@@ -73,4 +73,10 @@ mercoledi 5 giugno
 giovedi 6 maggio
  - continuazione test su rete neurale di prova e correzione bug
 
-
+venerdi 7 maggio
+ - trovato bug nel metodo update (passavo all'apprendimento un vettore alla volta, quando invece e' indispensabile avere un batch), ridefinita l'interfaccia della rete di prba (ottimizzata e tolti componenti aggiuntivi come bottone di train, box di input)
+- montata e configurata rete neurale del db
+- stesa sezione documentazione test rete finale di prova
+- effettuati test con diverse combinazioni di vettori di previsione e configurazione sulla rete di prova
+- ritoccato metodo che miscela dei colori (vedere se con l'avanzamento del lavoro la differenziazione e' sufficiente)
+- inizio primi test sulla rete del db
