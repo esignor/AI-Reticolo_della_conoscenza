@@ -219,7 +219,37 @@ Dall'immagine canvas e dai dati della previsione si nota come il candidato non h
 Tale conclusione ha perfettamente senso in quanto il grafo della conoscenza che ho usato come base per costruire i vettori di apprendimento \`e composto da 3 nodi (A, B, C) indicanti 3 neuroni; il quarto pu\`o venire valutato come un nodo della rete utile per parametri in entrata e in uscita.
 \\\\
 Per estendere maggiormente la mia conoscenza della rete, ho provveduto ad aumentare progressivamente il numero di neuroni a layers e osservarne le interazioni. Svolgendo ci\`o mi sono accorta che il risultato ottenuto dalla previsione era il pi\`u possibile vicino al vettore previsione; conseguenza diretta di un numero eccessivo di neuroni dati alla rete per l'apprendimento rispetto al training set svolto, generatrice di una situazione di overfitting e non attendibilit\`a dei dati raccolti.
+La configurazione a 1 e 2 neuroni invece presenta una buona capacit\`a di previsione in quasi tutti i casi, per\`o tende ad andare in overfitting, come riporto di seguito:
+\begin{verbatim}
+Il vettore [0,0,0,0,0,1] ha previsione calcolata di [0.5613347853884025,0.8310670629630683,-1.03049430206139,0.5492731069379962,0.5679700877862532,-0.8637707232817535]
+\end{verbatim}
+Il numero di neuroni non \`e sufficiente per memorizzare che la domanda 6 deve essere positiva, e comporta a cascata la correttezza anche delle domande 3, 4 e 1. La situazione si presenta simile se il layer con 1 neurone \`e posto al di sotto.
 
 
-\subsection{Risultati delle previsioni}
+\subsection{Risultati delle previsioni sulla rete del database}
 \label{Risultati delle previsioni}
+
+Durante la settimana dal 03/06 al 07/06 ho provveduto a montare e configurare la rete neurale che ha come dataset i colloqui ai candidati.
+
+La configurazione che ho utilizzato, basandomi anche sul quanto appreso dalla rete neurale di prova e dal numero di vettori di test utilizzati (1245 vettori x 89) ho aumentato le dimensioni della rete.
+\begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
+layer_defs.push({type:'fc', num_neurons:8, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:89});
+
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+Ho aggiunto un layer e messo come potenze di 2 il numero di neuroni all'interno di ciascun layers. Devo verificare la bont\`a di questa mia scelta o se invece mi porta ad una situazione di overfitting.
+
+
+Analizzando il training set dei vettori ho riscontrato tali correlazioni:
+\begin{itemize}
+\item Solo una piccola parte delle domande presenti in un database vengono svolte durante un colloquio con un candidato, in media una decina su 89 possibili;
+\item Dalla rete sembrano correlate in positivo le domande 
+\end{itemize}
