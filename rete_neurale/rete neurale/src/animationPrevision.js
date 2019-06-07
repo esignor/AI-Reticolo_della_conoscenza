@@ -44,12 +44,11 @@ function animationPrevision(scores, dim){
       }
 
       else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb giallo - rosso
-        colorRed = parseInt((scores.w[j]*255 + (1-scores.w[j])*255));
-        colorGreen = parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
-        colorBlue = parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
+        colorRed = parseInt((-scores.w[j]*255 + (1+scores.w[j])*255));
+        colorGreen = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
+        colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*0));
 
       }
-      
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
 
 

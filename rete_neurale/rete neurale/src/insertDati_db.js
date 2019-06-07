@@ -6,7 +6,6 @@ function insertDati_db() {
 
     layer_exe = layer_exe + "\n\Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-
    
     for (var n = 0; n < vectorCSV.length; ++n) { // faccio la stampare dei vettori contenuti in vectorCSV
 

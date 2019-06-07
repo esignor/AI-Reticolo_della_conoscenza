@@ -8,7 +8,7 @@ function insertDati() {
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
    var AI = [], AO = [];
-   /*for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+   for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
          AI= generator_input(6);
@@ -21,9 +21,9 @@ function insertDati() {
      }
 
      update();
- }*/
+ }
 
-   for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+  /* for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
          AI= generator_input_probability(6);

@@ -42,21 +42,22 @@ function animationPrevision(scores, dim){
        colorBlue =  parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
       }
 
+
       else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb giallo - rosso
-        colorRed = parseInt((scores.w[j]*255 + (1-scores.w[j])*255));
-        colorGreen = parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
-        colorBlue = parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
+        colorRed = parseInt((-scores.w[j]*255 + (1+scores.w[j])*255));
+        colorGreen = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
+        colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*0));
 
       }
       
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
 
-
+      console.log("(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")");
       context.fill(); // applico il colore
       
       
       x = x + 35; // per aumentare - diminuire il numero di rettangolini sulla riga
-      if(j == 33 || j == 64){ // per andare a capo
+      if(j == 33 || j == 67){ // per andare a capo
         y = y + 25;
         x = 5;
       }
