@@ -75,8 +75,9 @@ body,html{
 
 
  #box_vettore{
-    margin-top:2em;
-    width: 50em;
+    margin-top:3em;
+    width: 60em;
+    margin-left: 18em; 
   }
 
 
@@ -84,6 +85,8 @@ body,html{
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50;
+    margin-left: 73em;
+    margin-top: -5em;
   }
 
   #title, #title_previsione, #title_vettore, #primary_title{
@@ -105,7 +108,7 @@ body,html{
     color:#ff7f50;
   }
 
-  #title, #title_previsione, #box_vettore{
+  #title, #title_previsione{
     margin-left:13em;
   }
 
