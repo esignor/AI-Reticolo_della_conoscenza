@@ -31,22 +31,22 @@ function animationPrevision(scores, dim){
         colorBlue = 0;
       }
 
-      else if(parseFloat(scores.w[j]) == 0.0){ // sicuramente giallo
+      else if(parseFloat(scores.w[j]) == 0.0){ // sicuramente bianco
         colorRed = 255;
         colorGreen = 255;
-        colorBlue = 0;
+        colorBlue = 255;
       }
       // casi borderline
-      else if(parseFloat(scores.w[j]) > 0){// combinazione rgb giallo - verde
+      else if(parseFloat(scores.w[j]) > 0){// combinazione rgb verde - bianco
        colorRed = parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
-       colorGreen = parseInt((scores.w[j]*255 + (1-scores.w[j])*255));
-       colorBlue =  parseInt((scores.w[j]*0 + (1-scores.w[j])*0));
+       colorGreen = parseInt(((scores.w[j]*255)*8 + (1-scores.w[j])*255));
+       colorBlue =  parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
       }
 
-      else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb giallo - rosso
-        colorRed = parseInt((-scores.w[j]*255 + (1+scores.w[j])*255));
+      else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb rosso - bianco
+        colorRed = parseInt(((-scores.w[j]*255)*8 + (1+scores.w[j])*255));
         colorGreen = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
-        colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*0));
+        colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
 
       }
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
@@ -57,5 +57,9 @@ function animationPrevision(scores, dim){
       x = x + 40;
 
     }
+
+    document.getElementById("button_dettaglio-animation").style.display = "inline"; // fa comparire il pulsante che attivita' la possibilita' di visualizzare il dettaglio delle previsioni
+
+    
 
 }
