@@ -80,3 +80,6 @@ venerdi 7 maggio
 - effettuati test con diverse combinazioni di vettori di previsione e configurazione sulla rete di prova
 - ritoccato metodo che miscela dei colori (vedere se con l'avanzamento del lavoro la differenziazione e' sufficiente)
 - inizio primi test sulla rete del db
+
+4 SETTIMANA
+- sviluppata funzionalita' (sia nella rete di prova che del db) che mostra l'impatto che ogni elemento del vettore previsione ha sulla sua rispettiva domanda e come oscillano le restanti n-1. Modificati i rispettivi css e incorportati i metodi animationPrevision_detail e prevision_singleElement.
