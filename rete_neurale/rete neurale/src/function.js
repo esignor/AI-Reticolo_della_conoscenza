@@ -1,5 +1,5 @@
 var ArrayInput = [];  //array di input da usare per l'allenamento dei dati
-var ArrayOutput = []; //array do output indispensabile per l'autoencoder
+var vectorPrevision = [];// vettore che memorizza il vettore previsione passato in input alla rete
 
 // codice della rete neurale
 var layer_defs, layer_exe, net, trainer;

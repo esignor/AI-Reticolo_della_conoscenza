@@ -7,16 +7,14 @@ function insertDati() {
     // addestramento tutto in un set
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-   var AI = [], AO = [];
+   var Aux = [];
    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-         AI= generator_input(6);
+         Aux= generator_input(6);
  
-         AO = AI;
-         ArrayInput[n] = AI;
-         ArrayOutput[n] = AO;
-         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + AI + "]";
+         ArrayInput[n] = Aux;
+         layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[" + Aux + "]";
          $("#layerexe").val(layer_exe);
      }
 
@@ -26,12 +24,10 @@ function insertDati() {
   /* for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-         AI= generator_input_probability(6);
- 
-         AO = AI;
-         ArrayInput[n] = AI;
-         ArrayOutput[n] = AO;
-         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + AI + "]";
+         Aux= generator_input_probability(6);
+
+         ArrayInput[n] = Aux;
+         layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + Aux + "]";
          $("#layerexe").val(layer_exe);
      }
 

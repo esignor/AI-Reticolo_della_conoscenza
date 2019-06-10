@@ -1,5 +1,5 @@
 /**
-scipt di style per Question Test - Prevision Neural Test
+script di style per Question Test - Prevision Neural Test (rete neurale database delle domande)
 **/
 
 body,html{
@@ -29,7 +29,7 @@ body,html{
   margin-left: 18em;
 }
 
-#button_newfield, #button_prevision, #button_JSON, #button_upload, #button_writedocument{
+#button_newfield, #button_prevision, #button_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -59,13 +59,11 @@ body,html{
     margin-left:5em;
   }
 
-
-
   #button_newfield,  #button_prevision{
     margin-top:1em;
   }
 
-  #setter_numberfields, #button_JSON, #button_writedocument, #myCanvas, #title_previsione{
+  #setter_numberfields, #button_JSON, #button_writedocument, #myCanvas, #title_previsione, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
     display:none;
   }
 
@@ -73,13 +71,15 @@ body,html{
     margin-left: 17.6em;
   }
 
+ #myCanvas-detail{
+    margin-left: 7.6em;
+  }
 
  #box_vettore{
     margin-top:3em;
     width: 60em;
     margin-left: 18em; 
   }
-
 
 
   #button_prevision{
@@ -89,14 +89,18 @@ body,html{
     margin-top: -5em;
   }
 
-  #title, #title_previsione, #title_vettore, #primary_title{
-    padding-bottom:1em;
+  #title, #title_previsione, #title_vettore, #primary_title, #button_dettaglio-animation, #title_questionsdetail{
+    margin-bottom:1em;
     color:#0f1934;
     font-style:italic;
     font-weight:bold;  
   }
 
-  #title,  #title_previsione{
+  #button_dettaglio-animation{
+    margin-left: 60em;
+  }
+
+  #title,  #title_previsione, #title_questionsdetail{
     text-transform:uppercase;
   }
 
@@ -108,7 +112,7 @@ body,html{
     color:#ff7f50;
   }
 
-  #title, #title_previsione{
+  #title, #title_previsione, #title_questionsdetail{
     margin-left:13em;
   }
 

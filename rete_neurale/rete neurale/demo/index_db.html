@@ -23,6 +23,8 @@
     <script src="../src/normalizationVectorTest.js"></script>
     <script src="../src/writeDocument.js"></script>
     <script src="../src/animationPrevision_db.js"></script>
+    <script src="../src/animationPrevision_detail.js"></script>
+    <script src="../src/prevision_singleElement.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
@@ -54,8 +56,15 @@
             <div id="pannello_inserimentodati">
                 <canvas id="myCanvas" width="1150px" height="100px">Browser non supporta canvas</canvas>
                 <div id="controls">
-                    <div>
-                        <p id="title_previsione">Inserimento dati di previsione</p>
+                    <input id="button_dettaglio-animation" type="submit" value="vai a dettaglio" onclick="animationPrevision_detail(89)" />
+                    <div id="title_questionsdetail">
+                            <p>Dettaglio delle domande</p>
+                    </div>
+                    <canvas id="myCanvas-detail" width="1500px" height="2300px">
+                        Browser non supporta canvas
+                    </canvas>
+                    <div id="title_previsione">
+                        <p>Inserimento dati di previsione</p>
                     </div>
 
 

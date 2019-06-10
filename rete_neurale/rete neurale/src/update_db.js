@@ -15,13 +15,10 @@ function update() { // permette di fare il training del dato
 
                 x.w[ix] = vectorCSV[n][ix]; // gli passo l'input
             }
-            console.log("n "+ n + " : "+ x.w + "-" +  vectorCSV[n] );
-            var scores = trainer.train(x, vectorCSV[n]); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
-            console.log("scores" + scores.loss);
+            var scores = trainer.train(x, vectorCSV[n]); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder);
         }
     }
-    //vectorCSV = []; // libero il vettore per un nuovo addestramento
     document.getElementById("setter_numberfields").style.display = "inline"; // fa comparire link al fields
-    document.getElementById("title_previsione").style.display = "inline"; // fa comparire il titolo del box di previsione
+    document.getElementById("title_previsione").style.display = "block"; // fa comparire il titolo del box di previsione
 
 }

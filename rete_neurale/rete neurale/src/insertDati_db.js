@@ -4,12 +4,12 @@
 
 function insertDati_db() {
 
-    layer_exe = layer_exe + "\n\Inizilizzazione addestramento della rete"
+    layer_exe = layer_exe + "\n\Inizilizzazione addestramento della rete";
     $("#layerexe").val(layer_exe);
    
     for (var n = 0; n < vectorCSV.length; ++n) { // faccio la stampare dei vettori contenuti in vectorCSV
 
-        layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute " + "[" + vectorCSV[n]; + "]"
+        layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[" + vectorCSV[n] + "]";
         $("#layerexe").val(layer_exe);
     
     }

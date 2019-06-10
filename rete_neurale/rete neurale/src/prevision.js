@@ -7,6 +7,9 @@ function prevision() {
     // stampa di connessione della rete
     layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
     $("#layerexe").val(layer_exe);
+    document.getElementById("myCanvas").style.display = "none"; // fa scomparire il box canvas
+    document.getElementById("myCanvas-detail").style.display = "none"; // fa scomparire il box canvas al dettaglio
+    document.getElementById("title_questionsdetail").style.display = "none";
 
     var x = new convnetjs.Vol(1, 1, 6);
 
@@ -15,6 +18,7 @@ function prevision() {
     for (var i = 0; i < vettore_previsione.length; i++) {
         var number = vettore_previsione[i].value;
         x.w[i] = number; // salvo il contenuto anche nell'array necessario al metodo forward
+        vectorPrevision[i] = number; // mi salvo la previsione richiesta
     }
 
     //previsione della rete

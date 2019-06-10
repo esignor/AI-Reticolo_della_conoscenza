@@ -16,12 +16,6 @@ function addFields(number) {
         container.removeChild(container.lastChild);
     }
 
-    // creazione box di risposta alle domande di un test
-    var div = document.createElement("div"); // creo box per la form di output
-    div.id = "box_output";
-
-    container.appendChild(div); // appendo box in input delle domande a container
-
     var div = document.createElement("div"); // creo box per la form di output
     var p = document.createElement("p");
     div.id = "box_vettore";

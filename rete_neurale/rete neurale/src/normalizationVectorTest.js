@@ -29,16 +29,18 @@
                 for (var i = 0; i < rows.length - 1; i++) {
                     var vectorTest = [];
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
+                    $("#layerexe").val(layer_exe);
                     for(var j = 0; j < cells.length; ++j){
-                      if(j > 0)
+                    console.log("[" + cells + "]");
+                     if(j > 0)
                         vectorTest[j-1] = cells[j];
                       else{
                         Test[test]= cells[j];
-                        test = test + 1
+                        test = test + 1;
                       }
                     }
 
-                    console.log("vectorTest" + vectorTest);
+                    //console.log("vectorTest" + vectorTest + "lenght" + vectorTest.length);
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                 }
