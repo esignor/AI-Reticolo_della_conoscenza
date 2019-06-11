@@ -7,14 +7,14 @@ function writeDocument() {
    document.write("<table><tr>");
    document.write("<td>" + "Test / Domande"+ "</td>");
    for(var i = 0; i < id_domande.length; ++i)
-     document.write("<td>" + id_domande[i] + "</td>");
+     document.write("<td>" + id_domande[i] + "</td>"); // stampa l'intetazione della tabella con l'id delle domande
     document.write("</tr>");
 
-    for(var i = 0; i < vectorCSV.length; ++i){
+    for(var i = 0; i < vectorCSV.length; ++i){ // in ogni riga della tabella
     document.write("<tr>");
-    document.write("<td>" + Test[i] + "</td>");
+    document.write("<td>" + vectorCSV[i][89] + "</td>"); // stampa l'id del test
      for(var j = 0; j<89; ++j){
-        document.write("<td>" + vectorCSV[i][j] + "</td>");
+        document.write("<td>" + vectorCSV[i][j] + "</td>"); // stampa le risposte al test
 
      }
      document.write("</tr>");
