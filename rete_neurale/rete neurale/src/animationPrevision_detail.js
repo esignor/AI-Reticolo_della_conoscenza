@@ -12,7 +12,7 @@ function animationPrevision_detail(dim) {
 
   var myCanvas = document.getElementById("myCanvas-detail"); // acquisiamo il contesto su cui lavorare
   var context = myCanvas.getContext("2d");
-
+  var vectorColor = [];
 
   for (var i = 0; i < vectorPrevision.length; ++i) { // scorro il vettore previsione con lo scopo che per ogni elemento (domanda) trovo la sua previsione su tutte le dim domande
     var scores = prevision_singleElement(i, vectorPrevision[i]); // gli passo l'indice e il contenuto dell'indice
@@ -65,6 +65,8 @@ function animationPrevision_detail(dim) {
 
       context.fillStyle = "rgb(" + colorRed + " , " + colorGreen + ", " + colorBlue + ")";
 
+      vectorColor[i] = "";
+
       context.fill(); // applico il colore
 
       x = x + 15;
@@ -72,5 +74,7 @@ function animationPrevision_detail(dim) {
     }
 
   }
+
+  cluster(vectorColor);
 
 }

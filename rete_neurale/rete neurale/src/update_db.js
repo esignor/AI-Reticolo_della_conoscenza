@@ -15,8 +15,9 @@ function update() { // permette di fare il training del dato
 
                 x.w[ix] = vectorCSV[n][ix]; // gli passo l'input
             }
-            var scores = trainer.train(x, vectorCSV[n]); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder);
+            trainer.train(x, vectorCSV[n]); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
         }
+
     }
     document.getElementById("setter_numberfields").style.display = "inline"; // fa comparire link al fields
     document.getElementById("title_previsione").style.display = "block"; // fa comparire il titolo del box di previsione
