@@ -4,13 +4,11 @@
  * Idea: prende in pasto un file e legge il suo contenuto tramutando i dati in trainset
  */
 
- // i vettori servono per addestrare la rete
 
  /**
   * 2a versione file csv composto da n_test e valore di risposta per ogni domanda
   */
 
-  var Test = []; // memorizzo gli identificativi dei test da passare alla funzionalita' di document.write
 
  function normalizationVectorTestPivot(){
     layer_exe = "Caricamento file CSV"
@@ -24,23 +22,17 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 var n_vett = 0; 
-                var test = 0;
                 var rows = e.target.result.split("\n"); // prendo ogni riga del blocco
                 for (var i = 0; i < rows.length - 1; i++) {
                     var vectorTest = [];
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
-                    $("#layerexe").val(layer_exe);
-                    for(var j = 0; j < cells.length; ++j){
-                    console.log("[" + cells + "]");
-                     if(j > 0)
-                        vectorTest[j-1] = cells[j];
-                      else{
-                        Test[test]= cells[j];
-                        test = test + 1;
-                      }
+                    for(var j = 0; j < cells.length; ++j){// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
+                    if(j > 0)
+                       vectorTest[j-1] = parseInt(cells[j]); // in pos 0..88 posizione le 89 risposte, in pos 90 il nome del test e uso la conversione intera per evitare caratteri spuru
+                    else
+                      vectorTest[89] = cells[j];
                     }
 
-                    //console.log("vectorTest" + vectorTest + "lenght" + vectorTest.length);
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                 }
@@ -60,7 +52,7 @@
 
 
  /** 1a versione
-  * come precondizione il file e' composto in ordine da id_test, id_domanda, valore della risposta
+  * come precondizione il file e' composto in ordine da id_test, id_domanda, valore della risposta, il contenuto deve essere normalizzato
   */
 
 
@@ -74,8 +66,8 @@ function normalizationVectorTest_standard(){
             var reader = new FileReader();
             reader.onload = function (e) {
                 var Domande = [];
-                var Test = [];
                 var Risposte = [];
+                var Test = [];
                 var count = 0;
                 var rows = e.target.result.split("\n"); // prendo ogni riga del blocco
                 for (var i = 0; i < rows.length - 1; i++) {
@@ -106,18 +98,13 @@ function normalizationVectorTest_standard(){
                 }
                 Domande_sort = Domande_sort.sort();
 
-                console.log("Domande sort: " + Domande_sort);
-
-                // ogni vettore ha dimensione n_domande
-                var vectorTest = [];
 
                 // prendo un test alla volta confronto gli array Test - Domande - Risposte
                 var n = 1;
                 var n_vett = 0;
                 var aux = 1;
                 for (var t = 1; t < Test.length;) { // scorro tutti i test 
-                    vectorTest = []; // svuoto vectorTest altrimenti mi fa doppioni e mi invalida i risultati
-                    console.log("Test " + Test[t]);
+                    var vectorTest = []; // svuoto vectorTest altrimenti mi fa doppioni e mi invalida i risultati
                     for (var k = 0; k < Domande_sort.length; ++k) { // scorro le domande ordinate di un test t
                         // cerco se il Test ha la domanda Domande_sort[k]
                         var trovato = false;
@@ -133,7 +120,7 @@ function normalizationVectorTest_standard(){
 
                     }
                     n = aux; // ho scorso e confrontato tutto il test t
-                    console.log("vectorTest" + vectorTest);
+                    vectorTest[89] = Test[n-1];
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                     t = n; // in questo modo si passa sempre a un nuovo test
