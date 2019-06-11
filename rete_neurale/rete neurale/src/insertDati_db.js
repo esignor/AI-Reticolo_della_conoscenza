@@ -7,9 +7,16 @@ function insertDati_db() {
     layer_exe = layer_exe + "\n\Inizilizzazione addestramento della rete";
     $("#layerexe").val(layer_exe);
    
-    for (var n = 0; n < vectorCSV.length; ++n) { // faccio la stampare dei vettori contenuti in vectorCSV
+    for (var n = 0; n < vectorCSV.length; ++n) { // stampa dei vettori contenuti in vectorCSV
 
-        layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[" + vectorCSV[n] + "]";
+        layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[";
+        for(var i = 0; i < 89; ++i){
+          layer_exe = layer_exe +  vectorCSV[n][i];
+          if(i < 88)
+            layer_exe = layer_exe + ",";
+        }
+        
+        layer_exe = layer_exe + "]";
         $("#layerexe").val(layer_exe);
     
     }
