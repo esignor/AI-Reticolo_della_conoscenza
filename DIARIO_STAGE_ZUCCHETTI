@@ -89,4 +89,6 @@ martedi 11 maggio
 - controllo del codice prodotto (rete neurale di prova e db) e ottimizzazione delle funzioni  normalizationVectorTestPivot(), normalizationVectorTest_standard() con eliminazione variabile globale var Test
 - stesa documentazione per test con dettaglio delle previsioni sulla rete di prova, e valutate previsioni al dettaglio sulla rete del database con diverse architetture (riscontrata per maggiore chiarezza dei risultati raggiunti la necessita' di creare un cluster dei dati)
 
-
+- mercoledi 12 maggio
+sviluppo metodo cluster che permette di infividuare le coppie di domande in relazione stretta tra di loro, all'interno della rete
+- test su diverse architetture della rete , usando la funzione cluster, per studiare i comportamenti della stessa.
