@@ -6,9 +6,9 @@ var vectorPrevision = [];// vettore che memorizza il vettore previsione passato 
 var t = "\n\
 layer_defs = [];\n\
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});\n\
-layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});\n\
-layer_defs.push({type:'fc', num_neurons:6, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:1, activation: 'tanh'});\n\
 layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:1, activation: 'tanh'});\n\
 layer_defs.push({type:'regression', num_neurons:89});\n\
 \n\
 net = new convnetjs.Net();\n\
