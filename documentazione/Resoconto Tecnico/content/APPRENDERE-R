@@ -1,0 +1,386 @@
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R è un software libero ed è rilasciato SENZA ALCUNA GARANZIA.
+Siamo ben lieti se potrai redistribuirlo, ma sotto certe condizioni.
+Scrivi 'license()' o 'licence()' per dettagli su come distribuirlo.
+
+R è un progetto di collaborazione con molti contributi esterni.
+Scrivi 'contributors()' per maggiori informazioni e 'citation()'
+per sapere come citare R o i pacchetti di R nelle pubblicazioni.
+
+Scrivi 'demo()' per una dimostrazione, 'help()' per la guida in linea, o
+'help.start()' per l'help navigabile con browser HTML.
+Scrivi 'q()' per uscire da R.
+
+> 4*6
+[1] 24
+> (4+7)*23/2
+[1] 126.5
+> 4+5; 7*6; (8+9)*65/7
+[1] 9
+[1] 42
+[1] 157.8571
+> x<-6*7
+> x
+[1] 42
+> 56/3
+[1] 18.66667
+> y=56/3
+> y
+[1] 18.66667
+> 32*(5+2)->z
+> z
+[1] 224
+> x<-4
+> X
+Errore: oggetto "X" non trovato
+> x<-56 # tutto quello che scrivo qui e' un commento!
+> x
+[1] 56
+> class(x)
+[1] "numeric"
+> y<-5.6
+> y
+[1] 5.6
+> class(y)
+[1] "numeric"
+> logic<-TRUE
+> class(logic)
+[1] "logical"
+> complex<-3+2i
+> complex
+[1] 3+2i
+> class(complex)
+[1] "complex"
+> array <- c(12,3,54,15)
+> array
+[1] 12  3 54 15
+> class(array)
+[1] "numeric"
+> array[1]
+[1] 12
+> array[1:3]
+[1] 12  3 54
+> array[c(4,6)]
+[1] 15 NA
+> array[c(1,3)]
+[1] 12 54
+> array[-c(1,3)]
+[1]  3 15
+> array[c(3,1)]
+[1] 54 12
+> array[-(1,3)]
+Errore: unexpected ',' in "array[-(1,"
+> array[-(1:3)]
+[1] 15
+> array<-c(1,2,3,4,5)
+> array
+[1] 1 2 3 4 5
+> array[4]=8
+> array
+[1] 1 2 3 8 5
+> array[c(2, 4)]=0
+> array
+[1] 1 0 3 0 5
+> array<-array(c(1,2,3,4,5), nrow=3, ncol=2)
+Error in array(c(1, 2, 3, 4, 5), nrow = 3, ncol = 2) : 
+  unused arguments (nrow = 3, ncol = 2)
+> matrice<-matrix(c(1,2,3,4,5), nrow=3, ncol=2)
+Warning message:
+In matrix(c(1, 2, 3, 4, 5), nrow = 3, ncol = 2) :
+  data length [5] is not a sub-multiple or multiple of the number of rows [3]
+> matrice
+     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    1
+> matrice<-matrix(c(1,2,3,4,5,6) nrow=3, ncol=2)
+Errore: unexpected symbol in "matrice<-matrix(c(1,2,3,4,5,6) nrow"
+> matrice<-matrix(c(1,2,3,4,5,6), nrow=3, ncol=2)
+> matrice
+     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+> matrice[1,2]
+[1] 4
+> matrice[1:3,2]
+[1] 4 5 6
+> matrice[c(1,3),2]
+[1] 4 6
+> a %lt;-array(dim=c(3,2,2))
+Errore: unexpected input in "a %lt;-array(dim=c(3,2,2))"
+> a<-array(dim=c(3,2,2))
+> a
+, , 1
+
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+
+, , 2
+
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+
+> a<-array(dim=c(3,2))
+> a
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+> a<-array(dim=c(3,2,2))
+> a
+, , 1
+
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+
+, , 2
+
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+
+> a[1,2,1]=1
+> a
+, , 1
+
+     [,1] [,2]
+[1,]   NA    1
+[2,]   NA   NA
+[3,]   NA   NA
+
+, , 2
+
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+[3,]   NA   NA
+
+> lista<-list(c(1,2,3), "example text", TRUE)
+> L
+Errore: oggetto "L" non trovato
+> lista
+[[1]]
+[1] 1 2 3
+
+[[2]]
+[1] "example text"
+
+[[3]]
+[1] TRUE
+
+> class(l[1])
+Errore: oggetto "l" non trovato
+> class(lista[1])
+[1] "list"
+> class(lista[[1]])
+[1] "numeric"
+> class(lista[[2]])
+[1] "character"
+> class(lista[[3]])
+[1] "logical"
+> class(lista[3])
+[1] "list"
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal");
+Errore: unexpected ';' in "gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal");"
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal"),
++ eta'<-c(5, 5, 4, 4)
++ colore<-c(rosso, grigio, bianco e grigio, bianco e rosso))
++ gatti
++ ;
++ 
+[1]+  Fermato                 R
+eleonora@eleonora-Lenovo-Z51-70:~$ R
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R è un software libero ed è rilasciato SENZA ALCUNA GARANZIA.
+Siamo ben lieti se potrai redistribuirlo, ma sotto certe condizioni.
+Scrivi 'license()' o 'licence()' per dettagli su come distribuirlo.
+
+R è un progetto di collaborazione con molti contributi esterni.
+Scrivi 'contributors()' per maggiori informazioni e 'citation()'
+per sapere come citare R o i pacchetti di R nelle pubblicazioni.
+
+Scrivi 'demo()' per una dimostrazione, 'help()' per la guida in linea, o
+'help.start()' per l'help navigabile con browser HTML.
+Scrivi 'q()' per uscire da R.
+
+> gatti
+Errore: oggetto "gatti" non trovato
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal")),
+Errore: unexpected ',' in "gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal")),"
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal"),
++ eta'<-(5,5,4,4),
++ colore<-("rosso", "grigio", "bianco e grigio", "bianco e rosso"))
++ genere("M", "F", "M", "F")
++ 
+[2]+  Fermato                 R
+eleonora@eleonora-Lenovo-Z51-70:~$ R
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R è un software libero ed è rilasciato SENZA ALCUNA GARANZIA.
+Siamo ben lieti se potrai redistribuirlo, ma sotto certe condizioni.
+Scrivi 'license()' o 'licence()' per dettagli su come distribuirlo.
+
+R è un progetto di collaborazione con molti contributi esterni.
+Scrivi 'contributors()' per maggiori informazioni e 'citation()'
+per sapere come citare R o i pacchetti di R nelle pubblicazioni.
+
+Scrivi 'demo()' per una dimostrazione, 'help()' per la guida in linea, o
+'help.start()' per l'help navigabile con browser HTML.
+Scrivi 'q()' per uscire da R.
+
+> prova<-data.frame(nomi=("a", "b"),)
+Errore: unexpected ',' in "prova<-data.frame(nomi=("a","
+> prova<-data.frame(nomi=("a", "b"),
+Errore: unexpected ',' in "prova<-data.frame(nomi=("a","
+> prova<-data.frame(nomi=c("a", "b"),
++ value=c(1,2)
++ prezzo=c(0.6,1.2,6.3))
+Errore: unexpected symbol in:
+"value=c(1,2)
+prezzo"
+> value=c(1,2),
+Errore: unexpected ',' in "value=c(1,2),"
+> prova
+Errore: oggetto "prova" non trovato
+> prova<-data.frame(nomi=c("a", "b"),
++ value=c(1,2))
+> prova
+  nomi value
+1    a     1
+2    b     2
+> gatti<-data.frame("Riemann", "Cauchy", "Diamond", "Kristal")
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal"),
++ eta=c(5,5,4,4),
++ colore("rosso", "grigio/rosso", "bianco/grigio", "bianco/rosso"),
++ colore=c("rosso", "grigio/rosso", "bianco/grigio", "bianco/rosso"),
++ genere=c("M", "F", "M", "F"))
+Error in colore("rosso", "grigio/rosso", "bianco/grigio", "bianco/rosso") : 
+  non trovo la funzione "colore"
+> gatto
+Errore: oggetto "gatto" non trovato
+> gatti<-data.frame(nomi=c("Riemann", "Cauchy", "Diamond", "Kristal"),
++ eta=c(5,5,4,4),
++ colore=c("rosso", "grigio/rosso", "bianco/grigio", "bianco/rosso"),
++ genere=c("M", "F", "M", "F"))
+> gatti
+     nomi eta        colore genere
+1 Riemann   5         rosso      M
+2  Cauchy   5  grigio/rosso      F
+3 Diamond   4 bianco/grigio      M
+4 Kristal   4  bianco/rosso      F
+> gatti[2,]
+    nomi eta       colore genere
+2 Cauchy   5 grigio/rosso      F
+> gatti[3,"colore"]
+[1] bianco/grigio
+Levels: bianco/grigio bianco/rosso grigio/rosso rosso
+> gatti["colore"]
+         colore
+1         rosso
+2  grigio/rosso
+3 bianco/grigio
+4  bianco/rosso
+> gatti$eta
+[1] 5 5 4 4
+> gatti["eta"]
+  eta
+1   5
+2   5
+3   4
+4   4
+> gatti[["eta"]]
+[1] 5 5 4 4
+> gatti[gatti$eta>4,]
+     nomi eta       colore genere
+1 Riemann   5        rosso      M
+2  Cauchy   5 grigio/rosso      F
+> subset(gatti, eta>4)
+     nomi eta       colore genere
+1 Riemann   5        rosso      M
+2  Cauchy   5 grigio/rosso      F
+> subset(gatti, eta>4 & nomi=="Riemann")
+     nomi eta colore genere
+1 Riemann   5  rosso      M
+> summary(gatti)
+      nomi        eta                colore  genere
+ Cauchy :1   Min.   :4.0   bianco/grigio:1   F:2   
+ Diamond:1   1st Qu.:4.0   bianco/rosso :1   M:2   
+ Kristal:1   Median :4.5   grigio/rosso :1         
+ Riemann:1   Mean   :4.5   rosso        :1         
+             3rd Qu.:5.0                           
+             Max.   :5.0                           
+> str(gatti)
+'data.frame':	4 obs. of  4 variables:
+ $ nomi  : Factor w/ 4 levels "Cauchy","Diamond",..: 4 1 2 3
+ $ eta   : num  5 5 4 4
+ $ colore: Factor w/ 4 levels "bianco/grigio",..: 4 3 1 2
+ $ genere: Factor w/ 2 levels "F","M": 2 1 2 1
+> mean(gatti$eta)
+[1] 4.5
+> min(gatti$eta)
+[1] 4
+> max(gatti$eta)
+[1] 5
+> sum(gatti$eta)
+[1] 18
+> x<-tapply(gatti$eta)
+Error in tapply(gatti$eta) : 
+  l'argomento "INDEX"  non è specificato e non ha un valore predefinito
+> x<-tapply(gatti$eta, gatti$nomi)
+> x
+[1] 4 1 2 3
+> x<-tapply(gatti$eta, gatti$nomi, max)
+> x
+ Cauchy Diamond Kristal Riemann 
+      5       4       4       5 
+> x<-tapply(gatti$eta, gatti$genere, max)
+> x
+F M 
+5 5 
+> x<-tapply(gatti$eta, gatti$genere, mean)
+> x
+  F   M 
+4.5 4.5 
+> claxx(x)
+Error in claxx(x) : non trovo la funzione "claxx"
+> class(x)
+[1] "array"
+> x<-tapply(gatti$eta, list(gatti$nomi, gatti$genere), mean)
+> x
+         F  M
+Cauchy   5 NA
+Diamond NA  4
+Kristal  4 NA
+Riemann NA  5
+
+
+
+# Caricare il trainset
+df<-read.table("/home/eleonora/Scaricati/test_logica_liv1_pivot.csv", sep=",")
+
+
+# Creare un file csv
+ write.table(df, "/home/eleonora/Scrivania/prova.csv", row.names=FALSE, col.name=FALSE, sep=";")
+
+#per fare uso della PCA fare uso del packages "factoextra"
+
+# comando Rscript per eseguire uno script da riga di comando
+
