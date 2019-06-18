@@ -4,7 +4,7 @@
  * il metodo ha lo scopo di creare tanti rettangoli quante sono le previsioni, e di colorarli in base al valore della previsione.
  */
 
-function animationPrevision(dim, scores){
+function animationPrevision_db(dim, scores){
     
     var myCanvas = document.getElementById("myCanvas"); // acquisiamo il contesto su cui lavorare
     var context = myCanvas.getContext("2d");
