@@ -1,39 +1,101 @@
+# SCRIPT DI PROVA
+
 library("factoextra")
-df<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/TRAINSET/set-db.csv", header=FALSE, sep=",")  # carico il file csv
+df<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
   df_numeric<-data.matrix(df, rownames.force=NA) # il fata.frame viene trasformato in una matrice numerica (per essere manipolata dal pca)
 #df_trasp=t(df_numeric) # matrice traspsta: in ogni riga viene individuata la risposta alla domanda Vi per i test[0..1245]
 
 #df_trasp <- df_trasp[,apply(df_trasp, 2, var, na.rm=TRUE) != 0]
 
-  
 # varianza di calcolo di ogni variabile, effettuo la standardizzazione delle variabili 
 # (ovvero sulla medesima scala) quando  ho variabili su scale differenti da confrontare
 
+res <- prcomp(df_numeric) # calcolo il pca (centra automaticamente per avere la media a 0)
+biplot(res);
 
-res.pca <- prcomp(df_numeric, scale = TRUE) # calcolo il pca (centra automaticamente per avere la media a 0)
+# standardizzazione
+AA = df_numeric
+for(i in 1:6){
+  AA[,i]=(df_numeric[,i]-mean(df_numeric[,i]))/(sd(df_numeric[,i]))
+}
+res.pca=princomp(AA)
+
+biplot(res.pca);
+
+cor.pca <- cor(df_numeric, res.pca$x)# matrice di correlazione
+cor.pca
 
 #summary PCA
 summary(res.pca)
 
 var <- get_pca_var(res.pca)
-var
 # vengono stampate coordinate delle variabili calcolate con la PCA
 head(var$coord)
 # visualizzo le prime righe
 
-# Estrarre gli autovalori
+# Estrarre gli autovalori/varianze delle dimensioni principali
 get_eig(res.pca)
-
-# Visualizza autovalori.
+# Dalla varianza ottengo
+# Visualizzazione degli autovalori/varianze delle dimensioni principlali
 # Mostra la percentuale di varianze spiegata da ciascun componente principale (dispersione dei dati lungo ciascuna direzione)
-fviz_screeplot(res.pca, addlabels =TRUE, ylim = c(0, 50)) # equivale a plot(res.pca)
+
+
+# autovettori
+loadings(res.pca)
+# Risulta come V1 (prima componente principale) e' vicino a V4, V5 a V2(seconda componente principale) e V6 a V3(terza componente principale)
+
+
+fviz_screeplot(res.pca, addlabels =TRUE, barcolor = "darkblue", linecolor = "red", title = "Variances - PCA", x = "Principal Components", y = "% of variances") # equivale a plot(res.pca)
 # ossevazione: le prime due componenti catturano buona parte della variabilita'
 # Le ultime componenti principali descrivono solo rumore (spiegano una percentuale sempre minore della variabile principale)
 # le prime tre componenti rappresentano una percentuale sufficientemente elevata, di conseguenza il grafico che si ottiene puo' essere 
 # efficientemente utilizzato per interpretare i dati
 # estrazione dei risultati per le variabili
 
-biplot(res.pca) # rappresentazione sintetica dei casi sul piano fattoriale
+biplot(res.pca) # rappresentazione sintetica dei casi sul piano fattoriale in due dimensioni (PC1 e PC2)
+
+# contributo della variabile PC1
+fviz_contrib(res.pca, choice = "var", axes = 1, top = 10)
+# contributo della variabile PC2
+fviz_contrib(res.pca, choice = "var", axes = 2, top = 10)
+# contributo della variabile PC1 e PC2
+fviz_contrib(res.pca, choice = "var", axes = 1:2, top = 10)
+
+# trovare il numero di variabili da usare per la modellazione
+
+# deviazione standard per ogni componente principale
+# Per quanto riguarda la rete di prova, con riferimento al plot Varinces, il numero di variabili da prendere in esame sono 3, con il quale si ottiene una varianza superiore del 95%
+# per quanto riguarda la rete di db, approfondisco l'analisi
+std_dex<-res.pca$sdev
+
+#calcolo della varianza
+pr_var<-std_dex^2
+
+# proporzione della varianza spiegata da ciascun componente
+prop_varex<-pr_var/sum(pr_var)
+
+# screen plot
+plot(prop_varex, type="b")
+
+# cumulative screen plot
+plot(cumsum(prop_varex), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", type="b")
+
+# 80 elementi superano il 90% della varianza
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Grafico degli individui. Gli individui con un profilo simile sono raggruppati insieme.
 fviz_pca_ind(res.pca,
@@ -49,8 +111,4 @@ fviz_pca_var(res.pca,
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE     # Avoid text overlapping
              )
-# contributo della variabile PC1
-fviz_contrib(res.pca, choice = "var", axes = 1, top = 10)
-# contributo della variabile PC2
-fviz_contrib(res.pca, choice = "var", axes = 2, top = 10)
 
