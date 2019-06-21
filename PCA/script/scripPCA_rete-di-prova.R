@@ -2,10 +2,11 @@
 
 # Caricamento della libreria
 library("factoextra")
+options(max.print=10000)
 df<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
 
 # data.frame trasformato in una matrice numerica (per essere manipolata dal pca)
-df_numeric<-data.matrix(df, rownames.force=NA)
+df_numeric<-data.frame(df)
 
 
 # calcolo il pca (centra automaticamente per avere la media a 0), non standardizzato
@@ -87,3 +88,15 @@ for(r in 1:6){ #passo le righe
   }
 }
 value
+
+fviz_pca_var(cor.pca,
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+)
+
+res.pca
+df_predict<-data.frame(V1=0, V2=0, V3=1, V4=0, V5=0, V6=0)
+df_predict
+res.predict = predict(res.pca, newdata = df_predict)
+res.predict

@@ -6,6 +6,7 @@ df<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trains
 
 # data.frame trasformato in una matrice numerica (per essere manipolata dal pca)
 df_numeric<-data.matrix(df, rownames.force=NA)
+write.table(df_numeric, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/prova.csv", quote=T, sep=" ", dec=".", na="NA", row.name=T, col.names=T)
 
 
 # calcolo il pca (centra automaticamente per avere la media a 0), non standardizzato
@@ -33,7 +34,7 @@ pr_var<-std_dex^2
 
 # proporzione della varianza spiegata da ciascun componente
 prop_varex<-pr_var/sum(pr_var)
-plot(prop_varex, type="b")
+plot(prop_varex, type="l")
 plot(cumsum(prop_varex), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", type="b")
 # ossevazione: le prime due componenti catturano buona parte della variabilita'
 # Le ultime componenti principali descrivono solo rumore (spiegano una percentuale sempre minore della variabile principale)
@@ -70,7 +71,7 @@ fviz_pca_var(res.pca,
 )
 
 
-cor.pca <- cor(df_numeric)# matrice di correlazione
+cor.pca <- cor(df_numeric_aux)# matrice di correlazione
 plot(cor.pca)
 
 matrix <-matrix(nrow = 1, ncol = 89)
@@ -91,7 +92,7 @@ for(i in 1:89){
 write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/matrice_correlazione-domande.csv", quote=T, sep=" ", dec=".", na="NA", row.name=T, col.names=T)
 
 
-
+plot(correlazione)
   
   
   
