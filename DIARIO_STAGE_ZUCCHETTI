@@ -103,4 +103,10 @@ martedi 18 giugno
 - Analisi del codice redatto il giorno precedente e trasposizione del codice sviluppato per la i dati della rete di prova sui dati della rete del db
 
 5 SETTIMANA
+
+mercoledi 19 giugno
 - continuazione sviluppo dello script PCA per la i dati del db
+
+giovedi 20 giugno
+- studio possibilita' di inserire i test d'unita nel codice js
+- analisi domande del database, confrontate con i risultati ottenuti dalla pca e dalla rete neurale
