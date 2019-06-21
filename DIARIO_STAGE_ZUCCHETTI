@@ -105,8 +105,12 @@ martedi 18 giugno
 5 SETTIMANA
 
 mercoledi 19 giugno
-- continuazione sviluppo dello script PCA per la i dati del db
+- continuazione sviluppo dello script PCA per i dati del db e la rete neurale
 
 giovedi 20 giugno
-- studio possibilita' di inserire i test d'unita nel codice js
+- studio possibilita' di inserire i test d'unita nel codice js, implementati test d'unita' per moduli generator_input e generator_input_probability (2)
 - analisi domande del database, confrontate con i risultati ottenuti dalla pca e dalla rete neurale
+
+venerdi 21 giugno
+- continuazione studio dei risultati ottenuti dalla rete neurale e dalla PCA con connfronto con la descrizione delle domande del db. Sviluppato metodo di previsione per la PCA
+- implementati test d'unita' sul modulo cluster (2)
