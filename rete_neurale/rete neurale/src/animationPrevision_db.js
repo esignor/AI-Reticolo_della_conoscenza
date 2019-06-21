@@ -50,13 +50,12 @@ function animationPrevision_db(dim, scores){
       }
       
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
-
-      //console.log("(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")");
+      
       context.fill(); // applico il colore
       
       
       x = x + 35; // per aumentare - diminuire il numero di rettangolini sulla riga
-      if(j == 33 || j == 67){ // per andare a capo
+      if(j == 32 || j == 65){ // per andare a capo
         y = y + 25;
         x = 5;
       }

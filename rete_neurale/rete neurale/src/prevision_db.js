@@ -19,7 +19,6 @@ function prevision() {
         x.w[i] = number; // salvo il contenuto anche nell'array necessario al metodo forward
         vectorPrevision[i] = number; // mi salvo la previsione richiesta
     }
-    console.log("VectorPrevision" + vectorPrevision);
 
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;

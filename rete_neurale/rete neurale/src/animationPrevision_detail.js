@@ -73,9 +73,18 @@ function animationPrevision_detail(dim) {
       x = x + 15;
 
     }
-
   }
 
-  cluster(vectorColor, dim);
+  var questionCluster = cluster(vectorColor);
+
+
+  // stampo il contenuto
+
+  layer_exe = layer_exe + "\n\Relazione fra le domande :";
+  for (var i = 0; i < vectorColor.lenght; ++i) {
+    layer_exe = layer_exe + "\n\domanda " + (i + 1) + ":";
+    layer_exe = layer_exe + "[" + questionCluster[i] + "]";
+  }
+  $("#layerexe").val(layer_exe);
 
 }
