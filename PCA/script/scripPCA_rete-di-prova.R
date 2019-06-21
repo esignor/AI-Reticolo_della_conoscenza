@@ -67,3 +67,23 @@ fviz_pca_var(res.pca,
              repel = TRUE     # Avoid text overlapping
 )
 
+
+
+cor.pca <- cor(df_numeric)# matrice di correlazione
+plot(cor.pca)
+cor.pca
+
+matrix <-matrix(nrow = 1, ncol = 6)
+value <- matrix(nrow = 6, ncol = 6)
+for(r in 1:6){ #passo le righe
+  for(k in 1:6){
+    matrix[k] = cor.pca[r,k]
+  }
+  matrix
+  for(i in 1:6){
+    index  = which.max(matrix)
+    value[r, i] = index;
+    matrix[index] = -1000
+  }
+}
+value

@@ -17,6 +17,7 @@ df_numeric_aux = df_numeric
 for(i in 1:89){
   df_numeric_aux[,i]=(df_numeric[,i]-mean(df_numeric[,i]))/(sd(df_numeric[,i]))
 }
+
 res.pca=princomp(df_numeric_aux)
 biplot(res.pca) # rappresentazione grafica dei risultati ottenuti dalla pca standardizzata
 
@@ -32,7 +33,7 @@ pr_var<-std_dex^2
 
 # proporzione della varianza spiegata da ciascun componente
 prop_varex<-pr_var/sum(pr_var)
-#plot(prop_varex, xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", type="b")
+plot(prop_varex, type="b")
 plot(cumsum(prop_varex), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", type="b")
 # ossevazione: le prime due componenti catturano buona parte della variabilita'
 # Le ultime componenti principali descrivono solo rumore (spiegano una percentuale sempre minore della variabile principale)
@@ -42,7 +43,6 @@ plot(cumsum(prop_varex), xlab="Principal Component", ylab="Cumulative Proportion
 fviz_screeplot(res.pca, addlabels =TRUE, barcolor = "darkblue", linecolor = "red", title = "Variances - PCA", x = "Principal Components", y = "% of variances") # equivale a plot(res.pca)
 # autovettori
 loadings(res.pca)
-# Risulta come 
 
 
 # contributo della variabile PC1
@@ -68,3 +68,30 @@ fviz_pca_var(res.pca,
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE     # Avoid text overlapping
 )
+
+
+cor.pca <- cor(df_numeric)# matrice di correlazione
+plot(cor.pca)
+
+matrix <-matrix(nrow = 1, ncol = 89)
+correlazione <- matrix(nrow = 89, ncol = 89)
+for(r in 1:89){ #passo le righe
+  for(k in 1:89){
+    matrix[k] = cor.pca[r,k]
+  }
+  matrix
+for(i in 1:89){
+ index  = which.max(matrix)
+ correlazione[r, i] = index;
+ matrix[index] = -1000
+}
+}
+
+
+write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/matrice_correlazione-domande.csv", quote=T, sep=" ", dec=".", na="NA", row.name=T, col.names=T)
+
+
+
+  
+  
+  
