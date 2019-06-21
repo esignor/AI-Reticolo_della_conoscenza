@@ -2,7 +2,7 @@
 /** @function update
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
-function update() { // permette di fare il training del dato
+function update(ArrayInput) { // permette di fare il training del dato
 
     eval($("#layerdef").val()); // mi serve per attivare train
 
@@ -19,6 +19,5 @@ function update() { // permette di fare il training del dato
         }
     }
 
-    ArrayInput = []//array di supporto per il singolo test che devono essere vuoto per il prossimo set di dati
 
 }

@@ -6,6 +6,7 @@ function insertDati_db() {
 
     layer_exe = layer_exe + "\n\Inizilizzazione addestramento della rete";
     $("#layerexe").val(layer_exe);
+
    
     for (var n = 0; n < vectorCSV.length; ++n) { // stampa dei vettori contenuti in vectorCSV
 
@@ -20,7 +21,7 @@ function insertDati_db() {
         $("#layerexe").val(layer_exe);
     
     }
-    
+
     update(); // chiamata all'addestramento
 
     document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte

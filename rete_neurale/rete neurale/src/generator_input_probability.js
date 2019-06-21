@@ -4,13 +4,13 @@
 **/
 
 
-function generator_input_probability(dim_vettore) {
+generator_input_probability = function(dim_vettore) {
     var vector = [];
-    var valore = calcolo_risposta_probabilita();
     var numero_zero = Math.floor(Math.random() * 3); // generazione numero di 0 che devranno essere presenti nel vettore di training del dato
     // posizionati in vector gli 1 e i -1
     var i = 0;
     while (i < dim_vettore - numero_zero) {
+        var valore = calcolo_risposta_probabilita();
 
 
         var posizione_random = Math.floor(Math.random() * 6); // numero della domanda estratta di indice da 0 a 5
@@ -61,7 +61,6 @@ function generator_input_probability(dim_vettore) {
                     i = i + 1;
                 }
             }
-
 
 
             else if (posizione_random == 2) { // domanda 3

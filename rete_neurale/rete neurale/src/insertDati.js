@@ -7,18 +7,18 @@ function insertDati() {
     // addestramento tutto in un set
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
-   var Aux = [];
+    var ArrayInput= [];
    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-         Aux= generator_input(6);
+         var Aux = generator_input(6);
  
          ArrayInput[n] = Aux;
-         layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[" + Aux + "]";
+         layer_exe = layer_exe + "\n\Inserito vettore di risposta: " + "[" + ArrayInput[n] + "]";
          $("#layerexe").val(layer_exe);
      }
 
-     update();
+     update(ArrayInput);
  }
 
   /* for (var n = 0; n < 2000; ++n) { // genero n vettori per il training

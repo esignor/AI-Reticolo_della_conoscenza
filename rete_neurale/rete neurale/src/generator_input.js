@@ -8,8 +8,7 @@
     difficolta', per i padri non posso ancora dire nulla perche' di difficolta' superiore.
  */
 
-
-function generator_input(dim_vettore) {
+generator_input = function(dim_vettore) {
     var vector = [];
     var valore = 0;
     var numero_zero = Math.floor(Math.random() * 3); // generazione numero di -1 che devranno essere presenti nel vettore di training del dato da 0 a 2
