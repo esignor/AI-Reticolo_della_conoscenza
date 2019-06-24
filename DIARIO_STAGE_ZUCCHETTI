@@ -114,3 +114,7 @@ giovedi 20 giugno
 venerdi 21 giugno
 - continuazione studio dei risultati ottenuti dalla rete neurale e dalla PCA con connfronto con la descrizione delle domande del db. Sviluppato metodo di previsione per la PCA
 - implementati test d'unita' sul modulo cluster (2)
+ 
+lunedi 24 giugno
+- controllo codice completo dei modello di analisi costruiti per i dati di prova e per i dati delle domande presenti nel database aziendale
+- documentazione tecnica di PCA e presentazione del modello
