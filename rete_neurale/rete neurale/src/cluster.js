@@ -25,7 +25,7 @@ cluster  = function(vectorColor) {
         var value = parseInt(aux[0]);// primo valore di colore della riga i
         aux = vectorColor[i_aux][j].split("-");//primo valore di colore della riga i_aux
         var value_aux = parseInt(aux[0]);
-        if (Math.abs(value - value_aux) <= 1) {
+        if (Math.abs(value - value_aux) <= 30) {
           count = count + 1;
           if (count == vectorColor.length) {
             Coppie[n] = (i + 1) + "," + (i_aux + 1);

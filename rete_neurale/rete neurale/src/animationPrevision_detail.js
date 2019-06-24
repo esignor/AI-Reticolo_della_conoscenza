@@ -81,7 +81,7 @@ function animationPrevision_detail(dim) {
   // stampo il contenuto
 
   layer_exe = layer_exe + "\n\Relazione fra le domande :";
-  for (var i = 0; i < vectorColor.lenght; ++i) {
+  for (var i = 0; i < vectorColor.length; ++i) {
     layer_exe = layer_exe + "\n\domanda " + (i + 1) + ":";
     layer_exe = layer_exe + "[" + questionCluster[i] + "]";
   }
