@@ -12,11 +12,8 @@ function prevision() {
     document.getElementById("title_questionsdetail").style.display = "none";
 
     var x = new convnetjs.Vol(1, 1, 6);
-
-
-    var vettore_previsione = document.getElementsByClassName("vettore_input"); // per avere il contenuto delle celle di dati
-    for (var i = 0; i < vettore_previsione.length; i++) {
-        var number = vettore_previsione[i].value;
+    for (var i = 0; i < 6; i++) {
+        var number =  $('input[name=risposta'+i+']:checked').val();
         x.w[i] = number; // salvo il contenuto anche nell'array necessario al metodo forward
         vectorPrevision[i] = number; // mi salvo la previsione richiesta
     }

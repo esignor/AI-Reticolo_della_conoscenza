@@ -32,6 +32,7 @@ function animationPrevision_detail(dim) {
     for (var j = 0; j < dim; ++j) {
       context.beginPath();//nuovo elemento disegnato
       context.rect(x, y * (i + 1), 10, 10);
+
       var colorRed, colorGreen, colorBlue;
 
       if (parseFloat(scores.w[j]) <= -1.0) { // sicuramente rosso

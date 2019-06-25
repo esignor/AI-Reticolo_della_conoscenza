@@ -67,8 +67,8 @@ body,html{
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50; 
-    margin-left: 18em;
-    margin-top: -2em;
+    margin-left: 81em;
+    margin-bottom: 2em;
   }
 
   #title, #title_vettore, #primary_title, #button_dettaglio-animation, #title_questionsdetail{
@@ -93,4 +93,22 @@ body,html{
 
   #primary_title{
     margin-left: 19em;
+  }
+
+
+  #myForm_radio0, #myForm_radio3, #myForm_radio6{
+    margin-left: 18em;
+    margin-right: 70em;
+  }
+
+  #myForm_radio1, #myForm_radio4{
+    margin-left: 45em;
+    margin-right: 45em;
+    margin-top: -4.5em;
+  }
+
+  #myForm_radio2, #myForm_radio5{
+    margin-left: 70em;
+    margin-right: 18em;
+    margin-top: -4.5em;
   }

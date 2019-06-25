@@ -16,35 +16,47 @@ function addFields(number) {
         container.removeChild(container.lastChild);
     }
 
-    var div = document.createElement("div"); // creo box per la form di output
+    var div = document.createElement("div"); // creo box per la form di previsione
     var p = document.createElement("p");
     div.id = "box_vettore";
     p.id = "title_vettore";
     p.appendChild(document.createTextNode("Vettore di previsione"));
     div.appendChild(p);
-    for (var i = 0; i < number; i++) {
-        var select = document.createElement("select"); // creo la select
-        select.name = "field_value"; //attributo della select
-        select.classList.add("vettore_input");
 
-        //carattere vuoto di default
-        var option = document.createElement("option");
-        option.value = " ";
-         
-        div.appendChild(select); //al div ci appendo la select
-        select.appendChild(option); //al select ci appendo option
-        option.appendChild(document.createTextNode("0")); //a option ci appendo la label
+    container.appendChild(div);
+    
 
-        for (n = -1; n < 2; n=n+2) {
-            var option = document.createElement("option");
-            option.value = n;
+      for(var i = 0 ; i < number; ++i){
 
-            div.appendChild(select); //al div ci appendo la select
-            select.appendChild(option); //al select ci appendo option
-            option.appendChild(document.createTextNode(n)); //a option ci appendo la label
+        var form = document.createElement("form");
+        form.id="myForm_radio" + i;
+        form.action = "";
+        var fieldset = document.createElement("fieldset");
+        var legend = document.createElement("legend");
+        legend.appendChild(document.createTextNode("Domanda "+ (i+1)));
+        fieldset.appendChild(legend);
+
+
+        for (var n = -1; n < 2; ++n) {
+            var label = document.createElement("label");
+            label.appendChild(document.createTextNode(n));
+            var input = document.createElement("input");
+            input.name = "risposta" + i;
+            input.value = n;
+            input.type = "radio";
+            
+            if(n==0)
+              input.checked = true;
+
+            fieldset.appendChild(label);
+            fieldset.appendChild(input);
+
         }
-    }
-    container.appendChild(div); // appendo box in input delle domande a container
+        form.appendChild(fieldset);
+
+    container.appendChild(form);
+      }
+
 
 
     var input = document.createElement("input"); // bottone che attiva la previsione
@@ -52,8 +64,8 @@ function addFields(number) {
     input.type = "submit";
     input.value = "prevision trainer";
     input.setAttribute('onclick', 'prevision()'); // 
-    div.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
-    div.appendChild(input); //appendo save a box_output
+    container.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
+    div.appendChild(input); //appendo prevision
 }
 
 
