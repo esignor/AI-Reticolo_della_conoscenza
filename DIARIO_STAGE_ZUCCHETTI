@@ -116,5 +116,10 @@ venerdi 21 giugno
 - implementati test d'unita' sul modulo cluster (2)
  
 lunedi 24 giugno
+
 - controllo codice completo dei modello di analisi costruiti per i dati di prova e per i dati delle domande presenti nel database aziendale
 - documentazione tecnica di PCA e presentazione del modello
+
+martedi 25 giugno
+- creazione radio box dinamica per il vettore di previsione delle domande
+- inizio studio libreria D3.js per poter rappresentare il Reticolo della Conoscenza delle domande
