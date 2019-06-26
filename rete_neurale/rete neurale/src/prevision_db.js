@@ -28,4 +28,6 @@ function prevision() {
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
     animationPrevision_db(89, scores); // chiamata al metodo che crea il canvas;
 
+    vettoreReticolo(89);
+
 }
