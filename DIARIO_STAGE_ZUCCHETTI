@@ -123,3 +123,12 @@ lunedi 24 giugno
 martedi 25 giugno
 - creazione radio box dinamica per il vettore di previsione delle domande
 - inizio studio libreria D3.js per poter rappresentare il Reticolo della Conoscenza delle domande
+
+6 SETTIMANA
+
+mercoledi 26 settembre
+- traslazione da D3.js a "Reticolo della Conoscenza" costruito con la tesi di Matteo
+- costruzione del metodo vettore_Reticolo che prepara i dati da dare in pasto al Reticolo della Conoscenza
+- Test sul Reticolo della Conoscenza creato mediante previsioni e delta della Rete
+- Rilettura documentazione parte inerente alla Probabilita' della domanda
+- Valutazione possibilita' di avere altri test d'unita' (non andata a buon fine)
