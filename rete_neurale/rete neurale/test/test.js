@@ -5,6 +5,8 @@ import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import {cluster} from '../src/cluster';
 
+
+
 it('Test 1 - generazione array mappato su grafo', function () {
   var a = generator_input(6);
   if (a[2] != 0 && a[5] != 0)
@@ -68,38 +70,6 @@ for(var i =  0; i<3 ;++i){
   assert.equal(question_color[i], i+1); // le righe stesse
 }
 
-/*for(var i = 0; i < 3; ++i){
-  assert.equal(question_color[i],  undefinited)
-
-}*/
-
 });
 
 });
-
-
-/*describe('retries', function() {
-  // Retry all tests in this suite up to 4 times
-  this.retries(4);*/
-
-/*describe('opern web page', function() {
-  //browser.get('file:///home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/rete_neurale/rete%20neurale/demo/index_reteprova.html');*/
-
-
-
-/*it('Test 3', function(){
-  ris = prevision()
-  if(ris[0] > 0 && ris[3]<0 ||ris[1] > 0 && ris[4]<0|| ris[2]>0 && ris[5]<0 || ris[0] < 0 && ris[3] > 0 ||ris[1] < 0 && ris[4] > 0|| ris[2] < 0 && ris[5] > 0 )
-    assert.throw("Errore")
-})*/
-
-
-
-
-
-
-// test d'unita che genera l'array di input
-// test d'unita' che fa l'apprendimento
-// test d'unita che fa la previsione*/
-
-//})
