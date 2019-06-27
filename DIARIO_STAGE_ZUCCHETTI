@@ -132,3 +132,9 @@ mercoledi 26 settembre
 - Test sul Reticolo della Conoscenza creato mediante previsioni e delta della Rete
 - Rilettura documentazione parte inerente alla Probabilita' della domanda
 - Valutazione possibilita' di avere altri test d'unita' (non andata a buon fine)
+- creato file CSV che contiene il delta di previsioni per un architettura a 2 layers con 8 neuroni ciascuno
+
+giovedi 27 settembre
+- revisionata e riletta documentazione sulla PCA (dato anche un breve sguardo a quanto scritto per la sezione sulla Rete Neurale)
+- creati due nuovi test (#Test4) d'unita che testano il comportamento del modulo configure e configure_db: per farlo ho rivisto se nel codice fosse possibile eliminare alcune variabili globali
+- creato file CSV che contiene il delta di previsioni per un architettura a 2 layers con 12 neuroni ciascuno
