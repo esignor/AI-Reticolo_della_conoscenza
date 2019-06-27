@@ -215,31 +215,48 @@ I CSV generati di correlazione sono i seguenti:
 	\caption{CSV generato a partire dalla matrice correlazione del trainset delle domande nel database.}
 \end{figure}
 \noindent
-I file \textit{CSV} gli ho generati prendendo la matrice correlazione, che mostra il grado di correlazione di ogni componente con ogni variabile del modello, e generandovi un data frame che mostra per ogni variabile quale \`e la componente a cui si collega in ordine decrescente (da  quella che si correla di pi\`u a quella che si correla di meno).\\ 
-Da tale distribuzione dei dati, per il trainset di prova \`e apparso quello che mi aspettavo. Per esempio la variabile 1 si correla con grado massimo con se stessa, successivamente con la componente 4 (che \`e la sua domanda sorella) e successivamente con le domande 3 e 6 (i suoi genitori) e alla fine con le domande 2 e 5 (nella realt\`a queste ultime due non hanno alcuna correlazione con la domanda 1). Tale ragionamento vale per tutte le altre  5 componenti, i cui risultati rimangono coerenti con le aspettative e con ci\`o che viene dichiarato nel Grafo della conoscenza, rappresentato in §\ref{Test effettuati}.\\\\
+I file CSV gli ho generati prendendo la matrice correlazione, che mostra il grado di correlazione di ogni componente con ogni variabile del modello, creandovi un data frame che mostra per ogni variabile quale \`e la componente a cui si collega in ordine decrescente (da  quella che si correla di pi\`u a quella che si correla di meno).\\ 
+Da tale distribuzione dei dati, per il trainset di prova emerge quello che mi aspettavo. Per esempio la variabile 1 si correla con grado massimo con se stessa, successivamente con la componente 4 (che \`e la sua domanda sorella) e successivamente con le domande 3 e 6 (i suoi genitori) e alla fine con le domande 2 e 5 (nella realt\`a queste ultime due non hanno alcuna correlazione con la domanda 1). Tale ragionamento vale per tutte le altre  5 componenti, i cui risultati rimangono coerenti con le aspettative e con ci\`o che viene dichiarato nel Grafo della conoscenza, rappresentato in §\ref{Test effettuati}.\\\\
 Pensavo di poter effettuare il medesimo ragionamento anche per analisi dei dati del trainset del database, tuttavia questo non \`e stato possibile, a causa delle seguenti motivazioni:
 \begin{itemize}
-\item In primo luogo mi sono subito accorta che se una variabile si dichiara in correlazione con una componente, questa poi non \`e detto che sia in correlazione con la variabile;
+\item In primo luogo, se una variabile nella matrice correlazione \`e dichiarata in correlazione con una componente, questa poi non risulta in correlazione con la variabile;
 \item Analizzando il testo delle domande, contenute nel database aziendale ho riscontrato come il modello prodotto crea relazioni strette fra domande appartenenti trivialmente a categorie diverse, (ad esempio domande che trattano relazioni con altre di serie numeriche) e meno con domande che parlano dello stesso tema.
-\item Effettuando dei test nella Rete neurale costruita sul trainset delle domande nel database, non riuscivo a trovare alcun collegamento con le correlazioni che vengono evidenziata dal calcolo della PCA;
-\item Il plot delle variabili mostra una vicinanza pi\`u elevata con variabili diverse rispetto a quelle indicate come quelle maggiormente correlate nella matrice di correlazione.
+\item Dal pot delle variabili viene mostrato come le stesse indicate come correlate risultano, invece, sparse impedendo la formazione dei cluster. Su un numero n grande di variabili  (come le 89 domande nel database) tale fenomeno verrebbe espanso impedendo a chi interpreta il modello di individuare una correlazione tra il grafico delle variabili e la matrice di correlazione.
 \end{itemize}
 A questo punto ho iniziato a farmi delle domande. Escludendo un mio errore di codifica (dopo aver opportunamente effettuato un accurato controllo del codice da me prodotto) e trovandomi di fronte ad una situazione dove i risultati inerenti ai dati del trainset di prova soddisfano appieno le attese
 (infatti non solo le correlazioni matchano perfettamente con quanto viene indicato dal grafo della conoscenza; ma anche il plot che viene generato dalla PCA sulle variabili presenta una coerenza stretta con tali assunzioni) ho iniziato a pensare che centrasse la possibilit\`a che ha un candidato di indovinare correttamente una risposta ad una domanda.\\\\
-Ho rifatto perci\`o tutta l'analisi su un nuovo modello adoperando il trainset di prova generato da n input che tengono conto anche della possibilit\`a di indovinare. Come viene illustrato dai plots seguenti i dati individuati dal trainset di prova puro vengono totalmente falsati quando si tiene conto di tale eventualit\`a. Questo \`e il motivo per cui la \textbf{P}rincipal \textbf{C}omponent \textbf{A}nalysis non \`e in grado di dare dei risultati attendibili sul trainset delle domande del database, dove un candidato pu\`o aver risposto correttamente ad un quesito anche solo perch\`e ha "sparato a caso".
+Ho rifatto, perci\`o, tutta l'analisi su un nuovo modello, adoperando il trainset di prova generato da n input sottoposti alla probabilit\`a di indovinare. Come viene illustrato dai plots nella sezione seguente, i dati individuati dal trainset di prova puro vengono totalmente falsati quando si tiene conto di tale eventualit\`a rispetto alle aspettative imposte dal Grafo della conoscenza. 
 
 \subsection{Conclusione dell'analisi}
 \label{Conclusione dell'analisi}
-In conclusione quando si ha un test con domande a triplice scelta multipla un candidato ha elevata possibilit\`a di indovinare le domande che non sa e il modello creato dalla PCA con i dati delle risposte alle domande presenti nel database ne sono la prova. Questo perch\`e se la possibilit\`a di indovinare fosse bassa i risultati del modello ne verrebbero appena sporcati,  e invece invalidano completamente la possibilit\`a di avere un risultato attendibile e coerente con la realt\`a che permetta di costruire un Reticolo della Conoscenza.
-
+In conclusione, un test con domande a triplice risposta multipla concede ad un candidato l'elevata possibilit\`a di indovinare le domande che non sa; e il modello creato dalla {P}rincipal \textbf{C}omponent \textbf{A}nalysis con i dati delle risposte alle domande nel database ne fornisce la prova.\\\\ Infatti se la possibilit\`a di indovinare fosse bassa i risultati del modello in esame ne verrebbero appena "sporcati", e invece invalidano completamente la possibilit\`a di avere un risultato attendibile e coerente con la realt\`a.\\
+Le figure seguenti mostrano proprio tale fenomeno: nel caso dell'indovinato le domande con una maggiore correlazione non creano alcun cluster.
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/PCA.png}
 	\caption{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova puro sul grafo della conoscenza.}
 \end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{../../PCA/plot/correlazione_base.png}
+	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova}
+\end{figure}
+
+
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/PCA-valorindovinati.png}
 	\caption{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova spurio con la probabilit\`a di indovinare.}
 \end{figure}
+
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{../../PCA/plot/correlazione_with-probability.png}
+	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova soggetti alla probabilit\`a di indovinare}
+\end{figure}
+
+\noindent L'analisi del modello ha evidenziato come il Reticolo della Conoscenza costruito  dai dati delle domande nel database, una volta costruito, risentir\`a inevitabilmente del fattore di rischio "domande indovinate". Mi aspetto, per cui, che in rapporto al contenuto delle stesse gli argomenti e la difficolt\`a  delle domande appartenenti al medesimo cluster possano non essere coincidenti.\\
+L'unica possibilit\`a per continuare la costruzione del reticolo \`e rivolgere nuovamente l'attenzione alla Rete neurale e studiare i cluster possibili per mezzo delle previsioni assunte da ogni variabile sulla base della previsione standard\footnote{Vettore previsione tutto a zero}.

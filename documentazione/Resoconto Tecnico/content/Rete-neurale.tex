@@ -250,7 +250,7 @@ Per rendere pi\`u comprensibile le previsioni di probabilit\`a ottenute, a segui
 	\caption{Rete neurale del database aziendale.}
 \end{figure}
 \noindent
-L'architettura che ho utilizzato, basandomi anche sul quanto appreso dalla rete neurale di prova e dal numero di vettori di test utilizzati (1245 vettori x 89) ho aumentato le dimensioni della rete.
+Una prima architettura su cui ho deciso di analizzare i risultati della rete, basandomi anche sul quanto appreso dalla rete neurale di prova e dal numero di vettori di test utilizzati (1245 vettori x 89), \`e stata la seguente:
 \begin{verbatim}
 layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
@@ -267,11 +267,13 @@ momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 Ho aggiunto un layer e messo un numero di neuroni per layer in modo da formare un romboide. Devo verificare la bont\`a di questa mia scelta o se invece mi porta ad una situazione di overfitting.
 
-\noindent
+\subsubsection{Natura delle domande contenute nel database aziendale}
+\label{Natura delle domande contenute nel database aziendale}
+
 Analizzando il training set dei vettori ho riscontrato tali correlazioni:
 \begin{itemize}
-\item Solo una piccola parte delle domande presenti in un database vengono svolte durante un colloquio con un candidato, in media una decina su 89 possibili;
-\item Dalla rete sembra che le domande abbiano qualche correlazione, tuttavia la configurazione attuale ne rende difficoltosa l'individuazione.
+\item Solo una piccola parte delle domande presenti nel database vengono svolte durante un colloquio con un candidato. In media una decina su 89 possibili.
+\item Dalla rete sembra che le domande abbiano qualche correlazione, tuttavia la configurazione attuale ne rende difficoltosa l'individuazione. Quello che mi sembra opportuno ricercare testando l'architettura di della rete \`e che si vadano a formare dei cluster.
 \end{itemize}
 
 
@@ -347,7 +349,7 @@ Quanto mostrato dal dettaglio delle domande ha il seguente significato per un ca
 \label{Architetture testate}
 \noindent
 Durante tutto il periodo ho effettuato una serie di test su molteplici architettura della rete, con gradi di correlazione tra le domande pari al 100\% o con uno differenza massima di 5 punti colore rispetto al canvas risultante per ogni domanda.\\
-Tuttavia non sono riuscita ad individuare un'architettura sufficientemente stabile per prevedere risultati attendibili; a causa della molteplicit\`a di dati che hanno aumentato esponenzialmente  la complessit\`a di analisi rispetto alla Rete di prova, che non \`e calata neppure a seguito dell'analisi da parte mia delle domande presenti all'interno del database aziendale.
+Tuttavia non sono, durante questo periodo, riuscita ad individuare un'architettura sufficientemente stabile per prevedere risultati attendibili; a causa della molteplicit\`a di dati che hanno aumentato esponenzialmente  la complessit\`a di analisi rispetto alla Rete di prova. Tale complessit\`a \`e rimasta costante anche successivamente allo studio del contenuto delle domande nel database aziendale.
 Architettura della rete utilizzata:
 \begin{itemize}
 \item \begin{verbatim}
@@ -440,9 +442,10 @@ layer_defs.push({type:'regression', num_neurons:89});
 net = new convnetjs.Net();
 net.makeLayers(layer_defs);
 
-trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1
+, batch_size:10, l2_decay:0.001});
 \end{verbatim}
-La prima cosa che ho notato \`e che aumentando il numero di neuroni sull'unico layer esistente, il valore della domanda corrispondente al vettore della previsione sembra sempre pi\`u marcato, segno che la rete "impara troppo" e ricade nel restituire l'immagine stessa del vettore previsione.
+Noto che aumentando il numero di neuroni sull'unico layer esistente, il valore della domanda corrispondente al vettore della previsione sembra sempre pi\`u marcato, segno che la rete "impara troppo" e ricade nel restituire l'immagine stessa del vettore previsione.
 
 \begin{figure}[H]
 \centering
@@ -866,4 +869,6 @@ net.makeLayers(layer_defs);
 trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
 momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
+\noindent
+L'obiettivo dei miei test \`e stato individuare una configurazione abbastanza "forte" da permettere il riscontro di correlazioni e dei possibili cluster esistenti con il solo ausilio della Rete. Tuttavia per proseguire il mio studio \`e indispensabile che mi avvalga di anche altri strumenti di supporto. Il prossimo passo \`e costruire un modello di dati mediante la tecnica di {P}rincipal \textbf{C}omponent \textbf{A}nalysis .
 \end{itemize}
