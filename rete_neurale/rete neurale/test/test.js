@@ -1,27 +1,29 @@
-import * as chai from 'chai';
-//const expect = chai.expect;
-const assert = chai.assert;
+/**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keywor exports al modulo delle funzioni coinvolte */
+
+import {assert} from 'chai';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
-import {cluster} from '../src/cluster';
+import {cluster} from '../src/cluster'
+import {configure_db} from '../src/configure_db'
+import {configure} from '../src/configure'
 
 
 
-it('Test 1 - generazione array mappato su grafo', function () {
+it('#Test 1 - generazione array mappato su grafo', function () {
   var a = generator_input(6);
   if (a[2] != 0 && a[5] != 0)
-    assert.equal(a[2], a[5]);
+    assert.equal(a[2], a[5], "2 e 5 non sono coppie di domande (oracolo non rispettato)");
   if (a[0] != 0 && a[3] != 0)
-    assert.equal(a[0], a[3]);
+    assert.equal(a[0], a[3], "0 e 3 non sono coppie di domande (oracolo non rispettato)");
   if (a[1] != 0 && a[4] != 0)
-    assert.equal(a[1], a[4]);
+    assert.equal(a[1], a[4], "1 e 4 non sono coppie di domande (oracolo non rispettato)");
 
 });
 
 
-it('Test 2 - generazione array spuro', function () {
+it('#Test 2 - generazione array spuro', function () {
   var a = generator_input_probability(6);
-  assert.exists(a);
+  assert.exists(a, "vettore di valori di probabilita' non definito");
 
 });
 
@@ -42,10 +44,9 @@ describe('#Test3', function() {
   }
   var question_color = cluster(color);
 
-  console.log(question_color);
   
   for(var i = 0; i < 3; ++i){
-    assert.equal(question_color[i],  "1,2,3")
+    assert.equal(question_color[i],  "1,2,3", "individuazione coppie di colori che fa fallito le aspettative");
 
 }
 });
@@ -67,8 +68,22 @@ color[2][2] = 200 + "-" + 60 + "-" + 25;
 var question_color = cluster(color);
 
 for(var i =  0; i<3 ;++i){
-  assert.equal(question_color[i], i+1); // le righe stesse
+  assert.equal(question_color[i], i+1, "individuazione coppie di colori che fa fallito le aspettative");
 }
+
+});
+
+});
+
+
+describe('#Test4 - configurazione della rete andata a buon fine', function() {
+it('configurazione rete del database', function () {
+  var conf = configure_db();
+  assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita")
+});
+it('configurazione rete di prova', function () {
+  var conf = configure();
+  assert.isNotNull(conf, "Configurazione della Rete neurale di prova non riuscita")
 
 });
 

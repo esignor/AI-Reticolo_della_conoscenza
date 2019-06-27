@@ -1,7 +1,9 @@
 // Preparo i vettori per il Reticolo della Conoscenza
-
+/**function vettoreReticolo
+ * metodo che si occupa di creare un vettore contenente  il delta delle previsioni a -1 e a 1 per ciascun componente rispetto al vettore di base (tutto a zero)
+ */
 vettoreReticolo = function(dim){
- // Preparo i vettori per il Reticolo della Conoscenza
+
 
  var scores = [];
  for (var j = 0; j < dim+1; ++j) {

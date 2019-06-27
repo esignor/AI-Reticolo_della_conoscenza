@@ -5,7 +5,7 @@
  * e che individua per ogni domanda i quali sono le j-esime domande correlate
  */
 
-cluster  = function(vectorColor) {
+ cluster  = function(vectorColor) {
 
   var equals = [];
 

@@ -4,7 +4,7 @@
  * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
  */
 
-function addFields(number) {
+function addFields(number){
     layer_exe = layer_exe + " \n\Inserire dati della previsione che si vuole ottenere..."
     $("#layerexe").val(layer_exe);
 

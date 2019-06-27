@@ -154,10 +154,6 @@ generator_input_probability = function(dim_vettore) {
         else
             i = i - 1; // la posizioni_zero non e' una posizione valida in quanto occupata
     }
-
-
-    console.log(vector);
-
     return vector;
 
 
