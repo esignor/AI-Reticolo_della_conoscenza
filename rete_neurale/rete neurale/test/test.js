@@ -79,11 +79,11 @@ for(var i =  0; i<3 ;++i){
 describe('#Test4 - configurazione della rete andata a buon fine', function() {
 it('configurazione rete del database', function () {
   var conf = configure_db();
-  assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita")
+  assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita");
 });
 it('configurazione rete di prova', function () {
   var conf = configure();
-  assert.isNotNull(conf, "Configurazione della Rete neurale di prova non riuscita")
+  assert.isNotNull(conf, "Configurazione della Rete neurale di prova non riuscita");
 
 });
 
