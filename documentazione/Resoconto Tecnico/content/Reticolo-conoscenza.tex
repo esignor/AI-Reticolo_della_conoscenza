@@ -1,0 +1,34 @@
+\section{Costruzione del Reticolo della Conoscenza}
+\label{Costruzione del Reticolo della Conoscenza}
+Dal 26/07 ho iniziato la Costruzione del Reticolo della Conoscenza. Per realizzarlo ho utilizzato un'applicativo gi\`a precedentemente sviluppato durante un precedente stage dell'azienda, che facendo uso della libreria d3.js effettua elaborazione dei dati presentandoli in \textit{Cluster Based} o \textit{Force Based}, a discrezione delle esigenze dell'utente.
+
+\subsection{Breve descrizione del applicativo}
+\label{Breve descrizione dell'applicativo}
+L'applicazione accetta in import file di estensione CSV. Ogni colonna dello stesso viene interpretato come un parametro da elaborare, per questo la prima riga del file deve essere o preceduta da una dichiarazione di variabili, tante quante sono le colonne da parametrizzare, oppure \`e questa prima riga che viene interpretata come una dichiarazione e conseguentemente non rappresentata all'interno del Reticolo.\\
+Possono venire settati i seguenti aspetti:
+\begin{itemize}
+\item La tipologie di Reticolo:
+\begin{itemize}
+\item Cluster Based: raggruppa un insieme di oggetti in modo tale che gli oggetti contenuti nel medesimo cluster sono pi\`u simili l'uno all'altro rispetto contenuti in altri gruppi;
+\item Force Based: in base alla forza di ogni nodo rappresenta come unica regione compatta le istanze appartenenti alla medesima classe identificando visivamente i percorsi di differenziazione. Nel layout le celle differenzianti sono poste in prossimit\`a della classe pi\`u fortemente correlata con transizione di casi intermedi tra i gruppi.
+\end{itemize}
+\item Normalizzazione:
+\item No
+\item MinMax: i dati vengono ridimensionati su un intervallo specifico (min, max), tuttavia non gestisce i valori anomali
+\item Gaussian: o normale i dati vengono normalizzati in una curva; i valori della stessa grandezza vengono approssimati dala curva;
+\item Interquartile: standardizza i dati in modo da quantificare l'estensione del 50\% della distribuzione del carattere che si trovano attorno alla mediana;
+\end{itemize}
+\item Tipologia di distanza:
+\begin{itemize}
+\item Euclidea
+\item Camberra
+\item Pearson
+\end{itemize}
+\item Metodo:
+\begin{itemize}
+\item Single: "vicino al prossimo", la distanza fra i gruppi \`e posta al pari della pi\`u piccola delle distanze calcolabili a due a due tra tutti gli elementi del gruppo. Accentua tutte le somiglianze tra i gruppi a discapito  della loro differenziazione netta.
+\item Average: viene considerata come distanza fra due gruppi la media fra tutte le distanze calcolate a due a due tra gli elementi dei due gruppi. I risultati ottenibili sono i pi\`u attendibili (essendo basato sulla media delle distanze), i gruppi risultano pi\`u omogenei e differenziati tra di loro.
+\item Complete: "vicino pi\`u lontano", viene considerata la maggiore tra le distanze calcolate a due a due tra gli elementi di due gruppi. Privilegia la differenziazione tra i gruppi che l'omogeneit\`a degli elementi in essi contenuti. In questo caso gli elementi sono meno compatti e diluiti.
+\end{itemize}
+Inoltre si pu\`o decidere se si desidera procedere con una rappresentazione manuale o automatica progressiva dei dati.
+
