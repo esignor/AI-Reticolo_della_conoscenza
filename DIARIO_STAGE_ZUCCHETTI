@@ -138,3 +138,8 @@ giovedi 27 settembre
 - revisionata e riletta documentazione sulla PCA (dato anche un breve sguardo a quanto scritto per la sezione sulla Rete Neurale)
 - creati due nuovi test (#Test4) d'unita che testano il comportamento del modulo configure e configure_db: per farlo ho rivisto se nel codice fosse possibile eliminare alcune variabili globali
 - creato file CSV che contiene il delta di previsioni per un architettura a 2 layers con 12 neuroni ciascuno
+
+venerdi 28 settembre
+- studio dell'applicativo per costruir il Reticolo della Conoscenza
+- Prova del applicativo su dati ottenuti dalla Rete neurale del database con 2 layers composti da 6, 8, 10, 12 neuroni
+- Inizio scrittura documentazione per l'uso del Reticolo e costruzione dello stesso
