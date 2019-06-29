@@ -34,6 +34,7 @@ Alcune decisioni che ho preso durante la scelta dell'architettura della rete rig
 \centering
 	\includegraphics[width=0.60\linewidth]{./image/grafo_trainset.png}
 	\caption{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}
+	\label{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}
 \end{figure}
 \noindent
 Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder, ovvero la rete impara il vettore riducendone lo spazio occupato.
@@ -242,12 +243,14 @@ Per rendere pi\`u comprensibile le previsioni di probabilit\`a ottenute, a segui
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_prova-canvas.png}
 	\caption{Rete di prova dopo lo sviluppo del canvas per le previsioni.}
+	\label{Rete di prova dopo lo sviluppo del canvas per le previsioni.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db.png}
 	\caption{Rete neurale del database aziendale.}
+	\label{Rete neurale del database aziendale.}
 \end{figure}
 \noindent
 Una prima architettura su cui ho deciso di analizzare i risultati della rete, basandomi anche sul quanto appreso dalla rete neurale di prova e dal numero di vettori di test utilizzati (1245 vettori x 89), \`e stata la seguente:
@@ -311,6 +314,7 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_prova-vp1.png}
 	\caption{Risultato della rete di prova a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
+	\label{Risultato della rete di prova a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
 \end{figure}
 Quanto mostrato dal dettaglio delle domande ha il seguente significato per un candidato:
 \begin{itemize}
@@ -331,6 +335,7 @@ Quanto mostrato dal dettaglio delle domande ha il seguente significato per un ca
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_prova-vpmeno1.png}
 	\caption{Risultato della rete di prova a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
+	\label{Risultato della rete di prova a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
 \end{figure}
 \begin{itemize}
 \item \textit{se la domanda 1 \`e settata a -1 (non corretta)}: la rete prevede che la domanda 1 e 4 non abbiano una probabilit\`a alta di essere risposte in modo corretto (bianco con sfumature di verde); la 3 e 6 una probabilit\`a molto alta di venire risposte in modo sbagliato (rosso), la 2 e la 5 di non venire nemmeno poste (verde con qualche sfumatura di bianco).
@@ -371,12 +376,14 @@ momentum:0.1, batch_size:10, l2_decay:0.001});
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vp1.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
+	\label{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vp1_2.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
+	\label{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
 \end{figure}
 \noindent
 Dagli screen della rete riportati sopra appare come "sembrano" domande:
@@ -410,12 +417,14 @@ Appaiono in relazione stretta le seguenti domande:
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vpmeno1.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
+		\label{Risultato della rete del database a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vpmeno1_2.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
+	\label{Risultato della rete del database a seguito di un vettore di previsione [-1, -1, -1, -1, -1, -1] in input.}
 \end{figure}
 \noindent
 Dagli screen della rete riportati sopra appare come "sembrano" domande:
@@ -451,13 +460,16 @@ Noto che aumentando il numero di neuroni sull'unico layer esistente, il valore d
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vp1architettura2.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
+	\label{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.90\linewidth]{./image/rete_db-vp1_2architettura2.png}
 	\caption{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
+	\label{Risultato della rete del database a seguito di un vettore di previsione [1, 1, 1, 1, 1, 1] in input.}
 \end{figure}
+
 
 Dagli screen della rete riportati sopra appare come la situazione appare meno lineare del caso analizzato precedentemente. 
 Le domande non vengono separate per linee rete; ma per aree di relazione.

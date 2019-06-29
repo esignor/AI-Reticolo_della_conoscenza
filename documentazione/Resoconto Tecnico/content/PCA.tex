@@ -1,6 +1,5 @@
 \section{Principal Component Analysis}
 \label{PCA}
-
 La \textbf{P}rincipal \textbf{C}omponent \textbf{A}nalysis (acronimo PCA) \`e una tecnica impiegata nell'ambito della statistica multivariata\footnote{parte della statistica in cui l'oggetto dell'analisi \`e almeno composta da due elementi} usata per semplificare i dati d'origine.\\
 Lo scopo che tale tecnica persegue \`e lo studio della relazione esistenti tra i campioni d'interesse, con la riduzione di un numero pi\`u o meno elevato di variabili. La riduzione dimensionale avviene tramite una trasformazione lineare delle variabili coinvolte con lo scopo di effettuare la proiezione di quelle originarie in un nuovo sistema cartesiano, in cui tutte le variabili vengono ordinate in maniera decrescente per ordine di varianza. Successivamente la variabile con maggiore varianza viene proiettata sul primo asse, la seconda sul secondo e via via sempre cos\`i per tutte le variabili sotto esame. La PCA \`	e particolarmente utile quando la dimensionalit\`a dello spazio delle misure \`e elevata (molte colonne); tuttavia i campioni si vengono a trovare in uno spazio di dimensioni significativamente ridotte.\\
 Indispensabile per la buona riuscita della tecnica \`e, come gi\`a esposto sopra, la ricerca del numero di componenti principali significative, ovvero tutte le variabili coinvolte a meno di quelle legate al rumore, che concorrono a comporre la \textit{dimensionalit\`a intrinseca}. Il "rumore" \`e sempre concentrato nelle ultime variabili, non includerle nell'analisi dei dati porta a dati pi\`u puliti, con un rapporto segnale/rumore pi\`u alto.\\
@@ -83,12 +82,14 @@ cor(df_numeric)
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/prcomp_rete-prova.png}
 	\caption{Visualizzazione del calcolo della PCA tramite prcomop per il trainset di prova.}
+	\label{Visualizzazione del calcolo della PCA tramite prcomop per il trainset di prova.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{../../PCA/plot/prcomp_rete-db.png}
 	\caption{Visualizzazione del calcolo della PCA tramite prcomop per il trainset delle domande nel database.}
+	\label{Visualizzazione del calcolo della PCA tramite prcomop per il trainset delle domande nel database.}
 \end{figure}
 \noindent
 
@@ -101,16 +102,19 @@ Osservando  esclusivamente la deviazione standard ottenuta dal trainset di prova
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/summary-autovalore_rete-prova.png}
 	\caption{Visualizzazione del calcolo del metodo summary ed individuazione degli autovalori per il trainset di prova.}
+	\label{Visualizzazione del calcolo del metodo summary ed individuazione degli autovalori per il trainset di prova.}
 \end{figure}
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{../../PCA/plot/summary_db.png}
 	\caption{Visualizzazione del calcolo del metodo summary per il trainset delle domande nel database.}
+	\label{Visualizzazione del calcolo del metodo summary per il trainset delle domande nel database.}
 \end{figure}
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/autovalori_db.png}
 	\caption{Individuazione degli autovalori per il trainset delle domande nel database.}
+	\label{Individuazione degli autovalori per il trainset delle domande nel database.}
 \end{figure}
 \paragraph{Osservazioni}
 \`E essenziale per individuare il numero di componenti (PC) necessarie per effettuare un'analisi corretta basarsi sul calcolo della \textit{variance.percent} o \textit{Proportion of Variance}. A tale scopo \`e prendere le componenti principali che catturano la maggior parte di variabilti\`a dei dati.\\
@@ -121,12 +125,14 @@ Quanto appena descritto si pu\`o riscontrare anche graficamente, come presentato
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/variances_rete-prova.png}
 	\caption{Plot della rappresentazione grafica della varianza sui PC del trainset di prova.}
+	\label{Plot della rappresentazione grafica della varianza sui PC del trainset di prova.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/variances2_rete-prova.png}
 	\caption{Plot della rappresentazione grafica della varianza sui PC del trainset di prova.}
+	\label{Plot della rappresentazione grafica della varianza sui PC del trainset di prova.}
 \end{figure}
 \noindent
 Le ultime PC4, PC5 e PC6 hanno una variabilit\`a molto bassa, trascurabile.
@@ -134,6 +140,7 @@ Le ultime PC4, PC5 e PC6 hanno una variabilit\`a molto bassa, trascurabile.
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/varianza-complessiva_rete-prova.png}
 	\caption{Rappresentazione grafica di come la varianza si distribuisce sulle PC individuate dal modello sul trainset di prova.}
+		\label{Rappresentazione grafica di come la varianza si distribuisce sulle PC individuate dal modello sul trainset di prova.}
 \end{figure}
 \noindent
 Tuttavia per quanto riguarda le domande nel database ogni conclusione "a occhio " risulta  impossibile da effettuare sempre a causa della numerosit\`a dei dati di trainset. L'utilizzo di un analisi dei risultati per mezzo di plot \`e l'unica via percorribile.
@@ -142,6 +149,7 @@ Tuttavia per quanto riguarda le domande nel database ogni conclusione "a occhio 
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/variances_rete-db.png}
 	\caption{Plot della rappresentazione grafica della varianza dei primi dieci PC del trainset delle domande nel database.}
+	\label{Plot della rappresentazione grafica della varianza dei primi dieci PC del trainset delle domande nel database.}
 \end{figure}
 \noindent
 Il plot mostra esclusivamente le prime dieci componenti; tutte si presentano con una varianza molto basse. A causa di ci\`o per poter affermare quante PC sono indispensabili per una valutazione oggettiva dei dati \`e indispensabile avere una visione totalitaria di tutte variabili coinvolte nel modello.
@@ -149,11 +157,13 @@ Il plot mostra esclusivamente le prime dieci componenti; tutte si presentano con
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/variances-ALL_rete-db.png}
 	\caption{Plot della rappresentazione grafica della varianza di tutti i PC del trainset delle domande nel database.}
+	\label{Plot della rappresentazione grafica della varianza di tutti i PC del trainset delle domande nel database.}
 \end{figure}
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/variances2-ALL_rete-db.png}
 	\caption{Plot della rappresentazione grafica della varianza di tutti i PC del trainset delle domande nel database.}
+	\label{Plot della rappresentazione grafica della varianza di tutti i PC del trainset delle domande nel database.}
 \end{figure}
 Non risulta sufficiente l'andamento dei plot per riuscire a definire il numero adeguato di componenti principali da utilizzare. In questi casi, \`e buona norma, fare riferimento a tre criteri:
 \begin{itemize}
@@ -170,6 +180,7 @@ In conclusione, ho considerato come una percentuale di copertura adeguata quella
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/varianza-complessiva_rete-db.png}
 	\caption{Rappresentazione grafica di come la varianza si distribuisce sulle PC individuate dal modello sul trainset delle domande nel database.}
+	\label{Rappresentazione grafica di come la varianza si distribuisce sulle PC individuate dal modello sul trainset delle domande nel database.}
 \end{figure}
 
 \subsubsection{Calcolo degli autovettori}
@@ -179,6 +190,7 @@ In conclusione, ho considerato come una percentuale di copertura adeguata quella
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/loadings_rete-prova.png}
 	\caption{Autovettori del trainset di test.}
+	\label{Autovettori del trainset di test.}
 \end{figure}
 
 \paragraph{Osservazioni}
@@ -193,12 +205,14 @@ Tali assunzioni sono molto pi\`u complesse da effettuare per  il trainset dei da
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/correlazione_rete-prova.png}
 	\caption{Autovettori del trainset di test.}
+	\label{Autovettori del trainset di test.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{../../PCA/plot/correlazione_rete-db.png}
 	\caption{Autovettori del trainset delle domande nel database.}
+	\label{Autovettori del trainset delle domande nel database.}
 \end{figure}
 \noindent
 
@@ -207,16 +221,18 @@ I CSV generati di correlazione sono i seguenti:
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/CSV_rete-prova.png}
-	\caption{CSV generato a partire dalla matrice correlazione del trainset della rete.}
+	\caption{CSV generato a partire dalla matrice correlazione del trainset della rete di prova.}
+	\label{CSV generato a partire dalla matrice correlazione del trainset della rete di prova.}
 \end{figure}
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{../../PCA/plot/CSV_rete-db.png}
 	\caption{CSV generato a partire dalla matrice correlazione del trainset delle domande nel database.}
+	\label{CSV generato a partire dalla matrice correlazione del trainset delle domande nel database.}
 \end{figure}
 \noindent
 I file CSV gli ho generati prendendo la matrice correlazione, che mostra il grado di correlazione di ogni componente con ogni variabile del modello, creandovi un data frame che mostra per ogni variabile quale \`e la componente a cui si collega in ordine decrescente (da  quella che si correla di pi\`u a quella che si correla di meno).\\ 
-Da tale distribuzione dei dati, per il trainset di prova emerge quello che mi aspettavo. Per esempio la variabile 1 si correla con grado massimo con se stessa, successivamente con la componente 4 (che \`e la sua domanda sorella) e successivamente con le domande 3 e 6 (i suoi genitori) e alla fine con le domande 2 e 5 (nella realt\`a queste ultime due non hanno alcuna correlazione con la domanda 1). Tale ragionamento vale per tutte le altre  5 componenti, i cui risultati rimangono coerenti con le aspettative e con ci\`o che viene dichiarato nel Grafo della conoscenza, rappresentato in §\ref{Test effettuati}.\\\\
+Da tale distribuzione dei dati, per il trainset di prova emerge quello che mi aspettavo. Per esempio la variabile 1 si correla con grado massimo con se stessa, successivamente con la componente 4 (che \`e la sua domanda sorella) e successivamente con le domande 3 e 6 (i suoi genitori) e alla fine con le domande 2 e 5 (nella realt\`a queste ultime due non hanno alcuna correlazione con la domanda 1). Tale ragionamento vale per tutte le altre  5 componenti, i cui risultati rimangono coerenti con le aspettative e con ci\`o che viene dichiarato nel Grafo della Conoscenza, rappresentato nella figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.} nella sezione § \ref{Test effettuati}.\\\\
 Pensavo di poter effettuare il medesimo ragionamento anche per analisi dei dati del trainset del database, tuttavia questo non \`e stato possibile, a causa delle seguenti motivazioni:
 \begin{itemize}
 \item In primo luogo, se una variabile nella matrice correlazione \`e dichiarata in correlazione con una componente, questa poi non risulta in correlazione con la variabile;
@@ -236,26 +252,30 @@ Le figure seguenti mostrano proprio tale fenomeno: nel caso dell'indovinato le d
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/PCA.png}
 	\caption{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova puro sul grafo della conoscenza.}
+	\label{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova puro sul grafo della conoscenza.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/correlazione_base.png}
-	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova}
+	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova.}
+	\label{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova.}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.80\linewidth]{../../PCA/plot/PCA-valorindovinati.png}
-	\caption{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova spurio con la probabilit\`a di indovinare.}
+	\caption{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova spurio con la probabilità di indovinare.}
+	\label{Rappresentazione per mezzo di plot di come le variabili si presentano nelle due componenti principali con il calcolo della PCA - utilizzo di trainset di prova spurio con la probabilita di indovinare.}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{../../PCA/plot/correlazione_with-probability.png}
-	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova soggetti alla probabilit\`a di indovinare}
+	\caption{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova soggetti alla probabilità di indovinare.}
+	\label{Le domande in correlazione con la variabili principali in ordine decrescente sui dati di prova soggetti alla probabilita di indovinare.}
 \end{figure}
 
 \noindent L'analisi del modello ha evidenziato come il Reticolo della Conoscenza costruito  dai dati delle domande nel database, una volta costruito, risentir\`a inevitabilmente del fattore di rischio "domande indovinate". Mi aspetto, per cui, che in rapporto al contenuto delle stesse gli argomenti e la difficolt\`a  delle domande appartenenti al medesimo cluster possano non essere coincidenti.\\
