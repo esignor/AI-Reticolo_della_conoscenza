@@ -3,7 +3,7 @@
 # Caricamento della libreria
 library("factoextra")
 options(max.print=10000)
-df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova-with_probability.csv", header=FALSE, sep=",")  # carico il file csv
+df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
 # calcolo il pca (centra automaticamente per avere la media a 0), non standardizzato
 res.pca <- prcomp(df_numeric, scale = FALSE) 
 biplot(res.pca); # rappresentazione grafica
@@ -12,7 +12,7 @@ biplot(res.pca); # rappresentazione grafica
 # standardizzazione dei valori: MI E' UTILE PER IL CALCOLO DEGLI AUTOVETTORI
 df_numeric_aux = df_numeric
 for(i in 1:6){
- df_numeric_aux[,i]=(df_numeric[,i]-mean(df_numeric[,i]))/(sd(df_numeric[,i]))
+  df_numeric_aux[,i]=(df_numeric[,i]-mean(df_numeric[,i]))/(sd(df_numeric[,i]))
 }
 res.pca=princomp(df_numeric_aux)
 biplot(res.pca) # rappresentazione grafica dei risultati ottenuti dalla pca standardizzata
@@ -61,14 +61,14 @@ fviz_contrib(res.pca, choice = "var", axes = 1:3, top = 10)
 #)
 
 
-  # Grafico delle variabili. Le variabili correlate positive indicano lo stesso
-  # lato della trama. Le variabili correlate negative puntano ai lati opposti
-  # del grafico.
-  fviz_pca_var(res.pca,
-               col.var = "contrib", # Color by contributions to the PC
-               gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-               repel = TRUE 
-  )
+# Grafico delle variabili. Le variabili correlate positive indicano lo stesso
+# lato della trama. Le variabili correlate negative puntano ai lati opposti
+# del grafico.
+fviz_pca_var(res.pca,
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
 
 
 # Trasposizione dei dati in ordine decrescente di correlazione per ciascuna domanda
@@ -91,4 +91,3 @@ for(r in 1:6){
 write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/matrice_correlazione-prova.csv", quote=T, sep=" ", dec=".", na="NA", row.name=T, col.names=T)
 
 
-  
