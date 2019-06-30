@@ -20,7 +20,7 @@ function addFields(dim){
     div.id = "box_differenziale";
     var label=  document.createElement("label")
     label.for="differenziale";
-    label.appendChild(document.createTextNode("Differenziale di accopiamento: "));
+    label.appendChild(document.createTextNode("Differenziale di accoppiamento: "));
     var input = document.createElement("input");
     input.name="differenziale" ;
     input.type="number";
