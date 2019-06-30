@@ -4,11 +4,16 @@
  * @param {*} new_text nuovo testo da accodare a quello preesistente
  * metodo che si occupa di stampare all'interno della textarea della rete
  */
-function printTextarea(param_layer, new_text){
-    if(param_layer == 0)
-      layer_exe = new_text;
-    else
-      layer_exe = param_layer + new_text;
+printTextarea = function (param_layer, new_text) {
+    if (param_layer != null) {
+        if (param_layer == 0)
+            layer_exe = new_text;
+        else
+            layer_exe = param_layer + new_text;
 
-    $("#layerexe").val(layer_exe);
+        $("#layerexe").val(layer_exe);
+        return true;
+
+    }
+    return false;
 }

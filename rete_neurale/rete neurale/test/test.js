@@ -1,17 +1,19 @@
 /**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keyword exports al modulo delle funzioni coinvolte */
 
 import {assert} from 'chai';
-import {alert} from 'chai';
+/*import {alert} from 'chai';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import {cluster} from '../src/cluster'
 import {configure_db} from '../src/configure_db'
-import {configure} from '../src/configure'
+import {configure} from '../src/configure'*/
+import {sinon} from 'sinon';
 import {controlValueFields} from '../src/controlValueFields'
+import {printTextarea} from '../src/printTextarea'
 
 
 
-it('#Test 1 - generazione array mappato su grafo', function () {
+/*it('#Test 1 - generazione array mappato su grafo', function () {
   var a = generator_input(6);
   if (a[2] != 0 && a[5] != 0)
     assert.equal(a[2], a[5], "2 e 5 non sono coppie di domande (oracolo non rispettato)");
@@ -85,24 +87,33 @@ it('configurazione rete di prova', function () {
 
 });
 
-});
+});*/
 
-describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
-  it('valore vuoto', function () {
-    assert.isNotTrue(controlValueFields(""), "Stringa vuota accettata correttamente come numero intero positivo");
+/*describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
+  assert.isNotTrue(controlValueFields(), "to_test() should return 42" ); */
+
+
+ /*it('valore vuoto', function () {
+    controlValueFields("");
+    sinon.assert.notCalled(window.alert);   
   });
-  it('valore indefinito', function () {
+*/
+ 
+
+
+
+  /*it('valore indefinito', function () {
     assert.isNotTrue(controlValueFields(), "Numero indefinito accettata correttamente come numero intero positivo");
   
   });
-
+/*
   it('valore in underflow', function () {
     assert.isNotTrue(controlValueFields(-3), "Numero intero negativo accettata correttamente come numero intero positivo");
   });
   it('valore in overflow', function () {
     assert.isNotTrue(controlValueFields(10000), "Numero intero che supera i limiti massimi rappresentabili accettato correttamente come numero intero positivo");
   
-  });
+  });*/
 
   it('valore corretto entro i range stabiliti', function () {
     assert.isTrue(controlValueFields(10), "Numero intero postivi valido non accettato correttamente come numero intero positivo");
@@ -114,4 +125,8 @@ describe('#Test5 - controllo valori inseriti nella form del differenziale di acc
   });
   
   
-  });
+  
+
+ it('#Test6 - test del modulo di stampa', function() {
+   assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
+ });
