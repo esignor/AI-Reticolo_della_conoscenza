@@ -39,6 +39,13 @@ body,html{
     font-weight:bold;   
   }
 
+  #button_dettaglio-animation{
+    color:  #7fffd4;
+    background-color:#ffffff; 
+    border:0.8em solid #7fffd4;
+  }
+
+
  #setter_numberfields{
     margin-left: 48em;
     margin-top: 1.5em;
@@ -46,6 +53,10 @@ body,html{
 
   #button_JSON{
     margin-left: 6em;
+  }
+
+  #box_differenziale{
+    margin-left: 18em;
   }
 
  #myCanvas, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
@@ -67,8 +78,8 @@ body,html{
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50; 
-    margin-left: 81em;
-    margin-bottom: 2em;
+    margin-left: 76em;
+    margin-top: -3em;
   }
 
   #title, #title_vettore, #primary_title, #button_dettaglio-animation, #title_questionsdetail{
@@ -86,8 +97,12 @@ body,html{
     color:#ff7f50;
   }
 
-  #title, #box_vettore, #title_questionsdetail {
+  #title, #title_questionsdetail {
     margin-left:13em;
+  }
+
+  #box_vettore{
+    margin-left: 18em;
   }
 
 
