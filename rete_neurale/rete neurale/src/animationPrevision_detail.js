@@ -12,13 +12,9 @@ function animationPrevision_detail(dim) {
 
   var myCanvas = document.getElementById("myCanvas-detail"); // acquisiamo il contesto su cui lavorare
   var context = myCanvas.getContext("2d");
-  var vectorColor = [];
-  for (i=0;i<dim;i++) {
-    vectorColor[i]=new Array(dim);
-  }
 
   for (var i = 0; i < vectorPrevision.length; ++i) { // scorro il vettore previsione con lo scopo che per ogni elemento (domanda) trovo la sua previsione su tutte le dim domande
-    var scores = prevision_singleElement(i, vectorPrevision[i]); // gli passo l'indice e il contenuto dell'indice
+    var scores = prevision_singleElement(i, vectorPrevision[i], dim); // gli passo l'indice e il contenuto dell'indice
 
     //vengono settate le coordinate
     var y = 25;
@@ -68,24 +64,11 @@ function animationPrevision_detail(dim) {
       }
 
       context.fillStyle = "rgb(" + colorRed + " , " + colorGreen + ", " + colorBlue + ")";
-      vectorColor[i][j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
       context.fill(); // applico il colore
 
       x = x + 15;
 
     }
   }
-
-  var questionCluster = cluster(vectorColor);
-
-
-  // stampo il contenuto
-
-  layer_exe = layer_exe + "\n\Relazione fra le domande :";
-  for (var i = 0; i < vectorColor.length; ++i) {
-    layer_exe = layer_exe + "\n\domanda " + (i + 1) + ":";
-    layer_exe = layer_exe + "[" + questionCluster[i] + "]";
-  }
-  $("#layerexe").val(layer_exe);
 
 }

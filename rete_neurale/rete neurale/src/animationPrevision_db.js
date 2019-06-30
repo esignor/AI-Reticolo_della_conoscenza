@@ -1,16 +1,19 @@
-/** @function animmationPrevision
+/** @function animationPrevision_db
  * 
- * @param {*} dim numero di box animati
- * il metodo ha lo scopo di creare tanti rettangoli quante sono le previsioni, e di colorarli in base al valore della previsione.
+ * @param {*} scores collezione dei variabili di previsione
+ * @param {*} dim dimensione di input e output della rete
+ * il metodo ha lo scopo di creare tanti rettangoli quante sono le previsioni, e di colorarne il colore di riempimento in base al valore della previsione.
  */
 
-function animationPrevision_db(dim, scores){
+function animationPrevision_db(scores, dim){
     
     var myCanvas = document.getElementById("myCanvas"); // acquisiamo il contesto su cui lavorare
     var context = myCanvas.getContext("2d");
     
     var x = 5;
     var y = 15;
+
+    var vectorColor = [];
 
     for(var j = 0 ; j<dim; ++j){
     context.beginPath();//nuovo elemento disegnato
@@ -48,8 +51,17 @@ function animationPrevision_db(dim, scores){
         colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
 
       }
+
+      // controllo le variabili dei colori avendo usato un coefficiente moltiplicativo
+      if(colorRed > 255)
+        colorRed = 255;
+      if(colorBlue > 255)
+        colorBlue = 255;
+      if(colorGreen > 255)
+        colorGreen = 255;
       
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
+      vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
       
       context.fill(); // applico il colore
       
@@ -60,8 +72,11 @@ function animationPrevision_db(dim, scores){
         x = 5;
       }
 
-    }
+    } 
 
     document.getElementById("button_dettaglio-animation").style.display = "inline"; // fa comparire il pulsante che attivita' la possibilita' di visualizzare il dettaglio delle previsioni
 
-}
+    return vectorColor;
+
+
+  }

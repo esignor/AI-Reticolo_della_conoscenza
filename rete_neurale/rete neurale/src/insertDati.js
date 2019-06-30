@@ -1,9 +1,10 @@
 /** @function insertDati
+ * @param {*} dim dimensione di input e output della rete
  * inserimento dei dati per  compiere l'addestramento della rete
  */
 
 
-function insertDati() {
+function insertDati(dim) {
     // addestramento tutto in un set
     layer_exe = "Inizilizzazione addestramento della rete"
     $("#layerexe").val(layer_exe);
@@ -11,274 +12,24 @@ function insertDati() {
     for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-         var Aux = generator_input(6);
+         var Aux = generator_input(dim);
  
          ArrayInput[n] = Aux;
-         layer_exe = layer_exe + "\n\Inserito vettore di risposta:  [" + ArrayInput[n] + "]";
-         $("#layerexe").val(layer_exe);
+         printTextarea(layer_exe,"\n\Inserito vettore di risposta:  [" + ArrayInput[n] + "]");
      }
 
-     update(ArrayInput);
+     update(ArrayInput, dim);
  }
 
   /*for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
-        var Aux= generator_input_probability(6);
+        var Aux= generator_input_probability(dim);
 
          ArrayInput[n] = Aux;
-         layer_exe = layer_exe + "\n\Inserito vettore di risposta: [" + ArrayInput[n] + "]";
-         $("#layerexe").val(layer_exe);
+         printTextarea(layer_exe, "\n\Inserito vettore di risposta: [" + ArrayInput[n] + "]");
      }
 
-     update(ArrayInput);
+     update(ArrayInput, dim);
  }*/
-    /*layer_exe = "Inizilizzazione addestramento della rete"
-    $("#layerexe").val(layer_exe);
-    ArrayInput = [1, 0, 1, 1, 0, 0]; ArrayOutput = [1, 0, 1, 1, 0, 0];
-    layer_exe = layer_exe + "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, 0, 1, 0]; ArrayOutput = [1, 1, 0, 0, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, -1, 1, 0, 0]; ArrayOutput = [1, 0, -1, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 0]; ArrayOutput = [1, -1, 1, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, -1, 0, -1, 0]; ArrayOutput = [0, 1, -1, 0, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 1, -1, -1, 0]; ArrayOutput = [1, 1, 1, -1, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 0, 1, 1, 0, 1]; ArrayOutput = [-1, 0, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 1, -1, 1, 0]; ArrayOutput = [1, 0, 1, -1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 1, 1]; ArrayOutput = [1, -1, 1, 1, 1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 1, 1, -1]; ArrayOutput = [0, 1, 0, 1, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 0, 0, 0, -1, 0]; ArrayOutput = [0, 0, 0, 0, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 1, 0, 1, 1, 0]; ArrayOutput = [-1, 1, 0, 1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, -1, 1, 1, 1]; ArrayOutput = [1, 0, -1, 1, 1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-
-    ArrayInput = [1, -1, 1, 1, -1, 1]; ArrayOutput = [1, -1, 1, 1, -1, 1];
-    layer_exe = "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, 1, -1, 0]; ArrayOutput = [1, 1, 0, 1, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, -1, 0, 0]; ArrayOutput = [1, 1, 0, -1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 0, 1, 1, -1, 1]; ArrayOutput = [0, 0, 1, 1, -1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 0, 0, 0, 0]; ArrayOutput = [1, -1, 0, 0, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 1, 1, 0, -1]; ArrayOutput = [1, 0, 1, 1, 0, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
-    layer_exe = layer_exe + "n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 0, 0, 1, 0, 0]; ArrayOutput = [-1, 0, 0, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 0, 1, 0, -1]; ArrayOutput = [1, 0, 0, 1, 0, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, -1, 0, 1, 0]; ArrayOutput = [0, 1, -1, 0, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-
-
-    layer_exe = "Inizilizzazione addestramento della rete"
-    $("#layerexe").val(layer_exe);
-    ArrayInput = [1, 0, 1, 1, 0, 0]; ArrayOutput = [1, 0, 1, 1, 0, 0];
-    layer_exe = layer_exe + "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, 0, 1, 0]; ArrayOutput = [1, 1, 0, 0, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, -1, 1, 0, 0]; ArrayOutput = [1, 0, -1, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 0]; ArrayOutput = [1, -1, 1, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, -1, 0, -1, 0]; ArrayOutput = [0, 1, -1, 0, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 1, -1, -1, 0]; ArrayOutput = [1, 1, 1, -1, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 0, 1, 1, 0, 1]; ArrayOutput = [-1, 0, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 1, -1, 1, 0]; ArrayOutput = [1, 0, 1, -1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 1, 1]; ArrayOutput = [1, -1, 1, 1, 1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 1, 1, -1]; ArrayOutput = [0, 1, 0, 1, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 0, 0, 0, -1, 0]; ArrayOutput = [0, 0, 0, 0, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 1, 0, 1, 1, 0]; ArrayOutput = [-1, 1, 0, 1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, -1, 1, 1, 1]; ArrayOutput = [1, 0, -1, 1, 1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-
-    ArrayInput = [1, -1, 1, 1, -1, 1]; ArrayOutput = [1, -1, 1, 1, -1, 1];
-    layer_exe = "Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, 1, -1, 0]; ArrayOutput = [1, 1, 0, 1, -1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, 0, 1, -1]; ArrayOutput = [0, 1, 0, 0, 1, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, 0, -1, 0, 0]; ArrayOutput = [1, 1, 0, -1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 0, 1, 1, -1, 1]; ArrayOutput = [0, 0, 1, 1, -1, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 0, 0, 0, 0]; ArrayOutput = [1, -1, 0, 0, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 1, 1, 0, -1]; ArrayOutput = [1, 0, 1, 1, 0, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
-    layer_exe = layer_exe + "n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 1, -1, 1, 0, 1]; ArrayOutput = [1, 1, -1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [-1, 0, 0, 1, 0, 0]; ArrayOutput = [-1, 0, 0, 1, 0, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, 0, 0, 1, 0, -1]; ArrayOutput = [1, 0, 0, 1, 0, -1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, 0, -1, 1, 0]; ArrayOutput = [0, 1, 0, -1, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [0, 1, -1, 0, 1, 0]; ArrayOutput = [0, 1, -1, 0, 1, 0];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();
-    ArrayInput = [1, -1, 1, 1, 0, 1]; ArrayOutput = [1, -1, 1, 1, 0, 1];
-    layer_exe = layer_exe + "\n\Ricapitolazione dati inseriti: " + "Risposte ottenute  [" + ArrayInput + "]"
-    $("#layerexe").val(layer_exe);
-    update();*/
-
+  

@@ -1,8 +1,8 @@
-/** @function animmationPrevision
+/** @function animationPrevision
  * 
  * @param {*} scores collezione dei variabili di previsione
- * @param {*} dim numero di box animati
- * il metodo ha lo scopo di creare tanti rettangoli quante sono le previsioni, e di colorarli in base al valore della previsione.
+ * @param {*} dim dimensione di input e output della rete
+ * il metodo ha lo scopo di creare tanti rettangoli quante sono le previsioni, e di colorarne il colore di riempimento in base al valore della previsione.
  */
 
 function animationPrevision(scores, dim){
@@ -12,6 +12,8 @@ function animationPrevision(scores, dim){
     
     var x = 0; // larghezza
     var y = 30; // altezza
+
+    var vectorColor = [];
 
     for(var j = 0 ; j<dim; ++j){
     context.beginPath();//nuovo elemento disegnato
@@ -39,17 +41,18 @@ function animationPrevision(scores, dim){
       // casi borderline
       else if(parseFloat(scores.w[j]) > 0){// combinazione rgb verde - bianco
        colorRed = parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
-       colorGreen = parseInt(((scores.w[j]*255)*8 + (1-scores.w[j])*255));
+       colorGreen = parseInt(((scores.w[j]*255) + (1-scores.w[j])*255));
        colorBlue =  parseInt((scores.w[j]*0 + (1-scores.w[j])*255));
       }
 
       else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb rosso - bianco
-        colorRed = parseInt(((-scores.w[j]*255)*8 + (1+scores.w[j])*255));
+        colorRed = parseInt(((-scores.w[j]*255) + (1+scores.w[j])*255));
         colorGreen = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
         colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
 
       }
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
+      vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
 
 
       context.fill(); // applico il colore
@@ -59,7 +62,6 @@ function animationPrevision(scores, dim){
     }
 
     document.getElementById("button_dettaglio-animation").style.display = "inline"; // fa comparire il pulsante che attivita' la possibilita' di visualizzare il dettaglio delle previsioni
-
     
-
+    return vectorColor;
 }

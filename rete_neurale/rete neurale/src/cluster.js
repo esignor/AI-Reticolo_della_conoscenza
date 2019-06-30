@@ -1,58 +1,37 @@
 /** function cluster
  * 
- * @param {*} vectorColor array dei colori delle previsioni delle vectorColor.length domande
- * metodo che ha il compito di individuare il numero di match esatti che esistono tra una previsione della domanda n con la domanda n+1 per tutte le vectorColor.length domande
- * e che individua per ogni domanda i quali sono le j-esime domande correlate
+ * @param {*} vectorColor array dei colori delle previsioni delle vectorColor.length domande (ovvero dimensione di input/output della rete)
+ * @param {*} differenziale parametro che indica l'oscillazione massima di cui sono soggetti in rapporto l'una all'altra i gruppi di domande da individuaare 
+ * metodo che ha il compito di individuare le correlazioni esistenti (esclusivamente dal punto di vista matematico) tra una  domanda n con la domanda n+1 confrontando tra loro i colori di previsione
+ *  e portandoli in diminuzione del coefficiente differenziale_accopiamento
+   @return questionCluster vettore che contiene la correlazione matematica rappresentata per gruppi di doamande 
  */
 
- cluster  = function(vectorColor) {
-
-  var equals = [];
-
-  for (var i = 0; i < vectorColor.length; ++i) { // init
-    equals[i] = new Array(vectorColor.length); // salvo il numero di match tra una riga i e una riga i+1 (i e i_aux)
-    for (var j = 0; j < vectorColor.length; ++j) {
-      equals[i][j] = 0;
-    }
-  }
-  var Coppie = []; // salvo le coppie di righe che matchano esattamente
+cluster  = function(vectorColor, differenziale) {
+  
+  var questionCluster = []; // salvo le questionCluster di elemento che matchano su un delta massimo differenziale
   var n = 0;
   for (var i = 0; i < vectorColor.length; ++i) {
-    for (var i_aux = 0; i_aux < vectorColor.length; ++i_aux) {
-      var count = 0;
-      for (var j = 0; j < vectorColor.length; ++j) {
-        var aux = vectorColor[i][j].split("-"); // splitto ogni elemento contenuto nella riga
-        var value = parseInt(aux[0]);// primo valore di colore della riga i
-        aux = vectorColor[i_aux][j].split("-");//primo valore di colore della riga i_aux
-        var value_aux = parseInt(aux[0]);
-        if (Math.abs(value - value_aux) <= 30) {
+    var count = 0;
+    for (var j = 0; j < vectorColor.length; ++j) {
+        var aux = vectorColor[i].split("-"); // splitto ogni colore nell'elemento i
+        var value_i = parseInt(aux[0]);// primo valore di colore dell'elemento i
+        aux = vectorColor[j].split("-");// splitto ogni colore nell'elemento j
+        var value_j = parseInt(aux[0]); //primo valore di colore dell'elemento j
+        if (Math.abs(value_i - value_j) <= differenziale){
           count = count + 1;
-          if (count == vectorColor.length) {
-            Coppie[n] = (i + 1) + "," + (i_aux + 1);
-            n = n + 1;
+          if(count == 1){
+            questionCluster[n] = "domanda "  + (i + 1) + ": " + (j + 1);
+          }
+          else{
+            questionCluster[n] = questionCluster[n] + ", " + (j + 1);
+          }
+ 
+
           }
         }
+        n = n+1;
       }
-      equals[i][i_aux] = count;// i match esatti tra la riga i e i_aux sonno count
-    }
-  }
-
-  // effettua una stampa unica delle coppie di domande
-  var questionCluster = [];
-  for (var i = 0; i < vectorColor.length; ++i) {// id delle domande
-    for (var j = 0; j < Coppie.length; ++j) {
-      var aux = Coppie[j].split(","); // splitto ogni elemento contenuto nella riga
-      var value1 = parseInt(aux[0]);
-      var value2 = parseInt(aux[1]);
-      if (value1 == (i + 1)) {
-        if (questionCluster[i] != null)
-          questionCluster[i] = questionCluster[i] + "," + value2;
-        else
-          questionCluster[i] = value2;
-      }
-
-    }
-  }
 
   return questionCluster;
 

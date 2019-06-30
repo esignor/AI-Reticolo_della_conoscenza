@@ -9,7 +9,7 @@ $(function () {  //  chiamata quando tutti gli elementi DOM della pagina sono pr
   $("#layerdef").val(configure()); // mostra la configurazione della rete nel primo box
 
     // addestrmanento della rete di dimensione 6
-    insertDati(); // per la rete di prova
+    insertDati(6); // per la rete di prova
 
 });
 

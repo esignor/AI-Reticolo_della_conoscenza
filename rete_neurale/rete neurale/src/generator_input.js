@@ -1,5 +1,5 @@
 /** @function generator_input
- *  @param dim_vettore dimensione del vettore che dovra' essere generato 
+ *  @param {*} dim_vettore dimensione del vettore che dovra' essere generato 
  *  @returns vector ritorna un vettore con dim_vettore di dimensione, ove per ogni cella si trova uno tra i seguenti valori:
  *  - 0: domanda non fatta -> in un numero randomico di celle.
  *  - -1:  domanda a cui il canditato ha risposto sbagliato -> se una domanda ha valore 0 significa che gli eventuali fratelli avranno valore 0 come i padri perche' di pari e superiore complessita', 

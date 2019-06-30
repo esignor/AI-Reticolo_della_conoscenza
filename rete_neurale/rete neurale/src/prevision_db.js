@@ -4,9 +4,11 @@
  * in grado di rispondere **/
 
 function prevision() {
+    if (!controlValueFields(document.getElementById("differenziale").value)) //controllo che il valore inserito sia un intero >= 0 non vuto
+      return;
+
     // stampa di connessione della rete
-    layer_exe = layer_exe + "\n\Richiesta di previsione inoltrata alla rete ...";
-    $("#layerexe").val(layer_exe);
+    printTextarea(layer_exe,"\n\Richiesta di previsione inoltrata alla rete ...");
     document.getElementById("myCanvas").style.display = "none"; // fa scomparire il box canvas
     document.getElementById("myCanvas-detail").style.display = "none"; // fa scomparire il box canvas al dettaglio
     document.getElementById("title_questionsdetail").style.display = "none";//fa scomparire  il title introduttivo delle risposte al dettaglio
@@ -22,11 +24,10 @@ function prevision() {
     //previsione della rete
     var scores = net.forward(x, false);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta;
 
-    layer_exe = layer_exe + "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]" + "\n\Rete neurale in attesa ...";
-    $("#layerexe").val(layer_exe);
+    printTextarea(layer_exe, "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]");
 
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
-    animationPrevision_db(89, scores); // chiamata al metodo che crea il canvas;
+    configureCanvasCoupling(scores, 89); // chiamata al metodo che crea il canvas;
 
     vettoreReticolo(89);
 

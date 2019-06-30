@@ -1,5 +1,6 @@
 // Preparo i vettori per il Reticolo della Conoscenza
 /**function vettoreReticolo
+ * @param {*} dim dimensione di input e output della rete
  * metodo che si occupa di creare un vettore contenente  il delta delle previsioni a -1 e a 1 per ciascun componente rispetto al vettore di base (tutto a zero)
  */
 vettoreReticolo = function(dim){
@@ -26,10 +27,8 @@ var result = []
        x.w[j] = 0;
  }
  //previsione della rete
- console.log("vettore x: " + x.w);
  var value = net.forward(x, false); 
- scores[i+1] = value.w;
- console.log("sc" + scores[i+1]);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta 
+ scores[i+1] = value.w; 
  }
 
 for(var i = 0; i < dim; ++i){
@@ -38,9 +37,6 @@ for(var j= 0; j < dim; ++j){
 }
 }
 
-for(var i = 0; i < dim ; ++i){
-  console.log("1: " + result[i]);
-  }
 
   for (var i = -1; i < dim; i++) {
     var x = new convnetjs.Vol(1, 1, dim);
@@ -52,12 +48,8 @@ for(var i = 0; i < dim ; ++i){
       x.w[j] = 0;
 }
 //previsione della rete
-console.log("vettore x: " + x.w);
 var value = net.forward(x, false); 
-console.log("bug" + scores[i+1]);
 scores[i+1] = value.w;
-console.log("bug" + scores[i+1] + " " + value.w);
-console.log("sc" + scores[i+1]);  // chiamata al metodi di previsione, in base all'input ottengo la probabilita' di risposta 
 }
 
 for(var i = 0; i < dim; ++i){
@@ -66,9 +58,9 @@ result[i][dim+j] = Math.abs(scores[0][j] - scores[i+1][j]);
 }
 }
 
-for(var i = 0; i < dim ; ++i){
+/*for(var i = 0; i < dim ; ++i){
  console.log(i+1 + ";" + result[i]);
- }
+ }*/
 }
 
 

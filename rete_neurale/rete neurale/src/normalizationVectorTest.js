@@ -1,4 +1,5 @@
 /** @function normalizationVectorTestPivot
+ *  @param {*} dim dimensione di input e output della rete
  * il metodo ha lo scopo di normalizzare un vettore in ordine. Un vettore e' un test composto da tutte le n domande con -1(risposta non data), 0 (domanda non fatta), 
  * 1 (risposta data)
  * Idea: prende in pasto un file e legge il suo contenuto tramutando i dati in trainset
@@ -10,9 +11,8 @@
   */
 
 
- function normalizationVectorTestPivot(){
-    layer_exe = "Caricamento file CSV"
-    $("#layerexe").val(layer_exe);
+ function normalizationVectorTestPivot(dim){
+    printTextarea(0, "Caricamento file CSV");
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
     document.getElementById("button_writedocument").style.display = "none";
@@ -30,14 +30,14 @@
                     if(j > 0)
                        vectorTest[j-1] = parseInt(cells[j]); // in pos 0..88 posizione le 89 risposte, in pos 90 il nome del test e uso la conversione intera per evitare caratteri spuru
                     else
-                      vectorTest[89] = cells[j];
+                      vectorTest[dim] = cells[j];
                     }
 
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                 }
 
-                insertDati_db();
+                insertDati_db(dim);
 
             }
             reader.readAsText($("#fileUpload")[0].files[0]);
@@ -56,10 +56,8 @@
   */
 
 
-function normalizationVectorTest_standard(){
-    layer_exe = "Caricamento file CSV"
-    $("#layerexe").val(layer_exe);
-
+function normalizationVectorTest_standard(dim){
+    printTextarea(0, "Caricamento file CSV");
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
         if (typeof (FileReader) != "undefined") {
@@ -120,13 +118,13 @@ function normalizationVectorTest_standard(){
 
                     }
                     n = aux; // ho scorso e confrontato tutto il test t
-                    vectorTest[89] = Test[n-1];
+                    vectorTest[dim] = Test[n-1];
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                     t = n; // in questo modo si passa sempre a un nuovo test
 
                 }
-                insertDati_db();
+                insertDati_db(dim);
 
             }
             reader.readAsText($("#fileUpload")[0].files[0]);

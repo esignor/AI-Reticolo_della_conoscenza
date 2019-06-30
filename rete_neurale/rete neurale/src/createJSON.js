@@ -12,7 +12,6 @@ function createJSON(){
     // ho salvato la rete su un JSON
     var str = JSON.stringify(json);
 
-    layer_exe = str;
-    $("#layerexe").val(layer_exe);
+    printTextarea(0, str);
 
 }
