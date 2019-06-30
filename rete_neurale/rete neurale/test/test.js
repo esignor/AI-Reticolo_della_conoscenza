@@ -1,11 +1,13 @@
-/**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keywor exports al modulo delle funzioni coinvolte */
+/**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keyword exports al modulo delle funzioni coinvolte */
 
 import {assert} from 'chai';
+import {alert} from 'chai';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import {cluster} from '../src/cluster'
 import {configure_db} from '../src/configure_db'
 import {configure} from '../src/configure'
+import {controlValueFields} from '../src/controlValueFields'
 
 
 
@@ -27,49 +29,45 @@ it('#Test 2 - generazione array spuro', function () {
 
 });
 
+
 describe('#Test3', function() {
   var color = [];
   it('array di colori uguali', function(){
   for (i=0;i<3;i++) {  // array di test 3 x 3
     color[i]=new Array(3);
   }
-
+ // 3 elementi ugauli
   for(var i = 0; i<3; ++i){
-    for(var j = 0; j<3; ++j){
       var color_a = 225;
       var color_b = 225;
       var color_c = 225;
-      color[i][j] = color_a + "- " + color_b + "-" + color_c; 
+      color[i] = color_a + "- " + color_b + "-" + color_c; 
     }
-  }
-  var question_color = cluster(color);
+  var question_color = cluster(color, 0);
 
   
   for(var i = 0; i < 3; ++i){
-    assert.equal(question_color[i],  "1,2,3", "individuazione coppie di colori che fa fallito le aspettative");
+    assert.equal(question_color[i], "domanda " + (i + 1) + ": 1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
 
 }
 });
 
 it('array di colori diversi', function(){
-
+ //3 elementi uguali, 1 diverso
 for(var i = 0; i<3; ++i){
-  for(var j = 0; j<2; ++j){
     var color_a = 225;
     var color_b = 225;
     var color_c = 225;
-    color[i][j] = color_a + "- " + color_b + "-" + color_c; 
+    color[i] = color_a + "- " + color_b + "-" + color_c; 
   }
-}
-color[0][2] = 20 + "-" +  200 + "-" + 25;
-color[1][2] = 55 + "-" +  200 + "-" + 25;
-color[2][2] = 200 + "-" + 60 + "-" + 25;
+color[3] = 20 + "-" +  200 + "-" + 25;
 
-var question_color = cluster(color);
+var question_color = cluster(color, 0);
 
 for(var i =  0; i<3 ;++i){
-  assert.equal(question_color[i], i+1, "individuazione coppie di colori che fa fallito le aspettative");
+  assert.equal(question_color[i], "domanda " + (i + 1) + ": 1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
 }
+assert.equal(question_color[i], "domanda " + 4 + ": 4", "individuazione coppie di colori che fa fallito le aspettative");
 
 });
 
@@ -88,3 +86,32 @@ it('configurazione rete di prova', function () {
 });
 
 });
+
+describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
+  it('valore vuoto', function () {
+    assert.isNotTrue(controlValueFields(""), "Stringa vuota accettata correttamente come numero intero positivo");
+  });
+  it('valore indefinito', function () {
+    assert.isNotTrue(controlValueFields(), "Numero indefinito accettata correttamente come numero intero positivo");
+  
+  });
+
+  it('valore in underflow', function () {
+    assert.isNotTrue(controlValueFields(-3), "Numero intero negativo accettata correttamente come numero intero positivo");
+  });
+  it('valore in overflow', function () {
+    assert.isNotTrue(controlValueFields(10000), "Numero intero che supera i limiti massimi rappresentabili accettato correttamente come numero intero positivo");
+  
+  });
+
+  it('valore corretto entro i range stabiliti', function () {
+    assert.isTrue(controlValueFields(10), "Numero intero postivi valido non accettato correttamente come numero intero positivo");
+  });
+
+  it('conversione a intero di un numero con virgola', function () {
+      assert.isTrue(controlValueFields(5.3), "Numero intero postivi valido non accettato correttamente come numero intero positivo");
+  
+  });
+  
+  
+  });
