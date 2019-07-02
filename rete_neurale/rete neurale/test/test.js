@@ -1,19 +1,20 @@
 /**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keyword exports al modulo delle funzioni coinvolte */
 
 import {assert} from 'chai';
-/*import {alert} from 'chai';
+import { generator_input_pure} from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import {cluster} from '../src/cluster'
 import {configure_db} from '../src/configure_db'
-import {configure} from '../src/configure'*/
-import {sinon} from 'sinon';
+import {configure} from '../src/configure'
+//import {sinon} from 'sinon';
 import {controlValueFields} from '../src/controlValueFields'
 import {printTextarea} from '../src/printTextarea'
 
 
-
-/*it('#Test 1 - generazione array mappato su grafo', function () {
+describe('#Test1 - generator_input', function() {
+  for(var n = 0; n < 10; ++n)
+it('generazione array mappato su grafo', function () {
   var a = generator_input(6);
   if (a[2] != 0 && a[5] != 0)
     assert.equal(a[2], a[5], "2 e 5 non sono coppie di domande (oracolo non rispettato)");
@@ -23,16 +24,31 @@ import {printTextarea} from '../src/printTextarea'
     assert.equal(a[1], a[4], "1 e 4 non sono coppie di domande (oracolo non rispettato)");
 
 });
+});
+
+describe('#Test2 - generator_input_pure', function() {
+  for(var n = 0; n < 10; ++n)
+it('generazione array mappato su grafo', function () {
+  var a = generator_input_pure(6);
+  assert.equal(a[2], a[5], "2 e 5 non sono coppie di domande (oracolo non rispettato)");
+  assert.equal(a[0], a[3], "0 e 3 non sono coppie di domande (oracolo non rispettato)");
+  assert.equal(a[1], a[4], "1 e 4 non sono coppie di domande (oracolo non rispettato)");
+
+});
+});
 
 
-it('#Test 2 - generazione array spuro', function () {
+
+describe('#Test3 - generator_input_probability', function() {
+it('generazione array spuro ', function () {
   var a = generator_input_probability(6);
   assert.exists(a, "vettore di valori di probabilita' non definito");
 
 });
 
+});
 
-describe('#Test3', function() {
+describe('#Test4', function() {
   var color = [];
   it('array di colori uguali', function(){
   for (i=0;i<3;i++) {  // array di test 3 x 3
@@ -45,13 +61,11 @@ describe('#Test3', function() {
       var color_c = 225;
       color[i] = color_a + "- " + color_b + "-" + color_c; 
     }
-  var question_color = cluster(color, 0);
+  var question_color = cluster(color, 0, 0, 0);
 
-  
-  for(var i = 0; i < 3; ++i){
-    assert.equal(question_color[i], "domanda " + (i + 1) + ": 1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
+  for(var  i = 0; i < question_color.length; ++i)
+    assert.equal(question_color[i], "1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
 
-}
 });
 
 it('array di colori diversi', function(){
@@ -64,19 +78,17 @@ for(var i = 0; i<3; ++i){
   }
 color[3] = 20 + "-" +  200 + "-" + 25;
 
-var question_color = cluster(color, 0);
+var question_color = cluster(color, 0, 0, 0);
 
-for(var i =  0; i<3 ;++i){
-  assert.equal(question_color[i], "domanda " + (i + 1) + ": 1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
-}
-assert.equal(question_color[i], "domanda " + 4 + ": 4", "individuazione coppie di colori che fa fallito le aspettative");
+  assert.equal(question_color[0],  "1, 2, 3", "individuazione coppie di colori che fa fallito le aspettative");
+  assert.equal(question_color[1], "4", "individuazione coppie di colori che fa fallito le aspettative");
 
 });
 
 });
 
 
-describe('#Test4 - configurazione della rete andata a buon fine', function() {
+describe('#Test5 - configurazione della rete andata a buon fine', function() {
 it('configurazione rete del database', function () {
   var conf = configure_db();
   assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita");
@@ -87,10 +99,10 @@ it('configurazione rete di prova', function () {
 
 });
 
-});*/
+});
 
-/*describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
-  assert.isNotTrue(controlValueFields(), "to_test() should return 42" ); */
+describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
+  /*assert.isNotTrue(controlValueFields(), "to_test() should return 42" ); */
 
 
  /*it('valore vuoto', function () {
@@ -123,10 +135,14 @@ it('configurazione rete di prova', function () {
       assert.isTrue(controlValueFields(5.3), "Numero intero postivi valido non accettato correttamente come numero intero positivo");
   
   });
-  
-  
-  
 
- it('#Test6 - test del modulo di stampa', function() {
+});
+  
+  
+  
+describe('#Test6 - stampa', function() {
+ it('test del modulo di stampa', function() {
    assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
  });
+
+});
