@@ -4,12 +4,12 @@
  * rispondervi o meno
  */
 function prevision() {
-    if (!controlValueFields(document.getElementById("differenziale").value)) //controllo che il valore inserito sia un intero >= 0 non vuto
+    if (!controlValueFields(document.getElementById("differenziale_1param").value) || !controlValueFields(document.getElementById("differenziale_2param").value) ||!controlValueFields(document.getElementById("differenziale_3param").value)) //controllo che il valore inserito sia un intero >= 0 non vuto
         return;
 
 
     // stampa di connessione della rete
-    printTextarea(layer_exe, "\n\Richiesta di previsione inoltrata alla rete ...");
+    printTextarea(layer_exe, "\n\n\Richiesta di previsione inoltrata alla rete ...");
     document.getElementById("myCanvas").style.display = "none"; // fa scomparire il box canvas
     document.getElementById("myCanvas-detail").style.display = "none"; // fa scomparire il box canvas al dettaglio
     document.getElementById("title_questionsdetail").style.display = "none";

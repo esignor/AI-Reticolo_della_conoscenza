@@ -16,7 +16,7 @@ var result = []
    result[j] = new Array(dim);
  }
 
-
+console.log("dim" + dim);
  for (var i = -1; i < dim; i++) {
      var x = new convnetjs.Vol(1, 1, dim);
    for(var j = 0; j < dim; j++){
@@ -29,6 +29,7 @@ var result = []
  //previsione della rete
  var value = net.forward(x, false); 
  scores[i+1] = value.w; 
+ console.log("PREV  +1: " + scores[i+1]);
  }
 
 for(var i = 0; i < dim; ++i){
@@ -50,6 +51,7 @@ for(var j= 0; j < dim; ++j){
 //previsione della rete
 var value = net.forward(x, false); 
 scores[i+1] = value.w;
+console.log("PREV  -1: " + scores[i+1]);
 }
 
 for(var i = 0; i < dim; ++i){
@@ -58,9 +60,9 @@ result[i][dim+j] = Math.abs(scores[0][j] - scores[i+1][j]);
 }
 }
 
-/*for(var i = 0; i < dim ; ++i){
+for(var i = 0; i < dim ; ++i){
  console.log(i+1 + ";" + result[i]);
- }*/
+ }
 }
 
 

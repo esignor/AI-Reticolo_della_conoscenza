@@ -7,8 +7,13 @@
 
 function animationPrevision_detail(dim) {
   document.getElementById("title_questionsdetail").style.display = "block"; // posiziona di blocco il title del box al dettaglio
-  document.getElementById("myCanvas-detail").style.display = "block"; // faccio comparire il box con la previsione canvas
-  document.getElementById("button_dettaglio-animation").style.display = "none"; // fa scomparire il pulsante di dettaglio previsioni
+  document.getElementById("myCanvas-detail").style.display = "block"; // faccio comparire il box con la previsione canvas 
+  document.getElementById("button_back").style.display = "block"
+  document.getElementById("title_previsione").style.display = "none";
+  document.getElementById("button_dettaglio-animation").style.display = "none"
+  document.getElementById("container").style.display = "none";
+
+
 
   var myCanvas = document.getElementById("myCanvas-detail"); // acquisiamo il contesto su cui lavorare
   var context = myCanvas.getContext("2d");

@@ -6,27 +6,47 @@
  */
 
 function addFields(dim){
-    printTextarea(0, "Richiesta di inserimento: \n\- parametro di differenziale tra le domande (valore valido >= 0) per creare dei gruppi con oscillazione massima nel parametro indicato \n\- dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
+    printTextarea(0, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
 
 
    document.getElementById("setter_numberfields").style.display = "none";
+   document.getElementById("title_previsione").style.display = "inline";
+   document.getElementById("container").style.display = "inline";
+   document.getElementById("myCanvas-detail").style.display = "none";
+   document.getElementById("title_questionsdetail").style.display = "none";
 
     var container = document.getElementById("container");
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
-
     var div = document.createElement("div"); // inserimento box per la dichiarazione del differenziale di accopiamento tra le domande
     div.id = "box_differenziale";
     var label=  document.createElement("label")
-    label.for="differenziale";
+    label.for="differenziale_1param";
     label.appendChild(document.createTextNode("Differenziale di accoppiamento: "));
     var input = document.createElement("input");
-    input.name="differenziale" ;
+    input.name="differenziale_1param" ;
     input.type="number";
-    input.id="differenziale";
+    input.id="differenziale_1param";
     input.value="0";
     div.appendChild(label); 
+    div.appendChild(input); 
+    container.appendChild(div);
+
+    var input = document.createElement("input");
+    input.name="differenziale_2param" ;
+    input.type="number";
+    input.id="differenziale_2param";
+    input.value="0";
+    div.appendChild(input); 
+    container.appendChild(div);
+
+
+    var input = document.createElement("input");
+    input.name="differenziale_3param" ;
+    input.type="number";
+    input.id="differenziale_3param";
+    input.value="0";
     div.appendChild(input); 
     container.appendChild(div);
 
@@ -47,6 +67,7 @@ function addFields(dim){
         form.id="myForm_radio" + i;
         form.action = "";
         var fieldset = document.createElement("fieldset");
+        fieldset.className  = "fieldset_border";
         var legend = document.createElement("legend");
         legend.appendChild(document.createTextNode("Domanda "+ (i+1)));
         fieldset.appendChild(legend);

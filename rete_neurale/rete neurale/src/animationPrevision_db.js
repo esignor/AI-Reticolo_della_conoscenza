@@ -52,16 +52,14 @@ function animationPrevision_db(scores, dim){
 
       }
 
-      // controllo le variabili dei colori avendo usato un coefficiente moltiplicativo
-      if(colorRed > 255)
-        colorRed = 255;
-      if(colorBlue > 255)
-        colorBlue = 255;
-      if(colorGreen > 255)
-        colorGreen = 255;
       
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
       vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
+
+      if(j == 0)// stampa codice dei colori rgb su textarea
+        printTextarea(layer_exe,"\n\n\Analisi dei dati \n\domanda " + j + ": " + vectorColor[j]);
+      else
+      printTextarea(layer_exe," - domanda " + j + ": " + vectorColor[j]);
       
       context.fill(); // applico il colore
       

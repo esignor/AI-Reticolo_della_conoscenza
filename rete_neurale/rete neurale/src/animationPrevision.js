@@ -46,13 +46,20 @@ function animationPrevision(scores, dim){
       }
 
       else if(parseFloat(scores.w[j]) < 0){ // combinazione rgb rosso - bianco
-        colorRed = parseInt(((-scores.w[j]*255) + (1+scores.w[j])*255));
+        colorRed = parseInt(((-scores.w[j]*255)+ (1+scores.w[j])*255));
         colorGreen = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
         colorBlue = parseInt((-scores.w[j]*0 + (1+scores.w[j])*255));
 
       }
       context.fillStyle = "rgb(" + colorRed + " , "+ colorGreen + ", " + colorBlue +")";
-      vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
+   
+
+        vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
+   
+      if(j == 0)// stampa codice dei colori rgb su textarea
+        printTextarea(layer_exe,"\n\n\Analisi dei dati \n\domanda " + j + ": " + vectorColor[j]);
+      else
+      printTextarea(layer_exe," - domanda " + j + ": " + vectorColor[j]);
 
 
       context.fill(); // applico il colore
