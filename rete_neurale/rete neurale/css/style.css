@@ -33,7 +33,7 @@ body,html{
   display:block;
 }
 
-#button_newfield, #button_prevision, #button_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
+#button_cleanTextarea, #button_newfield, #button_prevision, #button_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -48,8 +48,14 @@ body,html{
     border:0.8em solid #7fffd4;
   }
 
-  #button_writedocument{
-    margin-left: 2em;
+  #button_cleanTextarea{
+    color:	#9932cc;
+    background-color:#ffffff; 
+    border:0.8em solid	#9932cc
+  }
+
+  #button_upload{
+    margin-left: -2em;
   }
   
 

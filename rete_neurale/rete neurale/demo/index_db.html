@@ -24,6 +24,8 @@
     <script src="../src/printCorrelation.js"></script>
     <script src="../src/configureCanvasCoupling.js"></script>
     <script src="../src/printTextarea.js"></script>
+    <script src="../src/cleanTextarea.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
     </link>
 
@@ -48,6 +50,7 @@
                 <input type="file" id="fileUpload" />
                 <input id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot(89)" />
                 <input id="button_writedocument" type="submit" value="write document" onclick="writeDocument(89)" />
+                <input id="button_cleanTextarea" type="submit" value="clean" onclick="cleanText()" />
             </div>
             <div id="pannello_rete">
                 <textarea id="layerexe"></textarea>

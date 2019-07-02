@@ -57,9 +57,9 @@ function animationPrevision(scores, dim){
         vectorColor[j] =  colorRed + "-" + colorGreen + "-" + colorBlue;
    
       if(j == 0)// stampa codice dei colori rgb su textarea
-        printTextarea(layer_exe,"\n\n\Analisi dei dati \n\domanda " + j + ": " + vectorColor[j]);
+        printTextarea(layer_exe,"\n\n\Analisi dei dati \n\domanda " + (j + 1) + ": " + vectorColor[j]);
       else
-      printTextarea(layer_exe," - domanda " + j + ": " + vectorColor[j]);
+      printTextarea(layer_exe," - domanda " + (j + 1) + ": " + vectorColor[j]);
 
 
       context.fill(); // applico il colore
