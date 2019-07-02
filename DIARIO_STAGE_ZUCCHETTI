@@ -143,3 +143,13 @@ venerdi 28 settembre
 - studio dell'applicativo per costruir il Reticolo della Conoscenza
 - Prova del applicativo su dati ottenuti dalla Rete neurale del database con 2 layers composti da 6, 8, 10, 12 neuroni
 - Inizio scrittura documentazione per l'uso del Reticolo e costruzione dello stesso
+
+lunedi 1 luglio
+ - studio inconcruenze Reticolo della Conoscenza della rete di prova
+- scrittura test d'unita' 5 e 6
+- estratta funzionalita' di previsione cluster con differenziali rgb da immettere da parte dell'utente
+
+martedi 2 luglio
+- inserita nell'interfaccia anche la possibilita' di cercare i cluster in funzione del secondo e terzo parametro rgb
+- sistemato css della rete di prova e delle domande nel database in modo che sia il piu' usabile e adattabile a piu' device (test in ufficio)
+- ricerca oscillazione nella costruzione del Reticolo della Conoscenza non andata a buon fine
