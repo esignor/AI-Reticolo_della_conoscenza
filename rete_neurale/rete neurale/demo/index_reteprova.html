@@ -8,6 +8,7 @@
     <script src="../convnetjs_release/build/convnet-min.js"></script>
     <script src="../src/function.js"></script>
     <script src="../src/generator_input.js"></script>
+    <script src="../src/generator_input_pure.js"></script>
     <script src="../src/generator_input_probability.js"></script>
     <script src="../src/insertDati.js"></script>
     <script src="../src/update.js"></script>
@@ -24,6 +25,7 @@
     <script src="../src/printCorrelation.js"></script>
     <script src="../src/configureCanvasCoupling.js"></script>
     <script src="../src/printTextarea.js"></script>
+
 
     <link rel="stylesheet" href="../css/style_reteprova.css">
     </link>
@@ -53,15 +55,15 @@
             <div id="pannello_inserimentodati">
                 <canvas id="myCanvas" width="250px" height="100px">Browser non supporta canvas</canvas>
                 <div id="controls">
-                    <input id="button_dettaglio-animation" type="submit" value="go to detail"
-                        onclick="animationPrevision_detail(6)" />
+                    <input id="button_dettaglio-animation" type="submit" value="go to detail"onclick="animationPrevision_detail(6)" />
                     <div id="title_questionsdetail">
                         <p>Dettaglio delle domande</p>
+                        <input id="button_back" type="submit" value="back" onclick="addFields(6)" />
                     </div>
                     <canvas id="myCanvas-detail" width="200px" height="200px">
                         Browser non supporta canvas
                     </canvas>
-                    <div id=title>
+                    <div id=title_previsione>
                         <p>Inserimento dati di previsione</p>
                     </div>
 
