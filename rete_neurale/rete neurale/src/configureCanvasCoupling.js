@@ -21,4 +21,5 @@ function configureCanvasCoupling(scores, dim){
 
 
     printCorrelation(questionCluster);
+    printTextarea(layer_exe, "\n");
 }
