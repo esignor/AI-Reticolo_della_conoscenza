@@ -1,18 +1,20 @@
 /**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keyword exports al modulo delle funzioni coinvolte */
-
+/*
+import {chai} from 'chai';
 import {assert} from 'chai';
-import { generator_input_pure} from '../src/generator_input_pure';
+import {expect} from 'chai';
+/*import { generator_input_pure} from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import {cluster} from '../src/cluster'
 import {configure_db} from '../src/configure_db'
-import {configure} from '../src/configure'
-//import {sinon} from 'sinon';
+import {configure} from '../src/configure'*/
+/*import {spy} from 'sinon';
 import {controlValueFields} from '../src/controlValueFields'
-import {printTextarea} from '../src/printTextarea'
+/*import {printTextarea} from '../src/printTextarea'*/
 
 
-describe('#Test1 - generator_input', function() {
+/*describe('#Test1 - generator_input', function() {
   for(var n = 0; n < 10; ++n)
 it('generazione array mappato su grafo', function () {
   var a = generator_input(6);
@@ -99,17 +101,24 @@ it('configurazione rete di prova', function () {
 
 });
 
-});
+});*/
 
-describe('#Test5 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
-  /*assert.isNotTrue(controlValueFields(), "to_test() should return 42" ); */
+describe('#Test6 - controllo valori inseriti nella form del differenziale di accopiamento', function() {
+var alert;
+ beforeEach(function(){
+  alert = spy();
+ });
 
+ it('valore vuoto', function () {
+var alert = spy();
+  controlValueFields(-1);
 
- /*it('valore vuoto', function () {
-    controlValueFields("");
-    sinon.assert.notCalled(window.alert);   
+/*expect(alert.calledOnce).to.be.true;
+  expect(alert.args[0][0]).to.equal(true)*/
+  //expect(alert.callCount).to.equal(2);
+  assert.isNotFalse(alert.threw());
   });
-*/
+
  
 
 
@@ -127,7 +136,7 @@ describe('#Test5 - controllo valori inseriti nella form del differenziale di acc
   
   });*/
 
-  it('valore corretto entro i range stabiliti', function () {
+  /*it('valore corretto entro i range stabiliti', function () {
     assert.isTrue(controlValueFields(10), "Numero intero postivi valido non accettato correttamente come numero intero positivo");
   });
 
@@ -136,16 +145,16 @@ describe('#Test5 - controllo valori inseriti nella form del differenziale di acc
   
   });
 
-});
+});*/
   
   
   
-describe('#Test6 - stampa', function() {
+/*describe('#Test7 - stampa', function() {
  it('test del modulo di stampa', function() {
    assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
- });
+ });*/
 
 });
 
-  
 
+*/
