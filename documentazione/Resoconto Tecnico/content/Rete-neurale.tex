@@ -884,3 +884,22 @@ momentum:0.1, batch_size:10, l2_decay:0.001});
 \noindent
 L'obiettivo dei miei test \`e stato individuare una configurazione abbastanza "forte" da permettere il riscontro di correlazioni e dei possibili cluster esistenti con il solo ausilio della Rete. Tuttavia per proseguire il mio studio \`e indispensabile che mi avvalga di anche altri strumenti di supporto. Il prossimo passo \`e costruire un modello di dati mediante la tecnica di {P}rincipal \textbf{C}omponent \textbf{A}nalysis .
 \end{itemize}
+
+\subsection{Funzionalit\`a offerte dall'interfaccia della Rete neurale delle domande nel databse}
+\label{Funzionalita offerte dall'interfaccia della Rete neurale}
+La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere analisi dei dati mirata alla previsione dei risultati su un caso studio specifico (la dimensione \`e fissata a 89). L'applicativo realizzato offre le seguenti funzionalit\`a:
+\begin{itemize}
+\item Caricamento dei dati con l'utilizzo di formati \textit{CSV} o \textit{TXT};
+\item Possibilit\`a di visualizzare i dati caricati direttamente su pagina web. Ogni risposta viene presentata con codice di test e codice della domanda;
+\item Possibilit\`a di visualizzare i dati caricati nella Rete mediante formato JSON. In questo modo la rete post apprendimento viene salvata ed \`e possibile visualizzare come ogni nodo pesa ogni variabile. Inoltre l'ultima rete salvata pu\`o venire caricata in ogni momento e riutilizzata;
+\item La Rete neurale \`e fornita di due textarea: 
+\begin{itemize}
+\item La prima che permette la visualizzazione dell'architettura in uso, con indicazione della tipologia di trainer utilizzato. Questa sezione permette la modifica delle variabili di configurazione\footnote{Ogni modifica del numero di neuroni espressi nella regressione deve provocare la modifica del file di previsione della rete.};
+\item La seconda che consente la visualizzazione dei risultati ottenuti dalla Rete.
+\end{itemize}
+\item \`E possibile settare la previsione che si vuole ottenere, mediante un'area di inserimento con box a radio. Il valore di default imposto \`e 0. 
+\item Per ogni previsione svolta viene visualizzato non solo il risultato della stessa numericamente espresso all'interno della seconda textarea; ma viene anche rappresentato visivamente per mezzo di canvas;
+\item \`E offerta la funzionalit\`a di inserimento dei parametri di differenziale con filtro sulla colorazione, che permette l'indicazione dei cluster esistenti;
+\item \`E possibile visualizzare per ogni elemento soggetto alla previsione il dettaglio della previsione stessa. Questa viene presentata visivamente per mezzo di canvas;
+\item \`E possibile eliminare lo storico dei dati stampati nella seconda textarea.
+\end{itemize}
