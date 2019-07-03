@@ -152,4 +152,11 @@ lunedi 1 luglio
 martedi 2 luglio
 - inserita nell'interfaccia anche la possibilita' di cercare i cluster in funzione del secondo e terzo parametro rgb
 - sistemato css della rete di prova e delle domande nel database in modo che sia il piu' usabile e adattabile a piu' device (test in ufficio)
-- ricerca oscillazione nella costruzione del Reticolo della Conoscenza non andata a buon fine
+- ricerca oscillazione nella costruzione del Reticolo della Conoscenza non andata a buon fine (creato ulteriore metodo che genera input a 1 o -1 e ancora il Reticolo non rispecchia le aspettative)
+
+ mercoledi 3 luglio
+- sistemato canvas di dettaglio in modo che si adatti il piu' possibile almeno al pc dell'ufficio
+- aggiunte funzionalita' di load di una rete nella Rete del database
+- scritta documentazione per le funzionalita' offerte dalla Rete delle domande
+- testato che sia possibile cambiare l'architettura della rete direttamente dalla textarea
+- colorate bandierine
