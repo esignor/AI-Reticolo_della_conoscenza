@@ -25,5 +25,6 @@ function insertDati_db(dim) {
 
     document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
     document.getElementById("button_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON
+    document.getElementById("buttonLoad_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON
 
 }

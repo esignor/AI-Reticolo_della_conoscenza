@@ -33,7 +33,7 @@ body,html{
   display:block;
 }
 
-#button_cleanTextarea, #button_newfield, #button_prevision, #button_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
+#button_cleanTextarea, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -75,12 +75,8 @@ body,html{
   margin-top: -3em;
   }
 
-  #setter_numberfields, #button_JSON, #button_writedocument, #myCanvas, #title_previsione, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
+  #setter_numberfields, #button_JSON, #buttonLoad_JSON, #button_writedocument, #myCanvas, #title_previsione, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
     display:none;
-  }
-
- #myCanvas-detail{
-    margin-left: -7.6em;
   }
 
 

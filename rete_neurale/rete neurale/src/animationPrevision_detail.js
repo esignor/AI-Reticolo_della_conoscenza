@@ -18,21 +18,35 @@ function animationPrevision_detail(dim) {
   var myCanvas = document.getElementById("myCanvas-detail"); // acquisiamo il contesto su cui lavorare
   var context = myCanvas.getContext("2d");
 
-  for (var i = 0; i < vectorPrevision.length; ++i) { // scorro il vettore previsione con lo scopo che per ogni elemento (domanda) trovo la sua previsione su tutte le dim domande
+  for (var i = 0,  n = 0, k = 2 ; n < vectorPrevision.length; ++i, ++n) { // scorro il vettore previsione con lo scopo che per ogni elemento (domanda) trovo la sua previsione su tutte le dim domande
     var scores = prevision_singleElement(i, vectorPrevision[i], dim); // gli passo l'indice e il contenuto dell'indice
+    // i rappresenta il contatore di riga
+    // j rappresenta il contatore di colonne
 
     //vengono settate le coordinate
     var y = 25;
     var x = 65;
-
+      
+      
     // colori della scritta "domanda n"
     context.textAlign = "left";
     context.fillStyle = "#0f1934"
-    context.fillText("domanda " + (i + 1), 5, y * (i + 1.3)); // 1.3 serve per settare il testo al centro dell'altezza dei quadrattini
+    if(dim > 74 && n >=1){
+      context.fillText("domanda " + (n + 1), 5, (y + 1) * ((n + k) + 0.3));
+      k = k + 1;
+    }
+    else
+      context.fillText("domanda " + (n + 1), 5, (y + 1) * ((n + 1) + 0.3)); // 0.3 serve per settare il testo al centro dell'altezza dei quadrattini
     // per ogni riga vengono disegnati dim quadratini
     for (var j = 0; j < dim; ++j) {
       context.beginPath();//nuovo elemento disegnato
-      context.rect(x, y * (i + 1), 10, 10);
+
+      if(dim > 74 && j == 74){ // la linea va a capo
+        x = 65;
+        i = i + 1;
+        y = 25;
+      }
+      context.rect(x, (y + 1) * (i + 1), 10, 10);
 
       var colorRed, colorGreen, colorBlue;
 

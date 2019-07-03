@@ -16,6 +16,12 @@
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
     document.getElementById("button_writedocument").style.display = "none";
+    document.getElementById("buttonLoad_JSON").style.display = "none";
+    document.getElementById("button_dettaglio-animation").style.display = "none";
+    document.getElementById("title_questionsdetail").style.display = "none";
+    document.getElementById("myCanvas-detail").style.display = "none";
+    document.getElementById("container").style.display = "none";
+    document.getElementById("setter_numberfields").style.display = "none";
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
         if (typeof (FileReader) != "undefined") {

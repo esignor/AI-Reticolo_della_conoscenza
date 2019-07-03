@@ -13,6 +13,7 @@
     <script src="../src/prevision_db.js"></script>
     <script src="../src/addFields.js"></script>
     <script src="../src/createJSON.js"></script>
+    <script src="../src/loadJSON.js"></script>
     <script src="../src/normalizationVectorTest.js"></script>
     <script src="../src/writeDocument.js"></script>
     <script src="../src/animationPrevision_db.js"></script>
@@ -46,9 +47,10 @@
         <div class="panes">
             <div id="title">
                 <p>Output della rete</p>
-                <input id="button_JSON" type="submit" value="create JSON" onclick="createJSON()" />
                 <input type="file" id="fileUpload" />
                 <input id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot(89)" />
+                <input id="button_JSON" type="submit" value="save Net" onclick="createJSON()" />
+                <input id="buttonLoad_JSON" type="submit" value="load Net" onclick="loadJSON()" />
                 <input id="button_writedocument" type="submit" value="write document" onclick="writeDocument(89)" />
                 <input id="button_cleanTextarea" type="submit" value="clean" onclick="cleanTextarea()" />
             </div>
@@ -63,7 +65,7 @@
                             <p>Dettaglio delle domande</p>
                             <input id="button_back" type="submit" value="back" onclick="addFields(89)" />
                     </div>
-                    <canvas id="myCanvas-detail" width="1500px" height="2300px">
+                    <canvas id="myCanvas-detail" width="1200px" height="4650px">
                         Browser non supporta canvas
                     </canvas>
                     <div id="title_previsione">
