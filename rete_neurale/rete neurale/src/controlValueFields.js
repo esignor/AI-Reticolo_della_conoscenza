@@ -14,14 +14,3 @@ controlValueFields = function(number){
     }
     return true;
 }
-
-
-
-exports.generateAlert = function(x, alert) {
-var alert; // We are going to overwrite default alert() function
-  if (!x) {
-    return;
-  }
-
-  alert(x);
-}
