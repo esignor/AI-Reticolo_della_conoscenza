@@ -6,7 +6,7 @@
  */
 
 function addFields(dim){
-    printTextarea(layer_exe, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
+    printTextarea(0, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
 
 
    document.getElementById("setter_numberfields").style.display = "none";
@@ -26,7 +26,7 @@ function addFields(dim){
     label.appendChild(document.createTextNode("Differenziale di accoppiamento: "));
     var input = document.createElement("input");
     input.name="differenziale_1param" ;
-    input.type="number";
+    input.type="text";
     input.id="differenziale_1param";
     input.value="0";
     div.appendChild(label); 
@@ -35,7 +35,7 @@ function addFields(dim){
 
     var input = document.createElement("input");
     input.name="differenziale_2param" ;
-    input.type="number";
+    input.type="text";
     input.id="differenziale_2param";
     input.value="0";
     div.appendChild(input); 
@@ -44,7 +44,7 @@ function addFields(dim){
 
     var input = document.createElement("input");
     input.name="differenziale_3param" ;
-    input.type="number";
+    input.type="text";
     input.id="differenziale_3param";
     input.value="0";
     div.appendChild(input); 
