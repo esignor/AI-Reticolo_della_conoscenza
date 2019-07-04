@@ -8,7 +8,7 @@
 
 
 controlValueFields = function(number){ 
-    if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number) > 9999) {
+    if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number) > 255) {
         alert("Inserire un numero intero positivo valido");
         return false;
     }
