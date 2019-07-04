@@ -11,9 +11,9 @@ function configureCanvasCoupling(scores, dim){
     else if(dim == 89){// rete delle domande nel database
       var vectorColor = animationPrevision_db(scores, dim);
     }
-    var differenziale_1param =  document.getElementById("differenziale_1param").value; // controllo validita' valore gia' effettuato in previsione
-    var differenziale_2param =  document.getElementById("differenziale_2param").value; // controllo validita' valore gia' effettuato in previsione
-    var differenziale_3param =  document.getElementById("differenziale_3param").value; // controllo validita' valore gia' effettuato in previsione
+    var differenziale_1param =  parseInt(document.getElementById("differenziale_1param").value); // controllo validita' valore gia' effettuato in previsione
+    var differenziale_2param =  parseInt(document.getElementById("differenziale_2param").value); // controllo validita' valore gia' effettuato in previsione
+    var differenziale_3param =  parseInt(document.getElementById("differenziale_3param").value); // controllo validita' valore gia' effettuato in previsione
 
     printTextarea(layer_exe, "\n\Parametri di differenziale dei gruppi, su cui si vuole valutare matematicamente il comportamento della Rete: " + differenziale_1param + " " + differenziale_2param + " " + differenziale_3param);
 
