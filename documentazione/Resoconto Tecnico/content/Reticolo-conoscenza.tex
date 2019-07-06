@@ -4,7 +4,6 @@ Dal 26/07  al 28/07 ho iniziato la Costruzione del Reticolo della Conoscenza. Pe
 
 \subsection{Descrizione del sistema}
 \label{Descrizione del sistema}
-TODO: FOTO DELL'APPLICATIVO (magari con qualche tendina aperta per far vedere le opzioni)
 L'applicazione accetta in import file di estensione CSV. Ogni colonna di quest'ultimo viene interpretata dal sistema come un parametro da elaborare; per questo la prima riga del file deve essere o preceduta da una dichiarazione di variabili, tante quante sono le colonne da parametrizzare, oppure \`e questa prima riga che viene interpretata come una dichiarazione e conseguentemente non rappresentata all'interno del Reticolo.\\
 Nel sistema possono venire settati i seguenti aspetti:
 \begin{itemize}
@@ -46,7 +45,13 @@ Analizzando l'applicativo in base al carattere dei dati in ingresso e alle aspet
 \item \textit{Method}: Single.
 \end{itemize}
 \noindent
-TODO: SCREEN DELLA CONFIGURAZIONE IN USO PER LA CREAZIONE DEL RETICOLO
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/img-configurazione_reticolo.png}
+	\caption{Configurazione usata nel sistema per generare il Reticolo della Conoscenza.}
+	\label{Configurazione usata nel sistema per generare il Reticolo della Conoscenza.}
+\end{figure}
+\noindent
 
 \section{Creazione dei file CSV}
 \label{Creazione dei file CSV}
@@ -76,8 +81,8 @@ TODO: SCREEN DEI VARI PASSAGGI DI FORMAZIONE DEL RETICOLO PER LA RETE DI PROVA
 \subsubsection{Osservazioni Reticolo dati di prova}
 Il Reticolo della Conoscenza \`e perfettamente coerente con le aspettative; ricalca fedelmente quanto evidenziato nella figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.} nella sezione § \ref{Test effettuati} Inoltre gli accoppiamenti tra i punti ricalcano quanto dichiarato dalla matrice correlazione ottenuta dal calcolo del modello effettuato con la PCA e visibile dall'immagine \ref{CSV generato a partire dalla matrice correlazione del trainset della rete di prova.}. Tuttavia i risultati della PCA non devo essere presi come assioma in quanto la Rete neurale, pu\`o cogliere oscillazioni che il modello matematico non \`e in grado.
 
-\section{Creazione del Reticolo della Conoscenza per sui dati delle domande nel database}
-\label{Creazione del Reticolo della Conoscenza per sui dati delle domande nel database}
+\section{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
+\label{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
 
 \noindent
 \begin{figure}[H]

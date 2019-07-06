@@ -6,6 +6,7 @@ La libreria utilizzata per sviluppare la Rete neurale \`e stata \textit{ConvNetJ
 \centering
 	\includegraphics[width=1\linewidth]{./image/GUI-rete-neurale.png}
 	\caption{Interfaccia utente della Rete neurale di prova.}
+	\label{Interfaccia utente della Rete neurale di prova.}
 \end{figure}
 \noindent
 Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento ricevuti.
@@ -903,3 +904,134 @@ La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere a
 \item \`E possibile visualizzare per ogni elemento soggetto alla previsione il dettaglio della previsione stessa. Questa viene presentata visivamente per mezzo di canvas;
 \item \`E possibile eliminare lo storico dei dati stampati nella seconda textarea.
 \end{itemize}
+
+
+\subsubsection{Diagrammi dei casi d'uso}
+\label{casi d'uso}
+\paragraph{Attori}\mbox{}\\\\
+\label{Attori}
+Gli \textit{attori} esistenti all'interno del sistema che si occupano di interagire con esso sono:
+\begin{itemize}
+\item \textbf{Utente osservatore}: utente che agisce  direttamente sulla Rete neurale, in modo da effettuare osservazioni ed analisi dei dati di interesse.
+\end{itemize}
+
+\paragraph{Casi d'uso}\mbox{}\\
+\label{Casi d'uso}
+\noindent
+\subparagraph{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}\mbox{}\\\\
+\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/visione_generale.png}
+	\caption{Visione generale delle funzionalit\`a offerte dalla Rete - Diagramma dei casi d'uso ad alto livello.}
+	\label{Visione generale delle funzionalita offerte dalla Rete.}
+\end{figure}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: Il sistema permette all'utente di interfacciarsi con la Rete neurale;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete neurale \`e in attesa che l'utente effettui almeno un'operazione;
+\item \textbf{Postcondizione}: L'utente ha potuto effettuare analisi e osservazioni sui dati di interesse;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente pu\`o effettuare il caricamento dei dati di analisi nella Rete in formato txt o csv (UC1, UC2, UC3);
+\item L'utente pu\`o gestire i dati caricati nella Rete (UC4);
+\item L'utente pu\`o visualizzare i dati immessi all'interno della Rete (UC6);
+\item L'utente pu\`o modificare la configurazione dell'architettura di Rete (UC6);
+\item L'utente pu\`o effettuare  previsione sui dati della Rete (UC7);
+\item L'utente pu\`o visualizzare i risultati della Rete ottenuti dai dati caricati e a seguito delle operazioni di previsione (UC8).
+\end{enumerate}
+\item \textbf{Estensioni}:
+\begin{enumerate}
+\item Il browser in uso dall'utente non supporta lo standard HTML (UC9);
+\item File caricato dall'utente nella rete non conforme al formato di dati txt o csv richiesto come prerequisito dalla Rete (UC10).
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC1: Caricamento formato dati}\mbox{}\\
+\label{UC1: Caricamento formato dati}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: Il sistema permette all'utente di poter caricare i dati su cui effettuare l'analisi usando formato csv o txt;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete neurale \`e in attesa che l'utente effettui l'operazione di caricamento del file di dati;
+\item \textbf{Postcondizione}: L'utente ha potuto caricare il file di dati di suo interesse nel formato idoneo;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente pu\`o effettuare il caricamento di un formato di dati csv (UC2);
+\item L'utente pu\`o effettuare il caricamento di un formato di dati txt (UC3).
+\end{enumerate}
+\item \textbf{Estensioni}:
+\begin{enumerate}
+\item Il browser in uso dall'utente non supporta lo standard HTML5(UC9);
+\item L'utente ha effettuato il caricamento di un formato di dati non conforme al formato csv o txt (UC10).
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC2: Caricamento formato dati CSV}\mbox{}
+\label{UC2: Caricamento formato dati CSV}
+\begin{itemize}
+\item \textbf{Descrizione}: Il sistema permette all'utente di poter caricare i dati su cui effettuare l'analisi usando formato csv;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete neurale \`e in attesa che l'utente effettui l'operazione di caricamento del file di dati;
+\item \textbf{Postcondizione}: L'utente ha potuto caricare il file di dati di suo interesse nel formato csv;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente sceglie il file di dati che vuole caricare nella Rete;
+\item L'utente confermare l'operazione.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC3: Caricamento formato dati TXT}\mbox{}
+\label{UC3: Caricamento formato dati TXT}
+\begin{itemize}
+\item \textbf{Descrizione}: Il sistema permette all'utente di poter caricare i dati su cui effettuare l'analisi usando formato txt;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete neurale \`e in attesa che l'utente effettui l'operazione di caricamento del file di dati;
+\item \textbf{Postcondizione}: L'utente ha potuto caricare il file di dati di suo interesse nel formato txt;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente sceglie il file di dati che vuole caricare nella Rete;
+\item L'utente confermare l'operazione.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC9: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
+\label{UC9: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
+\begin{itemize}
+\item \textbf{Descrizione}:Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di preocessare alcuna informazione in quanto il browser in uso dall'utente non supporta lo standard di markup HTML5;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora caricato il file nella Rete;
+\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del browser in uso agli standard minimi richiesti per portare a termine l'operazione di caricamento del file nella Rete con successo;
+\item \textbf{Scenario principale}: Il file scelto dall'utente viene caricato all'interno della Rete.
+\end{itemize}
+
+
+\textbf{UC10: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
+\label{UC10: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
+\begin{itemize}
+\item \textbf{Descrizione}:Il file nel che viene caricato nella rete non \`e del formato richiesto corretto;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora caricato il file nella Rete;
+\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del del formato di dati scelto;
+\item \textbf{Scenario principale}: Il file viene caricato all'interno della Rete.
+\end{itemize}
+
+\subparagraph{UC4: Gestione dati nella Rete}\mbox{}\\\\
+\label{UC4: Gestione dati nella Rete}
+\noindent
+\subparagraph{UC5: Visualizzazione batch di dati inseriti}\mbox{}\\\\
+\label{UC5: Visualizzazione batch di dati inseriti}
+\noindent
+\subparagraph{UC6: Modifica architettura della Rete}\mbox{}\\\\
+\label{UC6: Modifica architettura della Rete}
+\noindent
+\subparagraph{UC7: Gestione inserimento parametri di previsione}\mbox{}\\\\
+\label{UC7: Gestione inserimento parametri di previsione}
+\noindent
+\subparagraph{UC8: Visualizzazione risultati della Rete}\mbox{}\\\\
+\label{UC8: Visualizzazione risultati della Rete}
+\noindent
