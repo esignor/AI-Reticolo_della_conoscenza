@@ -4,8 +4,7 @@
  */
 
 function insertDati_db(dim) {
-
-    printTextarea(layer_exe, "\n\Inizilizzazione addestramento della rete");
+eval($("#layerdef").val()); // permette di prendere come riferimento l'architettura espressa nella textarea
 
    
     for (var n = 0; n < vectorCSV.length; ++n) { // stampa dei vettori contenuti in vectorCSV
@@ -21,7 +20,8 @@ function insertDati_db(dim) {
     
     }
 
-    update(dim); // chiamata all'addestramento
+    update(dim) // chiamata all'addestramento
+ 
 
     document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
     document.getElementById("button_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON

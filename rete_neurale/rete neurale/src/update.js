@@ -6,6 +6,7 @@
 function update(ArrayInput, dim) { // permette di fare il training del dato
 
     eval($("#layerdef").val()); // mi serve per attivare train
+   
 
 
     //apprendimento della rete

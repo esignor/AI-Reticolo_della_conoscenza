@@ -6,8 +6,7 @@
 
 function insertDati(dim) {
     // addestramento tutto in un set
-    layer_exe = "Inizializzazione addestramento della rete"
-    $("#layerexe").val(layer_exe);
+    printTextarea(0, "Inizilizzazione addestramento della rete");
     var ArrayInput = [];
     for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
@@ -17,7 +16,7 @@ function insertDati(dim) {
          ArrayInput[n] = Aux;
          printTextarea(layer_exe,"\n\Inserito vettore di risposta:  [" + ArrayInput[n] + "]");
      }
-
+     frequenceMatrix(ArrayInput, dim);
      update(ArrayInput, dim);
 
 

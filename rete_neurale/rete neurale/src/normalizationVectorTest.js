@@ -24,6 +24,12 @@
     document.getElementById("setter_numberfields").style.display = "none";
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
+
+    eval($("#layerdef").val()); // permette di prendere come riferimento l'architettura espressa nella textarea
+    if(!controlArchitettura()){//controllo della coerenza dell'architettura
+      printTextarea(0, "Scegliere un'architettura che rispetti i vincoli e ricaricare i dati");
+      return;
+    }
         if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -51,7 +57,7 @@
             alert("Questo browser non supporta HTML5");
         }
     } else {
-        alert("Inserire un file con estensione CSV, per favore");
+        alert("Inserire un file con estensione CSV o TXT, per favore");
     }
 
 }
