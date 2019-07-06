@@ -160,3 +160,8 @@ martedi 2 luglio
 - scritta documentazione per le funzionalita' offerte dalla Rete delle domande
 - testato che sia possibile cambiare l'architettura della rete direttamente dalla textarea
 - colorate bandierine
+
+venerdi 5 luglio
+- inserito metodo che testa le modifiche nella textarea dell'architettura
+- disegnati su carta casi d'uso
+- lavorato su metodo frequenceMatrix per individuare le discrepanze presenti nel Reticolo della Conoscenza del caso di prova
