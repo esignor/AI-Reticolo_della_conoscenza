@@ -6,12 +6,12 @@
  */
 
 
- /**
-  * 2a versione file csv composto da n_test e valore di risposta per ogni domanda
-  */
+/**
+ * 2a versione file csv composto da n_test e valore di risposta per ogni domanda
+ */
 
 
- function normalizationVectorTestPivot(dim){
+function normalizationVectorTestPivot(dim) {
     printTextarea(0, "Caricamento file CSV");
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
@@ -25,24 +25,27 @@
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
 
-    eval($("#layerdef").val()); // permette di prendere come riferimento l'architettura espressa nella textarea
-    if(!controlArchitettura()){//controllo della coerenza dell'architettura
-      printTextarea(0, "Scegliere un'architettura che rispetti i vincoli e ricaricare i dati");
-      return;
-    }
+        try { eval($("#layerdef").val()); } // permette di prendere come riferimento l'architettura espressa nella textarea
+        catch (error) {
+            alert(error.message);  // cattura gli errori provenienti da makeLayers
+        }
+        if (!controlArchitettura()) {//controllo della coerenza dell'architettura
+            printTextarea(0, "Scegliere un'architettura che rispetti i vincoli e ricaricare i dati");
+            return;
+        }
         if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
             reader.onload = function (e) {
-                var n_vett = 0; 
+                var n_vett = 0;
                 var rows = e.target.result.split("\n"); // prendo ogni riga del blocco
                 for (var i = 0; i < rows.length - 1; i++) {
                     var vectorTest = [];
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
-                    for(var j = 0; j < cells.length; ++j){// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
-                    if(j > 0)
-                       vectorTest[j-1] = parseInt(cells[j]); // in pos 0..88 posizione le 89 risposte, in pos 90 il nome del test e uso la conversione intera per evitare caratteri spuru
-                    else
-                      vectorTest[dim] = cells[j];
+                    for (var j = 0; j < cells.length; ++j) {// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
+                        if (j > 0)
+                            vectorTest[j - 1] = parseInt(cells[j]); // in pos 0..88 posizione le 89 risposte, in pos 90 il nome del test e uso la conversione intera per evitare caratteri spuru
+                        else
+                            vectorTest[dim] = cells[j];
                     }
 
                     vectorCSV[n_vett] = vectorTest;
@@ -63,12 +66,12 @@
 }
 
 
- /** 1a versione
-  * come precondizione il file e' composto in ordine da id_test, id_domanda, valore della risposta, il contenuto deve essere normalizzato
-  */
+/** 1a versione
+ * come precondizione il file e' composto in ordine da id_test, id_domanda, valore della risposta, il contenuto deve essere normalizzato
+ */
 
 
-function normalizationVectorTest_standard(dim){
+function normalizationVectorTest_standard(dim) {
     printTextarea(0, "Caricamento file CSV");
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
@@ -95,15 +98,15 @@ function normalizationVectorTest_standard(dim){
                 var n_domande = 0;
                 for (var i = 1; i < Domande.length; ++i) {
                     var trovato = false;
-                    for (var j = i+1; j < Domande.length && !trovato; ++j) {
+                    for (var j = i + 1; j < Domande.length && !trovato; ++j) {
                         if (Domande[i] == Domande[j])
                             trovato = true;
-                            
+
                     }
                     if (!trovato) {
                         Domande_sort[n_domande] = Domande[i];
                         n_domande = n_domande + 1; // dimensione di ogni vettore
-                        
+
                     }
                 }
                 Domande_sort = Domande_sort.sort();
@@ -130,7 +133,7 @@ function normalizationVectorTest_standard(dim){
 
                     }
                     n = aux; // ho scorso e confrontato tutto il test t
-                    vectorTest[dim] = Test[n-1];
+                    vectorTest[dim] = Test[n - 1];
                     vectorCSV[n_vett] = vectorTest;
                     n_vett = n_vett + 1;
                     t = n; // in questo modo si passa sempre a un nuovo test
