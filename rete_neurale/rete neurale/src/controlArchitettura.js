@@ -1,9 +1,21 @@
 /** function controlArchitettura
  * metodo che controlla che le mdifiche dell'architettura rigurdino esclusivamente il numero di neuroni per layer e il numero di layers
  */
-
-// gli errori sul type input e sul type fc layers sono intercettati dirrettamente da convnetjs a causa della chiamata a makeLayers
 controlArchitettura = function () {
+    document.getElementById("myCanvas-detail").style.display = "none";
+    document.getElementById("myCanvas").style.display = "none";
+    document.getElementById("title_questionsdetail").style.display = "none";
+    document.getElementById("fileUpload").style.display = "none";
+    document.getElementById("button_upload").style.display = "none";
+    document.getElementById("button_JSON").style.display = "none";
+    document.getElementById("buttonLoad_JSON").style.display = "none";
+    document.getElementById("button_writedocument").style.display = "none";
+
+    try { eval($("#layerdef").val()); } // permette di prendere come riferimento l'architettura espressa nella textarea
+    catch (error) {
+        alert(error.message);  // cattura gli errori provenienti da makeLayers
+    }
+
     var event = true;
     if (layer_defs[0].type != "input") {
         alert('Modifica non valida architettura della Rete: Configurazione obbligatoria type:"input"');
@@ -24,11 +36,26 @@ controlArchitettura = function () {
         event = false;
     }
 
+    if (layer_defs[1].type == 'regression' && layer_defs[1].num_neurons == 89) {
+        alert('Modifica non valida architettura della Rete: Configurazione obbligatoria con almeno 1 layer intemedio');
+        event = false;
+    }
+
     for (var i = 1; i < layer_defs.length - 1; ++i) {
         if (layer_defs[i].type != "fc") { // fully-connected
             alert('Modifica non valida architettura della Rete: Configurazione obbligatoria layer Fully-Connected (type = "fc")');
             event = false;
         }
+        if (layer_defs[i].activation != "relu" && layer_defs[i].activation != "sigmoid" && layer_defs[i].activation != "tanh" && layer_defs[i].activation != 'maxout') { // fully-connected
+            alert('Modifica non valida architettura della Rete: Configurazione per la funzione di attivazione sigmoid, relu, tanh o maxout');
+            event = false;
+        }
+
+        if (layer_defs[i].num_neurons <= 0 || layer_defs[i].num_neurons == null) {
+            alert('Modifica non valida architettura della Rete: Configurazione obbligatoria del numero di neuroni presenti su ciascun layer. Il numero di neuroni deve essere sempre definito e maggiore di 0');
+            event = false;
+        }
+
     }
 
     if (layer_defs[layer_defs.length - 1].type != "regression") {
@@ -48,5 +75,11 @@ controlArchitettura = function () {
         event = false;
     }
 
-    return event;
+    if (!event)//controllo della coerenza dell'architettura
+        printTextarea(0, "Scegliere un'architettura che rispetti i vincoli.");
+    else {
+        document.getElementById("fileUpload").style.display = "inline";
+        document.getElementById("button_upload").style.display = "inline";
+        printTextarea(0, "Architettura che rispetti i vincoli. Procedere a caricare i dati");
+    }
 }

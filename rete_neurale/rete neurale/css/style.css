@@ -33,13 +33,18 @@ body,html{
   display:block;
 }
 
-#button_cleanTextarea, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
+#button_cleanTextarea, #button_changeNet, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
     border-radius:2em;
     font-style:italic;
     font-weight:bold;   
+  }
+
+  #button_changeNet{
+    margin-top: 1em;
+    margin-left: 77em;
   }
 
   #button_dettaglio-animation{

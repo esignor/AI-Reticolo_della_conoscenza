@@ -24,16 +24,7 @@ function normalizationVectorTestPivot(dim) {
     document.getElementById("setter_numberfields").style.display = "none";
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
-
-        try { eval($("#layerdef").val()); } // permette di prendere come riferimento l'architettura espressa nella textarea
-        catch (error) {
-            alert(error.message);  // cattura gli errori provenienti da makeLayers
-        }
-        if (!controlArchitettura()) {//controllo della coerenza dell'architettura
-            printTextarea(0, "Scegliere un'architettura che rispetti i vincoli e ricaricare i dati");
-            return;
-        }
-        if (typeof (FileReader) != "undefined") {
+    if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
             reader.onload = function (e) {
                 var n_vett = 0;
