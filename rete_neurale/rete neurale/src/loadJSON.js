@@ -4,6 +4,11 @@
  */
 
 function loadJSON(){
+    if(loadNet == null){
+     alert("Impossibile effettuare alcun caricamento: nessuna Rete precedentemente salvata");
+     return;
+    }
+
     var json = JSON.parse(loadNet);
     var net2 = new convnetjs.Net();
     net2.fromJSON(json);
