@@ -6,6 +6,10 @@
 function update(dim) { // permette di fare il training del dato
 
     //apprendimento della rete
+
+    eval($("#layerdef").val()); // mi serve per attivare train
+
+    printTextarea(layer_exe, "\n\nRete in addestramento...")
     var x = new convnetjs.Vol(1, 1, dim); // parametri passati alla rete (larghezza, altezza, profondita'), inoltro in questo modo un punto attraverso la rete
 
     for (var it = 0; it < 25; ++it) { // faccio apprendere alla rete meglio il pattern

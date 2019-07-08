@@ -6,7 +6,6 @@
 
 function insertDati(dim) {
     // addestramento tutto in un set
-    printTextarea(0, "Inizilizzazione addestramento della rete");
     var ArrayInput = [];
     for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  

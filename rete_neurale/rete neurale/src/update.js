@@ -4,7 +4,7 @@
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
 function update(ArrayInput, dim) { // permette di fare il training del dato
-
+    printTextarea(layer_exe, "\n\nRete in addestramento...")
     eval($("#layerdef").val()); // mi serve per attivare train
    
 

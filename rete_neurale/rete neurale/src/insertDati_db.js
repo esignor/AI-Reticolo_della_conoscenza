@@ -4,9 +4,6 @@
  */
 
 function insertDati_db(dim) {
-eval($("#layerdef").val()); // permette di prendere come riferimento l'architettura espressa nella textarea
-
-   
     for (var n = 0; n < vectorCSV.length; ++n) { // stampa dei vettori contenuti in vectorCSV
 
         printTextarea(layer_exe, "\n\Inserito vettore di risposta: " + "[");
