@@ -7,16 +7,20 @@
 function insertDati(dim) {
     // addestramento tutto in un set
     var ArrayInput = [];
+    printTextarea(0, "Caricamento dati nella Rete");
     for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
  
          // generatore standard
          var Aux = generator_input(dim);
- 
          ArrayInput[n] = Aux;
          printTextarea(layer_exe,"\n\Inserito vettore di risposta:  [" + ArrayInput[n] + "]");
      }
-     frequenceMatrix(ArrayInput, dim);
+     var frequencePos = frequenceMatrixPos(ArrayInput, dim); // calcola la frequenza di distribuzione delle domande
+     var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
      update(ArrayInput, dim);
+
+     console.log(frequencePos);
+     console.log(frequenceNeg);
 
 
     /*for (var n = 0; n < 2000; ++n) { // genero n vettori per il training

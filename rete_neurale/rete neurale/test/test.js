@@ -1,7 +1,8 @@
 /**Test d'unita' per la rete neurale di test e del database. Per poterli eseguire si deve anteporre la keyword exports al modulo delle funzioni coinvolte */
 
-import { chai } from 'chai';
 import { assert } from 'chai';
+import {frequenceMatrixPos} from '../src/frequenceMatrix'
+import {frequenceMatrixNeg} from '../src/frequenceMatrix'
 import { generator_input_pure } from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
@@ -122,3 +123,55 @@ describe('#Test7 - stampa', function () {
   })
 
 });
+
+describe('#Test8 - test matrice frequenza', function () {
+  var arrayTest = [];
+  arrayTest[0] = [1,0,1,1,-1,1];
+  arrayTest[1] = [0,1,-1,-1,1,0];
+  arrayTest[2] = [-1,1,-1,-1,1,-1];
+  arrayTest[3] = [1,0,1,1,0,1];
+  arrayTest[4] = [1,0,1,1,0,1];
+
+
+  it('test frequenza con risposta positiva exists', function () {
+    var freq_pos = frequenceMatrixPos(arrayTest, 5);
+    assert.exists(freq_pos, "vettore delle frequenze positive non definito");
+  })
+
+  it('test frequenza con risposta positiva', function () {
+    var freq_pos = frequenceMatrixPos(arrayTest, 5);
+    var res = [];
+    res[0] = ['"fC: 1 fD: 0", "fC: 0 fD: 0", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 0.3333333333333333", "fC: 1 fD: 0"'];
+    res[1] = ['"fC: 0 fD: 0.5", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 0 fD: 0.5"'];
+    res[2] = ['"fC: 1 fD: 0", "fC: 0 fD: 0", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 0.3333333333333333", "fC: 1 fD: 0"'];
+    res[3] = ['"fC: 1 fD: 0", "fC: 0 fD: 0", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 0.3333333333333333", "fC: 1 fD: 0"'];
+    res[4] = ['"fC: 0 fD: 0.5", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 0 fD: 0.5"'];
+    res[5] = ['"fC: 1 fD: 0", "fC: 0 fD: 0", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 0.3333333333333333", "fC: 1 fD: 0"'];
+  
+    assert.equal(freq_pos.vaues, res.values, "vettore delle frequenze negative non coretto"); 
+  })
+
+  it('test frequenza con risposta negativa exists', function () {
+    var freq_neg = frequenceMatrixNeg(arrayTest, 5);
+    assert.exists(freq_neg, "vettore delle frequenze negativo non definito");
+  })
+
+  it('test frequenza con risposta negativa', function () {
+    var freq_neg = frequenceMatrixNeg(arrayTest, 5);
+    var res = [];
+    res[0] = ['"fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0"'];
+    res[1] = ['"fC: NaN fD: NaN", "fC: NaN fD: NaN", "fC: NaN fD: NaN", "fC: NaN fD: NaN", "fC: NaN fD: NaN", "fC: NaN fD: NaN"'];
+    res[2] = ['"fC: 0.5 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0.5 fD: 0"'];
+    res[3] = ['"fC: 0.5 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0.5 fD: 0"'];
+    res[4] = ['"fC: 0 fD: 1", "fC: 0 fD: 0", "fC: 0 fD: 1", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 0 fD: 1"'];
+    res[5] = ['"fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0"'];
+    assert.equal(freq_neg.vaues, res.values, "vettore delle frequenze negative non coretto"); 
+
+
+
+  })
+
+
+});
+
+

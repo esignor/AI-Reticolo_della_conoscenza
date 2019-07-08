@@ -29,7 +29,7 @@ function prevision() {
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
     configureCanvasCoupling(scores, 6); // chiamata al metodo che crea il canvas
 
-    vettoreReticolo(6);
+    vettoreReticolo(6); // genera i dati da passare all'applicativo che costruisce il Reticolo della Conoscenza
 
 }
 

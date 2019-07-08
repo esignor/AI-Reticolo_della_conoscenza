@@ -19,6 +19,10 @@ function insertDati_db(dim) {
 
     update(dim) // chiamata all'addestramento
  
+    var frequencePos = frequenceMatrixPos(vectorCSV, dim);
+    var frequenceNeg = frequenceMatrixNeg(vectorCSV, dim);
+    console.log(frequencePos);
+    console.log(frequenceNeg);
 
     document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
     document.getElementById("button_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON
