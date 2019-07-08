@@ -165,3 +165,9 @@ venerdi 5 luglio
 - inserito metodo che testa le modifiche nella textarea dell'architettura
 - disegnati su carta casi d'uso
 - lavorato su metodo frequenceMatrix per individuare le discrepanze presenti nel Reticolo della Conoscenza del caso di prova
+
+lunedi 8 luglio
+- implementati test d'unita' sul metodo frequenceMatrix;
+- continuazione creazione modellino (appese bandierine, creata regione ammissibile, discusa retta di frequenza)
+- stilati casi d'uso nella documentazione
+- continuazione documentazione sul Reticolo della Conoscenza
