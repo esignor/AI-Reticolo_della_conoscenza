@@ -73,9 +73,113 @@ Ho fatto in modo che il vettore delle differenze venga stampato su console del b
 	\label{file CSV generato per la creazione del Reticolo della Conoscenza sui dati di prova.}
 \end{figure}
 \noindent
-
-TODO: SCREEN DEI VARI PASSAGGI DI FORMAZIONE DEL RETICOLO PER LA RETE DI PROVA
-
+\textit{Di seguito sono riportate le sequenze di creazione del Reticolo della Conoscenza per i dati di prova.}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloCorretto1.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 1.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 1.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloCorretto2.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 2.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 2.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloCorretto3.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 1.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 1.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloCorretto4.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 2.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 2.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloCorretto5.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+\end{figure}
+\noindent
+\textit{Appare evidente come il Reticolo generato rispetta quando definito dalla figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}.\\
+Tuttavia effettuando delle ulteriori prove con file dati differenti; ma provenienti dalla medesima Rete neurale ho riscontrato situazioni contrastanti. L'errore che si riscontra nei casi non corretti riguarda le coppie di domande 1, 4 e 3, 6. Un esempio del fenomeno \`e illustrato di seguito.}
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto1.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+\end{figure}
+\noindent\\
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto2.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 1.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 1.}
+\end{figure}
+\noindent\\
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto3.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 2.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 2.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto4.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 3.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Cluster Based - 3.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto5.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 1.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 1.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto6.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 2.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 2.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto7.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 3.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/reticoloNonCorretto8.png}
+	\caption{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 4.}
+	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 4.}
+\end{figure}
+\noindent
+La spiegazione del Reticolo malformato sta nella natura di creazione dei dati di input.
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/res_frequenceMatrix_OSS.png}
+	\caption{Frequenza delle domande dei dati di test.}
+	\label{Frequenza delle domande dei dati di test.}
+\end{figure}
+L'immagine sopra mostra per ogni domanda valutata a 1 (primo set di dati) e a -1 (secondo set di dati) la frequenza che intercorre in tutte le domande con segno coerente e opposto a quello della domanda in esame.
+Il set di dati viene generato randomicamene con guida, ha infatti come traccia il Grafo della Conoscenza (mostrato in figura\ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}. \`E proprio la natura parzialmente randomica del set di dati che genera queste situazioni di incoerenza. La domanda 2 \`e positiva solo se lo \`e anche la domanda 5 
+\noindent
 
 \subsubsection{Osservazioni}
 \subsubsection{Osservazioni Reticolo dati di prova}
@@ -92,8 +196,6 @@ Il Reticolo della Conoscenza \`e perfettamente coerente con le aspettative; rica
 	\label{Porzione di esempio file CSV generato per la creazione del Reticolo della Conoscenza sui dati del database.}
 \end{figure}
 \noindent
-
-
 La creazione del Reticolo della Conoscenza sui dati delle domande nel database ha richiesto la creazione di file CSV su un architettura a 2 layer della rete con 6, 8, 10, 12 neuroni ciascuno. Questo a causa della non conoscenza a priori del numero di cluster che comporranno il Reticolo, come invece accade per i dati di prova.\\
 Tale differenziazione ha permesso durante la configurazione del sistema e la creazione del Reticolo che mi accorgersi dell'estrema variabilit\`a dei cluster e correlazioni a seconda dell'oscillazione del numero di neuroni per layers, come viene evidenziato dalle immagini seguenti.\\
 
