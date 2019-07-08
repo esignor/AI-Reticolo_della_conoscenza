@@ -908,7 +908,7 @@ La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere a
 
 \subsubsection{Diagrammi dei casi d'uso}
 \label{casi d'uso}
-\paragraph{Attori}\mbox{}\\\\
+\paragraph{Attori}\mbox{}\\
 \label{Attori}
 Gli \textit{attori} esistenti all'interno del sistema che si occupano di interagire con esso sono:
 \begin{itemize}
@@ -920,12 +920,8 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \noindent
 \subparagraph{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}\mbox{}\\\\
 \label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
-\begin{figure}[H]
-\centering
-	\includegraphics[width=1\linewidth]{./image/visione_generale.png}
-	\caption{Visione generale delle funzionalit\`a offerte dalla Rete - Diagramma dei casi d'uso ad alto livello.}
-	\label{Visione generale delle funzionalita offerte dalla Rete.}
-\end{figure}
+\textit{Per ogni funzionalit\`a espressa in UC0\_g \`e stato creato un diagramma differente in modo da evitare connessioni tra le frecce e una corretta visualizzazione delle estensioni.}
+
 \noindent
 \begin{itemize}
 \item \textbf{Descrizione}: Il sistema permette all'utente di interfacciarsi con la Rete neurale;
@@ -935,22 +931,34 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item L'utente pu\`o effettuare il caricamento dei dati di analisi nella Rete in formato txt o csv (UC1, UC2, UC3);
-\item L'utente pu\`o gestire i dati caricati nella Rete (UC4);
-\item L'utente pu\`o visualizzare i dati immessi all'interno della Rete (UC6);
-\item L'utente pu\`o modificare la configurazione dell'architettura di Rete (UC6);
-\item L'utente pu\`o effettuare  previsione sui dati della Rete (UC7);
-\item L'utente pu\`o visualizzare i risultati della Rete ottenuti dai dati caricati e a seguito delle operazioni di previsione (UC8).
+\item L'utente pu\`o effettuare il salvataggio di una Rete addestrata (UC4);
+\item L'utente pu\`o caricare nel sistema l'ultima Rete salvata (UC5);
+\item L'utente pu\`o visualizzare il batch di dati immessi nella Rete (UC6);
+\item L'utente pu\`o modificare la configurazione dell'architettura di Rete (UC7);
+\item L'utente pu\`o effettuare  l' inserimento parametri di previsione (UC8);
+\item L'utente pu\`o visualizzare i risultati della Rete ottenuti dai dati caricati e a seguito delle operazioni di previsione (UC9);
+\item L'utente pu\`o visualizzare il contenuto della Rete addestrata in formato JSON (UC10);
+\item L'utente pu\`o procedere all'eliminazione dello storico della Rete contenuto all'interno della textarea dedicata (UC11).
 \end{enumerate}
 \item \textbf{Estensioni}:
 \begin{enumerate}
-\item Il browser in uso dall'utente non supporta lo standard HTML (UC9);
-\item File caricato dall'utente nella rete non conforme al formato di dati txt o csv richiesto come prerequisito dalla Rete (UC10).
+\item Il browser in uso dall'utente non supporta lo standard HTML. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC9);
+\item File caricato dall'utente nella rete non conforme al formato di dati txt o csv richiesto come prerequisito dalla Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC10).
 \end{enumerate}
 \end{itemize}
 
-\subparagraph{UC1: Caricamento formato dati}\mbox{}\\
+\subparagraph{UC1: Caricamento formato dati}\mbox{}
 \label{UC1: Caricamento formato dati}
 \noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/uc1.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Caricamento formato dati).}
+	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Caricamento formato dati).}
+\end{figure}
+\noindent
+
 \begin{itemize}
 \item \textbf{Descrizione}: Il sistema permette all'utente di poter caricare i dati su cui effettuare l'analisi usando formato csv o txt;
 \item \textbf{Attori}: Utente osservatore;
@@ -963,8 +971,8 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \end{enumerate}
 \item \textbf{Estensioni}:
 \begin{enumerate}
-\item Il browser in uso dall'utente non supporta lo standard HTML5(UC9);
-\item L'utente ha effettuato il caricamento di un formato di dati non conforme al formato csv o txt (UC10).
+\item Il browser in uso dall'utente non supporta lo standard HTML5. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC9);
+\item L'utente ha effettuato il caricamento di un formato di dati non conforme al formato csv o txt.  Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC10).
 \end{enumerate}
 \end{itemize}
 
@@ -999,10 +1007,10 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \end{itemize}
 
 
-\textbf{UC9: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
-\label{UC9: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
+\textbf{UC12: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
+\label{UC12: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
 \begin{itemize}
-\item \textbf{Descrizione}:Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di preocessare alcuna informazione in quanto il browser in uso dall'utente non supporta lo standard di markup HTML5;
+\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di preocessare alcuna informazione in quanto il browser in uso dall'utente non supporta lo standard di markup HTML5;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente non ha ancora caricato il file nella Rete;
 \item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del browser in uso agli standard minimi richiesti per portare a termine l'operazione di caricamento del file nella Rete con successo;
@@ -1010,8 +1018,8 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \end{itemize}
 
 
-\textbf{UC10: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
-\label{UC10: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
+\textbf{UC13: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
+\label{UC13: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
 \begin{itemize}
 \item \textbf{Descrizione}:Il file nel che viene caricato nella rete non \`e del formato richiesto corretto;
 \item \textbf{Attori}: Utente osservatore;
@@ -1019,19 +1027,479 @@ Gli \textit{attori} esistenti all'interno del sistema che si occupano di interag
 \item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del del formato di dati scelto;
 \item \textbf{Scenario principale}: Il file viene caricato all'interno della Rete.
 \end{itemize}
+ 
+\subparagraph{UC4: Salvataggio della Rete}\mbox{} 
+\label{UC4: Salvataggio della Rete}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.80\linewidth]{./image/uc4.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Salvataggio della Rete).}
+	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Salvataggio della Rete).}
+\end{figure}
+\noindent
 
-\subparagraph{UC4: Gestione dati nella Rete}\mbox{}\\\\
-\label{UC4: Gestione dati nella Rete}
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente richiede che i dati caricati all'interno della Rete vengano salvati nello stato in cui si trovano;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: : L'utente ha caricato un file dati nella Rete e quest'ultima ne ha provveduto all'addestramento;
+\item \textbf{Postcondizione}: L'utente ha gestito i dati caricati all'interno della Rete in modo da salvare la Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente effettua l'operazione di salvataggio della Rete.
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC10: Visualizzazione Rete addestrata in formato JSON}\mbox{}
+\label{UC10: Visualizzazione Rete addestrata in formato JSON}
 \noindent
-\subparagraph{UC5: Visualizzazione batch di dati inseriti}\mbox{}\\\\
-\label{UC5: Visualizzazione batch di dati inseriti}
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza in formato JSON i dati della Rete sottoposti ad addestramento;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha effettuato il salvataggio della Rete;
+\item \textbf{Postcondizione}: L'utente ha visualizzato la Rete salvata tradotta in formato JSON all'interno della textarea riservata dell'applicativo
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente visualizza i dati addestrati in formato JSON.
+\end{enumerate}
+\end{itemize}
+
+
+
+\textbf{UC5: Caricamento della Rete}\mbox{}
+\label{UC5: Caricamento della Rete}
 \noindent
-\subparagraph{UC6: Modifica architettura della Rete}\mbox{}\\\\
-\label{UC6: Modifica architettura della Rete}
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/uc5.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Caricamento della Rete).}
+	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Caricamento della Rete).}
+\end{figure}
 \noindent
-\subparagraph{UC7: Gestione inserimento parametri di previsione}\mbox{}\\\\
-\label{UC7: Gestione inserimento parametri di previsione}
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente richiede che la Rete salvata precedentemente venga ricaricata e preparata all'uso nella Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha salvato una Rete precedentemente
+\item \textbf{Postcondizione}: L'utente ha gestito i dati caricati all'interno della Rete in modo da ricaricare una Rete precedentemente salvata;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente richiede l'operazione di caricamento della Rete precedente salvata.
+\end{enumerate}
+\item \textbf{Estensioni}:
+\begin{enumerate}
+\item L'utente ha richiesto il caricamento di una Rete mai precedentemente salvata. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC14).
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC14: Visualizzazione messaggio di errore per richiesta caricamento Rete inesistente}\mbox{}
+\label{UC14: Visualizzazione messaggio di errore per richiesta caricamento Rete inesistente}
 \noindent
-\subparagraph{UC8: Visualizzazione risultati della Rete}\mbox{}\\\\
-\label{UC8: Visualizzazione risultati della Rete}
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia richiesto il caricamento di una Rete quando non non ne \`e ancora stata salvata nessuna;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha richiesto il caricamento dei dati della Rete precedente;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'inesistenza della Rete da caricare richiesta.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore.
+\end{enumerate}
+\end{itemize}
+
+
+\subparagraph{UC6: Visualizzazione batch di dati inseriti}\mbox{}
+\label{UC6: Visualizzazione batch di dati inseriti}
 \noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.80\linewidth]{./image/uc6.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Visualizzazione batch di dati inseriti).}
+	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Visualizzazione batch di dati inseriti).}
+\end{figure}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i dati caricati nella Rete all'interno di una textarea riservata, all'interno della pagina web dell'applicativo; e ne pu\`o ottenere un maggior dettaglio visualizzando gli stessi su una pagina web riservata, in cui vengono evidenziati i significati dei dati mostrati;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete in uno dei formati idonei;
+\item \textbf{Postcondizione}: L'utente visualizza il batch di dati caricati nella Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente visualizza i dati caricati nella Rete all'interno della pagina web dell'applicativo stesso (UC6.1);
+\item L'utente visualizza i dati caricati nella Rete su una pagina web a parte (UC6.2).
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC6.1: Visualizzazione dei dati caricati all'interno della pagina web riservata all'applicativo}\mbox{}
+\label{UC6.1: Visualizzazione dei dati caricati all'interno della pagina web riservata all'applicativo}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i dati caricati nella Rete all'interno di una textarea riservata, all'interno della pagina web dell'applicativo, che ha il compito di tenere traccia di tutte le operazioni svolte nella Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete in uno dei formati idonei;
+\item \textbf{Postcondizione}: L'utente ha visualizzato all'interno della textarea i vettori di dati caricati nella Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente visualizza i dati caricati nella Rete all'interno della textarea dell'applicativo della Rete prima che il sistema proceda con l'addestramento
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC6.2: Visualizzazione dei dati caricati all'interno della Rete su pagina web a parte}\mbox{}
+\label{UC6.2: Visualizzazione dei dati caricati all'interno della Rete su pagina web a parte}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i dati caricati nella Rete su una pagina web riservata ad adempiere tale mansione. I dati caricati vengono presentati con indicazione del numero di test e di domanda a cui ognuno fa capo, cos\`e che all'utente risulti pi\`u agevole effettuare una veloce osservazione sugli stessi.
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete in uno dei formati idonei;
+\item \textbf{Postcondizione}: L'utente ha visualizzato all'interno di una pagina web riservata i vettori di dati caricati nella Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente visualizza i dati caricati nella Rete all'interno di una pagina web reindirizzata dall'applicativo della Rete stessa.
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC7: Modifica architettura della Rete}\mbox{}
+\label{UC7: Modifica architettura della Rete}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1.10\linewidth]{./image/uc7.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Modifica architettura della Rete).}
+	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale (Modifica architettura della Rete).}
+\end{figure}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere a modificare il numero di neuroni per layer, impostare dei nuovi layers, eliminare i layers intermedi esistenti, modificare/eliminare la funzione attivazione e ridefinire i parametri del trainer della Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora effettuato alcuna operazione e la Rete desiderata ancora non esiste;
+\item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente ha aggiunto un nuovo layer intermedio nella Rete (UC7.1);
+\item L'utente ha eliminato un layer intermedio esistente nella Rete (UC7.2);
+\item L'utente ha modificato un layer intermedio (UC7.3);
+\item L'utente ha modificato i parametri del trainer della Rete (UC7.4);
+\item L'utente conferma l'operazione di modifica della Rete (UC7.5);
+\end{enumerate}
+\item \textbf{Estensioni}:
+\begin{enumerate}
+\item L'utente ha tentato di modificare il type input sul layer di input della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC15);
+\item L'utente ha tentato di modificare la larghezza dichiarata (out\_sx) sul layer di input della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC16);
+\item L'utente ha tentato di modificare l'altezza dichiarata (out\_sy) sul layer di input della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC17);
+\item L'utente ha tentato di modificare la profondit\`a dichiarata (out\_depth) sul layer di input della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC18);
+\item L'utente ha tentato di modificare il tipo di connessione fulled connected su un layer intermedio della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC19);
+\item L'utente ha tentato di cancellare il numero di neuroni presenti su un layer intermedio della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC20);
+\item L'utente ha tentato di inserire un numero di neuroni presenti su un layer intermedio della Rete minore o uguale a 0. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC21);
+\item L'utente ha tentato di modificare la funzione di attivazione su un layer intermedio della Rete, con una dichiarazione di funzione non valida. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC22);
+\item L'utente ha tentato di modificare il tipo regressione presente sul layer di output della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC23);
+\item L'utente ha tentato di modificare il numero di neuroni presente sul layer di output della Rete. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC24).
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC7.1: Aggiunta layer intermedio}
+\label{UC7.1: Aggiunta layer intemrdio}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere ad aggiungere un layer intermedio nella Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora effettuato alcuna operazione e la Rete desiderata ancora non esiste;
+\item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a aggiungendo un nuovo layer intermedio;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente ha aggiunto un layer intermedio alla Rete:
+\begin{enumerate}
+\item L'utente effettua l'inserimento del parametro di tipo;
+\item L'utente effettua l'inserimento del numero di neuroni;
+\item L'utente pu\`o indicare o meno la funzione attivazione;
+\item L'utente conferma l'operazione di modifica della Rete.
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC7.2: Eliminazione layer intermedio esistente}
+\label{UC7.2: Eliminazione layer intermedio esistente}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere a eliminare un layer intermedio presente nella Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora effettuato alcuna operazione e la Rete desiderata ancora non esiste;
+\item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a eliminando un layer intermedio;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente ha eliminato un layer intermedio esistente nella Rete:
+\begin{enumerate}
+\item L'utente elimina il parametro di tipo;
+\item L'utente elimina il numero di numero di neuroni;
+\item L'utente elimina se presente la funzione attivazione;
+\item L'utente conferma l'operazione di modifica della Rete.
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC7.3: Modifica layer intermedio esistente}
+\label{UC7.3: Modifica layer intermedio esistente}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di modificare un layer intermedio presente nella Rete
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora effettuato alcuna operazione e la Rete desiderata ancora non esiste;
+\item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a 
+provvedendo a ridefinire il contenuto di un layer intermedio;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente ha ridefinito un layer intermedio presente nella Rete:
+\begin{enumerate}
+\item L'utente pu\`o modificare il numero di neuroni presenti nella Rete;
+\item L'utente pu\`o modificare il parametro modificare/aggiungere/eliminare la funzione attivazione;
+\item L'utente conferma l'operazione di modifica della Rete.
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC7.4: Modifica di trainer}
+\label{UC7.4: Modifica di trainer}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di configurare la dichiarazione del trainer della Rete
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente non ha ancora effettuato alcuna operazione e la Rete desiderata ancora non esiste;
+\item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a definendo il trainer;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente ha configurato il trainer della Rete:
+\begin{enumerate}
+\item L'utente pu\`o modificare il parametro di learning\_rate;
+\item L'utente pu\`o modificare il parametro momentum;
+\item L'utente pu\`o modificare il parametro batch\_size;
+\item L'utente pu\`o modificare il parametro l2\_decay;
+\item L'utente conferma l'operazione di modifica della Rete.
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC15: Visualizzazione messaggio di errore di type input sul layer di input}
+\label{UC15: Visualizzazione messaggio di errore di type input sul layer di input}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input il tipo dello stesso;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha fornito un tipo nel nel layer di input
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del tipo richiesto con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC16: Visualizzazione messaggio di errore per la larghezza dichiarata (out\_sx) sul layer di input}
+\label{UC16: Visualizzazione messaggio di errore per la larghezza dichiarata sul layer di input}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input la larghezza dichiarata;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha fornito la dimensione della larghezza della componente base della Rete Vol;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del della dimensione richiesta con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC17: Visualizzazione messaggio di errore per altezza dichiarata (out\_sy) sul layer di input}
+\label{UC17: Visualizzazione messaggio di errore per altezza dichiarata sul layer di input}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input l'altezza dichiarata;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha fornito la dimensione dell'altezza della componente base della Rete Vol;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del della dimensione richiesta con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC18: Visualizzazione messaggio di errore per la profondit\`a (out\_depth) dichiarata input sul layer di input}
+\label{UC18: Visualizzazione messaggio di errore per la profondita dichiarata input sul layer di input}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input la profondit\`a dichiarata;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha fornito la dimensione della profondit\`a della componente base della Rete Vol;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del della dimensione richiesta con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC19: Visualizzazione messaggio di errore per type fulled connected sui layers intermedi}
+\label{UC19: Visualizzazione messaggio di errore per type fulled connected sui layers intermedi}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia inserito in uno dei layers intermedi un tipo diverso da fulled connected;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha fornito il tipo in un layer intermedio;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del tipo richiesto con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC20: Visualizzazione messaggio di errore per cancellazione numero di neuroni sui layers intermedi}
+\label{UC20: Visualizzazione messaggio di errore per cancellazione numero di neuroni sui layers intermedi}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui effettuato la cancellazione in uno dei layers intermedi del numero di neuroni presenti;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha eliminato il numero di neuroni da un layer intermedio;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a dell'operazione richiesta con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC21: Visualizzazione messaggio di errore per inserimento numero di neuroni sui layers intermedi minore o uguale a 0}
+\label{UC21: Visualizzazione messaggio di errore per inserimento numero di neuroni sui layers intermedi minore o uguale a 0}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito/modificato il numero di neuroni presenti in un layer intermedio con un valore minore o uguale a 0;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha inserito il numero di neuroni in un layer intermedio;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del valore definito con la natura della Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+
+\textbf{UC22: Visualizzazione messaggio di errore per la funzione attivazione presente sui layers intermedi}
+\label{UC22: Visualizzazione messaggio di errore per la funzione attivazione presente sui layers intermedi}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito/modificato  la funzione di attivazione su un layer intermedio con parametro diverso da uno dei desiderati.
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha inserito una funzione attivazione in un layer intermedio;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'inesistenza della funzione attivazione richiesta per la Rete.
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC23: Visualizzazione messaggio di errore per type regression sul layer di output}
+\label{UC23: Visualizzazione messaggio di errore per type regression sul layer di output}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia modificato il tipo dichiarato nel layer di output
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha modificato il tipo presente nel layer di output;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del valore del tipo richiesto con la natura della Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC24: Visualizzazione messaggio di errore per numero di neuroni sul livello di output}
+\label{UC24: Visualizzazione messaggio di errore per numero di neuroni sul livello di output}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia modificato il numero di neuroni dichiarati nel layer di output
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha modificato il numero di neuroni presenti nel layer di output;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di neuroni richiesti con la natura della Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC8: Gestione inserimento parametri di previsione}\mbox{}
+\label{UC8: Gestione inserimento parametri di previsione}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente inserisce i parametri necessari per effettuare previsione sui dati addestrati della Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete \`e addestrata con i dati caricati dall'utente;
+\item \textbf{Postcondizione}: L'utente ha ottenuto la previsione sui dati addestrati in base ai parametri passati in input alla Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item  L'utente ha inserito i parametri necessari per effettuare una clusterizzazione sui dati, una volta predetti dall'applicativo (UC8.1);
+\item L'utente ha selezionato per ogni domanda una delle risposte, tra quelle concesse, in modo da generare un vettore previsione su cui effettuare con questi una previsione sui dati addestrati dalla Rete (UC8.2);
+\item L'utente ha confermato le operazioni dando il via al calcolo dei risultati di previsione (UC8.3).
+\end{enumerate}
+\textbf{Estensioni:}
+\begin{enumerate}
+\item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un valore stringa. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC25);
+\item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un valore vuoto. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC26);
+\item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un numero negativo. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC27);
+\item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un numero superiore a 255. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC28).
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC9: Visualizzazione risultati della Rete}\mbox{}
+\label{UC9: Visualizzazione risultati della Rete}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete a seguito della richiesta di previsione sui dati addestrati della Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete \`e addestrata e con richiesta di previsione pendente;
+\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione ottenuti dalla Rete; 
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item Visualizzazione nella textarea riservata dell'applicativo dei risultati di previsione ottenuti, espressi in termini numerici su ogni domanda (UC9.1);
+\item Visualizzazione nella textarea riservata dell'applicativo dei risultati di previsione ottenuti, espressi in codice rgb su ogni domanda (UC9.2);
+\item Visualizzazione nella textarea riservata dell'applicativo dei cluster delle domande generati sulla base dei parametri di clusterizzazione passati in input e applicati alle previsioni espresse in codice rgb (UC9.3);
+\item Visualizzazione generale, mediante tecnologia canvas, dei risultati delle previsioni, espressi in termini rgb su ogni domanda (UC9.4).
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC9.4: Visualizzazione dei risultati di previsione mediante canvas}\mbox{}\\\\
+\label{UC9.4: Visualizzazione dei risultati di previsione mediante canvas}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete, mediante canvas applicati alle previsioni espresse in termini rgb, a seguito della richiesta di previsione sui dati addestrati della Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete \`e addestrata e con richiesta di previsione pendente;
+\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione ottenuti dalla Rete rappresentato per mezzo di canvas; 
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item Visualizzazione di un quadrato per ogni domanda in analisi con gradazione verde, bianco, rosso; sulla base del risultato di previsione ottenuto a seguito dell'addestramento della Rete e del vettore previsione inoltrato in input.
+\item Visualizzazione di dettaglio, mediante tecnologia canvas, della previsione ottenuta (UC9.4.1). 
+\end{enumerate}
+\end{itemize}
+
+\textbf{UC9.4.1: Visualizzazione dei risultati di previsione in dettaglio mediante canvas}\mbox{}\\\\
+\label{UC9.4.1: Visualizzazione dei risultati di previsione in dettaglio mediante canvas}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete, mediante canvas applicata alle previsioni espresse in termini rgb su un vettore previsione che pone come domanda corretta solo la domanda in esame;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: La Rete ha effettuato previsione sui dati;
+\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione di dettaglio ottenuti dalla Rete rappresentato per mezzo di canvas; 
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item Visualizzazione di un quadrato tanti quante sono le domande, per ogni domanda in analisi, con gradazione verde, bianco, rosso. La gradazione \`e calcolata sul risultato di previsione ottenuto a seguito dell'addestramento della Rete e del vettore previsione che pone corretta la domanda in esame e sbagliate tutte le rimanenti.
+\end{enumerate}
+\end{itemize}
+
+\subparagraph{UC11: Pulizia della textarea riservata a visualizzare lo storico dell'applicativo}\mbox{}
+\label{Pulizia della textarea riservata a visualizzare lo storico dell'applicativo}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente effettua la cancellazione dello storico in visualizzazione della textarea riservata;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha effettuato nella Rete alcune o anche nessuna operazione;
+\item \textbf{Postcondizione}: L'utente visualizza la textarea pulita dallo storico delle operazioni effettuate dalla Rete;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente visualizza l'area di lavoro priva di informazioni sui dati elaborati fino a quel momento.
+\end{enumerate}
+\end{itemize}
