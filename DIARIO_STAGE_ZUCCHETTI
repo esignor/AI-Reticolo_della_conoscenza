@@ -171,3 +171,8 @@ lunedi 8 luglio
 - continuazione creazione modellino (appese bandierine, creata regione ammissibile, discusa retta di frequenza)
 - stilati casi d'uso nella documentazione
 - continuazione documentazione sul Reticolo della Conoscenza
+
+martedi 9 luglio
+- Costruito Reticolo della Conoscenza per i dati di test e per le domande nel db tenendo conto solo della frequenza
+- Confrontati i risutati ottenuti con la PCA e la Rete neurale
+- Continuazione documentazione dei risultati
