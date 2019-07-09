@@ -4,7 +4,7 @@
 library("factoextra")
 options(max.print=10000)
 df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
-# calcolo il pca (centra automaticamente per avere la media a 0), non standardizzato
+# calcolo il pca (centra automaticamente per avere la media a 0), ho preferito effettuare la standardizzazione a mano, facilitava la lettura dei dati nell'asse
 res.pca <- prcomp(df_numeric, scale = FALSE) 
 biplot(res.pca); # rappresentazione grafica
 
@@ -74,20 +74,20 @@ fviz_pca_var(res.pca,
 # Trasposizione dei dati in ordine decrescente di correlazione per ciascuna domanda
 cor.pca <- cor(df_numeric)
 plot(cor.pca)
-# Trasposizione dei dati in ordine decrescente di correlazione per ciascuna domanda
-matrix <-matrix(nrow = 1, ncol = 6)
-correlazione <- matrix(nrow = 6, ncol = 6)
-for(r in 1:6){ 
-  for(k in 1:6){
-    matrix[k] = cor.pca[r,k]
+  # Trasposizione dei dati in ordine decrescente di correlazione per ciascuna domanda
+  matrix <-matrix(nrow = 1, ncol = 6)
+  correlazione <- matrix(nrow = 6, ncol = 6)
+  for(r in 1:6){ 
+    for(k in 1:6){
+      matrix[k] = cor.pca[r,k]
+    }
+    for(i in 1:6){
+      index  = which.max(matrix)
+      correlazione[r, i] = index
+      matrix[index] = -1000
+    }
   }
-  for(i in 1:6){
-    index  = which.max(matrix)
-    correlazione[r, i] = index;
-    matrix[index] = -1000
-  }
-}
 # Correlazione copiata in matrice_correlazione-prova.csv"
-write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/matrice_correlazione-prova.csv", quote=T, sep=" ", dec=".", na="NA", row.name=T, col.names=T)
+write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/matrice_correlazione-prova.csv", quote=T, sep=";", dec=".", na="NA", row.name=FALSE, col.names=T, fileEncoding="")
 
 
