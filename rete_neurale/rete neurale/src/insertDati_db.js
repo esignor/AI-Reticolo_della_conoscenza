@@ -19,10 +19,10 @@ function insertDati_db(dim) {
 
     update(dim) // chiamata all'addestramento
  
-    var frequencePos = frequenceMatrixPos(vectorCSV, dim);
+    /*var frequencePos = frequenceMatrixPos(vectorCSV, dim); in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
     var frequenceNeg = frequenceMatrixNeg(vectorCSV, dim);
     console.log(frequencePos);
-    console.log(frequenceNeg);
+    console.log(frequenceNeg);*/
 
     document.getElementById("button_writedocument").style.display = "inline";  // si possono visulaizzare i dati di addestramento su una pagina del browser a parte
     document.getElementById("button_JSON").style.display = "inline"; // addestramento terminato si puo' creare il JSON

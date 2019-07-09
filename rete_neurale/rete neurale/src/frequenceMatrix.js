@@ -5,7 +5,10 @@
  * a domanda di risposta a 1
  * 
  */
-
+ var Pos1 = []; // variabili globali in uso solo in fase di test per la generazione dei vettori passati in input al Reticolo
+ var Pos2 = [];
+ var Neg1 = [];
+ var Neg2 = [];
 frequenceMatrixPos = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
@@ -30,7 +33,7 @@ frequenceMatrixPos = function (array, dim) {
         numNegative[n] = countMenouno;
     }
 
-    /*console.log("numero di domande fatte: " + numPresenze);
+    /*console.log("numero di domande fatte: " + numPresenze); //in uso per i test dei risultati
     console.log("numero di risposte corrette: " + numPositive);
     console.log("numero di risposte negative: " + numNegative);*/
 
@@ -42,12 +45,12 @@ frequenceMatrixPos = function (array, dim) {
 
 
 
-    /*for(var  i = 0; i < dim; ++i){
+    /*for(var  i = 0; i < dim; ++i){  //in uso per i test dei risultati
         frequenzePositive[i] = parseFloat(numPositive[i]/numPresenze[i]);
         frequenzeMerge[i][0] = frequenzePositive[i];
     }
 
-    for(var  i = 0; i < dim; ++i){
+    for(var  i = 0; i < dim; ++i){  //in uso per i test dei risultati
         frequenzeNegative[i] = parseFloat(numNegative[i]/numPresenze[i]);
         frequenzeMerge[i][1] = frequenzeNegative[i];
     }
@@ -62,6 +65,9 @@ frequenceMatrixPos = function (array, dim) {
         matrixCorrelation[i] = new Array(dim);
         tot[i] = new Array(dim);
         frequence[i] = new Array(dim);
+        Pos1[i] = new Array(dim);  //in uso per i test dei risultati
+        Neg1[i] = new Array(dim);
+        
     }
 
     for (var dom = 0; dom < dim; ++dom) {
@@ -83,14 +89,16 @@ frequenceMatrixPos = function (array, dim) {
             matrixCorrelation[dom][k] = "C " + countA + " D" + countD;
             tot[dom][k] = count;
             frequence[dom][k] = "fC: " + countA/count + " fD: " + countD/count;
+            Pos1[dom][k] = countA/count;  //in uso per i test dei risultati
+            Neg1[dom][k] = countD/count;
 
         }
     }
-    /*for(var i = 0; i < matrixCorrelation.length; ++i)
+    /*for(var i = 0; i < matrixCorrelation.length; ++i) // in uso per i test dei risultati
       console.log(matrixCorrelation[i]);*/
     /*for(var i = 0; i < tot.length; ++i)
-      console.log(tot[i]);
-    for(var i = 0; i < frequence.length; ++i)
+      console.log(tot[i]);*/
+    /*for(var i = 0; i < frequence.length; ++i)
       console.log(frequence[i]);*/
       return frequence;
 }
@@ -128,7 +136,7 @@ frequenceMatrixNeg = function (array, dim) {
         numNegative[n] = countMenouno;
     }
 
-    /*console.log("numero di domande fatte: " + numPresenze);
+    /*console.log("numero di domande fatte: " + numPresenze); // in uso per i test dei risultati
     console.log("numero di risposte corrette: " + numPositive);
     console.log("numero di risposte negative: " + numNegative);*/
 
@@ -141,7 +149,7 @@ frequenceMatrixNeg = function (array, dim) {
 
 
     /*for(var  i = 0; i < dim; ++i){
-        frequenzePositive[i] = parseFloat(numPositive[i]/numPresenze[i]);
+        frequenzePositive[i] = parseFloat(numPositive[i]/numPresenze[i]); // in uso per i test dei risultati
         frequenzeMerge[i][0] = frequenzePositive[i];
     }
 
@@ -159,6 +167,8 @@ frequenceMatrixNeg = function (array, dim) {
         matrixCorrelation[i] = new Array(dim);
         tot[i] = new Array(dim);
         frequence[i] = new Array(dim);
+        Pos2[i] = new Array(dim);  //in uso per i test dei risultati
+        Neg2[i] = new Array(dim);
     }
 
 for (var dom = 0; dom < dim; ++dom) {
@@ -180,15 +190,20 @@ for (var dom = 0; dom < dim; ++dom) {
         matrixCorrelation[dom][k] = "C " + countA + " D" + countD;
         tot[dom][k] = count;
         frequence[dom][k] = "fC: " + countA/count + " fD: " + countD/count;
+        Pos2[dom][k] = countA/count;  //in uso per i test dei risultati
+        Neg2[dom][k] = countD/count;
     }
 }
 
-/*for(var i = 0; i < matrixCorrelation.length; ++i)
+/*for(var i = 0; i < matrixCorrelation.length; ++i) // in uso per i test dei risultati
 console.log(matrixCorrelation[i]);*/
 /*for(var i = 0; i < tot.length; ++i)
 console.log(tot[i]);
 for(var i = 0; i < frequence.length; ++i)
 console.log(frequence[i]);*/
+for(var i = 0; i < frequence.length; ++i)
+console.log(Pos1[i] + ";" + Neg1[i] + ";" + Pos2[i] + ";" +  Neg2[i]); // stampa su console utile in fase di test per generare il file csv per generare i dati da usare per la creazione del Reticolo sulla base della frequenza
+
 return frequence;
 
 }
