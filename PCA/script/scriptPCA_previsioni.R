@@ -3,7 +3,7 @@
 # Caricamento della libreria
 library("factoextra")
 options(max.print=10000)
-df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/previsioni_generatorinputpure.csv", header=FALSE, sep=",")  # carico il file csv
+df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/trainset dati/previsioni_generatorinputpure.csv", header=FALSE, sep=",")  # carico il file csv
 # calcolo il pca (centra automaticamente per avere la media a 0), ho preferito effettuare la standardizzazione a mano, facilitava la lettura dei dati nell'asse
 res.pca <- prcomp(df_numeric, scale = FALSE) 
 biplot(res.pca); # rappresentazione grafica
