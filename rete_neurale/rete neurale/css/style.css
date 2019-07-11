@@ -44,8 +44,8 @@ body,html{
 
   #button_changeNet{
     margin-top: 1em;
-    margin-left: 62em;
     -webkit-margin-start: 77em;
+    margin-left: 75em;
   }
 
   #button_dettaglio-animation{
@@ -78,7 +78,7 @@ body,html{
   color:#ff7f50;
   border:0.8em solid #ff7f50; 
   -webkit-margin-start: 76em;
-  margin-left: 62em;
+  margin-left: 75em;
   margin-top: -3em;
   }
 
