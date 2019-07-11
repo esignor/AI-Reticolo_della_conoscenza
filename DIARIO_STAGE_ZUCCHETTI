@@ -182,3 +182,8 @@ mercoledi 10 luglio
 - Costruita Rete neurale per il database basandomi sulle domande di eulero-venn e le serie
 - Testati i risultati con diverse architetture
 - Continuata documentazione
+
+giovedi 11 luglio
+- Continuazione test sulla rete delle domande in modo da stabilire l'architettura piu' conforme per il Reticolo
+- Preparata rete neurali per un database di 120 domande
+- Continuazione documentazione
