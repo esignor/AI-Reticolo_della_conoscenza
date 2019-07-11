@@ -44,7 +44,8 @@ body,html{
 
   #button_changeNet{
     margin-top: 1em;
-    margin-left: 77em;
+    margin-left: 62em;
+    -webkit-margin-start: 77em;
   }
 
   #button_dettaglio-animation{
@@ -59,11 +60,11 @@ body,html{
     border:0.8em solid	#9932cc
   }
 
+
   #button_upload{
-    margin-left: -2em;
+    -webkit-margin-start: -2em; 
   }
   
-
  #setter_numberfields{
   margin-left: 33em;
   margin-top: 1.5em;
@@ -76,7 +77,8 @@ body,html{
   #button_prevision{
   color:#ff7f50;
   border:0.8em solid #ff7f50; 
-  margin-left: 76em;
+  -webkit-margin-start: 76em;
+  margin-left: 62em;
   margin-top: -3em;
   }
 

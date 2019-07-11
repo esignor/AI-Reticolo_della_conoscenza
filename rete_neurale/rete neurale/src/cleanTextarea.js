@@ -5,5 +5,5 @@
 
 
 cleanTextarea  = function(){
-    printTextarea(0, "Rete neruarale in attesa...");
+    printTextarea(0, "Rete neurale in attesa...");
 }

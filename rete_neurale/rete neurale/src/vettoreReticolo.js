@@ -28,7 +28,7 @@ var result = []
  //previsione della rete
  var value = net.forward(x, false); 
  scores[i+1] = value.w; 
- console.log(scores[i+1]); // test csv
+ //console.log(scores[i+1]); // test csv
  }
 
 for(var i = 0; i < dim; ++i){
@@ -50,6 +50,7 @@ for(var j= 0; j < dim; ++j){
 //previsione della rete
 var value = net.forward(x, false); 
 scores[i+1] = value.w;
+//console.log(scores[i+1]); // test csv
 }
 
 for(var i = 0; i < dim; ++i){
@@ -59,7 +60,7 @@ result[i][dim+j] = Math.abs(scores[0][j] - scores[i+1][j]);
 }
 
 /*for(var i = 0; i < dim ; ++i){
- console.log(i+1 + ";" + result[i]); stampa il vettore da passare all'applicativo che crea il Reticolo della Conoscenza,. Usato in fase di test per generare il csv
+ console.log(i+1 + ";" + result[i]); //stampa il vettore da passare all'applicativo che crea il Reticolo della Conoscenza,. Usato in fase di test per generare il csv
  }*/
 }
 

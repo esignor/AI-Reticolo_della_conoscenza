@@ -12,7 +12,7 @@
 
 
 function normalizationVectorTestPivot(dim) {
-    printTextarea(0, "Caricamento file CSV");
+    printTextarea(0, "Caricamento file CSV in corso. Attendere ...");
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
     document.getElementById("button_writedocument").style.display = "none";

@@ -3,7 +3,7 @@
 import { assert } from 'chai';
 import {frequenceMatrixPos} from '../src/frequenceMatrix'
 import {frequenceMatrixNeg} from '../src/frequenceMatrix'
-import { generator_input_pure } from '../src/generator_input_pure';
+/*import { generator_input_pure } from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import { cluster } from '../src/cluster'
@@ -122,7 +122,7 @@ describe('#Test7 - stampa', function () {
     assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
   })
 
-});
+});*/
 
 describe('#Test8 - test matrice frequenza', function () {
   var arrayTest = [];
@@ -148,7 +148,7 @@ describe('#Test8 - test matrice frequenza', function () {
     res[4] = ['"fC: 0 fD: 0.5", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 0 fD: 0.5"'];
     res[5] = ['"fC: 1 fD: 0", "fC: 0 fD: 0", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 0.3333333333333333", "fC: 1 fD: 0"'];
   
-    assert.equal(freq_pos.vaues, res.values, "vettore delle frequenze negative non coretto"); 
+    assert.equal(freq_pos.values, res.values, "vettore delle frequenze negative non coretto"); 
   })
 
   it('test frequenza con risposta negativa exists', function () {
@@ -165,7 +165,7 @@ describe('#Test8 - test matrice frequenza', function () {
     res[3] = ['"fC: 0.5 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 0.5 fD: 0"'];
     res[4] = ['"fC: 0 fD: 1", "fC: 0 fD: 0", "fC: 0 fD: 1", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 0 fD: 1"'];
     res[5] = ['"fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0", "fC: 1 fD: 0", "fC: 0 fD: 1", "fC: 1 fD: 0"'];
-    assert.equal(freq_neg.vaues, res.values, "vettore delle frequenze negative non coretto"); 
+    assert.equal(freq_neg.values, res.values, "vettore delle frequenze negative non coretto"); 
 
 
 

@@ -65,25 +65,29 @@ body,html{
   }
 
   #button_dettaglio-animation{
-    margin-left: 38em;
-  }
+    margin-left: 30em;
+    -webkit-margin-start:38em;
+    }
 
   #primary_title{
     margin-left: 9em;
   }
 
   #myCanvas{
-    margin-left: 28em;
+    margin-left:24em;
+    -webkit-margin-start:27.5em;
   }
 
   #myCanvas-detail{
-    margin-left: 28em;
+    margin-left: 26em;
+    -webkit-margin-start:30em;
   }
 
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50; 
-    margin-left: 76em;
+    margin-left: 60em;
+    -webkit-margin-start:76em;
     margin-top: -3em;
   }
 

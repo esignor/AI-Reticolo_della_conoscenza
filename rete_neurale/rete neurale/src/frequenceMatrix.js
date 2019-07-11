@@ -8,8 +8,7 @@
  var Pos1 = []; // variabili globali in uso solo in fase di test per la generazione dei vettori passati in input al Reticolo
  var Pos2 = [];
  var Neg1 = [];
- var Neg2 = [];
-frequenceMatrixPos = function (array, dim) {
+ var Neg2 = []; requenceMatrixPos = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
     var numNegative = [];
@@ -202,7 +201,7 @@ console.log(tot[i]);
 for(var i = 0; i < frequence.length; ++i)
 console.log(frequence[i]);*/
 for(var i = 0; i < frequence.length; ++i)
-console.log(Pos1[i] + ";" + Neg1[i] + ";" + Pos2[i] + ";" +  Neg2[i]); // stampa su console utile in fase di test per generare il file csv per generare i dati da usare per la creazione del Reticolo sulla base della frequenza
+console.log((i+1) + ";" + Pos1[i] + ";" + Neg1[i] + ";" + Pos2[i] + ";" +  Neg2[i]); // stampa su console utile in fase di test per generare il file csv per generare i dati da usare per la creazione del Reticolo sulla base della frequenza
 
 return frequence;
 
