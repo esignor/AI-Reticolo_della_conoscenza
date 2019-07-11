@@ -6,10 +6,10 @@
 configure_db = function(){
 var value_rete = "\n\
 layer_defs = [];\n\
-layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});\n\
-layer_defs.push({type:'fc', num_neurons:12, activation: 'tanh'});\n\
-layer_defs.push({type:'fc', num_neurons:12, activation: 'tanh'});\n\
-layer_defs.push({type:'regression', num_neurons:89});\n\
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:120});\n\
+layer_defs.push({type:'fc', num_neurons:15, activation: 'tanh'});\n\
+layer_defs.push({type:'fc', num_neurons:10, activation: 'tanh'});\n\
+layer_defs.push({type:'regression', num_neurons:120});\n\
 \n\
 net = new convnetjs.Net();\n\
 net.makeLayers(layer_defs);\n\

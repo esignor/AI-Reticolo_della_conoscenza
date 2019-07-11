@@ -14,9 +14,9 @@ function prevision() {
     document.getElementById("myCanvas-detail").style.display = "none"; // fa scomparire il box canvas al dettaglio
     document.getElementById("title_questionsdetail").style.display = "none";//fa scomparire  il title introduttivo delle risposte al dettaglio
 
-    var x = new convnetjs.Vol(1, 1, 89);
+    var x = new convnetjs.Vol(1, 1, 120);
 
-    for (var i = 0; i < 89; i++) {
+    for (var i = 0; i < 120; i++) {
         var number =  $('input[name=risposta'+i+']:checked').val();
         x.w[i] = number; // salvo il contenuto anche nell'array necessario al metodo forward
         vectorPrevision[i] = number; // mi salvo la previsione richiesta
@@ -28,8 +28,8 @@ function prevision() {
     printTextarea(layer_exe, "\n\Il vettore [" + x.w + "] ha previsione calcolata di [" + scores.w + "]");
 
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
-    configureCanvasCoupling(scores, 89); // chiamata al metodo che crea il canvas;
+    configureCanvasCoupling(scores, 120); // chiamata al metodo che crea il canvas;
 
-    //vettoreReticolo(89); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
+    vettoreReticolo(120); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
 
 }

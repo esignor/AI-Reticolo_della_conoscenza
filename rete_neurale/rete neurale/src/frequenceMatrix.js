@@ -9,7 +9,7 @@
  var Pos2 = [];
  var Neg1 = [];
  var Neg2 = []; 
- exports.frequenceMatrixPos = function (array, dim) {
+frequenceMatrixPos = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
     var numNegative = [];
@@ -112,7 +112,7 @@
  * 
  */
 
-exports.frequenceMatrixNeg = function (array, dim) {
+frequenceMatrixNeg = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
     var numNegative = [];

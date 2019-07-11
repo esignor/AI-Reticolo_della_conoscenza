@@ -8,7 +8,7 @@ function configureCanvasCoupling(scores, dim){
     if(dim == 6) // rete di prova
       var vectorColor = animationPrevision(scores, dim);
 
-    else if(dim == 89){// rete delle domande nel database
+    else if(dim >= 89){// rete delle domande nel database
       var vectorColor = animationPrevision_db(scores, dim);
     }
     var differenziale_1param =  parseInt(document.getElementById("differenziale_1param").value); // controllo validita' valore gia' effettuato in previsione
