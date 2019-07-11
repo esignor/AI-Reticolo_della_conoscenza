@@ -44,8 +44,9 @@ body,html{
 
   #button_changeNet{
     margin-top: 1em;
+    margin-left: 62em;
     -webkit-margin-start: 77em;
-    margin-left: 75em;
+
   }
 
   #button_dettaglio-animation{
@@ -77,8 +78,8 @@ body,html{
   #button_prevision{
   color:#ff7f50;
   border:0.8em solid #ff7f50; 
-  -webkit-margin-start: 76em;
-  margin-left: 75em;
+  margin-left: 62em;
+  -webkit-margin-start: 77em; /*chrome, deve precedere la definizione generale*/
   margin-top: -3em;
   }
 
@@ -123,17 +124,17 @@ body,html{
   }
 
 
-  #myForm_radio0, #myForm_radio3, #myForm_radio6, #myForm_radio9, #myForm_radio12, #myForm_radio15, #myForm_radio18, #myForm_radio21, #myForm_radio24, #myForm_radio27, #myForm_radio30, #myForm_radio33, #myForm_radio36, #myForm_radio39, #myForm_radio42, #myForm_radio45, #myForm_radio48, #myForm_radio51, #myForm_radio54, #myForm_radio57, #myForm_radio60, #myForm_radio63, #myForm_radio66, #myForm_radio69, #myForm_radio72, #myForm_radio75, #myForm_radio78, #myForm_radio81, #myForm_radio84, #myForm_radio87{
+  #myForm_radio0, #myForm_radio3, #myForm_radio6, #myForm_radio9, #myForm_radio12, #myForm_radio15, #myForm_radio18, #myForm_radio21, #myForm_radio24, #myForm_radio27, #myForm_radio30, #myForm_radio33, #myForm_radio36, #myForm_radio39, #myForm_radio42, #myForm_radio45, #myForm_radio48, #myForm_radio51, #myForm_radio54, #myForm_radio57, #myForm_radio60, #myForm_radio63, #myForm_radio66, #myForm_radio69, #myForm_radio72, #myForm_radio75, #myForm_radio78, #myForm_radio81, #myForm_radio84, #myForm_radio87, #myForm_radio90, #myForm_radio93, #myForm_radio96, #myForm_radio99, #myForm_radio102, #myForm_radio105, #myForm_radio108, #myForm_radio111, #myForm_radio114, #myForm_radio117, #myForm_radio120{
     margin-right: 55em;
   }
 
-  #myForm_radio1, #myForm_radio4, #myForm_radio7, #myForm_radio10, #myForm_radio13, #myForm_radio16, #myForm_radio19, #myForm_radio22, #myForm_radio25, #myForm_radio28, #myForm_radio31, #myForm_radio34,#myForm_radio37, #myForm_radio40,#myForm_radio43, #myForm_radio46, #myForm_radio49, #myForm_radio52, #myForm_radio55, #myForm_radio58, #myForm_radio61, #myForm_radio64,  #myForm_radio67, #myForm_radio70, #myForm_radio73, #myForm_radio76, #myForm_radio79, #myForm_radio82,  #myForm_radio85 , #myForm_radio88{
+  #myForm_radio1, #myForm_radio4, #myForm_radio7, #myForm_radio10, #myForm_radio13, #myForm_radio16, #myForm_radio19, #myForm_radio22, #myForm_radio25, #myForm_radio28, #myForm_radio31, #myForm_radio34,#myForm_radio37, #myForm_radio40,#myForm_radio43, #myForm_radio46, #myForm_radio49, #myForm_radio52, #myForm_radio55, #myForm_radio58, #myForm_radio61, #myForm_radio64,  #myForm_radio67, #myForm_radio70, #myForm_radio73, #myForm_radio76, #myForm_radio79, #myForm_radio82,  #myForm_radio85 , #myForm_radio88, #myForm_radio91, #myForm_radio94, #myForm_radio97, #myForm_radio100, #myForm_radio103, #myForm_radio106, #myForm_radio109, #myForm_radio112, #myForm_radio115, #myForm_radio118{
     margin-left: 25em;
     margin-right: 31em;
     margin-top: -4.5em;
   }
 
-  #myForm_radio2, #myForm_radio5, #myForm_radio8, #myForm_radio11, #myForm_radio14, #myForm_radio17, #myForm_radio20, #myForm_radio23, #myForm_radio26, #myForm_radio29, #myForm_radio32, #myForm_radio35, #myForm_radio38, #myForm_radio41, #myForm_radio44, #myForm_radio47, #myForm_radio50,  #myForm_radio53,  #myForm_radio56, #myForm_radio59, #myForm_radio62, #myForm_radio65, #myForm_radio68, #myForm_radio71, #myForm_radio74, #myForm_radio77, #myForm_radio80, #myForm_radio83, #myForm_radio86, #myForm_radio89{
+  #myForm_radio2, #myForm_radio5, #myForm_radio8, #myForm_radio11, #myForm_radio14, #myForm_radio17, #myForm_radio20, #myForm_radio23, #myForm_radio26, #myForm_radio29, #myForm_radio32, #myForm_radio35, #myForm_radio38, #myForm_radio41, #myForm_radio44, #myForm_radio47, #myForm_radio50,  #myForm_radio53,  #myForm_radio56, #myForm_radio59, #myForm_radio62, #myForm_radio65, #myForm_radio68, #myForm_radio71, #myForm_radio74, #myForm_radio77, #myForm_radio80, #myForm_radio83, #myForm_radio86, #myForm_radio89, #myForm_radio92, #myForm_radio95, #myForm_radio98, #myForm_radio101, #myForm_radio104, #myForm_radio107, #myForm_radio110, #myForm_radio113, #myForm_radio116, #myForm_radio119{
     margin-left: 49em;
     margin-right: 8em;
     margin-top: -4.5em;
