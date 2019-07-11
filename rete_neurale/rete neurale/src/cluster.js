@@ -7,7 +7,7 @@
    @return questionCluster vettore che contiene la correlazione matematica rappresentata per gruppi di cluster di domande
  */
 
-cluster = function (vectorColor, differenziale_1param, differenziale_2param, differenziale_3param) {
+ cluster = function (vectorColor, differenziale_1param, differenziale_2param, differenziale_3param) {
   var questionCluster = []; // salvo le questionCluster di elemento che matchano su un delta massimo differenziale
   var n = 0;
   for (var i = 0; i < vectorColor.length; ++i) {

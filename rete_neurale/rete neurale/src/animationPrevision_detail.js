@@ -41,7 +41,7 @@ function animationPrevision_detail(dim) {
     for (var j = 0; j < dim; ++j) {
       context.beginPath();//nuovo elemento disegnato
 
-      if(dim > 74 && j == 74){ // la linea va a capo
+      if(dim > 74 && j % 74 == 0 && j > 0){ // la linea va a capo
         x = 65;
         i = i + 1;
         y = 25;

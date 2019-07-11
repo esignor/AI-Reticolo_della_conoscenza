@@ -34,7 +34,7 @@ function normalizationVectorTestPivot(dim) {
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
                     for (var j = 0; j < cells.length; ++j) {// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
                         if (j > 0)
-                            vectorTest[j - 1] = parseInt(cells[j]); // in pos 0..88 posizione le 89 risposte, in pos 90 il nome del test e uso la conversione intera per evitare caratteri spuru
+                            vectorTest[j - 1] = parseInt(cells[j]); // in pos 0..dim-1 posizione le dim risposte, in pos dim + 1 il nome del test e uso la conversione intera per evitare caratteri spuru
                         else
                             vectorTest[dim] = cells[j];
                     }

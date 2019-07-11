@@ -65,7 +65,7 @@ function animationPrevision_db(scores, dim){
       
       
       x = x + 35; // per aumentare - diminuire il numero di rettangolini sulla riga
-      if(j == 32 || j == 65){ // per andare a capo
+      if((j+1) % 33 == 0){ // per andare a capo
         y = y + 25;
         x = 5;
       }
