@@ -8,7 +8,8 @@
  var Pos1 = []; // variabili globali in uso solo in fase di test per la generazione dei vettori passati in input al Reticolo
  var Pos2 = [];
  var Neg1 = [];
- var Neg2 = []; requenceMatrixPos = function (array, dim) {
+ var Neg2 = []; 
+ exports.frequenceMatrixPos = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
     var numNegative = [];
@@ -111,7 +112,7 @@
  * 
  */
 
-frequenceMatrixNeg = function (array, dim) {
+exports.frequenceMatrixNeg = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];
     var numNegative = [];

@@ -3,7 +3,7 @@
 import { assert } from 'chai';
 import { frequenceMatrixPos } from '../src/frequenceMatrix'
 import { frequenceMatrixNeg } from '../src/frequenceMatrix'
-import { generator_input_pure } from '../src/generator_input_pure';
+/*import { generator_input_pure } from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import { cluster } from '../src/cluster'
@@ -122,7 +122,7 @@ describe('#Test7 - stampa', function () {
     assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
   })
 
-});
+});*/
 
 describe('#Test8 - test matrice frequenza', function () {
   var arrayTest = [];
