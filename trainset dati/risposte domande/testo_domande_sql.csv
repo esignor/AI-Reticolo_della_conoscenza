@@ -1,0 +1,120 @@
+﻿aaxgbiwfen;Lo standard SQL è stato definito da: ( ) ACI, AISCAT e ISO ( ) ANSI e XOpen (*)
+adiueedxey;Quale delle seguenti frasi SQL legge tutti dati dalla tabella articoli? ( ) F
+afakgklfop;Una transazione deve essere "isolata", cioè: (*) Deve avvenire senza che gli 
+akczmgrdbq;La sintassi dell' operazione di INNER JOIN è: ( ) SELECT * FROM INNER JOIN CLIE
+asxurodfne;Cosa è una FOREIGN KEY? ( ) Una chiave di ricerca secondaria (*) Un campo che 
+avagvdjdfu;Quale di questi linguaggi di programmazione è il più vecchio: (*) LISP ( ) A
+axrvccwwsp;Quale di queste espressioni sarà valutata più rapidamente? (*) NOME = ”Greg” AN
+bbsurwinbt;Cosa asserisce la legge empirica di Lehman: ( ) Che il tempo di puntamento è pr
+biweemhojf;Qual è la frase SQL corretta per avere gli articoli ordinati per descrizione?
+blhjkyufeg;Durante una transazione: ( ) Il database è sempre in uno stato consistente (
+bwodxllzmk;Quale dei seguenti campi è il meno selettivo? ( ) La chiave primaria ( ) Un cam
+byrtdixxea;La frase SELECT * FROM FATTURE, CLIENTI WHERE FATTURE.CODCLI=CLIENTI.CODCLI per 
+csttpqoysn;Il risultato di una frase SQL di solito è ordinato per: ( ) Ordine di inserimen
+culepaxyst;Le relazioni tra tabelle vengono espresse memorizzando nella tabella che referen
+cuyddcrymb;La frase SELECT COUNT(*) AS NCLIENTI FROM CLIENTI: (*) Torna il numero di clien
+cvnhqpgfyp;Alla COMMIT: ( ) I dati vengono scritti su disco ( ) I dati sono confermati 
+dagputfvei;Che diagramma è il seguente? [IMG GI_diagram_3.gif] (*) Activity diagram
+dbuqwjsyvj;Cosa ritorna la frase SELECT * FROM ARTICOLI ( ) Tutti i campi della tabella ar
+dkihxiceua;L’operazione “HASH JOIN” viene eseguita in un tempo: ( ) Dipendente dalla mole 
+dkzgokqmiq;Lo standard SQL è stato definito negli anni: ( ) Prima versione 1970, versione 
+dlfyuvcbqx;Cosa ritorna la frase SELECT CODART, DESART FROM ARTICOLI ( ) Tutti i campi d
+dllpxhzfkt;Le operazioni sul database possono essere eseguite in un tempo: (*) Dipendente 
+dzxsvydlth;Il vostro database mostra costanti segni di rallentamento man mano che l’utente 
+ebrpcrncwd;Per ottenere solo i clienti in provincia di Lodi qual è la frase corretta? ( ) 
+eftrkdthng;Una transazione deve essere "durevole", cioè: ( ) Deve essere fibrata ( ) De
+elqzybkpjl;Quali delle seguenti operazioni sono “rosse”, cioè hanno un tempo di esecuzione 
+enitorndkz;Un database ha le seguenti tabelle:  ARTICOLI: gli articoli con campi CODART, 
+enmkdvzmyk;Cosa è una "postcondizione"? ( ) Una procedura da eseguire prima di emettere 
+ewplljreqn;Cos' è un "invariante di ciclo"? ( ) Un valore che non viene modificato in un
+ffbcwwtnzk;Cosa è un indice? ( ) Una struttura ad albero inverso (*) Una via di accesso ra
+fhqcltuqwl;L’operazione “NESTED LOOP” viene eseguita in un tempo: ( ) Dipendente dalla mol
+fjmpjvualm;Se la tabella ORDINI ha 34 righe e la tabella ORDINI_M ha 14 righe, quante righe
+fkdgytnwzf;Alcune operazioni del database creano risorse temporanee: (*) Queste operazioni
+fumfugvkrl;Cos'è un "design pattern"? (*) Una soluzione comprovata ad un problema ricorr
+fuzfbwlutx;Quale di questi predicati non è “sargabile”? (*) NOME <> ”Greg” ( ) NOME = “Gre
+fyrpicjqan;Quale di questi predicati è “sargabile”? (*) NOME like “Greg%”  ( ) YEAR(DATA)=
+fzoxjumtyn;L’operazione “MERGE JOIN” viene eseguita in un tempo: ( ) Dipendente dalla mole
+gtxwazgyqz;L’operazione “INDEX SEEK” viene eseguita in un tempo: ( ) Dipendente dalla mole
+guatssqajf;Se nella frase SELECT CODICE,DESCR FROM CLIENTI volessi cambiare il nome del cam
+gyerxpmgqa;L' istruzione SQL per interrogare i dati è: ( ) FIND ( ) QUERY ( ) SEEK (*) SEL
+hntvpqncrc;Ho compilato un programma in C. Devo eseguirlo su un computer con un altro siste
+hyfoktjlpp;Cosa fa l' operazione di ROLLBACK: ( ) Riporta il database alla prima situazi
+idfxvfzprt;Nella frase SELECT la parte INDEX: ( ) indica che indice utilizzare ( ) ottimiz
+ieimtqtzpk;Un database ha le seguenti tabelle:  ARTICOLI: gli articoli con campi CODART
+iezewxpthv;L’operazione “TABLE CONCATENATION” viene eseguita in un tempo: ( ) Dipendente d
+ifrvxoopny;Quali sono le efficienze migliore, media e peggiore dell' algoritmo MergeSort?
+ifvdeyoyre;Quali delle seguenti operazioni sono “gialle”, cioè creano delle risorse tempora
+ikyqsdhuit;Una frase SELECT che estrae dati da più tabelle in relazione tra loro: ( ) Eseg
+jbpjxhaxyy;Cosa è una chiave primaria: ( ) Un singolo campo con valore univoco ( ) Una com
+jedvsptntk;L' istruzione SQL per cancellare i dati nell' archivio è: ( ) REMOVE (*) DELETE
+jycipstmyp;Se l' isolation level è stato impostato a READ COMMITED, cosa avviene quando una
+kbnwlxqtqc;Quale delle seguenti frasi esegue correttamente una operazione di prodotto carte
+kexorxwipq;Il vostro database ha un improvviso peggioramento delle prestazioni man mano che
+kfbpwmrkgz;Un database ha le seguenti tabelle:  ARTICOLI: gli articoli con campi CODART
+kjecbikedc;Se l' isolation level è stato impostato a SERIALIZABLE, cosa avviene quando una 
+kqkjrygfsc;Qual è il miglior indice per velocizzare la seguente query sulla tabella CLIENTI
+kzzvvwynxn;Un database ha le seguenti tabelle: ARTICOLI: gli articoli con campi CODART
+lgiqayejyf;L' istruzione SQL per creare una tabella è: (*) CREATE TABLE ( ) DEFINE TABLE (
+ljozpygnua;Una transazione deve essere "consistente", cioè:( ) E' composta da più frasi
+lohspalpqn;L' istruzione SQL per modificare una tabella è: ( ) MANAGE TABLE ( ) MODIFY TAB
+lzpqvyslrv;Nella frase SELECT la parte HAVING: (*) filtra il risultato dopo aver calcolato
+mdwdlplluz;L’operazione “SORT” viene eseguita in un tempo: ( ) Dipendente dalla mole di da
+mezjrkwdmi;Quali sono due metodi per garantire la consistenza del database? ( ) COMMIT e
+mligaxxxyv;L’operatore “<>”: (*) Può utilizzare gli indici ma raramente conviene ( ) Non u
+mljwybuamb;Qual è la frase SQL corretta per ottenere tutti gli articoli con il prezzo compr
+naywhaxocj;Qual è il miglior indice per velocizzare la seguente query? SELECT * FROM 
+nqrcokzyep;Una frase SELECT è una transazione? (*) Se non è parte di una transazione più
+oexeosrlxq;Con quale metodo di trasformazione da linguaggio ad alto livello a istruzioni pe
+oldnuetsfx;Quando un predicato è “sargabile”? (*) Quando può essere valutato utilizzando u
+ownmhihmlf;Nella frase SELECT la parte WHERE: ( ) ordina il risultato ( ) cancella il risu
+oxinyiwtdw;Che parole sottende l' acronimo ACID: ( ) Automatico, Compresso, Ignorabile, 
+pdegmbefyz;Quale dei seguenti è un linguaggio strutturato: ( ) COBOL (*) Pascal ( ) Fo
+pnornaipiy;In quale ordine sono stati proposti i seguenti paradigmi di programmazione: (
+pozlktnbwi;Che diagramma è il seguente? [IMG GI_diagram_5.jpg] (*) Class diagram ( )
+pralrcttdk;Quali sono le caratteristiche della programmazione funzionale: ( ) Singola en
+ptfyswhhoi;La frase CREATE INDEX MIOINDICE ON CLIENTI(INDIRIZZO OR CITTA): ( ) Crea un ind
+ptvnijvlyr;Il vostro database mostra costanti segni di rallentamento man mano che l’utente 
+qfpxivqgfs;L' acronimo SQL sta per: ( ) Simil Quote Language (*) Structured Query Language
+qhpmwyunln;Che operazione è il prodotto cartesiano tra due tabelle? ( ) La concatenazion
+qhurfzksbi;L' istruzione SQL per modificare i dati nell' archivio è:( ) EDIT(*) UPDATE(
+qyfsksfpqr;Il linguaggio SQL è applicato ai sistemi:( ) NoSQL( ) Codasyl(*) RDBMS( ) I
+rcvjbkxijb;Chi ha inventato il linguaggio Java?( ) Niklaus Wirth( ) Guido Van Rossum
+rfveenepae;Quanti record ha il prodotto cartesiano tra due tabelle con 1000 record ciascuna
+rjqonwgagd;Nella frase SELECT * FROM CLIENTI, cosa indica l' asterisco:( ) che il risulta
+rjrbsovupf;Un "flow chart" tipicamente descrive:( ) Un insieme di classi(*) Una proce
+rkpyhnweoz;Cosa NON è un "code smell"?( ) Un codice che di per se non è errato ma potrebb
+rlbnjnuraa;Qual è il miglior indice per velocizzare la seguente query? SELECT CODICE,DESC
+rqlhmwvvfr;Nella frase SELECT CODICE,DESCR FROM CLIENTI ORDER BY 2: ( ) I dati non vengono
+shwidpusut;Una transazione deve essere "atomica", cioè: ( ) Deve avvenire con una tempor
+slfnwkouex;Il linguaggio SQL può essere diviso in: ( ) DLL: dynamic link library e DQL: da
+soaxrpkmyx;L' istruzione SQL per creare un indice è: (*) CREATE INDEX ( ) ADD INDEX ( ) IN
+tahwadyybr;Quale frase SQL è corretta per ottenere i dati degli Ordini che sono contenuti i
+tmalpukvph;In cosa consiste l' operazione di ROLL FORWARD? ( ) Nel confermare le scrittu
+tmptxxfqlg;Nella frase SELECT la parte SUBSELECT: ( ) esegue la query sul risultato di un'
+twjbzfuzhs;L’operazione “TABLE SCAN” viene eseguita in un tempo: (*) Dipendente dalla mole
+uciubnhesv;Per ottenere tutti i clienti con il fido superiore a 1000 Euro qual è la frase c
+uctsvufnre;Quale delle seguenti sequenze di fasi dello sviluppo è nell' ordine corretto:
+ukteiawtcu;In un’espressione di ricerca è  più selettivo un campo contente il MESE o un cam
+uoujmoastk;L' istruzione SQL per inserire i dati nell' archivio è:(*) INSERT( ) ADD( ) 
+usloxptlnv;Quale dei seguenti campi è il più selettivo?( ) Un campo numerico (*) Un campo
+vcetherudx;La selettività può variare a seconda dei dati contenuti nell' archivio? ( ) No
+vwesvpdxeu;Quale di queste espressioni non riesce ad usare l’indice sul NOME? ( ) NOME >= 
+wbimqkxjpk;Qual è il miglior indice per velocizzare la seguente query? SELECT CODICE,DESC
+wduzcrmbqr;Nella frase SELECT la parte FROM: (*) è obbligatoria ( ) è obbligatoria solo se
+wgqmilmeeo;Che cosa s’intende per selettività di un’espressione d’interrogazione? (*) E’ l
+wqoeigleak;Quale dei seguenti linguaggi non implementa l' ereditarietà multipla: ( ) Eif
+wyidhotyrc;Come garantisce il database l' isolamento delle transazioni? ( ) Con i lock d
+wyohxxjmbr;La frase SELECT COUNT(*) AS NCLIENTI FROM CLIENTI, in caso di archivio vuoto: (
+xcvjgpwpgd;Dalla frase SQL "SELECT * FROM ORDINI,ORDINI_M" cosa ottengo? ( ) Tutti gli ord
+xdfzuqqaxc;Nella frase SELECT la parte FROM: ( ) specifica gli indici da utilizzare (*) sp
+xdpxeikdtg;Cosa asserisce la legge empirica di Moore: ( ) Che il tempo di puntamento è pro
+xxigdvhajv;Quale delle seguenti licenze open source non può essere utilizzata in un prodott
+xymzioajbw;Quali delle seguenti operazioni sono “verdi”, cioè hanno un tempo di esecuzione 
+yjakijsehd;Quale dei seguenti è un linguaggio funzionale: ( ) COBOL ( ) Fortran (*) LI
+ynkrhlsqhx;La frase SELECT * FROM CLIENTI WHERE COUNT(*)>0: ( ) Torna tutti i clienti se c
+ypvazwngub;L’operatore LIKE: (*) Utilizza gli indici se il valore di confronto non inizia 
+yvbkrvodje;Il vostro database ha un improvviso peggioramento delle prestazioni man mano che
+zmivrwbcja;La frase SELECT CODICE, DESCRIZIONE FROM CLIENTI ORDER BY 2 ritorna: ( ) Un cod
+zriwusbhcv;In una tabella la chiave primaria è costituita dai campi MAGAZZINO e ARTICOLO. I
+zvsnjqiaqb;La frase SELECT * FROM FATTURE LEFT OUTER JOIN CLIENTI ON FATTURE.CODCLI=CLIENTI
