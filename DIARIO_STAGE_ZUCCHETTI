@@ -176,3 +176,9 @@ martedi 9 luglio
 - Costruito Reticolo della Conoscenza per i dati di test e per le domande nel db tenendo conto solo della frequenza
 - Confrontati i risutati ottenuti con la PCA e la Rete neurale
 - Continuazione documentazione dei risultati
+
+mercoledi 10 luglio
+- Sistemata consegna su chiavetta
+- Costruita Rete neurale per il database basandomi sulle domande di eulero-venn e le serie
+- Testati i risultati con diverse architetture
+- Continuata documentazione
