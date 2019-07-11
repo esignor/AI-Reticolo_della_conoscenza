@@ -56,7 +56,7 @@ Analizzando l'applicativo in base al carattere dei dati in ingresso e alle aspet
 
 \subsection{Creazione dei file CSV}
 \label{Creazione dei file CSV}
-Come gi\`a accentato all'interno della sezione §\ref{Descrizione del sistema} prima di procedere alla creazione del Reticolo ho dovuto preparare i dati di previsione prima di poterli dare in pasto al sistema. Questo \`e stato reso pi\`u agevole grazie alla creazione, da parte mia, di un metodo che ha il compito, una volta messa in funzione la Rete neurale oggetto di studio (di prova o del database), di calcolare:
+Come gi\`a accentato all'interno della sezione §{Descrizione del sistema} prima di procedere alla creazione del Reticolo ho dovuto preparare i dati di previsione prima di poterli dare in pasto al sistema. Questo \`e stato reso pi\`u agevole grazie alla creazione, da parte mia, di un metodo che ha il compito, una volta messa in funzione la Rete neurale oggetto di studio (di prova o del database), di calcolare:
 \begin{enumerate}
 \item Le previsioni ottenibili da un vettore di previsione settato a 1 o -1 per ogni singolo elemento;
 \item Sui dati del punto (1) un vettore delle differenze dove viene calcolato il delta in rapporto al vettore di standard \footnote{Vettore tutto a zero}.
@@ -169,7 +169,7 @@ Tuttavia effettuando delle ulteriori prove con file dati differenti; ma provenie
 	\label{Reticolo della Conoscenza con rappresentazione di tipo Forced Based - 4.}
 \end{figure}
 \noindent
-La spiegazione del Reticolo malformato \`e da ricondurre all'applicativo usato per la sua rappresentazione. I punti vengono raggruppati, come spiegato nella sezione \ref{Configurazione.} assieme usando la distanza euclidea, ci\`o implica che per effettuare i raggruppamenti viene calcolata la distanza che intercorre fra i punti dati in pasto al sistema. Fra due punti viene calcolata la distanza bidimensionale (TODO:da verificare) ovvero la radice quadrata delle differenze  nei due assi, sommate tra di loro. Nel momento in cui il gruppo viene creato il sistema procede all'individuazione del prossimo gruppo, effettuata mediante l'uso del metodo Complete. Significa che vengono presi tutti i punti in relazione stretta con i punti del gruppo in esame e scelto il pi\`u vicino; escludendo perci\`o da qualsiasi altra considerazione presenta e futura gli ulteriori punti coinvolti, se non solo quando chiamati in causa da altri punti.\\
+La spiegazione del Reticolo malformato \`e da ricondurre all'applicativo usato per la sua rappresentazione. I punti vengono raggruppati, come spiegato nella sezione § \ref{Configurazione.} assieme usando la distanza euclidea, ci\`o implica che per effettuare i raggruppamenti viene calcolata la distanza che intercorre fra i punti dati in pasto al sistema. Fra due punti viene calcolata la distanza bidimensionale (TODO:da verificare) ovvero la radice quadrata delle differenze  nei due assi, sommate tra di loro. Nel momento in cui il gruppo viene creato il sistema procede all'individuazione del prossimo gruppo, effettuata mediante l'uso del metodo Complete. Significa che vengono presi tutti i punti in relazione stretta con i punti del gruppo in esame e scelto il pi\`u vicino; escludendo perci\`o da qualsiasi altra considerazione presenta e futura gli ulteriori punti coinvolti, se non solo quando chiamati in causa da altri punti.\\
 \noindent
 In fase di test mi sono anche occupata di capire come si comporta la Rete neurale, relativa ai dati di prova, considerando esclusivamente la possibilit\`a che un candidato o risponda correttamente ad una domanda (1) o la sbagli (-1). I risultati ottenuti sono i seguenti:
 \begin{figure}[H]
@@ -245,23 +245,70 @@ Come primo passo ho provveduto a calcolarmi per ogni domanda quale fosse la freq
 	\caption{Frequenza delle domande dei dati di test.}
 	\label{Frequenza delle domande dei dati di test.}
 \end{figure}
-L'immagine sopra mostra per ogni domanda valutata a 1 (primo set di dati) e a -1 (secondo set di dati) la frequenza che intercorre in tutte le domande con segno coerente e opposto a quello della domanda in esame.
-Il set di dati viene generato randomicamente con guida \footnote{con impiego del Grafo della Conoscenza (mostrato in figura\ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.})}.
-Svolgendo i risultati di frequenza osservati ho riscontrato i seguenti fenomeni:
+L'immagine sopra mostra per ogni domanda valutata a 1 (primo set di dati) e a -1 (secondo set di dati) la frequenza che intercorre in tutte le domande con segno coerente o opposto a quello della domanda in esame.
+Il set di dati viene generato randomicamente con guida \footnote{con impiego del Grafo della Conoscenza (mostrato in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.})}.
+Analizzando i risultati di frequenza osservati ho riscontrato i seguenti fenomeni:
 \begin{itemize}
-\item Considerando i valori per riga: la domanda 1 
+\item Considerando i valori per riga:
+\begin{itemize}
+\item per le domande in cui le risposte si presentano corrette i valori di frequenza correlata e opposta si presentano con la seguente struttura:
+\begin{itemize}
+\item la domanda 3  si presenta con una frequenza correlata che coinvolge le coppie (1,3) e (4,6);
+\item la domanda 6 si presenta con una frequenza correlata che coinvolge le coppie (1,6) e (4,3).
 \end{itemize}
-\item Considerando i valori per colonna: la domanda 1 si correla con la domanda 4, la domanda 3 si correla con la domanda 5,6, la domanda 2 con la domanda 6
-
-
-
-
-TODO: Immagine UT
-
-
-
- \`E proprio la natura parzialmente randomica del set di dati che genera queste situazioni di incoerenza. La domanda 2 \`e positiva solo se lo \`e anche la domanda 5 
+\item per le domande in cui le risposte si presentano sbagliate i valori di frequenza correlata e opposta si presentano con la seguente struttura:
+\begin{itemize}
+\item la domanda 1 si presenta con una frequenza correlata che coinvolge le coppie (1 ~ FC:1, 3 ~ FC:1) e (4 ~ FC:0.55, 6 ~ FC:0.80);
+\item la domanda 4 si presenta con una frequenza correlata che coinvolge le coppie (4 ~ FC:1, 3 ~ FC:1) e (1 ~ FC:0.54, 6 ~ FC:0.80);
+\end{itemize}
+\end{itemize}
+\item Considerando i valori per colonna:
+\begin{itemize}
+\item la domanda 1 si correla con la domanda 4;
+\item la domanda 3 si correla con la domanda 6, 
+\item la domanda 2 con la domanda 5.
+\end{itemize}
+\end{itemize}
 \noindent
+Tali considerazioni non sono esclusive per il singolo set di dati; ma rimangono costanti per ogni set di dati generato (anche se di natura parzialmente randomica). Ho riscontrato per ciascuna variabile al massimo un oscillazione che si attesta mai superiore a 0.2. Percui tali risultati risultano stabili e attendibili.
+\\\\
+I valori di frequenza possono concorrere alla formazione del Reticolo della Conoscenza. Per renderlo possibile ho provveduto ha creare un file csv che contenesse per ognuna delle domande tutte le domande coinvolte valutate con frequenze positive correlate e opposte e le frequenze negative correlate e opposte. La tecnica permette la generazione, per ogni domanda, di un vettore contenete un quantit\`a di dati 4 volte la dimensione dell'input/output della Rete.
+Il divario permette, positivamente, di poter costruire un Reticolo ove i dati per ogni nodo hanno una stabilit\`a concreta.\\
+Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
+\begin{itemize}
+\item la frequenza non effettua alcuna riduzione dimensionale provocando uno utilizzo di spazio pari al numero di domande/dati da analizzare. Ci\`o comporta che per grandi moli da dati lo spazio necessario cresce elevato al numero di elementi di input;
+\item la frequenza funziona male sui valori anomali, come gi\`a spiegato nella sezione § \ref{Descrizione del sistema}
+\end{itemize}
+\noindent
+Il divario tra i valori per riga e colonna sono legittimati dalla costruzione dei valori di input. Questi infatti vedono la presenta di valori 0, e non esclusivamente 0 e 1, il cui impatto  va a colpire ogni singola domanda, le cui conseguenze peggiori sono ottenute dalle domande figli e genitori che collidano tra loro dimenticando il grado di parentela. Tuttavia tale oscillazione ottiene un peso minimo durante il calcolo dei dati in quanto ui valori per colona e le righe 2 e 5 risultano sempre conformi.
+
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/Reticolo_db-frequenza.png}
+	\caption{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Cluster Based) - 1.}
+	\label{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Cluster Based) - 1.}
+\end{figure}
+\noindent
+
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/Reticolo_db-frequenza-2.png}
+	\caption{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Cluster Based) - 2.}
+	\label{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Cluster Based) - 2.}
+\end{figure}
+\noindent
+
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/Reticolo_db -frequenza-3.png}
+	\caption{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Forced Based).}
+	\label{Configurazione usata nel sistema per generare il Reticolo della Conoscenza con i dati di frequenza (Forced Based).}
+\end{figure}
+\noindent
+
 
 
 
