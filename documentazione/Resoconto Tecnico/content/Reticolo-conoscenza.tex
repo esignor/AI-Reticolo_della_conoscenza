@@ -66,6 +66,28 @@ Ho fatto in modo che il vettore delle differenze venga stampato su console del b
 
 \subsection{Creazione del Reticolo della Conoscenza per sui dati di Prova}
 \label{Creazione del Reticolo della Conoscenza per sui dati di Prova}
+
+\subsubsection{L'architettura della Rete}
+\label{L'architettura della Rete}
+Durante la costruzione del Reticolo della Conoscenza \`e stato importante capire se effettivamente l'architettura scelta in precedenza fosse corretta, e il suo vero significato. La rete sviluppata per il progetto \`e una Rete neurale statica a multistrato, nella quale sono presenti i seguenti elementi:
+\begin{itemize}
+\item input layer: dove viene dichiarata la dimensione dell'input: lunghezza, larghezzae profondit\`a dei dati da analizzare;
+\item hidden layer ( o layer intermedio): composto da uno o pi`u strati nascosti (o intermedi) costituito da m neuroni;
+\item output layer:  costituito da p neuroni pari al numero di output desiderati.
+\end{itemize}
+\noindent 
+Una Rete neurale permette di formulare complessi modelli matematici (sistemi di equazioni differenziali ecc.) e di individuarne possibili soluzioni, inoltre le soluzioni si determinano a partire dai dati; tuttavia la scelta del modello \`e un'azione molto complessa.
+
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/architettua-rete-prova.png}
+	\caption{Archittettura delle Rete di prova: 6 ingressi in una rete a 3 strati con 2 stati nascosti e uscite.}
+	\label{Archittettura delle Rete di prova: 6 ingressi in una rete a 3 strati con 2 stati nascosti e uscite.}
+\end{figure}
+\noindent
+
+
 \noindent
 \begin{figure}[H]
 \centering
@@ -280,8 +302,8 @@ Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
 \item la frequenza funziona male sui valori anomali, come gi\`a spiegato nella sezione § \ref{Descrizione del sistema}
 \end{itemize}
 \noindent
-Il divario tra i valori per riga e colonna sono legittimati dalla costruzione dei valori di input. Questi infatti vedono la presenta di valori 0, e non esclusivamente 0 e 1, il cui impatto  va a colpire ogni singola domanda, le cui conseguenze peggiori sono ottenute dalle domande figli e genitori che collidano tra loro dimenticando il grado di parentela. Tuttavia tale oscillazione ottiene un peso minimo durante il calcolo dei dati in quanto ui valori per colona e le righe 2 e 5 risultano sempre conformi.
-
+Il divario tra i valori per riga e colonna sono legittimati dalla natura del set di valori di input. In esso sono contenuti valori 0, e non esclusivamente -1 e 1, causa diretta dell'oscillazione delle correlazioni strette esistente tra le domande accoppiate \footnote{per i dati di prova le domande accoppiate sono (1;4), (3;6) e (2;5)}. La prova di quanto appena detto \`e evidente testando pi\`u volte la Rete. Per un n molto piccolo le previsioni, ottenute, risultano cos\`i vicine l'una all'altra che almeno 4 domande formano un unico cluster.
+Tale curvatura dei dati ha il suo impatto peggiore sulle domande figlie e genitori. Le domande estranee vengono associate prima hai figli esclusivamente perch\`e molto semplici. Tuttavia l'oscillazione in esame \`e minima e il Reticolo ne risente esclusivamente quando i valori di previsione delle domande sono simili, motivo per cui in figura le colonne e le righe 2 e 5 risultano sempre conformi. 
 \noindent
 \begin{figure}[H]
 \centering

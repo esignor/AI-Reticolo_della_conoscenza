@@ -25,7 +25,6 @@ Il primo metodo che ho sviluppato si occupa di generare un vettore di dati di ap
 
 \subsection{Test effettuati}
 \label{Test effettuati}
-
 Alcune decisioni che ho preso durante la scelta dell'architettura della rete riguardano i seguenti settori:
 \begin{enumerate}
 \item Una rete neurale non deve, per fornire dei dati attendibili, possedere un numero di neuroni troppo elevato rispetto al trainset effettuato; altrimenti la previsione  ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati.
@@ -41,6 +40,8 @@ Alcune decisioni che ho preso durante la scelta dell'architettura della rete rig
 Per svolgere l'apprendimento ogni vettore, facente parte del dataset, viene dato in pasto alla rete che a sua volta provvede alla sua assimilazione come conoscenza mediante la tecnica dell'autoencoder, ovvero la rete impara il vettore riducendone lo spazio occupato.
 \item Per creare il dataset ho ritenuto sufficiente generare \textit{2000} vettori di risposta in modo da compiere in maniera esaustivo l'apprendimento della rete.
 \end{enumerate}
+\noindent
+La tematica della validit\`a dell'architettura viene approfondita nel dettaglio della sezione \ref{L'architettura della Rete}.\\
 \noindent
 Il vettore passato in input per svolgere le previsioni \`e \textit{[0,0,0,0,0,0]},\textit{[0,0,1,0,1,0]} e \textit{[0,0,-1,0,0,0]}\\
 Le aspettative riguardano la previsione di risposta di un candidato
