@@ -6,9 +6,9 @@ Per eseguire, con successo, i test d'unità è necessario procedere all'installa
 Prima di tutto l'utente deve aprire una \textit{shell da terminale} e spostarsi all'interno delle sottocartelle rete\_neurale/rete neurale nella repository "AI-Reticolo\_della\_conoscenza".
 Per poter eseguire i test d'unit\`a su qualsiasi sistema operativo, \`e necessarie procedere alle seguenti installazioni:
 \begin{enumerate}
- \item Installare node js da \href{https://nodejs.org/en/download/} per poter usare il comando npm;
- \item Installare \textbf{mocha: npm install mocha};
- \item Installare  il modulo \textbf{babel core/register: --install --save-dev babel-core babel-preset -env};
+ \item Installare node js da \url{https://nodejs.org/en/download/} per poter usare il comando npm;
+ \item Installare mocha: \textbf{npm install mocha};
+ \item Installare  il modulo babel core/register: \textbf{npm --install --save-dev babel-core babel-preset -env};
  \item Installare presets per 2015:  \textbf{npm install babel-cli babel-preset-es2015};
  \item Installare il modulo chai: \textbf{npm install chai}.
 \end{enumerate}
@@ -25,4 +25,28 @@ Javascript \`e un linguaggio lato client, da browser. I test automatici sono sta
 \noindent
 
 \subsection{Sistema operativo e browser}
-Il progetto \`e stato sviluppato su sistema operativo Linux e ripetutamente testato per tutta la durata dello stage sul sistema operativo Windows messo a disposizione in ufficio. L'applicativo della Rete neurale \`e sviluppato ad hov per browser Chrome; ma non ha mostrato alcuna problematica di adattabilit\`a n\`e su Firefox n\`e su Internet Explorer. Tuttavia sconsiglio l'utilizzo della Rete neurale in uso per i dati del database, in quanto la grande mole di dati rallenta eccessivamente l'operabilit\`a del browser. Il browser dove le attivit\`a della rete riscontrano una maggiore performance \`e Chorme.
+Il progetto \`e stato sviluppato su sistema operativo Linux e ripetutamente testato per tutta la durata dello stage sul sistema operativo Windows messo a disposizione in ufficio. L'applicativo della Rete neurale \`e sviluppato ad doc per browser Chrome in cui il caricamento di grandi moli di dati ha prestazioni migliori. Sconsiglio l'utilizzo della Rete neurale in uso per i dati del database su Microsoft Edge e Firefox , in quanto il caricamento del file di allenamento \`e molto lento.
+
+\subsubsection{Specifiche di sviluppo}
+\label{Specifiche di sviluppo}
+\begin{itemize}
+\item Sistemi operativi di sviluppo:
+\begin{itemize}
+\item Versione sistema operativo di sviluppo principale: Ubuntu 4.15.0-52.56-generic 4.15.18;
+\item Versione sistema operativo pc fisso aziendale: Windows 10 Enterprise, versione 1809;
+\end{itemize}
+\item Browser di testing:
+\begin{itemize}
+\item browser principale: Chrome versione 75.0.3770.100 a 64 bit e Versione 66.0.3359.170 a 64 bit;
+\item browser (sconsigliato per l'uso della Rete del database): Microsoft Edge 44.17763.1.0, Microsoft EdgeHTML 18.17763;
+\item browser (sconsigliato per l'uso della Rete del database): Firefox Quantum 67.0.2 a 64 bit.
+\end{itemize}
+\item Strumenti di codifica:
+\begin{itemize}
+\item Visual Studio Code 1.35.1.
+\end{itemize}
+\item Strumenti di documentazione:
+\begin{itemize}
+\item Texmaker 5.0.3 (compiled with Qt 5.9.5).
+\end{itemize}
+\end{itemize}
