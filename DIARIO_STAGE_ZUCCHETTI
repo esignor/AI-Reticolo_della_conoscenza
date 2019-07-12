@@ -187,3 +187,7 @@ giovedi 11 luglio
 - Continuazione test sulla rete delle domande in modo da stabilire l'architettura piu' conforme per il Reticolo
 - Preparata rete neurali per un database di 120 domande
 - Continuazione documentazione
+
+venerdi 12 luglio
+- Test Reticolo della Conoscenza su domande 89/120 (trovato bug sull'applicativo di generazione del Reticolo e risolto)
+- Continuazione documentazione
