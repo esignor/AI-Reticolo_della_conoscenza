@@ -1,5 +1,5 @@
 /**@function controlArchitettura
- * @param {*} dim simesnione della rete input/output
+ * @param {*} dim dimesnione della rete input/output
  * metodo che controlla che le mdifiche dell'architettura rigurdino esclusivamente il numero di neuroni per layer e il numero di layers
  */
 controlArchitettura = function (dim) {
@@ -33,7 +33,7 @@ controlArchitettura = function (dim) {
         event = false;
     }
     if (layer_defs[0].out_depth != dim) {
-        alert('Modifica non valida architettura della Rete: Configurazione obbligatoria out_depth:'+dim);
+        alert('Modifica non valida architettura della Rete: Configurazione obbligatoria out_depth:'+ dim);
         event = false;
     }
 
@@ -64,7 +64,7 @@ controlArchitettura = function (dim) {
         event = false;
     }
     if (layer_defs[layer_defs.length - 1].num_neurons != dim) {
-        alert('Modifica non valida architettura della Rete: Configurazione obbligatororia num_neurons:'+dim);
+        alert('Modifica non valida architettura della Rete: Configurazione obbligatororia num_neurons:'+ dim);
         event = false;
     }
     if (trainer == null) {
