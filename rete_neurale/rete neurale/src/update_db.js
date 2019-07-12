@@ -18,7 +18,7 @@ function update(dim) { // permette di fare il training del dato
 
                 x.w[ix] = vectorCSV[n][ix]; // gli passo l'input
             }
-            trainer.train(x, vectorCSV[n]); // inizia ad imparare che per quel dato vettore in input vale l'output passato (tecnica dell'autoencoder)
+            trainer.train(x, vectorCSV[n])
         }
 
     }

@@ -15,11 +15,10 @@ function insertDati(dim) {
          ArrayInput[n] = Aux;
          printTextarea(layer_exe,"\n\Inserito vettore di risposta:  [" + ArrayInput[n] + "]");
      }
-     /*var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
+     var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
      var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
      update(ArrayInput, dim);
-
-     console.log(frequencePos);
+     /*console.log(frequencePos);
      console.log(frequenceNeg);*/
 
 
@@ -32,7 +31,10 @@ function insertDati(dim) {
            printTextarea(layer_exe, "\n\Inserito vettore di risposta: [" + ArrayInput[n] + "]");
        }
   
-       update(ArrayInput, dim);*/
+       update(ArrayInput, dim);
+       var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
+       var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
+       */
 
     /*for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
 
@@ -44,7 +46,7 @@ function insertDati(dim) {
 
     }
     /*var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
-    var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);*/
+    var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
 
-    update(ArrayInput, dim);
+    update(ArrayInput, dim);*/
 }

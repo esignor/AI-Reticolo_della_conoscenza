@@ -1,7 +1,8 @@
-/** function controlArchitettura
+/**@function controlArchitettura
+ * @param {*} dim simesnione della rete input/output
  * metodo che controlla che le mdifiche dell'architettura rigurdino esclusivamente il numero di neuroni per layer e il numero di layers
  */
-controlArchitettura = function () {
+controlArchitettura = function (dim) {
     document.getElementById("myCanvas-detail").style.display = "none";
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("title_questionsdetail").style.display = "none";
@@ -31,12 +32,12 @@ controlArchitettura = function () {
         alert('Modifica non valida architettura della Rete: Configurazione obbligatoria out_sy:1');
         event = false;
     }
-    if (layer_defs[0].out_depth != 89) {
-        alert('Modifica non valida architettura della Rete: Configurazione obbligatoria out_depth:89');
+    if (layer_defs[0].out_depth != dim) {
+        alert('Modifica non valida architettura della Rete: Configurazione obbligatoria out_depth:'+dim);
         event = false;
     }
 
-    if (layer_defs[1].type == 'regression' && layer_defs[1].num_neurons == 89) {
+    if (layer_defs[1].type == 'regression' && layer_defs[1].num_neurons == dim) {
         alert('Modifica non valida architettura della Rete: Configurazione obbligatoria con almeno 1 layer intemedio');
         event = false;
     }
@@ -62,8 +63,8 @@ controlArchitettura = function () {
         alert('Modifica non valida architettura della Rete: Configurazione obbligatoria type: "regression"');
         event = false;
     }
-    if (layer_defs[layer_defs.length - 1].num_neurons != 89) {
-        alert('Modifica non valida architettura della Rete: Configurazione obbligatororia num_neurons: 89');
+    if (layer_defs[layer_defs.length - 1].num_neurons != dim) {
+        alert('Modifica non valida architettura della Rete: Configurazione obbligatororia num_neurons:'+dim);
         event = false;
     }
     if (trainer == null) {
