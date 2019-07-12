@@ -879,25 +879,27 @@ net.makeLayers(layer_defs);
 trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
 momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
-\noindent
-L'obiettivo dei miei test \`e stato individuare una configurazione abbastanza "forte" da permettere un riscontro di correlazioni e dei possibili cluster esistenti con il solo ausilio della Rete. Tuttavia per proseguire il mio studio \`e indispensabile che mi avvalga di anche altri strumenti di supporto. Il prossimo passo \`e costruire un modello di dati mediante la tecnica di {P}rincipal \textbf{C}omponent \textbf{A}nalysis.
-Avvalendomi dello studio approfondito dello studio del testo delle 89 domande di logica e dai test sopra effettuati ho tratto le seguenti considerazioni:
-\begin{itemize}
-\item Un layer non sembra sufficiente per trattare il problema in esame. Mi aspetto che i dati si aggreghino per argomento:  due argomenti principali (serie e eulero-venn) e la parte restante, domande senza un vero e proprio tema, concorrente a creare il pavimento della Rete;
-\item Un numero di neuroni superiore a 11 per hidden layer genera situazioni riconducibili all'overfitting.
-\end{itemize}
 \end{itemize}
 
-\subsection{Funzionalit\`a offerte dall'interfaccia della Rete neurale costruita per le domande di logica}
+Avvalendomi dello studio approfondito del testo delle 89 domande di logica e dai test sopra effettuati, ho tratto le seguenti considerazioni in merito all'architettura di Rete:
+\begin{itemize}
+\item Un layer non \`e sufficiente per trattare il problema in esame. Si si aspetta che i dati si aggreghino per argomento:  due macro argomenti principali (serie e eulero-venn) e la parte restante, domande senza un vero e proprio tema, concorrente a creare il pavimento della Rete;
+\item Un numero di neuroni superiore a 11 per hidden layer genera situazioni riconducibili all'overfitting.
+\end{itemize}
+\noindent
+L'obiettivo di individuare una configurazione di rete abbastanza "forte", da permettere un riscontro di correlazioni e cluster esistenti, nella stessa, \`e tuttavia fallito. I risultati ottenuti non sono sufficienti per riuscire a trarre delle conclusioni ragionevoli. Per proseguire il mio studio \`e stato indispensabile avvalersi di altri strumenti di supporto, come la tecnica di {P}rincipal \textbf{C}omponent \textbf{A}nalysis.
+
+
+\subsection{Funzionalit\`a offerte dall'interfaccia della Rete neurale costruita}
 \label{Funzionalita offerte dall'interfaccia della Rete neurale}
-La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere analisi dei dati mirata alla previsione dei risultati sulle domande del database aziendale. L'applicativo realizzato offre le seguenti funzionalit\`a:
+La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere analisi di una grande quantit\`a dati, mirata alla previsione dei risultati. L'applicativo realizzato offre le seguenti funzionalit\`a:
 \begin{itemize}
 \item Caricamento dei dati con l'utilizzo di formati \textit{CSV} o \textit{TXT};
 \item Possibilit\`a di visualizzare i dati caricati direttamente su pagina web. Ogni risposta viene presentata con codice di test e codice della domanda;
 \item Possibilit\`a di visualizzare i dati caricati nella Rete mediante formato JSON. In questo modo la rete post apprendimento viene salvata ed \`e possibile visualizzare come ogni nodo pesa ogni variabile. Inoltre l'ultima rete salvata pu\`o venire caricata in ogni momento e riutilizzata;
 \item La Rete neurale \`e fornita di due textarea: 
 \begin{itemize}
-\item La prima che permette la visualizzazione e la modifica dell'architettura in uso, con indicazione della tipologia di trainer utilizzato. Questa sezione permette la modifica delle variabili di configurazione,Se si desidera modificare il numero di domande analizzate dalla rete si deve modificare il numero di neuroni espressi nella regressione, il file di previsione, il file configurazione e index della rete.;
+\item La prima che permette la visualizzazione e la modifica dell'architettura in uso, con indicazione della tipologia di trainer utilizzato. Questa sezione permette la modifica delle variabili di configurazione. Se si desidera modificare il numero di domande analizzate dalla rete \`e d'obbligo modificare il numero di neuroni espressi nella regressione, di previsione, di configurazione e index della rete;
 \item La seconda che consente la visualizzazione dei risultati ottenuti dalla Rete.
 \end{itemize}
 \item \`E possibile settare la previsione che si vuole ottenere, mediante un'area di inserimento con box a radio. Il valore di default imposto \`e 0. 
@@ -913,7 +915,7 @@ La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere a
 \paragraph{Attori}\mbox{}\\\\
 \label{Attori}
 \noindent
-Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso sono:
+Gli \textit{attori} esistenti all'interno del sistema che interagiscono con esso sono:
 \begin{itemize}
 \item \textbf{Utente osservatore}: utente che agisce direttamente sulla Rete neurale, in modo da effettuare osservazioni ed analisi dei dati di interesse.
 \end{itemize}
@@ -921,6 +923,24 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \paragraph{Casi d'uso}\mbox{}
 \label{Casi d'uso}
 \noindent
+Ogni caso d'uso è composto dalle seguenti parti:
+      \begin{itemize}
+      \item \textbf{Identificativo}: composto dalla numerazione appena descritta sopra seguita da una stringa testuale che rappresenta la funzionalità che si vuole modellare;
+      \item \textbf{Descrizione}: contiene una breve descrizione del caso d'uso;
+      \item \textbf{Attori}: l'attore è  tutto ciò che è esterno al sistema e con il quale interagisce. Un'attore si suddivide in due categorie:
+        \begin{itemize}
+        \item \textbf{Attore primario}: che interagisce direttamente con il sistema;
+        \item \textbf{Attore secondario}: entità esterna che interagisce con il sistema; ma con l'obiettivo di far raggiungere all'attore principale il suo scopo.
+        \end{itemize}
+      \item \textbf{Precondizione}: descrive lo stato del sistema prima del verificarsi delle azioni espresse nel caso d'uso;
+      \item \textbf{Postcondizione}: descrive lo stato del sistema una volta che si sono svolte le azioni stabilite nel caso d'uso;
+      \item \textbf{Scenario principale}: rappresenta in modo puntale, per passi mediante elenco numerato, le azioni del caso d'uso;
+      \item \textbf{Estensioni} (Opzionali): ognuno di essi viene eseguito solo quando si avvera una determinata condizione. Se la condizione viene verificata l'esecuzione del caso d'uso, a cui e' collegato, viene interrotta;
+      \item \textbf{Inclusioni} (Opzionali): quando due casi d'uso sono tra loro collegati. Viene eseguito sempre e solo dopo che il caso d'uso, a cui è collegato, sia stato eseguito completamente;
+      \item \textbf{Generalizzazioni} (Opzionali): specializzazioni di un caso d'uso. Ogni specializzazione è mutualmente accessibile.
+      \end{itemize}
+      
+      
 \subparagraph{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}\mbox{}\\\\
 \label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
 \noindent
@@ -935,7 +955,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \item \textbf{Descrizione}: Il sistema permette all'utente di interfacciarsi con la Rete neurale;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete neurale \`e in attesa che l'utente effettui almeno un'operazione;
-\item \textbf{Postcondizione}: L'utente si \`e interfacciato con le funzionalit\`a offerte della Rete neurale.
+\item \textbf{Postcondizione}: L'utente si \`e interfacciato con le funzionalit\`a offerte della Rete neurale;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item L'utente pu\`o effettuare il caricamento dei dati di analisi nella Rete in formato txt o csv (UC1);
@@ -1014,10 +1034,10 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \textbf{UC\_g.2: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
 \label{UC_g.2: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
 \begin{itemize}
-\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto il browser in uso dall'utente non supporta lo standard di markup HTML5;
+\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto il browser, in uso dall'utente, non supporta lo standard di markup HTML5;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente non ha ancora caricato il file nella Rete;
-\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del browser in uso con gli standard minimi richiesti per portare a termine l'operazione di caricamento del file nella Rete con successo;
+\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del browser in uso, con gli standard minimi richiesti, per portare a termine l'operazione di caricamento del file nella Rete con successo;
 \item \textbf{Scenario principale}: Il file scelto dall'utente viene caricato all'interno della Rete.
 \end{itemize}
 
@@ -1025,10 +1045,10 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \textbf{UC\_g.3: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
 \label{UC_g.3: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
 \begin{itemize}
-\item \textbf{Descrizione}: Il file nel che viene caricato nella rete non \`e del formato richiesto corretto;
+\item \textbf{Descrizione}: Il file che viene caricato nella rete non \`e del formato richiesto corretto;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente non ha ancora caricato il file nella Rete;
-\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del del formato di dati scelto;
+\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato della non conformit\`a del del formato di dati scelto;
 \item \textbf{Scenario principale}: Il file viene caricato all'interno della Rete.
 \end{itemize}
  
@@ -1043,7 +1063,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \item \textbf{Scenario principale}: L'utente effettua l'operazione di salvataggio della Rete mediante l'apposito pulsante.
 \item \textbf{Inclusioni}:
 \begin{enumerate}
-\item La Rete salvata viene visualizzata sulla textarea riservata i dati della rete addestrata in formato JSON (UC1).
+\item La Rete salvata viene visualizzata sulla textarea riservata, presentando i dati della rete addestrata in formato JSON (UC11).
 \end{enumerate}
 \end{itemize}
 
@@ -1081,7 +1101,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia richiesto il caricamento di una Rete quando non non ne \`e ancora stata salvata nessuna;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha richiesto il caricamento dei dati della Rete precedente;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'inesistenza di una Rete da caricare.
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'inesistenza di una Rete da caricare;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore.
 \end{itemize}
 
@@ -1090,7 +1110,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \label{UC6: Visualizzazione batch di dati inseriti}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente visualizza i dati caricati nella Rete all'interno di una textarea riservata, all'interno della pagina web dell'applicativo; e ne pu\`o ottenere un maggior dettaglio visualizzando gli stessi su una pagina web riservata, in cui vengono evidenziati i significati dei dati mostrati;
+\item \textbf{Descrizione}: L'utente visualizza i dati caricati nella Rete all'interno di una textarea riservata, all'interno della pagina web dell'applicativo. Ne pu\`o ottenere un maggior dettaglio visualizzando gli stessi su una pagina web riservata, in cui vengono evidenziati i significati dei dati mostrati;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete in uno dei formati idonei;
 \item \textbf{Postcondizione}: L'utente visualizza il batch di dati caricati nella Rete;
@@ -1109,7 +1129,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete, in uno dei formati idonei;
 \item \textbf{Postcondizione}: L'utente ha visualizzato all'interno della textarea i vettori di dati caricati nella Rete;
-\item \textbf{Scenario principale}: L'utente visualizza i dati caricati nella Rete all'interno della textarea dell'applicativo della Rete prima che il sistema proceda con l'addestramento.
+\item \textbf{Scenario principale}: L'utente visualizza i dati caricati nella Rete all'interno della textarea dell'applicativo prima che il sistema proceda con l'addestramento.
 \end{itemize}
 
 \textbf{UC6.2: Visualizzazione dei dati caricati all'interno della Rete su pagina web a parte}\mbox{}
@@ -1120,7 +1140,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha  effettuato il caricamento dei dati nella Rete in uno dei formati idonei;
 \item \textbf{Postcondizione}: L'utente ha visualizzato all'interno di una pagina web riservata i vettori di dati caricati nella Rete;
-\item \textbf{Scenario principale}: L'utente visualizza i dati caricati nella Rete all'interno di una pagina web reindirizzata dall'applicativo della Rete.
+\item \textbf{Scenario principale}: L'utente visualizza i dati caricati nella Rete all'interno di una pagina web reindirizzata dall'applicativo.
 \end{itemize}
 
 \subparagraph{UC7: Modifica architettura della Rete}\mbox{}
@@ -1129,7 +1149,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale modificando i layer presenti e il loro contenuto.
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1145,7 +1165,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere a modificare il numero di neuroni per layer, impostare dei nuovi layers, eliminare i layers intermedi esistenti, modificare/eliminare la funzione attivazione e ridefinire i parametri del trainer della Rete;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1162,7 +1182,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere ad aggiungere un layer intermedio nella Rete;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}:La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}:La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a aggiungendo un nuovo layer intermedio;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1181,15 +1201,15 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere ad eliminare un layer intermedio presente nella Rete;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a eliminando un layer intermedio;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item L'utente ha eliminato un layer intermedio esistente nella Rete:
 \begin{enumerate}
 \item L'utente elimina il parametro di tipo;
-\item L'utente elimina il numero di numero di neuroni;
-\item L'utente elimina se presente la funzione attivazione.
+\item L'utente elimina il numero di neuroni;
+\item L'utente elimina, se presente, la funzione attivazione.
 \end{enumerate}
 \end{enumerate}
 \end{itemize}
@@ -1200,7 +1220,7 @@ Gli \textit{attori} esistenti all'interno del sistema e  interagiscono con esso 
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di modificare un layer intermedio presente nella Rete
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a 
 provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Scenario principale}:
@@ -1224,13 +1244,12 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a definendo il trainer;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
-\item L'utente ha configurato il trainer della Rete:
+\item L'utente ha riconfigurato il trainer della Rete:
 \begin{enumerate}
 \item L'utente pu\`o modificare il parametro di learning\_rate;
 \item L'utente pu\`o modificare il parametro momentum;
 \item L'utente pu\`o modificare il parametro batch\_size;
-\item L'utente pu\`o modificare il parametro l2\_decay;
-\item L'utente conferma l'operazione di modifica della Rete.
+\item L'utente pu\`o modificare il parametro l2\_decay.
 \end{enumerate}
 \end{enumerate}
 \end{itemize}
@@ -1239,16 +1258,16 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC7.2: Gestione operazioni di configurazione dell'architettura non concesse}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze e ai valori delle variabili di cui necessit\`a per compiere le osservazioni sulla Rete.
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze e ai valori delle variabili di cui necessit\`a per compiere le osservazioni sulla Ret; ma non tutte le operazioni di modifica/cancellazione possono venire compiute.
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item Le operazioni non concesse all'utente riguardano le seguenti operazioni:
 \begin{enumerate}
 \item Modifica del layer di input (UC7.2.1);
-\item Cancellazione del layer di input (UC7.2.2)
+\item Cancellazione del layer di input (UC7.2.2);
 \item Modifica del layer di output (UC7.2.3);
 \item Cancellazione del layer di output (UC7.2.4);
 \item Cancellazione parziale di un layer intermedio (UC7.2.5).
@@ -1262,7 +1281,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze, ed \`e interessato ad effettuando la modifica del layer di input;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1282,7 +1301,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze, ed \`e interessato ad effettuando la cancellazione del layer di input;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1320,7 +1339,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze, ed \`e interessato ad effettuando la cancellazione del layer di output;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1338,11 +1357,11 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze, ed \`e interessato ad effettuando la cancellazione di alcuni campi di un layer intermedio esistente;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
-\item Le operazioni non concesse all'utente riguardano la cancellazione del layer di intermedio:
+\item Le operazioni non concesse all'utente riguardano la cancellazione del layer intermedio:
 \begin{enumerate}
 \item Cancellazione del tipo del layer intermedio;
 \item Cancellazione del numero di neuroni;
@@ -1358,7 +1377,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente conferma la configurazione della Rete presentata nella textarea dedicata;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sulla essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione sul di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1385,8 +1404,8 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input il tipo dello stesso;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: L'utente ha fornito un tipo nel nel layer di input
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del tipo richiesto con la natura della Rete;
+\item \textbf{Precondizione}: L'utente ha fornito un tipo nel layer di input
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del tipo richiesto con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1397,7 +1416,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input la larghezza dichiarata;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha fornito la dimensione della larghezza della componente base della Rete Vol;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del della dimensione richiesta con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del della dimensione richiesta con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1408,7 +1427,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input l'altezza dichiarata;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha fornito la dimensione dell'altezza della componente base della Rete Vol;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del della dimensione richiesta con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a della dimensione richiesta con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1420,7 +1439,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input la profondit\`a dichiarata;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha fornito la dimensione della profondit\`a della componente base della Rete Vol;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a della dimensione richiesta con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a della dimensione richiesta con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1432,7 +1451,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia inserito in uno dei layers intermedi un tipo diverso da fulled connected;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha fornito il tipo in un layer intermedio;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del tipo richiesto con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del tipo richiesto con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1444,7 +1463,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui effettuato la cancellazione in uno dei layers intermedi del numero di neuroni presenti;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha eliminato il numero di neuroni da un layer intermedio;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a dell'operazione richiesta con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a dell'operazione richiesta con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1455,7 +1474,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito/modificato il numero di neuroni presenti in un layer intermedio con un valore minore o uguale a 0;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito il numero di neuroni in un layer intermedio;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica la incompatibilit\`a del valore definito con la natura della Rete;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del valore definito con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1464,7 +1483,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC7.13: Visualizzazione messaggio di errore per la funzione attivazione presente sui layers intermedi}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito/modificato  la funzione di attivazione su un layer intermedio con parametro diverso da uno dei desiderati.
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito/modificato la funzione di attivazione su un layer intermedio con parametro diverso da uno dei desiderati;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito una funzione attivazione in un layer intermedio;
 \item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'inesistenza della funzione attivazione richiesta per la Rete;
@@ -1503,8 +1522,8 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Postcondizione}: L'utente ha ottenuto la previsione sui dati addestrati in base ai parametri passati in input alla Rete;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
-\item  L'utente ha inserito i parametri necessari per effettuare una clusterizzazione sui dati, sui dati predetti dall'applicativo (UC8.1);
-\item L'utente ha selezionato per ogni domanda una delle risposte, tra quelle concesse, in modo da generare un vettore previsione con il quale si effettua la previsione sui dati addestrati dalla Rete (UC8.2);
+\item  L'utente ha inserito i parametri necessari per effettuare una clusterizzazione sui dati predetti dall'applicativo (UC8.1);
+\item L'utente ha selezionato per ogni domanda una delle risposte, tra quelle concesse, in modo da generare un vettore previsione con cui effettuare la previsione sui dati addestrati dalla Rete (UC8.2);
 \item L'utente ha confermato le operazioni dando il via al calcolo dei risultati di previsione (UC8.3).
 \end{enumerate}
 \end{itemize}
@@ -1540,18 +1559,18 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{enumerate}
 \item L'utente sceglie il contenuto del vettore previsione:
 \begin{enumerate}
-\item L'utente sceglie la risposta alla domanda n = {1,...,89} con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata, 1 risposta corretta.
+\item L'utente sceglie la risposta alla domanda n = {1,...,dim | dim numero di domande passate in input} con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata e 1 risposta corretta.
 \end{enumerate}
 \end{enumerate}
 \end{itemize}
 
-\textbf{UC8.3: Conferma operazioni di previsione inseriti}\mbox{}
-\label{UC8.3: Conferma operazioni di previsione inseriti}
+\textbf{UC8.3: Conferma operazioni di previsione inserite}\mbox{}
+\label{UC8.3: Conferma operazioni di previsione inserite}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente conferma i dati inseriti come differenziali di accoppiamento e i valori delle risposte delle domande nel vettore previsione;
+\item \textbf{Descrizione}: L'utente conferma i dati di differenziali di accoppiamento e il vettore di previsione inserito;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: L'utente ha inserito i parametri su cui effettuare previsione su una Rete addestrata;
+\item \textbf{Precondizione}: L'utente ha inserito i parametri su cui effettuare previsione su una Rete' addestrata;
 \item \textbf{Postcondizione}: L'utente ha confermato i dati inseriti e innescato il calcolo della previsione;
 \item \textbf{Scenario principale}: L'utente conferma i differenziali di accoppiamento e il vettore previsione inseriti nell'applicativo.
 \textbf{Estensioni:}
@@ -1570,7 +1589,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un valore stringa;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito come differenziale di accoppiamento un valore stringa;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di  di valore inserito;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di valore inserito;
 \item \textbf{Scenario principale}: All'utente viene indicato l'esistenza di un'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1581,7 +1600,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un valore vuoto;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito come differenziale di accoppiamento un valore vuoto;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di  di valore inserito;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di valore inserito;
 \item \textbf{Scenario principale}: All'utente viene indicato l'esistenza di un'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1592,7 +1611,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un numero negativo;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito come differenziale di accoppiamento un numero negativo;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di  di valore inserito;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di valore inserito;
 \item \textbf{Scenario principale}: All'utente viene indicato l'esistenza di un'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1603,7 +1622,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un numero positivo superiore a 255 (massima parametro rgb possibile);
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito come differenziale di accoppiamento un numero positivo superiore a 255;
-\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di di valore inserito;
+\item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di valore inserito;
 \item \textbf{Scenario principale}: All'utente viene indicato l'esistenza di un'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
 
@@ -1617,9 +1636,9 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione ottenuti dalla Rete; 
 \item \textbf{Scenario principale}:
 \begin{enumerate}
-\item Visualizzazione nella textarea riservata dell'applicativo dei risultati di previsione ottenuti, espressi in termini numerici su ogni domanda (UC9.1);
-\item Visualizzazione nella textarea riservata dell'applicativo dei risultati di previsione ottenuti, espressi in codice rgb su ogni domanda (UC9.2);
-\item Visualizzazione nella textarea riservata dell'applicativo dei cluster delle domande generati sulla base dei parametri di differenziale di accoppiamento, passati in input e applicati alle previsioni espresse in codice rgb (UC9.3);
+\item Visualizzazione nella textarea riservata dell'applicativo, dei risultati di previsione ottenuti, espressi in termini numerici su ogni domanda (UC9.1);
+\item Visualizzazione nella textarea riservata dell'applicativo, dei risultati di previsione ottenuti, espressi in codice rgb su ogni domanda (UC9.2);
+\item Visualizzazione nella textarea riservata dell'applicativo, dei cluster delle domande generati sulla base dei parametri di differenziale di accoppiamento, passati in input e applicati alle previsioni espresse in codice rgb (UC9.3);
 \item Visualizzazione generale, mediante tecnologia canvas, dei risultati delle previsioni, espressi in termini rgb su ogni domanda (UC9.4).
 \end{enumerate}
 \end{itemize}
@@ -1632,7 +1651,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete \`e addestrata e ha svolto la funzione di previsione;
 \item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione numerici, ottenuti dalla Rete, all'interno della textarea riservata;
-\item \textbf{Scenario principale}: Visualizzazione dei valori di previsione, ottenuti dal vettore di previsione passato in input, stampati all'interno della textarea riservata a contenere lo storico delle osservazione di Rete.
+\item \textbf{Scenario principale}: Visualizzazione dei valori di previsione, ottenuti dal vettore di previsione passato in input, stampati all'interno della textarea dedicata a contenere lo storico delle osservazione di Rete.
 \end{itemize}
 
 \textbf{UC9.2: Visualizzazione risultati di previsione in termini rgb}\mbox{}
@@ -1643,7 +1662,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete \`e addestrata e ha svolto la funzione di previsione;
 \item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione in codice rgb, ottenuti dalla Rete, all'interno della textarea riservata;
-\item \textbf{Scenario principale}: Visualizzazione dei valori di previsione, ottenuti dal vettore di previsione passato in input ed espressi in codice rgb, stampati all'interno della textarea riservata a contenere lo storico delle osservazione di Rete.
+\item \textbf{Scenario principale}: Visualizzazione dei valori di previsione, ottenuti dal vettore di previsione passato in input ed espressi in codice rgb, stampati all'interno della textarea dedicata a contenere lo storico delle osservazione di Rete.
 \end{itemize}
 
 \textbf{UC9.3: Visualizzazione risultati di clusterizzazione}\mbox{}
@@ -1654,7 +1673,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete \`e addestrata e ha svolto la funzione di previsione;
 \item \textbf{Postcondizione}: L'utente ha visualizzato la clusterizzazione ottenuta dalla Rete, all'interno della textarea riservata;
-\item \textbf{Scenario principale}: Visualizzazione della clusterizzazione delle domande generata dalla previsione espressa in codice rgb.
+\item \textbf{Scenario principale}: Visualizzazione della clusterizzazione delle domande, generata dalla previsione espressa in codice rgb.
 \end{itemize}
 
 \textbf{UC9.4: Visualizzazione dei risultati di previsione mediante canvas}\mbox{}
@@ -1664,7 +1683,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete, mediante canvas applicati alle previsioni espresse in termini rgb, a seguito della richiesta di previsione sui dati addestrati della Rete;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete \`e addestrata e con richiesta di previsione pendente;
-\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione ottenuti dalla Rete rappresentato per mezzo di canvas; 
+\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione ottenuti dalla Rete rappresentati per mezzo di canvas; 
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item Visualizzazione di un quadrato per ogni domanda in analisi con gradazione verde, bianco, rosso; sulla base del risultato di previsione ottenuto a seguito dell'addestramento della Rete e del vettore previsione inoltrato in input;
@@ -1676,10 +1695,10 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC9.4.1: Visualizzazione dei risultati di previsione in dettaglio mediante canvas}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete, mediante canvas applicata alle previsioni espresse in termini rgb su un vettore previsione che pone come domanda corretta solo la domanda in esame;
+\item \textbf{Descrizione}: L'utente visualizza i risultati ottenuti dalla Rete, mediante canvas applicata alle previsioni espresse in termini rgb, su un vettore previsione che pone come domanda corretta solo la domanda in esame;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete ha effettuato previsione sui dati;
-\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione di dettaglio ottenuti dalla Rete rappresentato per mezzo di canvas; 
+\item \textbf{Postcondizione}: L'utente ha visualizzato i risultati di previsione di dettaglio ottenuti dalla Rete rappresentati per mezzo di canvas; 
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item Visualizzazione di un quadrato, tanti quante sono le domande per ogni domanda in analisi, con gradazione verde, bianco, rosso. La gradazione \`e calcolata sul risultato di previsione ottenuto a seguito dell'addestramento della Rete e del vettore previsione che pone corretta la domanda in esame e sbagliate tutte le rimanenti.
@@ -1697,10 +1716,92 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Scenario principale}: L'utente visualizza l'area di lavoro priva di informazioni sui dati elaborati fino a quel momento.
 \end{itemize}
 
-\subsection{Interfaccia utente Rete neurale}
+\subsubsection{Requisiti}
+\label{Requisiti}
+
+\paragraph{Classificazione dei requisiti}\mbox{}
+\label{Classificazione dei requisiti}
+
+I requisiti sono e classificati come segue:
+\begin{center}\textbf{R[Importanza][Tipologia][Codice]}\end{center}
+\begin{itemize}
+\item \textbf{Importanza}: ogni requisito può appartenere solo ad una delle classi di importanza elencate di seguito:
+\begin{itemize}
+\item \textbf{O (Requisito Obbligatorio)}: requisito fondamentale per la corretta realizzazione del progetto;
+\item \textbf{D (Requisito Desiderabile)}: requisito non fondamentale al progetto ma il cui soddisfacimento comporterebbe una maggiore completezza del prodotto;
+\item \textbf{F (Requisito Facoltativo)}: requisito non richiesto per il corretto funzionamento del prodotto, ma che se incluso porterebbe valore aggiunto al progetto. Prima di soddisfare tale categoria di requisiti \`e indispensabile svolgere analisi di tempi e costi, per evitare ritardi nella consegna e/o costi superiori a
+quelli preventivati.
+\end{itemize}
+\item \textbf{Tipologia}: Di seguito sono riportate le tipologie di requisito:
+\begin{itemize}
+\item \textbf{V}: Identifica un requisito di Vincolo, ovvero descrive servizi o funzioni offerti dal sistema;
+\item \textbf{F}: Identifica un requisito Funzionale, ovvero descrive vincoli sui servizi offerti dal sistema; ;
+\item \textbf{Q}: Identifica un requisito di Qualit\`a, ovvero descrive i vincoli di qualità da realizzare quali manutenibilità, sicurezza, portabilità, disponibilità, ecc\dots,
+\end{itemize}
+\item \textbf{Codice}: Ogni requisito è formato da un codice numerico progressivo che lo identifica in modo univoco.
+\noindent
+\begin{center} \textbf{[IDBase](.[IDSottoCaso])*} \end{center}
+\begin{itemize}
+\item \textbf{IDBase}: codice che, combinato con la \textit{Tipologia}, identifica il requisito generale;
+\item \textbf{IDSottoCaso}: codice progressivo opzionale che identifica gli eventuali sottocasi del requisito.
+\end{itemize}
+\end{itemize}
+\noindent
+Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} raggiunto al termine del progetto di stage.
+
+\begin{table}
+\caption{Tabella dei requisiti}\label{tab:requisiti}
+\begin{tabularx}{\textwidth}{|c|c|X|}
+	\hline
+	\textbf{Codice} & \textbf{Descrizione)} & \textbf{Stato} \\\hline
+	
+	   ROF1 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file & Completato  \\
+	   ROF1.1 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file in formato testo (txt) & Completato  \\
+	   ROF1.2 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file in formato  comma-separated values (csv) & Completato  \\	
+	   	\hline 
+	   	ROF2 & L'utente pu\`o effettuare la configurazione dell'architettura direttamente dall'applicativo & Completato  \\
+	    ROF2.1 & L'utente pu\`o effettuare la configurazione dell'architettura mediante l'inserimento di nuovi hidden layers & Completato  \\
+	    ROF2.2 & L'utente pu\`o effettuare la configurazione dell'architettura mediante la cancellazione di hidden layers gi\`a presenti & Completato  \\
+	    ROF2.3 & L'utente pu\`o effettuare la configurazione dell'architettura  mediante la modifica di hidden layers gi\`a presenti & Completato \\
+	     ROF2.3 & L'utente per effettuare la configurazione dell'architettura deve inserire almeno un hidden layers  & Completato \\
+	    \hline
+	    RDF3 & L'utente pu\`o salvare i dati addestrati della Rete & Completato \\
+	    \hline
+	    RDF4 & L'utente pu\`o visualizzare i dati addestrati della Rete salvati in formato JSON & Completato \\
+	    \hline
+	    RDF5 & L'utente pu\`o visualizzare i dati inseriti della Rete e su cui effettuare la previsione & Completato \\
+	    RFF5.1 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
+	    RFF5.2 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
+	   \hline
+	   RFF6 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
+    \hline
+    RFF6 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
+    \hline
+    RDF6 & L'utente pu\`o effettuare l'inserimento dei parametri di clusterizzazione sui dati addestrati della Rete & Completato \\
+    RDF6.1 & L'utente pu\`o effettuare l'inserimento del primo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
+   RDF6.2 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
+    RDF6.3 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
+    \hline
+     ROF7 & L'utente pu\`o effettuare del vettore previsione su cui effettuare la previsione sui dati addestrati della Rete  & Completato \\
+    \hline
+    ROF8 & L'utente visualizza il valore delle previsioni ottenute dalla Rete nella textarea dedicata & Completato \\
+    \hline 
+    RFF9 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
+    RFF10 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
+    \hline 
+    RDF10 & L'utente visualizza mediante tecnologia canvas i risultati di previsione & Completato \\
+    RDF10.1 & L'utente visualizza mediante tecnologia canvas il dettaglio dei risultati di previsione & Completato \\
+    \hline 
+    
+	
+	
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{Interfaccia utente Rete neurale definitiva}
 \label{Interfaccia utente Rete neurale}
-
-
 
 \begin{figure}[H]
 \centering
