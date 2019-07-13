@@ -1734,8 +1734,8 @@ quelli preventivati.
 \end{itemize}
 \item \textbf{Tipologia}: Di seguito sono riportate le tipologie di requisito:
 \begin{itemize}
-\item \textbf{V}: Identifica un requisito di Vincolo, ovvero descrive servizi o funzioni offerti dal sistema;
-\item \textbf{F}: Identifica un requisito Funzionale, ovvero descrive vincoli sui servizi offerti dal sistema; ;
+\item \textbf{V}: Identifica un requisito di Vincolo, ovvero descrive vincoli sui servizi offerti dal sistema; 
+\item \textbf{F}: Identifica un requisito Funzionale, ovvero descrive servizi o funzioni offerti dal sistema
 \item \textbf{Q}: Identifica un requisito di Qualit\`a, ovvero descrive i vincoli di qualità da realizzare quali manutenibilità, sicurezza, portabilità, disponibilità, ecc\dots,
 \end{itemize}
 \item \textbf{Codice}: Ogni requisito è formato da un codice numerico progressivo che lo identifica in modo univoco.
@@ -1749,12 +1749,14 @@ quelli preventivati.
 \noindent
 Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} raggiunto al termine del progetto di stage.
 
-\begin{table}
-\caption{Tabella dei requisiti}\label{tab:requisiti}
-\begin{tabularx}{\textwidth}{|c|c|X|}
-	\hline
-	\textbf{Codice} & \textbf{Descrizione)} & \textbf{Stato} \\\hline
-	
+\subparagraph{Requisiti Funzionali}\mbox{}
+\label{Requisiti Funzionali}
+
+
+\begin{longtable}{|c|p{7cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ 
+\hline\hline
 	   ROF1 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file & Completato  \\
 	   ROF1.1 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file in formato testo (txt) & Completato  \\
 	   ROF1.2 & L'utente pu\`o caricare i dati nell'applicativo della Rete mediante l'uso di file in formato  comma-separated values (csv) & Completato  \\	
@@ -1765,39 +1767,92 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 	    ROF2.3 & L'utente pu\`o effettuare la configurazione dell'architettura  mediante la modifica di hidden layers gi\`a presenti & Completato \\
 	     ROF2.3 & L'utente per effettuare la configurazione dell'architettura deve inserire almeno un hidden layers  & Completato \\
 	    \hline
-	    RDF3 & L'utente pu\`o salvare i dati addestrati della Rete & Completato \\
+     ROF3 & L'utente pu\`o effettuare del vettore previsione su cui effettuare la previsione sui dati addestrati della Rete  & Completato \\
+    \hline
+     ROF4 & L'utente visualizza il valore delle previsioni ottenute dalla Rete nella textarea dedicata & Completato \\
+	    RDF5 & L'utente pu\`o salvare i dati addestrati della Rete & Completato \\
 	    \hline
-	    RDF4 & L'utente pu\`o visualizzare i dati addestrati della Rete salvati in formato JSON & Completato \\
+	    RDF6 & L'utente pu\`o visualizzare i dati addestrati della Rete salvati in formato JSON & Completato \\
 	    \hline
-	    RDF5 & L'utente pu\`o visualizzare i dati inseriti della Rete e su cui effettuare la previsione & Completato \\
-	    RFF5.1 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
-	    RFF5.2 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
-	   \hline
-	   RFF6 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
-    \hline
-    RFF6 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
-    \hline
-    RDF6 & L'utente pu\`o effettuare l'inserimento dei parametri di clusterizzazione sui dati addestrati della Rete & Completato \\
-    RDF6.1 & L'utente pu\`o effettuare l'inserimento del primo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
-   RDF6.2 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
-    RDF6.3 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
-    \hline
-     ROF7 & L'utente pu\`o effettuare del vettore previsione su cui effettuare la previsione sui dati addestrati della Rete  & Completato \\
-    \hline
-    ROF8 & L'utente visualizza il valore delle previsioni ottenute dalla Rete nella textarea dedicata & Completato \\
-    \hline 
-    RFF9 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
-    RFF10 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
+	    RDF7 & L'utente pu\`o visualizzare i dati inseriti della Rete e su cui effettuare la previsione & Completato \\
+    RDF8 & L'utente pu\`o effettuare l'inserimento dei parametri di clusterizzazione sui dati addestrati della Rete & Completato \\
+    RDF9.1 & L'utente pu\`o effettuare l'inserimento del primo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
+   RDF9.2 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
+		RDF9.3 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
     \hline 
     RDF10 & L'utente visualizza mediante tecnologia canvas i risultati di previsione & Completato \\
     RDF10.1 & L'utente visualizza mediante tecnologia canvas il dettaglio dei risultati di previsione & Completato \\
+    \hline
+    RFF11 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
+    \hline
+    RFF12 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
+    \hline 
+     RFF13 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
+	   RFF14 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
+	   \hline
+	  RFF15 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
+    \hline
+    RFF16 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
     \hline 
     
-	
-	
-\end{tabularx}
-\end{table}
+\caption{Tabella dei Requisiti Funzionali}\label{tab:requisiti funzionali funzionali}
+\end{longtable}
 
+
+\subparagraph{Requisiti di Vincolo}\mbox{}
+\label{Requisiti di Vincolo}
+
+\begin{longtable}{|c|p{7cm}|c|}
+	\hline
+	\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\\hline\hline
+	   
+	   ROV1 & Deve essere possibile utilizzare l'applicativo almeno in uno dei seguenti browser: Chrome, Firefox, Internet Explorer e Mocrosoft Edge & Completato  \\
+	   \hline
+	   RDV2 & La Rete Neurale deve essere sviluppata usando ConvNet.JS & Completato  \\
+	   \hline
+	   RDV3 & il linguaggio consigliato per lo sviluppo \`e javascript e HTML  & Completato \\
+	   \hline
+	   RDV4 & L'interfaccia grafica deve impedire l'immissione di dati dai box di input che possano corrompere  l'integrit\`a della Rete & Completato \\
+	   \hline
+	   RFV5 & L'interfaccia grafica deve essere il pi\`u possibile user friendly per l'utente & Completato \\
+	   \hline
+
+\caption{Tabella dei Requisiti di Vincolo}\label{tab:requisiti di vincolo}
+\end{longtable}
+
+\subparagraph{Requisiti di Qualit\`a}\mbox{}
+\label{Requisiti di Qualita}
+
+\begin{longtable}{|c|p{7cm}|c|}
+	\hline
+	\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\\hline\hline
+	
+	   ROQ1 & Redigere la documentazione inerente all'Analisi dei Requisiti per Rete Neurale & Completato  \\
+	   \hline
+	
+\caption{Tabella dei Requisiti di Qualit\`a}\label{tab:requisiti di qualita}
+\end{longtable}
+
+
+\subparagraph{Resoconto dei Requisiti}\mbox{}
+\label{Resoconto dei Requisiti}
+
+
+\begin{longtable}{|l|c|c|c|c|}
+	\hline
+	\textbf{Tipo} & \textbf{Obbligatorio} & \textbf{Facoltativo} & \textbf{Desiderabile} & \textbf{Totale} \\\hline\hline
+	   
+\textbf{Funzionale} & 10 & 9 & 6 & 25 \\
+	   \hline
+\textbf{di Vicolo} & 1 & 3 & 1 & 5 \\
+	   \hline
+\textbf{di Qualit\`a} & 1 & 0 & 0 & 1 \\
+	   \hline
+\textbf{Totale} & 12 & 13 & 7 & 31 \\
+\hline
+
+\caption{Resoconto dei Requisiti}\label{tab:resoconto dei requisiti}
+\end{longtable}
 
 
 \subsubsection{Interfaccia utente Rete neurale definitiva}
@@ -1806,7 +1861,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_finale.png}
-	\caption{Interfaccia finale utente della Rete neurale di prova - 1.}
+	\caption{Interfaccia finale utente della Rete neurale di prova - Visione box inserimento architettura e visualizzazione storico.}
 	\label{Interfaccia finale utente della Rete neurale di prova -1.}
 \end{figure}
 \noindent
@@ -1814,7 +1869,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_finale2.png}
-	\caption{Interfaccia finale utente della Rete neurale di prova - 2.}
+	\caption{Interfaccia finale utente della Rete neurale di prova - Visione canvas generale e di dettaglio.}
 	\label{Interfaccia finale utente della Rete neurale di prova - 2.}
 \end{figure}
 \noindent
@@ -1822,15 +1877,16 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_finale3.png}
-	\caption{Interfaccia finale utente della Rete neurale di prova - 3.}
+	\caption{Interfaccia finale utente della Rete neurale di prova - Visione inserimento parametri di previsione.}
 	\label{Interfaccia finale utente della Rete neurale di prova - 3.}
 \end{figure}
+
 \noindent
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db.png}
-	\caption{Interfaccia finale utente della Rete neurale del database -1.}
+	\caption{Interfaccia finale utente della Rete neurale del database - Visione caricamento file dati.}
 	\label{Interfaccia finale utente della Rete neurale del database -1.}
 \end{figure}
 \noindent
@@ -1838,7 +1894,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db2.png}
-	\caption{Interfaccia finale utente della Rete neurale del database -2.}
+	\caption{Interfaccia finale utente della Rete neurale del database - Visione box con storico delle operazioni e canvas generale.}
 	\label{Interfaccia finale utente della Rete neurale del database -2.}
 \end{figure}
 \noindent
@@ -1846,7 +1902,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db3.png}
-	\caption{Interfaccia finale utente della Rete neurale del database -3.}
+	\caption{Interfaccia finale utente della Rete neurale del database - Visione errore rilevato durante la configurazione dell'architettura.}
 	\label{Interfaccia finale utente della Rete neurale del database -3.}
 \end{figure}
 \noindent
