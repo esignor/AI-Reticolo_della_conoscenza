@@ -41,14 +41,15 @@
         <h1 id=primary_title>Questions test - Prevision Neural Net</h1>
 
         <form method="post" name="myForm1" id="myForm1" onsubmit="return false">
-            <fieldset>
-            <div id="setter_numberfields">Numbero di domande nel database:
-            <select id = "select dim">
+            <fieldset id="setter_numberfields">
+            <legend>Numbero di domande nel database</legend>
+            <select id = "select_dim">
                 <option value="89">89</option>
                 <option value="120">120</option>
             </select>
-                <a href="#" id="link_numberfields" onclick=saveNetDimension()>Confirm</a><br></br></div>
+            <input id="link_numberfields" type="submit" value="Confirm" onclick="saveNetDimension()" />
             </fieldset>
+            <img id = "img_presentation">
         </form>
 
 

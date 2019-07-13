@@ -29,5 +29,5 @@ function insertDati_db(dim) {
     document.getElementById("buttonLoad_JSON").style.display = "inline"; 
     document.getElementById("controls").style.display = "inline"; 
     document.getElementById("link_createnumberfields").style.display = "inline";
-
+    document.getElementById("title_previsione").style.display = "block"; // fa comparire il titolo del box di previsione
 }

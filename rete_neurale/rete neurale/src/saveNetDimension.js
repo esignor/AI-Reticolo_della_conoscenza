@@ -2,7 +2,7 @@
  *  salva la dimesione della Rete (= numero di domande da analizzare) scelta dall'utente  
  */
 function saveNetDimension(){
-    var dim = document.getElementById("select dim").value;
+    var dim = document.getElementById("select_dim").value;
     document.getElementById("myForm1").style.display = "none";
     document.getElementById("container_body").style.display = "block";
     // chiamata quando tutti gli elementi DOM della pagina sono pronti per essere usati

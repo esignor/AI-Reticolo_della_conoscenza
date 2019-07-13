@@ -1,3 +1,5 @@
+/**Dichiarazione variabili globali in uso nella Rete */
+
 var vectorCSV = []; // array che racchiude  tutti i vettori di addestramento generati da un file csv
 // codice della rete neurale
 var layer_defs, layer_exe, net, trainer, loadNet;

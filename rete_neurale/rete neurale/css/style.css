@@ -7,6 +7,28 @@ body,html{
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
  }  
 
+ #myForm1{
+   margin-top: 5em;
+ }
+
+ #select_dim{
+   margin-left: 32em;
+ }
+
+ #link_numberfields{
+   margin-left: 2em;
+ }
+
+ #img_presentation{
+  background-image:url("../src/prova_img.png");
+  background-position:center;
+  height:18em; 
+  width:100%;
+  float:right;
+  margin-top:3em;
+  background-repeat:no-repeat;
+ }
+
  #wrap{
   width: 70em;
   margin-left: auto;
@@ -34,7 +56,7 @@ body,html{
   display:block;
 }
 
-#button_cleanTextarea, #button_changeNet, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
+#link_numberfields, #button_cleanTextarea, #button_changeNet, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -42,6 +64,7 @@ body,html{
     font-style:italic;
     font-weight:bold;   
   }
+ 
 
   #button_changeNet{
     margin-top: 1em;
@@ -119,6 +142,7 @@ body,html{
   #primary_title{
     margin-left: 9em;
   }
+
 
   #myForm_radio{
     margin-left:5em;
