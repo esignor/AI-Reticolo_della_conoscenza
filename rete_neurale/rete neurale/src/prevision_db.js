@@ -7,7 +7,6 @@ function prevision() {
   if (!controlValueFields(document.getElementById("differenziale_1param").value) || !controlValueFields(document.getElementById("differenziale_2param").value) ||!controlValueFields(document.getElementById("differenziale_3param").value)) //controllo che il valore inserito sia un intero >= 0 non vuto
   return;
 
-
     // stampa di connessione della rete
     printTextarea(layer_exe,"\n\n\Richiesta di previsione inoltrata alla rete ...");
     document.getElementById("myCanvas").style.display = "none"; // fa scomparire il box canvas
@@ -30,6 +29,6 @@ function prevision() {
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
     configureCanvasCoupling(scores, 120); // chiamata al metodo che crea il canvas;
 
-    vettoreReticolo(120); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
+    //vettoreReticolo(120); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
 
 }
