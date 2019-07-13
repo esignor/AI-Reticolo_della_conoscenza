@@ -3,11 +3,12 @@
 import { assert } from 'chai';
 import { frequenceMatrixPos } from '../src/frequenceMatrix'
 import { frequenceMatrixNeg } from '../src/frequenceMatrix'
-/*import { generator_input_pure } from '../src/generator_input_pure';
+import { generator_input_pure } from '../src/generator_input_pure';
 import { generator_input } from '../src/generator_input';
 import { generator_input_probability } from '../src/generator_input_probability';
 import { cluster } from '../src/cluster'
-import { configure_db } from '../src/configure_db'
+import { configure_db89 } from '../src/configure_db'
+import { configure_db120 } from '../src/configure_db'
 import { configure } from '../src/configure'
 import { controlValueFields } from '../src/controlValueFields'
 import { printTextarea } from '../src/printTextarea'
@@ -90,8 +91,12 @@ describe('#Test4', function () {
 
 
 describe('#Test5 - configurazione della rete andata a buon fine', function () {
-  it('configurazione rete del database', function () {
-    var conf = configure_db();
+  it('configurazione rete del database a 89 domande', function () {
+    var conf = configure_db89();
+    assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita");
+  });
+  it('configurazione rete del database a 120 domande', function () {
+    var conf = configure_db120();
     assert.isNotNull(conf, "Configurazione della Rete neurale del database non riuscita");
   });
   it('configurazione rete di prova', function () {
@@ -122,7 +127,7 @@ describe('#Test7 - stampa', function () {
     assert.isNotTrue(printTextarea(null, "Oggi e' una bellissima giornata"), "layer_exe non pur essendo not definited viene valutato come definito");
   })
 
-});*/
+});
 
 describe('#Test8 - test matrice frequenza', function () {
   var arrayTest = [];

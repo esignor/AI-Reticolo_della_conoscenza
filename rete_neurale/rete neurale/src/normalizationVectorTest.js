@@ -21,7 +21,7 @@ function normalizationVectorTestPivot(dim) {
     document.getElementById("title_questionsdetail").style.display = "none";
     document.getElementById("myCanvas-detail").style.display = "none";
     document.getElementById("container").style.display = "none";
-    document.getElementById("setter_numberfields").style.display = "none";
+    document.getElementById("controls").style.display = "none";
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {
     if (typeof (FileReader) != "undefined") {
@@ -32,6 +32,10 @@ function normalizationVectorTestPivot(dim) {
                 for (var i = 0; i < rows.length - 1; i++) {
                     var vectorTest = [];
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
+                    if(cells.length - 1 != dim){ // le domande + il campo del test
+                      alert("Numero di domande nel file superiore alla dimensione della Rete");
+                      return;
+                    }
                     for (var j = 0; j < cells.length; ++j) {// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
                         if (j > 0)
                             vectorTest[j - 1] = parseInt(cells[j]); // in pos 0..dim-1 posizione le dim risposte, in pos dim + 1 il nome del test e uso la conversione intera per evitare caratteri spuru

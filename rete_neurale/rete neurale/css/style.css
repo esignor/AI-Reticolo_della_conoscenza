@@ -13,6 +13,7 @@ body,html{
   margin-right: auto;
 }
 
+
 .panes{
   display: inline-block;
   vertical-align: top;
@@ -66,7 +67,7 @@ body,html{
     -webkit-margin-start: -2em; 
   }
   
- #setter_numberfields{
+ #link_createnumberfields{
   margin-left: 33em;
   margin-top: 1.5em;
   }
@@ -83,7 +84,7 @@ body,html{
   margin-top: -3em;
   }
 
-  #setter_numberfields, #button_JSON, #buttonLoad_JSON, #button_writedocument, #myCanvas, #title_previsione, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
+  #container_body, #link_createnumberfields, #button_JSON, #buttonLoad_JSON, #button_writedocument, #myCanvas, #title_previsione, #button_dettaglio-animation, #myCanvas-detail, #title_questionsdetail{
     display:none;
   }
 

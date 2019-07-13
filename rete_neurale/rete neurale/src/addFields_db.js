@@ -1,11 +1,11 @@
 
-/** @function addFields
+/** @function addFields_db
  * @param dim dimensione di input e output della rete
  * metodo che ha il compito di aggiungere n campi definiti dall'utente nei box di input, di istanziare i rispettivi pulsanti di save e di, a
  * a evento submit innescato, demandare il salvataggio dei dati al metodo di formSubmit
  */
 
-function addFields(dim){
+function addFields_db(dim){
   if(layer_exe == null)
     layer_exe = 0;
   printTextarea(layer_exe, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
@@ -15,7 +15,7 @@ function addFields(dim){
  document.getElementById("container").style.display = "inline";
  document.getElementById("myCanvas-detail").style.display = "none";
  document.getElementById("title_questionsdetail").style.display = "none";
- document.getElementById("setter_numberfields").style.display = "none"
+ document.getElementById("link_createnumberfields").style.display = "none";
 
   var container = document.getElementById("container");
   while (container.hasChildNodes()) {
@@ -101,7 +101,7 @@ function addFields(dim){
   input.id = "button_prevision";
   input.type = "submit";
   input.value = "prevision trainer";
-  input.setAttribute('onclick', 'prevision()'); // 
+  input.setAttribute('onclick', 'contentMethod("prevision_db")'); // 
   container.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
   div.appendChild(input); //appendo prevision
 }

@@ -8,7 +8,7 @@
     difficolta', per i padri non posso ancora dire nulla perche' di difficolta' superiore.
  */
 
-generator_input = function(dim_vettore) {
+generator_input = function (dim_vettore) {
     var vector = [];
     var valore = 0;
     var numero_zero = Math.floor(Math.random() * 3); // generazione numero di 0 che devranno essere presenti nel vettore di training del dato da 0 a 2
@@ -21,9 +21,9 @@ generator_input = function(dim_vettore) {
         else
             valore = -1;
 
-      
+
         var posizione_random = Math.floor(Math.random() * 6); // generazione di un numero casuale intero compreso tra 0 e 5 in qui allocare il primo valore del vettore di training
-        
+
         if (vector[posizione_random] == null) { // controllo che la cella non sia gia' occupata
             vector[posizione_random] = valore;
             i = i + 1;// nuova cella occupata
@@ -92,7 +92,7 @@ generator_input = function(dim_vettore) {
 
                 else {
                     if (i + numero_zero < dim_vettore && vector[5] == null) {
-                         vector[5] = -1;
+                        vector[5] = -1;
                         i = i + 1;
                     }
                 }
@@ -101,7 +101,7 @@ generator_input = function(dim_vettore) {
             }
 
 
-            else if (posizione_random == 3) { 
+            else if (posizione_random == 3) {
 
                 if (valore == 1) {
                     if (i + numero_zero < dim_vettore && vector[0] == null) {
@@ -155,11 +155,11 @@ generator_input = function(dim_vettore) {
                         i = i + 1;
                     }
                 }
-                    else {
-                        if (i + numero_zero < dim_vettore && vector[2] == null) {
-                            vector[2] = -1;
-                            i = i + 1;
-                        }
+                else {
+                    if (i + numero_zero < dim_vettore && vector[2] == null) {
+                        vector[2] = -1;
+                        i = i + 1;
+                    }
 
                 }
             }

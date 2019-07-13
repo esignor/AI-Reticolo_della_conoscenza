@@ -8,10 +8,10 @@
     <script src="../convnetjs_release/build/convnet-min.js"></script>
     <script src="../src/insertDati_db.js"></script>
     <script src="../src/configure_db.js"></script>
-    <script src="../src/function_db.js"></script>
+    <script src="../src/globalVariable_db.js"></script>
     <script src="../src/update_db.js"></script>
     <script src="../src/prevision_db.js"></script>
-    <script src="../src/addFields.js"></script>
+    <script src="../src/addFields_db.js"></script>
     <script src="../src/createJSON.js"></script>
     <script src="../src/loadJSON.js"></script>
     <script src="../src/normalizationVectorTest.js"></script>
@@ -28,6 +28,8 @@
     <script src="../src/cleanTextarea.js"></script>
     <script src="../src/controlArchitettura.js"></script>
     <script src="../src/frequenceMatrix.js"></script>
+    <script src="../src/contentMethod.js"></script>
+    <script src="../src/saveNetDimension.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
     </link>
@@ -37,13 +39,27 @@
 
     <div id="wrap">
         <h1 id=primary_title>Questions test - Prevision Neural Net</h1>
+
+        <form method="post" name="myForm1" id="myForm1" onsubmit="return false">
+            <fieldset>
+            <div id="setter_numberfields">Numbero di domande nel database:
+            <select id = "select dim">
+                <option value="89">89</option>
+                <option value="120">120</option>
+            </select>
+                <a href="#" id="link_numberfields" onclick=saveNetDimension()>Confirm</a><br></br></div>
+            </fieldset>
+        </form>
+
+
+        <div id = "container_body">
         <div id="title">
             <p>Configurazione Rete neurale</p>
         </div>
         <div id="configurazione_rete">
             <textarea id="layerdef">
     </textarea>
-    <input id="button_changeNet" type="submit" value="change Net" onclick="controlArchitettura(120)" /> 
+            <input id="button_changeNet" type="submit" value="change Net" onclick="contentMethod('controlArchitettura')" />
         </div>
 
 
@@ -51,36 +67,33 @@
             <div id="title">
                 <p>Output della rete</p>
                 <input type="file" id="fileUpload" />
-                <input id="button_upload" type="submit" value="upload file" onclick="normalizationVectorTestPivot(120)" />
+                <input id="button_upload" type="submit" value="upload file"
+                    onclick="contentMethod('normalizationVectorTestPivot')" />
                 <input id="button_JSON" type="submit" value="save Net" onclick="createJSON()" />
                 <input id="buttonLoad_JSON" type="submit" value="load Net" onclick="loadJSON()" />
-                <input id="button_writedocument" type="submit" value="write document" onclick="writeDocument(120)" />
+                <input id="button_writedocument" type="submit" value="write document" onclick="contentMethod('writeDocument')" />
                 <input id="button_cleanTextarea" type="submit" value="clean" onclick="cleanTextarea()" />
             </div>
             <div id="pannello_rete">
                 <textarea id="layerexe"></textarea>
             </div>
             <div id="pannello_inserimentodati">
-                <!--<canvas id="myCanvas" width="1150px" height="100px">Browser non supporta canvas</canvas>--><!--89 domande-->
-                <canvas id="myCanvas" width="1150px" height="115px">Browser non supporta canvas</canvas><!--120 domande-->
+                <canvas id="myCanvas">Browser non supporta canvas</canvas>
                 <div id="controls">
-                    <input id="button_dettaglio-animation" type="submit" value="go to detail" onclick="animationPrevision_detail(120)" />
+                    <input id="button_dettaglio-animation" type="submit" value="go to detail"
+                        onclick="contentMethod('animationPrevision_detail')" />
                     <div id="title_questionsdetail">
-                            <p>Dettaglio delle domande</p>
-                            <input id="button_back" type="submit" value="back" onclick="addFields(120)" />
+                        <p>Dettaglio delle domande</p>
+                        <input id="button_back" type="submit" value="back" onclick="contentMethod('addFields_db')" />
                     </div>
-                    <!--<canvas id="myCanvas-detail" width="1200px" height="4650px">--><!--89 domande-->
-                    <canvas id="myCanvas-detail" width="1200px" height="6250px"><!--120 domande-->
-                        Browser non supporta canvas
-                    </canvas>
+                    <canvas id="myCanvas-detail">Browser non supporta canvas </canvas>
                     <div id="title_previsione">
                         <p>Inserimento dati di previsione</p>
                     </div>
 
 
-                    <form method="post" name="myForm" id="myForm" onsubmit="return false">
-                        <div id="setter_numberfields">
-                            <a href="#" id="link_numberfields" onclick="addFields(120)">Insert fields</a><br></br></div>
+                    <form method="post" name="myForm2" id="myForm2" onsubmit="return false">
+                        <a href="#" id="link_createnumberfields" onclick="contentMethod('addFields_db')">Insert fields</a><br></br>
                         <div id="container"></div>
                     </form>
 
@@ -89,6 +102,7 @@
 
                 </div>
             </div>
+        </div>
 
 </body>
 

@@ -7,7 +7,7 @@
  */
 
 
-controlValueFields = function(number){ 
+controlValueFields = function (number) {
     if (number == "" || isNaN(number) || parseInt(number) < 0 || parseInt(number) > 255) {
         alert("Inserire un numero intero positivo valido inferiore a 255 (massimo valore rgb possibile)");
         return false;

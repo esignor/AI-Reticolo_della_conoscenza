@@ -5,12 +5,13 @@
 controlArchitettura = function (dim) {
     document.getElementById("myCanvas-detail").style.display = "none";
     document.getElementById("myCanvas").style.display = "none";
-    document.getElementById("title_questionsdetail").style.display = "none";
+    document.getElementById("controls").style.display = "none";
     document.getElementById("fileUpload").style.display = "none";
     document.getElementById("button_upload").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
     document.getElementById("buttonLoad_JSON").style.display = "none";
     document.getElementById("button_writedocument").style.display = "none";
+    document.getElementById("container").style.display = "none";
 
     try { eval($("#layerdef").val()); } // permette di prendere come riferimento l'architettura espressa nella textarea
     catch (error) {

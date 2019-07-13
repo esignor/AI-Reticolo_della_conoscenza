@@ -4,7 +4,7 @@
 **/
 
 
-generator_input_probability = function(dim_vettore) {
+generator_input_probability = function (dim_vettore) {
     var vector = [];
     var numero_zero = Math.floor(Math.random() * 3); // generazione numero di 0 che devranno essere presenti nel vettore di training del dato
     // posizionati in vector gli 1 e i -1
