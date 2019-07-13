@@ -70,13 +70,13 @@ function animationPrevision_detail(dim) {
       // casi borderline
       else if (parseFloat(scores.w[j]) > 0) {// combinazione rgb bianco - verde
         colorRed = parseInt((scores.w[j] * 0 + (1 - scores.w[j]) * 255));
-        colorGreen = parseInt((scores.w[j] * 255 + (1 - scores.w[j]) * 255));
+        colorGreen = parseInt(((scores.w[j] * 255)* 8  + (1 - scores.w[j]) * 255));
         colorBlue = parseInt((scores.w[j] * 0 + (1 - scores.w[j]) * 255));
       }
 
 
       else if (parseFloat(scores.w[j]) < 0) { // combinazione rgb rosso - bianco
-        colorRed = parseInt((-scores.w[j] * 255 + (1 + scores.w[j]) * 255));
+        colorRed = parseInt(((-scores.w[j] * 255)* 8 + (1 + scores.w[j]) * 255));
         colorGreen = parseInt((-scores.w[j] * 0 + (1 + scores.w[j]) * 255));
         colorBlue = parseInt((-scores.w[j] * 0 + (1 + scores.w[j]) * 255));
 

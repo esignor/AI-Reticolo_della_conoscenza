@@ -6,7 +6,9 @@
  */
 
 function addFields(dim){
-    printTextarea(0, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
+    if(layer_exe == null)
+      layer_exe = 0;
+    printTextarea(layer_exe, "Richiesta di inserimento: \n\- Parametri di differenziale tra le domande (valore valido >= 0). Utili per creare dei cluster parametrizzati in base al codice del colore \n\- Dati del vettore previsione" + "\n\Successivamente premere il pulsante di previsione")
 
 
    document.getElementById("setter_numberfields").style.display = "none";
