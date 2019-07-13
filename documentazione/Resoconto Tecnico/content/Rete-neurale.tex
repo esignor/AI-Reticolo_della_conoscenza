@@ -940,15 +940,40 @@ Ogni caso d'uso è composto dalle seguenti parti:
       \item \textbf{Generalizzazioni} (Opzionali): specializzazioni di un caso d'uso. Ogni specializzazione è mutualmente accessibile.
       \end{itemize}
       
-      
-\subparagraph{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}\mbox{}\\\\
-\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
+
+\subparagraph{UC0\_g: Scelta della grandezza del set di domande}\mbox{}
+\label{UC0_g: Scelta della grandezza del set di domande}
 \noindent
 \begin{figure}[H]
 \centering
-	\includegraphics[width=1\linewidth]{./image/uc0_g.png}
-	\caption{UC0\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
-	\label{UC0_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
+	\includegraphics[width=0.80\linewidth]{./image/uc0_g.png}
+	\caption{UC0\_g: Operazioni utente - Visione generale della pagina di accesso alla Rete - Questions Test}
+	\label{UC0_g: Operazioni utente - Visione generale della pagina di accesso alla Rete - Questions Test}
+\end{figure}
+\noindent
+\begin{itemize}
+\item \textbf{Descrizione}: L'utente sceglie, tra quelle disponibili nell'applicativo, il numero di domande su cui utilizzare la Rete;
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente e il sistema non hanno svolto ancora nessuna attivit\`a;
+\item \textbf{Postcondizione}: L'utente ha scelto la dimensione del set di domande;
+\item \textbf{Scenario principale}:
+\begin{enumerate}
+\item L'utente sceglie come dimensione del set di domande 89;
+\item L'utente sceglie come dimensione del set di domande 120;
+\item L'utente conferma la scelta della dimensione.
+\end{enumerate}
+\end{itemize}
+
+
+
+\subparagraph{UC1\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}\mbox{}\\\\
+\label{UC1_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/uc1_g.png}
+	\caption{UC1\_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
+	\label{UC1_g: Operazioni utente - Visione generale interfacciamento con la Rete neurale}
 \end{figure}
 \noindent
 \begin{itemize}
@@ -981,7 +1006,7 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \item \textbf{Scenario principale}:
 \begin{enumerate}
 \item L'utente effettua il caricamento di un file dati;
-\item L'utente conferma l'operazione di caricamento dati (UC0\_g.1).
+\item L'utente conferma l'operazione di caricamento dati (UC1.1).
 \end{enumerate}
 \textbf{Generelizzazioni}:
 \begin{enumerate}
@@ -1012,8 +1037,8 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \item \textbf{Scenario principale}: L'utente sceglie il file di dati che vuole caricare nella Rete.
 \end{itemize}
 
-\textbf{UC0\_g.1: Conferma operazione di caricamento}\mbox{}
-\label{UC0_g.1: Conferma operazione di caricamento}
+\textbf{UC1.1: Conferma operazione di caricamento}\mbox{}
+\label{UC1.1: Conferma operazione di caricamento}
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente conferma il file dati scelto con cui addestrare la Rete;
 \item \textbf{Attori}: Utente osservatore;
@@ -1025,14 +1050,15 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \end{enumerate}
 \item \textbf{Estensioni}:
 \begin{enumerate}
-\item Il browser in uso dall'utente non supporta lo standard HTML5. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC\_g.2);
-\item L'utente ha effettuato il caricamento di un formato di dati non conforme al formato csv o txt.  Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC\_g.3).
+\item Il browser in uso dall'utente non supporta lo standard HTML5. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC1.1.1);
+\item L'utente ha effettuato il caricamento di un formato di dati non conforme al formato csv o txt.  Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC1.1.2).
+\item L'utente ha effettuato il caricamento di un formato di dati che non rispetta la configurazione di Rete scelta.  Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC1.1.3).
 \end{enumerate}
 \end{itemize}
 
 
-\textbf{UC\_g.2: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
-\label{UC_g.2: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
+\textbf{UC1.1.1: Visualizzazione messaggio di errore di mancata idoneità del browser in uso}\mbox{}
+\label{UC1.1.1: Visualizzazione messaggio di errore di mancata idoneita del browser in uso}
 \begin{itemize}
 \item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto il browser, in uso dall'utente, non supporta lo standard di markup HTML5;
 \item \textbf{Attori}: Utente osservatore;
@@ -1042,8 +1068,8 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \end{itemize}
 
 
-\textbf{UC\_g.3: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
-\label{UC_g.3: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
+\textbf{UC1.1.2: Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}\mbox{}
+\label{UC1.1.2 Visualizzazione messaggio di errore per formato di dati non coerente con le aspettative}
 \begin{itemize}
 \item \textbf{Descrizione}: Il file che viene caricato nella rete non \`e del formato richiesto corretto;
 \item \textbf{Attori}: Utente osservatore;
@@ -1051,6 +1077,17 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato della non conformit\`a del del formato di dati scelto;
 \item \textbf{Scenario principale}: Il file viene caricato all'interno della Rete.
 \end{itemize}
+
+\textbf{UC1.1.3: Visualizzazione messaggio di errore di inconsistenza del set di dati rispetto alla configurazione della Rete}\mbox{}
+\label{UC1.1.3: Visualizzazione messaggio di errore di inconsistenza del set di dati rispetto alla configurazione della Rete}
+\begin{itemize}
+\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto, il numero di domande del set di dati \`e differente alla configurazione della Rete, imposta inizialmente dall'utente
+\item \textbf{Attori}: Utente osservatore;
+\item \textbf{Precondizione}: L'utente ha richiesto alla Rete di caricare un file;
+\item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del file scelto, rispetto al numero di domande da processare in rapporto alla configurazione della Rete;
+\item \textbf{Scenario principale}: Il file scelto dall'utente viene caricato all'interno della Rete.
+\end{itemize}
+ 
  
 \subparagraph{UC4: Salvataggio della Rete}\mbox{} 
 \label{UC4: Salvataggio della Rete}
@@ -1782,17 +1819,20 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
     \hline 
     RDF10 & L'utente visualizza mediante tecnologia canvas i risultati di previsione & Completato \\
     RDF10.1 & L'utente visualizza mediante tecnologia canvas il dettaglio dei risultati di previsione & Completato \\
+    RDF11 & L'Utente pu\`o scegliere il numero di domande, tra quelle proposte, su cui effettuare l'analisi della Rete & Completato \\
+    RDF11.1 & L'Utente pu\`o scegliere come numero di domande su cui effettuare l'analisi della Rete la dimensione 89 & Completato \\
+    RDF11.2 &  L'Utente pu\`o scegliere come numero di domande su cui effettuare l'analisi della Rete la dimensione 120 & Completato \\
     \hline
-    RFF11 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
+    RFF12 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
     \hline
-    RFF12 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
+    RFF13 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
     \hline 
-     RFF13 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
-	   RFF14 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
+     RFF14 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
+	   RFF15 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
 	   \hline
-	  RFF15 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
+	  RFF16 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
     \hline
-    RFF16 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
+    RFF17 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
     \hline 
     
 \caption{Tabella dei Requisiti Funzionali}\label{tab:requisiti funzionali funzionali}
@@ -1842,13 +1882,13 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 	\hline
 	\textbf{Tipo} & \textbf{Obbligatorio} & \textbf{Facoltativo} & \textbf{Desiderabile} & \textbf{Totale} \\\hline\hline
 	   
-\textbf{Funzionale} & 10 & 9 & 6 & 25 \\
+\textbf{Funzionale} & 10 & 12 & 6 & 28 \\
 	   \hline
 \textbf{di Vicolo} & 1 & 3 & 1 & 5 \\
 	   \hline
 \textbf{di Qualit\`a} & 1 & 0 & 0 & 1 \\
 	   \hline
-\textbf{Totale} & 12 & 13 & 7 & 31 \\
+\textbf{Totale} & 12 & 16 & 7 & 35 \\
 \hline
 
 \caption{Resoconto dei Requisiti}\label{tab:resoconto dei requisiti}
