@@ -1596,7 +1596,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{enumerate}
 \item L'utente sceglie il contenuto del vettore previsione:
 \begin{enumerate}
-\item L'utente sceglie la risposta alla domanda n = {1,...,dim | dim numero di domande passate in input} con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata e 1 risposta corretta.
+\item L'utente sceglie la risposta alla domanda n = {1,...,dim | dim numero di domande scelte, 89 o 120} con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata e 1 risposta corretta.
 \end{enumerate}
 \end{enumerate}
 \end{itemize}
@@ -1656,7 +1656,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC8.7: Visualizzazione messaggio di errore per inserimento numero positivo massimo}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un numero positivo superiore a 255 (massima parametro rgb possibile);
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso abbia inserito come parametro di clusterizzazione un numero positivo superiore a 255 (massima parametro rgb\footnote{modello di colori di tipo additivo: come somma dei tre colori Rosso (Red), Verde (Green) e Blu (Blue).} possibile);
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha inserito come differenziale di accoppiamento un numero positivo superiore a 255;
 \item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica  l'incompatibilit\`a del tipo di valore inserito;
