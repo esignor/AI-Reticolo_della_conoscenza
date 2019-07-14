@@ -1,8 +1,8 @@
-/**@function controlArchitettura
+/**@function controlArchitettura_db
  * @param {*} dim dimesnione della rete input/output
  * metodo che controlla che le mdifiche dell'architettura rigurdino esclusivamente il numero di neuroni per layer e il numero di layers
  */
-controlArchitettura = function (dim) {
+controlArchitettura_db = function (dim) {
     document.getElementById("myCanvas-detail").style.display = "none";
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("controls").style.display = "none";

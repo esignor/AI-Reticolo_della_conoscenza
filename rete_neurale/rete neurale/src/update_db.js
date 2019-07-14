@@ -1,9 +1,9 @@
 
-/** @function update
+/** @function update_db
  *  @param {*} dim dimensione di input e output della rete
  * funzione che ha il compito di effettuare l'apprendimento della rete
  */
-function update(dim) { // permette di fare il training del dato
+function update_db(dim) { // permette di fare il training del dato
 
     //apprendimento della rete
 

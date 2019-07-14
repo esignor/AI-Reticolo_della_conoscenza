@@ -1,7 +1,7 @@
-/** @function saveDimensionNet
+/** @function saveDimensionNet_db
  *  salva la dimesione della Rete (= numero di domande da analizzare) scelta dall'utente  
  */
-function saveNetDimension(){
+function saveNetDimension_db(){
     var dim = document.getElementById("select_dim").value;
     document.getElementById("myForm1").style.display = "none";
     document.getElementById("container_body").style.display = "block";
@@ -13,7 +13,6 @@ function saveNetDimension(){
     
         if(dim == 120){
         $("#layerdef").val(configure_db120()); // mostra la configurazione della rete nel primo box
-        console.log(document.getElementById("select dim").value);
         }
     
 

@@ -66,7 +66,7 @@ function normalizationVectorTestPivot(dim) {
  */
 
 
-function normalizationVectorTest_standard(dim) {
+function normalizationVectorTestStandard(dim) {
     printTextarea(0, "Caricamento file CSV");
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // nome file .csv
     if (regex.test($("#fileUpload").val().toLowerCase())) {

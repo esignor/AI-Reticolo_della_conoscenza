@@ -13,9 +13,9 @@
     <script src="../src/prevision_db.js"></script>
     <script src="../src/addFields_db.js"></script>
     <script src="../src/createJSON.js"></script>
-    <script src="../src/loadJSON.js"></script>
-    <script src="../src/normalizationVectorTest.js"></script>
-    <script src="../src/writeDocument.js"></script>
+    <script src="../src/loadJSON_db.js"></script>
+    <script src="../src/normalizationVectorTest_db.js"></script>
+    <script src="../src/writeDocument_db.js"></script>
     <script src="../src/animationPrevision_db.js"></script>
     <script src="../src/animationPrevision_detail.js"></script>
     <script src="../src/prevision_singleElement.js"></script>
@@ -26,10 +26,10 @@
     <script src="../src/configureCanvasCoupling.js"></script>
     <script src="../src/printTextarea.js"></script>
     <script src="../src/cleanTextarea.js"></script>
-    <script src="../src/controlArchitettura.js"></script>
+    <script src="../src/controlArchitettura_db.js"></script>
     <script src="../src/frequenceMatrix.js"></script>
-    <script src="../src/contentMethod.js"></script>
-    <script src="../src/saveNetDimension.js"></script>
+    <script src="../src/contentMethod_db.js"></script>
+    <script src="../src/saveNetDimension_db.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
     </link>
@@ -47,7 +47,7 @@
                 <option value="89">89</option>
                 <option value="120">120</option>
             </select>
-            <input id="link_numberfields" type="submit" value="Confirm" onclick="saveNetDimension()" />
+            <input id="link_numberfields" type="submit" value="Confirm" onclick="saveNetDimension_db()" />
             </fieldset>
             <img id = "img_presentation">
         </form>
@@ -60,7 +60,7 @@
         <div id="configurazione_rete">
             <textarea id="layerdef">
     </textarea>
-            <input id="button_changeNet" type="submit" value="change Net" onclick="contentMethod('controlArchitettura')" />
+            <input id="button_changeNet" type="submit" value="change Net" onclick="contentMethod_db('controlArchitettura_db')" />
         </div>
 
 
@@ -69,10 +69,10 @@
                 <p>Output della rete</p>
                 <input type="file" id="fileUpload" />
                 <input id="button_upload" type="submit" value="upload file"
-                    onclick="contentMethod('normalizationVectorTestPivot')" />
+                    onclick="contentMethod_db('normalizationVectorTestPivot')" />
                 <input id="button_JSON" type="submit" value="save Net" onclick="createJSON()" />
-                <input id="buttonLoad_JSON" type="submit" value="load Net" onclick="loadJSON()" />
-                <input id="button_writedocument" type="submit" value="write document" onclick="contentMethod('writeDocument')" />
+                <input id="buttonLoad_JSON" type="submit" value="load Net" onclick="loadJSON_db()" />
+                <input id="button_writedocument" type="submit" value="write document" onclick="contentMethod_db('writeDocument_db')" />
                 <input id="button_cleanTextarea" type="submit" value="clean" onclick="cleanTextarea()" />
             </div>
             <div id="pannello_rete">
@@ -82,10 +82,10 @@
                 <canvas id="myCanvas">Browser non supporta canvas</canvas>
                 <div id="controls">
                     <input id="button_dettaglio-animation" type="submit" value="go to detail"
-                        onclick="contentMethod('animationPrevision_detail')" />
+                        onclick="contentMethod_db('animationPrevision_detail')" />
                     <div id="title_questionsdetail">
                         <p>Dettaglio delle domande</p>
-                        <input id="button_back" type="submit" value="back" onclick="contentMethod('addFields_db')" />
+                        <input id="button_back" type="submit" value="back" onclick="contentMethod_db('addFields_db')" />
                     </div>
                     <canvas id="myCanvas-detail">Browser non supporta canvas </canvas>
                     <div id="title_previsione">
@@ -94,7 +94,7 @@
 
 
                     <form method="post" name="myForm2" id="myForm2" onsubmit="return false">
-                        <a href="#" id="link_createnumberfields" onclick="contentMethod('addFields_db')">Insert fields</a><br></br>
+                        <a href="#" id="link_createnumberfields" onclick="contentMethod_db('addFields_db')">Insert fields</a><br></br>
                         <div id="container"></div>
                     </form>
 

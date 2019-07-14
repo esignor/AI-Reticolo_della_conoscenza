@@ -4,7 +4,7 @@
  */
 printCorrelation = function (questionCluster) {
 
-  printTextarea(layer_exe, "\n\Relazione fra le domande con un parametri differenziazione configurati");
+  printTextarea(layer_exe, "\n\Relazione fra le domande con parametri di differenziazione configurati");
   for (var i = 0; i < questionCluster.length; ++i) {
     printTextarea(layer_exe, "\ncluster " + (i+1) + ": " + questionCluster[i]);
   }
