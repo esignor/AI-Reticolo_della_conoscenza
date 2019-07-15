@@ -97,10 +97,10 @@ Una Rete neurale permette di formulare complessi modelli matematici (sistemi di 
 \end{figure}
 \noindent
 
-\subsubsection{Il Reticolo della Conoscenza generato}
-\label{Il Reticolo della Conoscenza generato}
+\subsubsection{Reticolo della Conoscenza generato mediante previsioni sul set di dati che conto eclusivamente della conoscenza del candidato}
+\label{Reticolo della Conoscenza generato mediante previsioni sul set di dati che tiene conto eclusivamente della conoscenza del candidato}
 
-Di seguito sono riportate le sequenze di creazione del Reticolo della Conoscenza per i dati di prova.
+Di seguito sono riportate le sequenze di creazione del Reticolo della Conoscenza per i dati di prova che non risentono della probabilit\`a che ha un candidato di indovinare.
 \noindent
 
 \begin{figure}[H]
@@ -168,12 +168,57 @@ Non avere un valore a 0 porta le le previsioni imposte alle singole domande, val
 La matrice correlazione ottenuta, tuttavia dal modello della PCA, risulta perfettamente allineata con le aspettative delle coppie di domande e delle previsioni, tuttavia questo \`e possibile solo perch\`e i dati e le previsioni vengono valutati nella loro generalit\`a e non tra coppia di domande.
 
 
-\subsubsection{Valutazione con la frequenza}
-\label{Valutazione con la frequenza}
-Ho ritenuto adeguato studiare il comportamento dei set di dati anche in base alla loro frequenza; in modo da poterne valutare le differenze con la Rete neurale e se vi fossero benefici o meno.\\
-Come primo passo ho provveduto a calcolarmi per ogni domanda quale fosse la frequenza delle altre domande valutate in accordo e in disaccordo con la risposta data. Ho effettuato il procedimento sia nel caso di una domanda risposta correttamente che non.\\\\
+\subsubsection{Reticolo della Conoscenza generato mediante la frequenza calcolata sul set di dati che tiene conto esclusivamente della conoscenza del candidato}
+\label{Reticolo della Conoscenza generato mediante la frequenza calcolata sul set di dati che tiene conto eclusivamente della conoscenza del candidato}
+Ho ritenuto adeguato studiare il comportamento dei set di dati anche in base alla loro frequenza; in modo da poterne valutare le differenze con la Rete neurale e quali sono, se vi sono, i benefici.\\
+Come primo passo ho provveduto a calcolarmi per ogni domanda quale fosse la frequenza delle altre domande, valutate in accordo e in disaccordo con la risposta data. Ho effettuato il procedimento sia nel caso di una domanda con risposta correttamente che non.
+
 \noindent
-Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori -1, che dovrebbero alterare, anche se marginalmente, il risultato finale non viene data l'adeguata importanza. Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=1\linewidth]{./image/res_frequenceMatrix_OSS.png}
+	\caption{Frequenza delle domande dei dati di test.}
+	\label{Frequenza delle domande dei dati di test.}
+\end{figure}
+
+L'immagine sopra mostra per ogni domanda valutata a 1 (primo set di dati) e a -1 (secondo set di dati) la frequenza che intercorre in tutte le domande con segno coerente o opposto a quello della domanda in esame.
+Il set di dati viene generato randomicamente con guida \footnote{con impiego del Grafo della Conoscenza (mostrato in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.})}.
+Analizzando i risultati di frequenza ottenuti, ho riscontrato i seguenti aspetti:
+\begin{itemize}
+\item Considerando i valori per riga:
+\begin{itemize}
+\item per le domande in cui le risposte si presentano a 1, i valori di frequenza che non rispettano le aspettative sono i seguenti:
+\begin{itemize}
+\item la domanda 3  con una frequenza correlata che coinvolge le coppie (1 ~ FC: 0.98, 3 ~ FC: 1) e (4 ~ FC: 0.95, 6 ~ FC: 0.98);
+\item la domanda 6 con una frequenza correlata che coinvolge le coppie (1 ~ FC: 0.98, 6 ~ FC: 1) e (4 ~ FC: 0.96, 3 ~ FC: 0.95).
+\end{itemize}
+\item per le domande in cui le risposte si presentano a -1 i valori di frequenza di valori di frequenza che non rispetta le aspettative sono i seguenti:
+\begin{itemize}
+\item la domanda 1 con una frequenza correlata che coinvolge le coppie (1 ~ FC:1, 3 ~ FC:1) e (4 ~ FC:0.55, 6 ~ FC:0.80);
+\item la domanda 4 si presenta con una frequenza correlata che coinvolge le coppie (4 ~ FC:1, 3 ~ FC:1) e (1 ~ FC:0.54, 6 ~ FC:0.80);
+\end{itemize}
+\end{itemize}
+\item Considerando i valori per colonna:
+\begin{itemize}
+\item la domanda 1 si correla con la domanda 4;
+\item la domanda 3 si correla con la domanda 6, 
+\item la domanda 2 con la domanda 5.
+\end{itemize}
+\end{itemize}
+\noindent
+Tali considerazioni non sono esclusive per il singolo set di dati; ma rimangono costanti per ogni set di dati generato (anche se di natura parzialmente randomica). Ho riscontrato per ciascuna variabile al massimo un oscillazione che si attesta mai superiore a 0.2.
+\\\\
+I valori di frequenza possono concorrere alla formazione del Reticolo della Conoscenza. Per renderlo possibile ho provveduto ha creare un file csv, che contenesse per ognuna delle domande, tutte le domande coinvolte valutate con frequenze positive e negative correlate e opposte. La tecnica permette la generazione, per ogni domanda, di un vettore contenente un quantit\`a di dati 4 volte la dimensione dell'input/output della Rete.
+Il divario permette, positivamente, di poter costruire un Reticolo ove i dati per ogni nodo hanno una stabilit\`a concreta.\\
+Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
+\begin{itemize}
+\item la frequenza non effettua alcuna riduzione dimensionale provocando un utilizzo di spazio pari al numero di domande/dati da analizzare. Ci\`o comporta che per grandi moli di dati lo spazio necessario cresce in maniera elevata rispetto al numero di elementi di input;
+\item la frequenza funziona male sui valori anomali.
+\end{itemize}
+\noindent
+Il divario tra i valori per riga e colonna sono legittimati dalla natura del set di valori di input. In esso sono contenuti valori 0, e non esclusivamente -1 e 1, causa diretta dell'oscillazione delle correlazioni strette esistente tra le domande accoppiate \footnote{per i dati di prova le domande accoppiate sono (1;4), (3;6) e (2;5)}.\\\\
+\noindent
+Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori -1, che dovrebbero alterare, anche se marginalmente, il risultato finale non viene data l'adeguata importanza (dimostrazione di come la frequenza gestisce male i valori anomali). Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
 
 \begin{figure}[H]
 \centering
@@ -184,9 +229,9 @@ Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo dell
 \noindent
 
 
-\subsubsection{Osservazioni}
-\label{Osservazioni Reticolo dati di prova}
-In conclusione il Reticolo della Conoscenza, costruito per mezzo delle previsioni della Reten neurale, anche se non sempre perfettamente coerente con le aspettative; nella maggioranza dei casi ricalca fedelmente quanto evidenziato nella figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.} nella sezione § \ref{Test effettuati}. \\
+\subsubsection{Osservazioni sul Reticolo generato dalle previsioni della rete}
+\label{Osservazioni generato dalla previsioni della rete}
+In conclusione il Reticolo della Conoscenza, costruito per mezzo delle previsioni della Rete neurale, anche se non sempre perfettamente coerente con le aspettative; nella maggioranza dei casi ricalca fedelmente quanto evidenziato nella figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.} nella sezione § \ref{Test effettuati}. \\
 Quando il Reticolo non \`e soggetto a deviazioni, gli accoppiamenti tra i punti, ricalcano fedelmente quanto dichiarato dalla matrice correlazione ottenuta dal modello generato dall'uso della PCA, e visibile dall'immagine \ref{CSV generato a partire dalla matrice correlazione del set della rete di prova.}.
 \`E obbligo precisare, tuttavia che i risultati della PCA non devono essere presi come assioma assoluto. Le argomentazioni sono le seguenti:
 \begin{itemize} 
@@ -194,6 +239,19 @@ Quando il Reticolo non \`e soggetto a deviazioni, gli accoppiamenti tra i punti,
 \item La PCA, come si \`e visto accadere con la frequenza, non tiene conto del numero di volte cui si verifica un evento attribuendone il medesimo peso. Invece la Rete, neurale mediante apprendimento, riesce a valutare al meglio tali fenomeni avvicinandosi il pi\`u possibile alla realt\`a.
 \item Lo scopo principale della PCA \`e quello di spostare gli assi di rappresentazione degli eventi. in modo che vi sia una maggiore facilit\`a di comprensione dei dati, come si ha con standardizzazione dei valori.
 \end{itemize}
+
+\subsubsection{Reticolo della Conoscenza generato con set di dati che tiene conto anche della possibilit\`a che un candidato ha di indovinare la risposta}
+\label{Reticolo della Conoscenza generato con set di dati che tiene conto anche della possibilit\`a che un candidato ha di indovinare la risposta}
+Sia se si fa una valutazione per frequenza, che per previsioni ottenute dalla Rete neurale, il Reticolo tende ad ogni nuovo set di dati, assumere una diversa conformazione, che ne rende difficile trarne delle conclusioni.
+In linea generale:
+\begin{itemize}
+\item Le domande figlie e le domande genitori vengono sempre raggruppate in un unico insieme, prima di venire fuse in un unico cluster, con le domande con cui non esiste alcuna correlazione;
+\item il Reticolo della Conoscenza generato con le previsioni della Rete, sembra rispondere meglio alle oscillazioni introdotte dalla possibilit\`a di indovinare. Rimane abbastanza in linea con quanto definito dal Grafo della Conoscenza della figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}, rispetto ai dati di frequenza.
+\end{itemize}
+
+
+
+
 
 \subsection{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
 \label{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
@@ -211,50 +269,7 @@ La variazione dei Reticoli ottenuti dalle diverse architetture della Rete neural
 
 
 
-\noindent
-\begin{figure}[H]
-\centering
-	\includegraphics[width=1\linewidth]{./image/res_frequenceMatrix_OSS.png}
-	\caption{Frequenza delle domande dei dati di test.}
-	\label{Frequenza delle domande dei dati di test.}
-\end{figure}
-L'immagine sopra mostra per ogni domanda valutata a 1 (primo set di dati) e a -1 (secondo set di dati) la frequenza che intercorre in tutte le domande con segno coerente o opposto a quello della domanda in esame.
-Il set di dati viene generato randomicamente con guida \footnote{con impiego del Grafo della Conoscenza (mostrato in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.})}.
-Analizzando i risultati di frequenza osservati ho riscontrato i seguenti fenomeni:
-\begin{itemize}
-\item Considerando i valori per riga:
-\begin{itemize}
-\item per le domande in cui le risposte si presentano corrette i valori di frequenza correlata e opposta si presentano con la seguente struttura:
-\begin{itemize}
-\item la domanda 3  si presenta con una frequenza correlata che coinvolge le coppie (1,3) e (4,6);
-\item la domanda 6 si presenta con una frequenza correlata che coinvolge le coppie (1,6) e (4,3).
-\end{itemize}
-\item per le domande in cui le risposte si presentano sbagliate i valori di frequenza correlata e opposta si presentano con la seguente struttura:
-\begin{itemize}
-\item la domanda 1 si presenta con una frequenza correlata che coinvolge le coppie (1 ~ FC:1, 3 ~ FC:1) e (4 ~ FC:0.55, 6 ~ FC:0.80);
-\item la domanda 4 si presenta con una frequenza correlata che coinvolge le coppie (4 ~ FC:1, 3 ~ FC:1) e (1 ~ FC:0.54, 6 ~ FC:0.80);
-\end{itemize}
-\end{itemize}
-\item Considerando i valori per colonna:
-\begin{itemize}
-\item la domanda 1 si correla con la domanda 4;
-\item la domanda 3 si correla con la domanda 6, 
-\item la domanda 2 con la domanda 5.
-\end{itemize}
-\end{itemize}
-\noindent
-Tali considerazioni non sono esclusive per il singolo set di dati; ma rimangono costanti per ogni set di dati generato (anche se di natura parzialmente randomica). Ho riscontrato per ciascuna variabile al massimo un oscillazione che si attesta mai superiore a 0.2. Percui tali risultati risultano stabili e attendibili.
-\\\\
-I valori di frequenza possono concorrere alla formazione del Reticolo della Conoscenza. Per renderlo possibile ho provveduto ha creare un file csv che contenesse per ognuna delle domande tutte le domande coinvolte valutate con frequenze positive correlate e opposte e le frequenze negative correlate e opposte. La tecnica permette la generazione, per ogni domanda, di un vettore contenete un quantit\`a di dati 4 volte la dimensione dell'input/output della Rete.
-Il divario permette, positivamente, di poter costruire un Reticolo ove i dati per ogni nodo hanno una stabilit\`a concreta.\\
-Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
-\begin{itemize}
-\item la frequenza non effettua alcuna riduzione dimensionale provocando uno utilizzo di spazio pari al numero di domande/dati da analizzare. Ci\`o comporta che per grandi moli da dati lo spazio necessario cresce elevato al numero di elementi di input;
-\item la frequenza funziona male sui valori anomali, come gi\`a spiegato nella sezione § \ref{Descrizione del sistema}
-\end{itemize}
-\noindent
-Il divario tra i valori per riga e colonna sono legittimati dalla natura del set di valori di input. In esso sono contenuti valori 0, e non esclusivamente -1 e 1, causa diretta dell'oscillazione delle correlazioni strette esistente tra le domande accoppiate \footnote{per i dati di prova le domande accoppiate sono (1;4), (3;6) e (2;5)}. La prova di quanto appena detto \`e evidente testando pi\`u volte la Rete. Per un n molto piccolo le previsioni, ottenute, risultano cos\`i vicine l'una all'altra che almeno 4 domande formano un unico cluster.
-Tale curvatura dei dati ha il suo impatto peggiore sulle domande figlie e genitori. Le domande estranee vengono associate prima hai figli esclusivamente perch\`e molto semplici. Tuttavia l'oscillazione in esame \`e minima e il Reticolo ne risente esclusivamente quando i valori di previsione delle domande sono simili, motivo per cui in figura le colonne e le righe 2 e 5 risultano sempre conformi. 
+
 
 
 
