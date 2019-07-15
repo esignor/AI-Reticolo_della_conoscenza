@@ -78,6 +78,7 @@ Durante la costruzione del Reticolo della Conoscenza \`e stato importante capire
 \noindent 
 Una Rete neurale permette di formulare complessi modelli matematici (sistemi di equazioni differenziali ecc.) e di individuarne possibili soluzioni. Le soluzioni si determinano sempre a partire dai dati; tuttavia la scelta del modello\footnote{inteso come architettura.} \`e un'azione molto complessa.
 
+L'architettura di Rete ipotizzata per i dati di prova e coerente con quanto affermato nella sezione \ref{Osservazioni su rete a 4 neuroni per 1 layer}, è il seguente:
 \noindent
 \begin{figure}[H]
 \centering
@@ -218,7 +219,30 @@ Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
 \noindent
 Il divario tra i valori per riga e colonna sono legittimati dalla natura del set di valori di input. In esso sono contenuti valori 0, e non esclusivamente -1 e 1, causa diretta dell'oscillazione delle correlazioni strette esistente tra le domande accoppiate \footnote{per i dati di prova le domande accoppiate sono (1;4), (3;6) e (2;5)}.\\\\
 \noindent
-Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori -1, che dovrebbero alterare, anche se marginalmente, il risultato finale non viene data l'adeguata importanza (dimostrazione di come la frequenza gestisce male i valori anomali). Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
+Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori 0, che dovrebbero alterare, anche se marginalmente il risultato finale viene data la medesima importanza non tenendo conto dell'occorrenza (dimostrazione di come la frequenza gestisce male i valori anomali - vedi esempio sotto). Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
+
+
+\begin{verbatim}
+------------------------------------------------------
+Esempio che mette in rapporto la frequenza con le 
+previsioni di una Rete neurale
+
+Analisi della risposta positiva (FC):
+(1) 1/1 = 1,  1 risposta positiva tra tutte le domande, 1,
+ che sono accoppiate con la domanda i, quando viene risposta
+correttamente	
+(2) 8/8 = 1, 8 risposte positiva tra tutte le domande, 8,
+che sono accoppiate con la domanda i + 1, quando viene risposta
+correttamente
+
+- Per la frequenza: n e n + 1 hanno il medesimo valore di FC
+- Per una Rete neurale: un evento che si verifica 1 volta e
+un evento che si verifica 8 volte hanno un peso differente,
+questo perché una rete effettua previsioni non su dati
+statistici, ma per mezzo di train.
+-------------------------------------------------------
+\end{verbatim}
+
 
 \begin{figure}[H]
 \centering
@@ -240,32 +264,223 @@ Quando il Reticolo non \`e soggetto a deviazioni, gli accoppiamenti tra i punti,
 \item Lo scopo principale della PCA \`e quello di spostare gli assi di rappresentazione degli eventi. in modo che vi sia una maggiore facilit\`a di comprensione dei dati, come si ha con standardizzazione dei valori.
 \end{itemize}
 
-\subsubsection{Reticolo della Conoscenza generato con set di dati che tiene conto anche della possibilit\`a che un candidato ha di indovinare la risposta}
-\label{Reticolo della Conoscenza generato con set di dati che tiene conto anche della possibilit\`a che un candidato ha di indovinare la risposta}
+\subsubsection{Reticolo della Conoscenza generato con set di dati che tiene conto della possibilit\`a che un candidato ha di indovinare la risposta}
+\label{Reticolo della Conoscenza generato con set di dati che tiene conto della possibilita che un candidato ha di indovinare la risposta}
 Sia se si fa una valutazione per frequenza, che per previsioni ottenute dalla Rete neurale, il Reticolo tende ad ogni nuovo set di dati, assumere una diversa conformazione, che ne rende difficile trarne delle conclusioni.
 In linea generale:
 \begin{itemize}
 \item Le domande figlie e le domande genitori vengono sempre raggruppate in un unico insieme, prima di venire fuse in un unico cluster, con le domande con cui non esiste alcuna correlazione;
-\item il Reticolo della Conoscenza generato con le previsioni della Rete, sembra rispondere meglio alle oscillazioni introdotte dalla possibilit\`a di indovinare. Rimane abbastanza in linea con quanto definito dal Grafo della Conoscenza della figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}, rispetto ai dati di frequenza.
+\item il Reticolo della Conoscenza generato con le previsioni della Rete, rispetta meglio le oscillazioni introdotte dalla possibilit\`a di indovinare. Difatti, come vale per il valore 0, La frequenza si dimostra poco capace di cogliere le discrepanze dal modello, non riuscendo a dare il giusto peso ai valori anomali
 \end{itemize}
 
-
-
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/collage_reticolo-probability-FREQ.png}
+	\caption{Reticolo della Conoscenza per i dati di prova con indovinato - Frequenza.}
+	\label{Reticolo della Conoscenza per i dati di prova con indovinato - Frequenza.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/collage_reticolo-probability.png}
+	\caption{Reticolo della Conoscenza per i dati di prova con indovinato - Previsioni.}
+	\label{Reticolo della Conoscenza per i dati di prova con indovinato - Previsioni.}
+\end{figure}
+\noindent
 
 
 \subsection{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
 \label{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
 
-La creazione del Reticolo della Conoscenza sui dati delle domande nel database ha richiesto la creazione di file CSV su un architettura a 2 layer della rete con 6, 8, 10, 12 neuroni ciascuno. Questo a causa della non conoscenza a priori del numero di cluster che comporranno il Reticolo, come invece accade per i dati di prova.\\
-Tale differenziazione ha permesso durante la configurazione del sistema e la creazione del Reticolo che mi accorgersi dell'estrema variabilit\`a dei cluster e correlazioni a seconda dell'oscillazione del numero di neuroni per layers, come viene evidenziato dalle immagini seguenti.
+Requisiti da assolvere, per costruire un Reticolo della Conoscenza valido per le domande nel database aziendale.
+\begin{enumerate}
+\item Studio del testo delle domande per individuare quali sono i gruppi di argomenti;
+\item Considerando la grandezza del set di dati, il numero di domande e con quanto deciso al punto (1), ipotizzare un'architettura di Rete;
+\item Procedere con la validazione dei risultati ottenuti, confrontando i cluster con gli argomenti identificati al punto (1). Non si potrà mai ottenere un match perfetto, in quanto il set risente della probabilità di indovinare, ma risulta una buona linea guida.
+\end{enumerate}
 
 
-\subsection{Osservazioni}
-\subsubsection{Osservazioni Reticolo dati del database}
-La variazione dei Reticoli ottenuti dalle diverse architetture della Rete neurale indica come sia necessario approfondire la tematica e individuare una strategia unica che permetta di individuare in modo univoco l'architettura necessaria per ottenere un Reticolo della Conoscenza valido.
+\subsubsection{Individuazione dei gruppi di argomenti}\mbox{}
+\label{Individuazione dei gruppi di argomenti}
+Le domande di logica si compongono di due macro-argomenti principali:
+\begin{itemize}
+\item Domande sulle Serie numeriche;
+\item Domande su diagrammi di Eulero-Venn.
+\end{itemize}
+\noindent
+Le restanti domande non presentano un argomento specifico, risultando complesse da catalogare. Tali le ho valutate come punti isolati, che se hanno correlazioni tra di loro è solo perché un candidato indovina.
 
-\subsection{Creazione del Reticolo prendendo in considerazione le frequenze alle domande}
-\label{Creazione del Reticolo prendendo in considerazione le frequenze alle domande}
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+
+aelkshwnzj & Nessuno \\
+bajsownqty & Nessuno \\
+bdwjgxtdsm & Nessuno \\
+bfmfxcudzq & Nessuno \\
+bkfstjjeaw & Nessuno \\
+bojihohutw & Nessuno \\
+ccsofpywab & Eulero-Venn \\
+cfkjhtcjjp & Nessuno \\
+cfxigdfgsu & Eulero-Venn \\
+cidpdlimnu & Nessuno \\
+cxjganjqsl & Nessuno \\
+cxwrjrltfv & Nessuno \\
+diucioyoxo & Nessuno \\
+dpzaqasqro & Nessuno \\
+ectvbesohs & Nessuno \\
+efbcntiwcr & Nessuno \\
+elbottcdse & Nessuno \\
+fbekkymdja & Nessuno \\
+fclxhnodej & Nessuno \\
+flsdkdhwpz & Nessuno \\
+fpiajgnnfb & Nessuno \\
+fupxesqveq & Nessuno \\
+fvwcpjdfai & Nessuno \\
+gilviisrcb & Eulero-Venn \\
+gxushjkzth & Nessuno \\
+hacwlyvymr & Nessuno \\
+heohdfuqpi & Nessuno \\
+heusbnnnto & Nessuno \\
+hxsywnmxdd & Nessuno \\
+iesmuuktcs & Nessuno \\
+ifrcopoblv & Nessuno \\
+iojsfvnpii & Nessuno \\
+islhstwuay & Nessuno \\
+jgcxaxgrrw & Nessuno \\
+jnxymdjdxl & Nessuno \\
+jomkrqdwwr & Nessuno \\
+jwvreihjvv & Nessuno \\
+jygnlagbhv & Nessuno \\
+kkhcmynavp & Nessuno \\
+kprsxjkubz & Serie numeriche \\
+kzorhoohrb & Nessuno \\
+lhuxxlqtyz & Nessuno \\
+ljypeljfkh & Eulero-Venn \\
+lqyvhqfmqd & Nessuno \\
+lrqrblychp & Nessuno \\
+mfycpmjyzc & Nessuno \\
+mhaimflmrt & Eulero-Venn \\
+mnrnuysydx & Serie numeriche \\
+ngtquzulpk & Nessuno \\
+nrawevuhkv & Nessuno \\
+oaszeadbqh & Nessuno \\
+obwqtgpxek & Eulero-Venn \\
+okklvldqlc & Nessuno \\
+osvluiqhbp & Nessuno \\
+pfctjunpxs & Serie numeriche \\
+pfsvqgsfen & Serie numeriche \\
+poiuytrewq & Eulero-Venn \\
+ptfkuubpyy & Nessuno \\
+ptwccskjcf & Serie numeriche \\
+pxvpfrjqnb & Serie numeriche \\
+qbnjsxmnxx & Serie numeriche \\
+qfxndoiusk & Nessuno \\
+qmzlhizqng & Nessuno \\
+qsqbqjczyv & Eulero-Venn \\
+ribhqompcp & Nessuno \\
+sucpsfikqd & Nessuno \\
+tnmucbefiy & Nessuno \\
+tocsjuegmj & Nessuno \\
+tpfgrbtdur & Nessuno \\
+ukafbvkjxl & Nessuno \\
+ungslccrdw & Serie numeriche \\
+uoohruqjig & Serie numeriche \\
+uoztprdkre & Nessuno \\
+upmqfdzqqd & Nessuno \\
+voqwkjnxuv & Eulero-Venn \\
+vtjiowgfxp & Nessuno \\
+wfthuqobvv & Nessuno \\
+wpfhnhktzw & Nessuno \\
+wqkhvmdpol & Serie numeriche \\
+xmqopkamew & Serie numeriche \\
+xnyfhvvlzx & Serie numeriche \\
+xvbullwvol & Nessuno \\
+yxkoznnxis & Nessuno \\
+zcflqcwpgh & Nessuno \\
+zegfndrnwr & Nessuno \\
+zptjzdwilf & Nessuno \\
+zqrfurehmz & Serie numeriche \\
+zrehhcvjyl & Serie numeriche \\
+zvlwoledbc & Eulero-Venn \\
+\\
+\hline
+	
+\caption{Gruppi di argomento per le domande di logica}\label{tab:Gruppi di argomento per le domande di logica}
+\end{longtable}
+
+\subsubsection{L'architettura della Rete}
+\label{L'architettura della Rete}
+Come già visto all'interno della sezione \ref{Rete neurale} la scelta dell'architettura adatta per una grande mola di cui non si ha conoscenza del risultato finale perché soggetti all'indovinato, come visto in \ref{Principal Component Analysis}, rende tale compito molto arduo.\\
+L'unico modo di affrontare il problema è procedere all'analisi del set di dati in input e fare largo uso delle conoscenze acquisite durante la costruzione del Reticolo sul set di prova.
+
+Le architetture che ho ritenuto buone in base al problema in analisi sono le seguenti:
+\begin{itemize}
+\item \begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
+layer_defs.push({type:'fc', num_neurons:12, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:12, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:89});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+\noindent
+Per formularla ho preso come riferimento l'architettura della Rete di prova e ne ho modificato il numero di neuroni per layers, sulla base del aumento del numero di domande e sulla diminuzione del numero di entry nel set di dati del caso in analisi. Non mi aspetto abbia dei risultati accelsi, in quanto non vengono considerati il numero di cluser possbili, ma è una buona base di partenza per le osservazioni.
+\item 
+
+\item
+
+\end{itemize}
+.
+\paragraph{Prima architettura: layers(12, 12}
+\label{Prima architettura}
+
+Il Reticolo della Conoscenza generato è il seguente:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/logica(12,12).png}
+	\caption{Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/logica(12,12)_forced.png}
+	\caption{Reticolo della Conoscenza layers(12, 12) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(12, 12) - Forced Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.60\linewidth]{./image/collage_reticolo-logica(12,12).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.
+\end{figure}
+\noindent
+I risultati ottenuti sono buoni ma non eccelsi. Prima di tutto si crea un unico cluster, e non due come attendo, però in questo si vanno a insinuare un buon numero delle domande sulle serie numeriche e su eulero venn. Tuttavia le domande dello stesso argomento non sono le prime a correlarsi.
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+	kprsxjkubz & obwqtgpxek \\
+	qbhjsxmnxx & poiuytrewq \\
+	ungslccrdw & voqwkjnxuv \\ 
+	uoohruqjig & zvlwoledbc \\
+	wqkhvmdpol & \\
+	zrehhcvjvl & \\
+\\
+\hline
+\caption{Domande contenute nel primo cluster}\label{tab:Domande contenute nel primo cluster}
+\end{longtable}
+\noindent
+Le domande correlate tra i gruppi (mhaimflmrt, xnyfhvvlzx), (ccsofpywab, kzorhoohrb) e (fbekkymdja, kkhcmynavp) non presentano alcuna somiglianza di tematica. Riducendo la correlazione tra i cluster si generano 2 cluster ma non rispettano la differenziazione tra domande di serie numeriche e eulero venn.
+
+
+
 
 
 
