@@ -201,9 +201,10 @@ frequenceMatrixNeg = function (array, dim) {
     console.log(tot[i]);
     for(var i = 0; i < frequence.length; ++i)
     console.log(frequence[i]);*/
-    /*for(var i = 0; i < frequence.length; ++i)
+    console.log("FREQUENZA:");
+    for(var i = 0; i < frequence.length; ++i)
     console.log((i+1) + ";" + Pos1[i] + ";" + Neg1[i] + ";" + Pos2[i] + ";" +  Neg2[i]); // stampa su console utile in fase di test per generare il file csv per generare i dati da usare per la creazione del Reticolo sulla base della frequenza
-    */
+    
     return frequence;
 
 }
