@@ -19,8 +19,8 @@ function insertDati_db(dim) {
 
     update_db(dim); // chiamata all'addestramento
  
-    /*var frequencePos = frequenceMatrixPos(vectorCSV, dim); // in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
-    var frequenceNeg = frequenceMatrixNeg(vectorCSV, dim);*/
+    var frequencePos = frequenceMatrixPos(vectorCSV, dim); // in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
+    var frequenceNeg = frequenceMatrixNeg(vectorCSV, dim);
     /*console.log(frequencePos);
     console.log(frequenceNeg);*/
 

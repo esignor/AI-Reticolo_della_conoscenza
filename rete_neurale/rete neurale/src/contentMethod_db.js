@@ -4,7 +4,7 @@
  * del codice dall'interazione con l'utente
  */
 function contentMethod_db(string) {
-  var dim = document.getElementById("select_dim").value;
+  var dim = parseInt(document.getElementById("select_dim").value);
   if (string == 'controlArchitettura_db')
     controlArchitettura_db(dim);
   else if (string == 'normalizationVectorTestPivot')

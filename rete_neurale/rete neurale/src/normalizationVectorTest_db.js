@@ -12,7 +12,6 @@
 
 
 function normalizationVectorTestPivot(dim) {
-    printTextarea(0, "Caricamento file CSV in corso. Attendere ...");
     document.getElementById("myCanvas").style.display = "none";
     document.getElementById("button_JSON").style.display = "none";
     document.getElementById("button_writedocument").style.display = "none";
@@ -36,6 +35,7 @@ function normalizationVectorTestPivot(dim) {
                       alert("Numero di domande nel file superiore alla dimensione della Rete");
                       return;
                     }
+                    printTextarea(0, "Caricamento file CSV in corso. Attendere ...");
                     for (var j = 0; j < cells.length; ++j) {// splitto ogni elemento tranne l'ultimo elemento che e' una riga vuota
                         if (j > 0)
                             vectorTest[j - 1] = parseInt(cells[j]); // in pos 0..dim-1 posizione le dim risposte, in pos dim + 1 il nome del test e uso la conversione intera per evitare caratteri spuru
