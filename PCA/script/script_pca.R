@@ -1,4 +1,4 @@
-# SCRIPT DI PROVA
+# SCRIPT DI PROVA (usare come scheletro per implementrare il modello per i dati di prova e del database -- NON DA COMPILARE)
 
 library("factoextra")
 df<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
