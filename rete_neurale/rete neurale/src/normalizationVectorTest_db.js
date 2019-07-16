@@ -32,7 +32,7 @@ function normalizationVectorTestPivot(dim) {
                     var vectorTest = [];
                     var cells = rows[i].split(";"); // splitto ogni elemento contenuto nella riga
                     if(cells.length - 1 != dim){ // le domande + il campo del test
-                      alert("Numero di domande nel file superiore alla dimensione della Rete");
+                      alert("Numero di domande nel file differente rispetto alla dimensione della Rete");
                       return;
                     }
                     printTextarea(0, "Caricamento file CSV in corso. Attendere ...");
