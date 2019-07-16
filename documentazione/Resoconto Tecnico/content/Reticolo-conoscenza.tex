@@ -1,6 +1,6 @@
 \section{Costruzione del Reticolo della Conoscenza}
 \label{Costruzione del Reticolo della Conoscenza}
-Dal 26/07 al 28/07 ho iniziato la Costruzione del Reticolo della Conoscenza. Per realizzarlo ho utilizzato un'applicativo sviluppato durante un precedente stage dell'azienda, che fa largo uso della libreria d3.js. Svolge elaborazione di dati, presentandoli in \textit{Cluster Based} o \textit{Force Based}, a discrezione delle esigenze dell'utente.\\
+Dal 26/07 al 28/07 ho iniziato la Costruzione del Reticolo della Conoscenza. Per realizzarlo ho utilizzato un applicativo sviluppato durante un precedente stage dell'azienda, che fa largo uso della libreria d3.js. Svolge elaborazione di dati, presentandoli in \textit{Cluster Based} o \textit{Force Based}, a discrezione delle esigenze dell'utente.\\
 L'attivit\`a di creazione, documentazione e test del Reticolo \`e durata fino al termine dello stage.
 
 \subsection{Descrizione del sistema}
@@ -266,11 +266,11 @@ Quando il Reticolo non \`e soggetto a deviazioni, gli accoppiamenti tra i punti,
 
 \subsubsection{Reticolo della Conoscenza generato con set di dati che tiene conto della possibilit\`a che un candidato ha di indovinare la risposta}
 \label{Reticolo della Conoscenza generato con set di dati che tiene conto della possibilita che un candidato ha di indovinare la risposta}
-Sia se si fa una valutazione per frequenza, che per previsioni ottenute dalla Rete neurale, il Reticolo tende ad ogni nuovo set di dati, assumere una diversa conformazione, che ne rende difficile trarne delle conclusioni.
-In linea generale:
+Sia se si tratti di una valutazione per frequenza, che di previsioni ottenute dalla Rete neurale, il Reticolo tende ad ogni nuovo set di dati, assumere una diversa conformazione, che ne rende difficile trarne delle conclusioni.
+In linea generale, si pu\`o affermare che:
 \begin{itemize}
-\item Le domande figlie e le domande genitori vengono sempre raggruppate in un unico insieme, prima di venire fuse in un unico cluster, con le domande con cui non esiste alcuna correlazione;
-\item il Reticolo della Conoscenza generato con le previsioni della Rete, rispetta meglio le oscillazioni introdotte dalla possibilit\`a di indovinare. Difatti, come vale per il valore 0, La frequenza si dimostra poco capace di cogliere le discrepanze dal modello, non riuscendo a dare il giusto peso ai valori anomali
+\item Le domande figlie e le domande genitori vengono sempre raggruppate in un singolo insieme, prima di venire fuse in un unico cluster, assieme alle domande con cui non esiste alcuna correlazione;
+\item il Reticolo della Conoscenza generato con le previsioni della Rete, rispetta meglio le oscillazioni introdotte dalla possibilit\`a di indovinare. Difatti, come vale per il valore 0, La frequenza si dimostra poco capace di cogliere le discrepanze dal modello, non riuscendo a dare il giusto peso ai valori anomali.
 \end{itemize}
 
 \begin{figure}[H]
@@ -289,14 +289,14 @@ In linea generale:
 \noindent
 
 
-\subsection{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
-\label{Creazione del Reticolo della Conoscenza sui dati delle domande nel database}
+\subsection{Creazione del Reticolo della Conoscenza sui dati delle domande del database}
+\label{Creazione del Reticolo della Conoscenza sui dati delle domande del database}
 
-Requisiti da assolvere, per costruire un Reticolo della Conoscenza valido per le domande nel database aziendale.
+Requisiti da assolvere, per costruire un Reticolo della Conoscenza valido per le domande nel database aziendale:
 \begin{enumerate}
 \item Studio del testo delle domande per individuare quali sono i gruppi di argomenti;
-\item Considerando la grandezza del set di dati, il numero di domande e con quanto deciso al punto (1), ipotizzare un'architettura di Rete;
-\item Procedere con la validazione dei risultati ottenuti, confrontando i cluster con gli argomenti identificati al punto (1). Non si potrà mai ottenere un match perfetto, in quanto il set risente della probabilità di indovinare, ma risulta una buona linea guida.
+\item Formulazione una buona architettura, avvalendosi della grandezza del set di dati, del numero di domande e della conoscenza di quanto emerso dal punto (1);
+\item Validazione dei risultati ottenuti, confrontando i cluster con gli argomenti identificati al punto (1). Si deve tenere conto che non si potrà mai ottenere un match perfetto, in quanto il set risente della probabilità di indovinare;
 \end{enumerate}
 
 
@@ -308,8 +308,9 @@ Le domande di logica si compongono di due macro-argomenti principali:
 \item Domande su diagrammi di Eulero-Venn.
 \end{itemize}
 \noindent
-Le restanti domande non presentano un argomento specifico, risultando complesse da catalogare. Tali le ho valutate come punti isolati, che se hanno correlazioni tra di loro è solo perché un candidato indovina.
-
+Le restanti domande non presentano un argomento specifico, risultando complesse da catalogare. Queste ultime le ho valutate come punti isolati.
+\\
+Di seguito, in forma tabellare viene riportata la categorizzazione delle domande.
 \begin{longtable}{|c|c|}
 	\hline
 	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
@@ -403,7 +404,6 @@ zptjzdwilf & Nessuno \\
 zqrfurehmz & Serie numeriche \\
 zrehhcvjyl & Serie numeriche \\
 zvlwoledbc & Eulero-Venn \\
-\\
 \hline
 	
 \caption{Gruppi di argomento per le domande di logica}\label{tab:Gruppi di argomento per le domande di logica}
@@ -411,10 +411,10 @@ zvlwoledbc & Eulero-Venn \\
 
 \subsubsection{L'architettura della Rete}
 \label{L'architettura della Rete}
-Come già visto all'interno della sezione \ref{Rete neurale} la scelta dell'architettura adatta per una grande mola di cui non si ha conoscenza del risultato finale perché soggetti all'indovinato, come visto in \ref{Principal Component Analysis}, rende tale compito molto arduo.\\
-L'unico modo di affrontare il problema è procedere all'analisi del set di dati in input e fare largo uso delle conoscenze acquisite durante la costruzione del Reticolo sul set di prova.
+Come già visto all'interno della sezione \ref{Rete neurale} la scelta dell'architettura adatta per una rete che deve trattare una grande mola e di cui non si ha piene conoscenza del risultato finale che si deve ottenere \footnote{perché soggetti all'indovinato come visto in \ref{Principal Component Analysis}} rende tale compito molto arduo.\\
+L'unico modo di affrontare il problema è procedere con l'analisi del set di dati in input aiutandosi con le conoscenze acquisite durante la costruzione del Reticolo sul set di prova.\\\\
 
-Le architetture che ho ritenuto buone in base al problema in analisi sono le seguenti:
+Ho testato gli effetti sulla Rete e sulla generazione del Reticolo, di una molteplicit\`a di architetture. Le pi\`u rilevanti sono le seguenti:
 \begin{itemize}
 \item \begin{verbatim}
 layer_defs = [];
@@ -425,23 +425,35 @@ layer_defs.push({type:'regression', num_neurons:89});
         
 net = new convnetjs.Net();
 net.makeLayers(layer_defs);
-trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, momentum:0.1, batch_size:10, l2_decay:0.001});
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 \noindent
 Per formularla ho preso come riferimento l'architettura della Rete di prova e ne ho modificato il numero di neuroni per layers, sulla base del aumento del numero di domande e sulla diminuzione del numero di entry nel set di dati del caso in analisi. Non mi aspetto abbia dei risultati accelsi, in quanto non vengono considerati il numero di cluser possbili, ma è una buona base di partenza per le osservazioni.
-\item 
+\item \begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:10, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:89});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
 
-\item
 
 \end{itemize}
-.
-\paragraph{Prima architettura: layers(12, 12}
-\label{Prima architettura}
 
+\paragraph{Prima architettura: layers(12, 12)}\mbox{}
+\label{Prima architettura}
+\noindent
 Il Reticolo della Conoscenza generato è il seguente:
 \begin{figure}[H]
 \centering
-	\includegraphics[width=0.60\linewidth]{./image/logica(12,12).png}
+	\includegraphics[width=0.70\linewidth]{./image/logica(12,12).png}
 	\caption{Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
 	\label{Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
 \end{figure}
@@ -449,7 +461,7 @@ Il Reticolo della Conoscenza generato è il seguente:
 
 \begin{figure}[H]
 \centering
-	\includegraphics[width=0.60\linewidth]{./image/logica(12,12)_forced.png}
+	\includegraphics[width=0.70\linewidth]{./image/logica(12,12)_forced.png}
 	\caption{Reticolo della Conoscenza layers(12, 12) - Forced Based.}
 	\label{Reticolo della Conoscenza layers(12, 12) - Forced Based.}
 \end{figure}
@@ -457,34 +469,101 @@ Il Reticolo della Conoscenza generato è il seguente:
 
 \begin{figure}[H]
 \centering
-	\includegraphics[width=0.60\linewidth]{./image/collage_reticolo-logica(12,12).png}
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-logica(12,12).png}
 	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
-	\label{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.}
 \end{figure}
+\noindent
+
+\subparagraph{Osservazioni}\mbox{}
 \noindent
 I risultati ottenuti sono buoni ma non eccelsi. Prima di tutto si crea un unico cluster, e non due come attendo, però in questo si vanno a insinuare un buon numero delle domande sulle serie numeriche e su eulero venn. Tuttavia le domande dello stesso argomento non sono le prime a correlarsi.
 \begin{longtable}{|c|c|}
 	\hline
-	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+	\textbf{Serie numeriche} & \textbf{Eulero Venn} \\\hline\hline
 	kprsxjkubz & obwqtgpxek \\
 	qbhjsxmnxx & poiuytrewq \\
 	ungslccrdw & voqwkjnxuv \\ 
 	uoohruqjig & zvlwoledbc \\
 	wqkhvmdpol & \\
 	zrehhcvjvl & \\
-\\
 \hline
 \caption{Domande contenute nel primo cluster}\label{tab:Domande contenute nel primo cluster}
 \end{longtable}
 \noindent
-Le domande correlate tra i gruppi (mhaimflmrt, xnyfhvvlzx), (ccsofpywab, kzorhoohrb) e (fbekkymdja, kkhcmynavp) non presentano alcuna somiglianza di tematica. Riducendo la correlazione tra i cluster si generano 2 cluster ma non rispettano la differenziazione tra domande di serie numeriche e eulero venn.
+Le domande correlate nei cluster \textit{(mhaimflmrt, xnyfhvvlzx)}, \textit{(ccsofpywab, kzorhoohrb)} e \textit{(fbekkymdja, kkhcmynavp)}, visibili in figura \ref{Reticolo della Conoscenza layers(12, 12) - Cluster Based.}  non presentano alcuna somiglianza di tematica. \\
+Riducendo la correlazione tra i cluster si generano 2 cluster, come visibili dall'immagine \ref{Sequenza di creazione del Reticolo della Conoscenza layers(12, 12) - Cluster Based.}; ma non viene rispettata la differenziazione tra domande di Serie numeriche e Eulero Venn.\\\\
+A seguito di numerosi test che sono succeduti a questa prima configurazione, ho potuto confermare quanto avevo gi\`a intuito in precedenza E descritto in \ref{Architetture testate}: un numero superiore di 11 neuroni genera una situazione di overfitting delle previsioni della Rete.
 
+\paragraph{Seconda architettura: layers(4, 4, 10)}\mbox{}
+\label{Seconda architettura}
+\noindent
+Il Reticolo della Conoscenza generato è il seguente:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(4,4,10).png}
+	\caption{Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
 
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(4,4,10)_forced.png}
+	\caption{Reticolo della Conoscenza layers(4, 4, 10) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(4, 4, 10) - Forced Based.}
+\end{figure}
+\noindent
 
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-logica(4,4,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
 
+\subparagraph{Osservazioni}\mbox{}
+\noindent
+Questo, ha mio avviso \`e, uno dei Reticolo pi\`u interessanti che ho generato, riguardante il set di domande di logica.
+Esiste un cluster principale e una decina di gruppi di dimensione via via sempre minore. A mano a mano che viene inalzata la Threshold, i gruppi vengono inglobati dal gruppo principale. I punti isolati sono in numero notevole, come si pu\`o vedere dall'immagine \ref{Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based} anche se la thresehold di competenza \`e quasi a met\`a.\\
+I punti isolati rappresentano, per la maggioranza dei casi tutte quelle domande che non trovano correlazione n\`e tra le serie numeriche, n\`e tra i diagrammi di eulero-venn. Nel cluster di dimensione maggiore trovano collocazione i seguenti punti:
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Serie Numeriche} & \textbf{Eulero-Venn} \\\hline\hline
+	zrehhcvjyl & cfxigdfgsu \\
+	           & poiuytrewq \\
+	
+\hline
+\caption{Domande contenute nel primo cluster (blu)}\label{tab:Domande contenute nel primo cluster}
+\end{longtable}
+\noindent
+Ci sono tuttavia anche altri cluster interessanti:
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Serie Numeriche} & \textbf{Eulero-Venn} \\\hline\hline
+	wqkhmdpol & gilviisrcb \\
+	           & voqwkijnxuv\\
+	
+\hline
+\caption{Domande contenute nel secondo cluster (rosetta)}\label{tab:Domande contenute nel secondo cluster}
+\end{longtable}
+\noindent
 
-
-
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Serie Numeriche} & \textbf{Eulero-Venn} \\\hline\hline
+	zqrtfurehmz &  \\
+	uoohruqjiq  & \\
+	zqrtfurehmz & \\
+	
+\hline
+\caption{Domande contenute nel terzo cluster (blu chiaro)}\label{tab:Domande contenute nel terzo cluster}
+\end{longtable}
+\noindent
+Si pu\`o definire come il primo e e il secondo cluster hanno una predominanza delle domande, per quanto concerne le domande catalogate, per le domande su Eulero-Venn; e il terzo per le domande sulle Serie numeriche.\\
+I tre gruppi molto probabilmente hanno difficolt\`a superiori per un candidato e per questo vengono inglobati uno dento l'altro passo passo.
+Prima di tutto il primo cluster, influenzato dai dati di probabilit\`a ingloba il terzo cluster  e successivamente il secondo (la domanda zqrtfurehmz per un candidato non allenato pu\`o risultare pi\`u complessa rispetto alla domanda zrehhcvjyl).
 
 
 
