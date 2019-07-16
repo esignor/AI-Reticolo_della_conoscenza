@@ -219,7 +219,7 @@ Tuttavia il Reticolo generato riscontra delle peculiarit\`a:
 \noindent
 Il divario tra i valori per riga e colonna sono legittimati dalla natura del set di valori di input. In esso sono contenuti valori 0, e non esclusivamente -1 e 1, causa diretta dell'oscillazione delle correlazioni strette esistente tra le domande accoppiate \footnote{per i dati di prova le domande accoppiate sono (1;4), (3;6) e (2;5)}.\\\\
 \noindent
-Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori 0, che dovrebbero alterare, anche se marginalmente il risultato finale viene data la medesima importanza non tenendo conto dell'occorrenza (dimostrazione di come la frequenza gestisce male i valori anomali - vedi esempio sotto). Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
+Il Reticolo generato rispetta fedelmente le aspettative, definite dal Grafo della Conoscenza in figura \ref{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}. Tuttavia questo non va valutato come un risultato positivo, in quanto indicatore che ai valori 0, che dovrebbero alterare, anche se marginalmente il risultato finale viene data la medesima importanza non tenendo conto dell'occorrenza (dimostrazione di come la frequenza gestisce male i valori anomali - vedi esempio sotto). Il beneficio dell'uso della Rete sta proprio in quest'ultimo fattore, con l'impiego dell'apprendimento vengono rilevate situazioni che la sola frequenza non \`e in grado di pesare.
 
 
 \begin{verbatim}
@@ -301,7 +301,7 @@ Requisiti da assolvere, per costruire un Reticolo della Conoscenza valido per le
 
 
 \subsubsection{Individuazione dei gruppi di argomenti}\mbox{}
-\label{Individuazione dei gruppi di argomenti}
+\label{Individuazione dei gruppi di argomenti 89}
 Le domande di logica si compongono di due macro-argomenti principali:
 \begin{itemize}
 \item Domande sulle Serie numeriche;
@@ -409,8 +409,8 @@ zvlwoledbc & Eulero-Venn \\
 \caption{Gruppi di argomento per le domande di logica}\label{tab:Gruppi di argomento per le domande di logica}
 \end{longtable}
 
-\subsubsection{L'architettura della Rete}
-\label{L'architettura della Rete}
+\subsubsection{Architettura della Rete testata}
+\label{Architettura della Rete testata 89}
 Come già visto all'interno della sezione \ref{Rete neurale} la scelta dell'architettura adatta per una rete che deve trattare una grande mola e di cui non si ha piene conoscenza del risultato finale che si deve ottenere \footnote{perché soggetti all'indovinato come visto in \ref{Principal Component Analysis}} rende tale compito molto arduo.\\
 L'unico modo di affrontare il problema è procedere con l'analisi del set di dati in input aiutandosi con le conoscenze acquisite durante la costruzione del Reticolo sul set di prova.\\\\
 
@@ -444,7 +444,34 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 
+\item \begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
+layer_defs.push({type:'fc', num_neurons: 2, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:10, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:89});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
 
+\item \begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 5, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 5, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:89});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
 \end{itemize}
 
 \paragraph{Prima architettura: layers(12, 12)}\mbox{}
@@ -477,7 +504,7 @@ Il Reticolo della Conoscenza generato è il seguente:
 
 \subparagraph{Osservazioni}\mbox{}
 \noindent
-I risultati ottenuti sono buoni ma non eccelsi. Prima di tutto si crea un unico cluster, e non due come attendo, però in questo si vanno a insinuare un buon numero delle domande sulle serie numeriche e su eulero venn. Tuttavia le domande dello stesso argomento non sono le prime a correlarsi.
+I risultati ottenuti sono buoni ma non eccelsi. Prima di tutto si crea un unico cluster, e non due come attendo, però in questo si vanno a insinuare un buon numero delle domande sulle Serie numeriche e su Eulero Venn. Tuttavia le domande dello stesso argomento non sono le prime a correlarsi.
 \begin{longtable}{|c|c|}
 	\hline
 	\textbf{Serie numeriche} & \textbf{Eulero Venn} \\\hline\hline
@@ -526,8 +553,8 @@ Il Reticolo della Conoscenza generato è il seguente:
 \subparagraph{Osservazioni}\mbox{}
 \noindent
 Questo, ha mio avviso \`e, uno dei Reticolo pi\`u interessanti che ho generato, riguardante il set di domande di logica.
-Esiste un cluster principale e una decina di gruppi di dimensione via via sempre minore. A mano a mano che viene inalzata la Threshold, i gruppi vengono inglobati dal gruppo principale. I punti isolati sono in numero notevole, come si pu\`o vedere dall'immagine \ref{Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based} anche se la thresehold di competenza \`e quasi a met\`a.\\
-I punti isolati rappresentano, per la maggioranza dei casi tutte quelle domande che non trovano correlazione n\`e tra le serie numeriche, n\`e tra i diagrammi di eulero-venn. Nel cluster di dimensione maggiore trovano collocazione i seguenti punti:
+Esiste un cluster principale e una decina di gruppi di dimensione via via sempre minore. A mano a mano che viene inalzata la threshold, i gruppi vengono inglobati dal gruppo principale. I punti isolati sono in numero notevole, come si pu\`o vedere dall'immagine \ref{Reticolo della Conoscenza layers(4, 4, 10) - Cluster Based.} anche se la thresehold di competenza \`e quasi a met\`a.\\
+I punti isolati rappresentano, per la maggioranza dei casi tutte quelle domande che non trovano correlazione n\`e tra le serie numeriche, n\`e tra i diagrammi di Eulero-Venn. Nel cluster di dimensione maggiore trovano collocazione i seguenti punti:
 \begin{longtable}{|c|c|}
 	\hline
 	\textbf{Serie Numeriche} & \textbf{Eulero-Venn} \\\hline\hline
@@ -564,6 +591,437 @@ Ci sono tuttavia anche altri cluster interessanti:
 Si pu\`o definire come il primo e e il secondo cluster hanno una predominanza delle domande, per quanto concerne le domande catalogate, per le domande su Eulero-Venn; e il terzo per le domande sulle Serie numeriche.\\
 I tre gruppi molto probabilmente hanno difficolt\`a superiori per un candidato e per questo vengono inglobati uno dento l'altro passo passo.
 Prima di tutto il primo cluster, influenzato dai dati di probabilit\`a ingloba il terzo cluster  e successivamente il secondo (la domanda zqrtfurehmz per un candidato non allenato pu\`o risultare pi\`u complessa rispetto alla domanda zrehhcvjyl).
+
+\paragraph{Terza architettura: layers(2, 4, 10)}\mbox{}
+\label{Terza architettura}
+\noindent
+I risultati sono di poco discostanti, rispetto ai risultati ottenuti dalla configurazione a layers (4, 4, 10). Di seguito riporto esclusivamente i risultati ottenuti dalla Generazione del Reticolo.
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(2,4,10).png}
+	\caption{Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(2,4,10)_forced.png}
+	\caption{Reticolo della Conoscenza layers(2, 4, 10) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(2, 4, 10)) - Forced Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-logica(2,4,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
+\paragraph{Quarta architettura: layers(4, 4, 5, 5)}\mbox{}
+\label{Quarta architettura}
+\noindent
+Il Reticolo della Conoscenza generato è il seguente:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(4,4,5,5).png}
+	\caption{Reticolo della Conoscenza layers(4, 4, 5, 5) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(4, 4, 5, 5) - Cluster Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/logica(4,4,5,5)_forced.png}
+	\caption{Reticolo della Conoscenza layers(4, 4, 5, 5) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(4, 4, 5, 5) - Forced Based.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-logica(4,4,5,5).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 5, 5) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 5, 5) - Cluster Based.}
+\end{figure}
+\noindent
+\subparagraph{Osservazioni}\mbox{}
+\noindent
+La seguente architettura ottiene dei risultati discreti.\\
+Come si può vedere dalle immagini si ha la presenza di più cluster, uno di dimensione maggiore che progressivamente con l'incremento della threshold ingloba i tutti gli altri gruppi. Tuttavia tale configurazione non vede una distinzione netta di argomento per cluster, però al interno le domande relative alle Serie numeriche e ai diagrammi di Eulero-Venn si presentono strettamente correla. Tale architettura porta dei benefici inferiori rispetto a quella descritta in precedenza; ma ho comunque ritenuto fosse interessante da mostrare.
+Di seguito descrivo solo alcuni cluser che ritengo significativi.
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Serie numeriche} & \textbf{Eulero Venn} \\\hline\hline
+	pfctjunpxs & ljypeljfkh \\
+	zqrfurehmz & \\
+	wqkhvmdpol & poiuytrewq\\ 
+\hline
+\caption{Domande contenute nel primo cluster}\label{tab:Domande contenute nel primo cluster (rosa)}
+\end{longtable}
+\noindent
+\textit{poiuytrewq} e \textit{ljypeljfkh} derivano dal medesimo cluster, separati dalle domande sulle serie.
+\noindent
+Come si può vedere dalle immagini in figura \ref{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 5, 5) - Cluster Based.} alcuni cluster di dimensione ridotta, contengono mini gruppi di domande sulle serie:\\
+\begin{itemize}
+\item \textit{zrehhcvjyl} e \textit{xnyfhwlzx};
+\textit{pxvpfvjqnb} e \textit{qbnjsxnxx}.
+\end{itemize}
+\noindent
+Sono presenti anche gruppi isolati che mostrano una relazione strettissima tra domande di Serie numerica e di Eulero-Venn.
+\begin{itemize}
+\item \textit{zcflqcwpgh} e \textit{gilviisrcb};
+\item \textit{ccsofpywab} e \textit{xmqopkamew}.
+\end{itemize}
+\noindent
+
+\subsubsection{Risultati di frequenza sulle domae di logica}
+\label{Risultati di frequenza sulle domande di logica}
+Per maggiore completezza riporto il Reticolo della Conoscenza generato sulle risposte ai test di logica.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/frequence-logica(4,4,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 10) con Frequenza - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(4, 4, 10) con Frequenza - Cluster Based.}
+\end{figure}
+\noindent
+In questo caso la situazione non varia molto rispetto a quanto già incontrato per la Rete di Prova. La frequenza tende a smorzare le oscillazioni introdotte dalla probabilità che un utente ha di indovinare e dalla presenza di risposte non date.\\
+Come si può vedere dall'immagine sopra sono individuabili due cluster principali, composti:
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{cluter 2 (blu scuro} & \textbf{cluster 3 (blu chiaro} \\\hline\hline
+	xmqopkamew & gilviisrcb \\
+	zqrfurehmz & ccsofpywab \\
+	ptwccskjcf & ljypeljfkh \\
+\hline
+\caption{Domande su Serie numeriche e Eulero-Venn contenute nei cluster}\label{tab:domande su serie e eulero-venn contenute nei cluste)}
+\end{longtable}
+\noindent
+Possono apparire come dei buoni risultati; ma siamo ormai consci dell'impossibilità del metodo statistico di effettuare un calcolo pesato delle risposte alle domande; tale considerazione non fa altro che invalidare l'uso di questo modello.
+\noindent
+Inoltre, altra nota dolente, le domande individuate sono molto poche, prima di fondersi in un unico cluster. Invece con l'uso dei dati di previsione, della Rete, è possibile fare assunzioni sulla difficoltà delle domande (grazie alla presenza di un numero molteplice di cluster contenenti domande delle categorie in esame).
+
+
+\subsection{Domande SQL}
+\label{Domande SQL}
+Al termine dello studio e della generazione del Reticolo della Conoscenza per le domande di logica. Ho provveduto a generare il Reticolo anche per le domande SQL, contenute all'interno del database aziendale, in modo da ottenere un poter studiare come il Reticolo si comporta con una variazione del trainset.\\
+Le architetture scelte hanno tenuto conto quanto risultato durante la costruzione del Reticolo della Conoscenza per le domande di logica.
+
+\subsubsection{Individuazione dei gruppi di argomenti}
+\label{Individuazione dei gruppi di argomenti 120}
+Le domande SQL, sono domande strutturate nel quale risulta complesso individuare quali siano i macro argomenti; tuttavia nei test presi in esame per estrapolare i dati, erano presenti anche delle domande di Informatica Generale.
+E' dunque lecito ipotizzare che le domande di Informatica Generale compongano dei punti isolati, che saranno gli ultimi a fondersi all'interno del cluster.
+\noindent
+Di seguito, in forma tabellare viene riportata la categorizzazione delle domande.
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+aaxgbiwfen & SQL \\
+adiueedxey & SQL \\
+afakgklfop & SQL \\
+akczmgrdbq & SQL \\
+asxurodfne & SQL \\
+avagvdjdfu & SQL \\
+axrvccwwsp & SQL \\
+bbsurwinbt & SQL \\
+biweemhojf & SQL \\
+blhjkyufeg & SQL \\
+bwodxllzmk & SQL \\
+bwodxllzmk & SQL \\
+csttpqoysn & SQL \\
+culepaxyst & SQL \\
+cuyddcrymb & SQL \\
+cvnhqpgfyp & SQL \\
+dagputfvei & SQL \\
+dbuqwjsyvj & SQL \\
+dkihxiceua & SQL \\
+dkzgokqmiq & SQL \\
+dlfyuvcbqx & SQL \\
+dllpxhzfkt & SQL \\
+dzxsvydlth & SQL \\
+ebrpcrncwd & SQL \\
+eftrkdthng & SQL \\
+elqzybkpjl & SQL \\
+enitorndkz & Informatica Generale \\
+enmkdvzmyk & SQL \\
+ewplljreqn & Informatica Generale \\
+ffbcwwtnzk & SQL \\
+fhqcltuqwl & SQL \\
+fjmpjvualm & SQL \\
+fkdgytnwzf & SQL \\
+fumfugvkrl & Informatica Generale \\
+fuzfbwlutx & SQL \\
+fyrpicjqan & SQL \\
+fzoxjumtyn & SQL \\
+gtxwazgyqz & SQL \\
+guatssqajf & SQL \\
+gyerxpmgqa & SQL \\
+hntvpqncrc & Informatica Generale \\
+hyfoktjlpp & SQL \\
+idfxvfzprt & SQL \\
+ieimtqtzpk & SQL \\
+iezewxpthv & SQL \\
+ifrvxoopny & SQL \\
+ifvdeyoyre & SQL \\
+ikyqsdhuit & SQL \\
+jbpjxhaxyy & SQL \\
+jedvsptntk & SQL \\
+jycipstmyp & SQL \\
+kbnwlxqtqc & SQL \\
+kexorxwipq & SQL \\
+kfbpwmrkgz & SQL \\
+kjecbikedc & SQL \\
+kqkjrygfsc & SQL \\
+kzzvvwynxn & SQL \\
+lgiqayejyf & SQL \\
+ljozpygnua & SQL \\
+lohspalpqn & SQL \\
+lzpqvyslrv & SQL \\
+mdwdlplluz & SQL \\
+mezjrkwdmi & SQL \\
+mligaxxxyv & SQL \\
+mljwybuamb & SQL \\
+naywhaxocj & SQL \\
+nqrcokzyep & SQL \\
+oexeosrlxq & Informatica Generale \\
+oldnuetsfx & SQL \\
+ownmhihmlf & SQL \\
+oxinyiwtdw & SQL \\
+pdegmbefyz & Informatica Generale \\
+pnornaipiy & Informatica Generale \\
+pozlktnbwi & Informatica Generale \\
+pralrcttdk & Informatica Generale \\
+ptfyswhhoi & SQL \\
+ptvnijvlyr & SQL \\
+qfpxivqgfs & SQL \\
+qhpmwyunln & SQL \\
+qhurfzksbi & SQL \\
+qyfsksfpqr & SQL \\
+rcvjbkxijb & Informatica Generale \\
+rfveenepae & SQL \\
+rjqonwgagd & Informatica Generale \\
+rjrbsovupf & SQL \\
+rkpyhnweoz & Informatica Generale \\
+rlbnjnuraa & SQL \\
+rqlhmwvvfr & SQL \\
+shwidpusut & SQL \\
+slfnwkouex & SQL \\
+soaxrpkmyx & SQL \\
+tahwadyybr & SQL \\
+tmalpukvph & SQL \\
+tmptxxfqlg & SQL \\
+twjbzfuzhs & SQL \\
+uciubnhesv & SQL \\
+uctsvufnre & Informatica Generale \\
+ukteiawtcu & SQL \\
+uoujmoastk & SQL \\
+usloxptlnv & SQL \\
+vcetherudx & SQL \\
+vwesvpdxeu & SQL \\
+wbimqkxjpk & SQL \\
+wduzcrmbqr & SQL \\
+wgqmilmeeo & SQL \\
+wqoeigleak & Informatica Generale \\
+wyidhotyrc & SQL \\
+wyohxxjmbr & SQL \\
+xcvjgpwpgd & SQL \\
+xdfzuqqaxc & SQL \\
+xdpxeikdtg & SQL \\
+xxigdvhajv & Informatica Generale \\
+xymzioajbw & SQL \\
+yjakijsehd & Informatica Generale \\
+ynkrhlsqhx & SQL \\
+ypvazwngub & SQL \\
+yvbkrvodje & SQL \\
+zmivrwbcja & SQL \\
+zriwusbhcv & SQL \\
+zvsnjqiaqb & SQL \\
+\hline
+	
+\caption{Gruppi di argomento per le domande di logica}\label{tab:Gruppi di argomento per le domande SQL}
+\end{longtable}
+\noindent
+\subsubsection{Architettura della Rete testata}
+\label{Architettura della Rete testata 120}
+
+\begin{itemize}
+\item \begin{verbatim} layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:120});
+layer_defs.push({type:'fc', num_neurons: 2, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 4, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:10, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:120});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+
+\item \begin{verbatim}
+layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:120});
+layer_defs.push({type:'fc', num_neurons: 2, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons: 2, activation: 'tanh'});
+layer_defs.push({type:'fc', num_neurons:10, activation: 'tanh'});
+layer_defs.push({type:'regression', num_neurons:120});
+        
+net = new convnetjs.Net();
+net.makeLayers(layer_defs);
+trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+momentum:0.1, batch_size:10, l2_decay:0.001});
+\end{verbatim}
+\end{itemize}
+\noindent
+\paragraph{Prima architettura: layers(2,4,10)}\mbox{}
+\label{Prima architettura}
+\noindent
+Il Reticolo della Conoscenza generato è il seguente:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/sql(2,4,10).png}
+	\caption{Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/sql(2,4,10)_forced.png}
+	\caption{Reticolo della Conoscenza layers(2, 4, 10) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(2, 4, 10) - Forced Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-sql(2,4,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
+\end{figure}
+\noindent
+\subparagraph{Osservazioni}\mbox{}
+\noindent
+Come si vede dalle immagini sopra le ultime domande ad entrare a far parte del cluster sono:
+
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+	ifrvxoopny & SQL \\
+	pralrcttdk & Informatica Generale \\
+	rcvjbkxijb & Informatica Generale \\
+	bwodxllzmk & SQL \\
+	ewplljreqn & Informatica Generale \\
+	rjrbsovupf & Informatica Generale \\
+	guatssqajf & SQL \\
+	bbsurwinbt & SQL \\
+\hline
+	
+\caption{Codice delle domande ad essere associate per ultime}\label{tab:codice delle domande ad essere associate per ultime}
+\end{longtable}
+\noindent
+Le domande di Informatica Generale vengono sufficientemente riconosciute dall'architettura come valori anomali.
+
+\paragraph{Seconda architettura: layers(2,2,10)}\mbox{}
+\label{Seconda architettura}
+\noindent
+Il Reticolo della Conoscenza generato è il seguente:
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/sql(2,2,10).png}
+	\caption{Reticolo della Conoscenza layers(2, 2, 10) - Cluster Based.}
+	\label{Reticolo della Conoscenza layers(2, 2, 10) - Cluster Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/sql(2,2,10)_forced.png}
+	\caption{Reticolo della Conoscenza layers(2, 2, 10) - Forced Based.}
+	\label{Reticolo della Conoscenza layers(2, 2, 10) - Forced Based.}
+\end{figure}
+\noindent
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-sql(2,2,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(2, 2, 10) - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(2, 2, 10) - Cluster Based.}
+\end{figure}
+\noindent
+
+\subparagraph{Osservazioni}\mbox{}
+\noindent
+Come si vede dalle immagini sopra le ultime domande ad entrare a far parte del cluster sono:
+
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} \\\hline\hline
+	enmkdvzmy & Informatica Generale \\
+	uctssvufnre & Informatica Generale \\
+	pdegmbefy & Informatica Generale \\
+	pozikthbwl & Informatica Generale \\
+	oexeosrxq & Informatica Generale \\
+	hntvpqncrc & Informatica Generale \\
+	dagputfvei & Informatica Generale \\
+	wqoeigleak & SQL \\
+	rjbsovupf & SQL \\
+	fumfugvkrl & SQL \\
+\hline
+	
+\caption{Codice delle domande ad essere associate per ultime}\label{tab:codice delle domande ad essere associate per ultime}
+\end{longtable}
+\noindent
+Le prime sei domande, contenute in tabella, appartengono ad un singolo cluster, dal quale ne risultano estranee solo le domande \textit{bowdxllzmk} e \textit{avagvdjdfu}.
+\\
+Inoltre vengono associati in relazione stretta:
+\begin{longtable}{|c|c|c|}
+	\hline
+	\textbf{Codice} & \textbf{Argomento} & \textbf{Trattazione del quesito} \\\hline\hline
+	\begin{tabular}[c]{cc} oldnuetsfx \\ fyrpicjqan \end{tabular}  & SQL & sargabile \\
+	\hline
+	\begin{tabular}[c]{cc} usloxptlnv \\ vcetherudx \end{tabular} & SQL & selettività \\
+	\hline
+
+\hline
+	
+\caption{Codice delle domande associate}\label{tab:codice delle domande associate}
+\end{longtable}
+	
+\subsubsection{Risultati di frequenza sulle domande SQL}
+\label{Risultati di frequenza sulle domande SQL}
+Per maggiore completezza riporto il Reticolo della Conoscenza generato sulle risposte ai test di logica.
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.70\linewidth]{./image/frequence-sql(2,2,10).png}
+	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(2, 2, 10) con Frequenza - Cluster Based.}
+	\label{Sequenza di creazione del Reticolo della Conoscenza layers(2, 2, 10) con Frequenza - Cluster Based.}
+\end{figure}
+\noindent
+Il Reticolo generato dai dati di frequenza rende evidente la non capacità di un solo calcolo statistico di reagiere ai valori anomali. Dalla figura sopra, si vede come  le domande di logica non vengono individuate e inserite all'interno del Reticolo solo quando si posiziona il threshold al massimo; ma anzi vengono individuate parzialmente, già nei primi stadi di formazione del reticolo in gruppi assieme a domande sql e rientrano fin da subito all'interno del cluster principale.\\
+\noindent
+Come pro di questa tecnica è che individua subito che i dati contengono, erroneamente, un a domanda inserita due volte \textit{bwodxllzmk}.
+
+\begin{longtable}{|c|c|}
+	\hline
+	\textbf{cluter 2 (rosa} & \textbf{cluster 3 (azzurro} \\\hline\hline
+	pozlktnbwi & wqoeigleak \\
+	ewlplljreqn & pralrcttdk \\
+	hntvpqncrc & pnomaipjy \\\
+	oexeosrxq & fumfugvkrl \\
+	rcvjldkxib & rjrbsovupf \\
+    rkpyhnweo \\
+\hline	
+\caption{Codice delle domande di logica associate a domande sql}\label{tab:Codice delle domande di logica associate a domande sql}
+\end{longtable}
+\noindent
+Inoltre le domande che trattano la sargabilità  (\textit{oldnuetsfx}, \textit{fyrpicjgan}, \textit{fuzfbwlutx}), o meno di un predicato non vengono messo in nessun modo in correlazione, che invece la Rete neurale è in grado di individuare.
+	
+	
+
+
+
+
 
 
 
