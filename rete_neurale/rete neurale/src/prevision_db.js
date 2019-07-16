@@ -30,6 +30,6 @@ function prevision_db(dim) {
     document.getElementById("myCanvas").style.display = "inline"; // faccio comparire il box con la previsione canvas
     configureCanvasCoupling(scores, dim); // chiamata al metodo che crea il canvas;
 
-    vettoreReticolo(dim); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
+    //vettoreReticolo(dim); // usato in fase di test genera i dati basati sulle previsioni, da passare all'applicativo che costruisce il Reticolo della Conoscenza
 
 }
