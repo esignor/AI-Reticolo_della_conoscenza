@@ -20,13 +20,15 @@ body,html{
  }
 
  #img_presentation{
-  background-image:url("../src/prova_img.png");
+  background-image:url("../../../documentazione/Resoconto Tecnico/image/logo_Reticolo-della-Conoscenza.png");
   background-position:center;
-  height:18em; 
+  height:37em; 
   width:100%;
   float:right;
   margin-top:3em;
   background-repeat:no-repeat;
+  border:0.3em solid  #0f1934;
+  border-radius:2em;
  }
 
  #wrap{
@@ -125,6 +127,10 @@ body,html{
 
   #button_dettaglio-animation{
     margin-left: 35em;
+  }
+
+  #setter_numberfields{
+    border:none;
   }
 
   #title,  #title_previsione, #title_questionsdetail{
