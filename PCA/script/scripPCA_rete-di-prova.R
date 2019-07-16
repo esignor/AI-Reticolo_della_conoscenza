@@ -3,7 +3,7 @@
 # Caricamento della libreria
 library("factoextra")
 options(max.print=10000)
-df_numeric<-read.table("/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
+df_numeric<-read.table("AI-Reticolo_della_conoscenza/trainset dati/set-rete_di_prova.csv", header=FALSE, sep=",")  # carico il file csv
 # calcolo il pca (centra automaticamente per avere la media a 0), ho preferito effettuare la standardizzazione a mano, facilitava la lettura dei dati nell'asse
 res.pca <- prcomp(df_numeric, scale = FALSE) 
 biplot(res.pca); # rappresentazione grafica
@@ -88,6 +88,6 @@ plot(cor.pca)
     }
   }
 # Correlazione copiata in matrice_correlazione-prova.csv"
-write.table(correlazione, file="/home/eleonora/Scrivania/AI-Reticolo_della_conoscenza/PCA/correlazione dati/matrice_correlazione-prova.csv", quote=T, sep=";", dec=".", na="NA", row.name=FALSE, col.names=T, fileEncoding="")
+write.table(correlazione, file="AI-Reticolo_della_conoscenza/PCA/correlazione dati/matrice_correlazione-prova.csv", quote=T, sep=";", dec=".", na="NA", row.name=FALSE, col.names=T, fileEncoding="")
 
 
