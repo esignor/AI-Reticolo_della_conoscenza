@@ -56,7 +56,7 @@ body,html{
   display:block;
 }
 
-#link_numberfields, #button_cleanTextarea, #button_changeNet, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
+#link_numberfields, #intro, #button_cleanTextarea, #button_changeNet, #button_newfield, #button_prevision, #button_JSON, #buttonLoad_JSON, #button_upload, #button_writedocument, #button_dettaglio-animation, #button_back{
     color:#0f1934;
     background-color:#ffffff; 
     border:0.8em solid #0f1934;
@@ -64,11 +64,15 @@ body,html{
     font-style:italic;
     font-weight:bold;   
   }
+
+  #intro {
+    border:0.8em solid #ffffff;
+  }
  
 
   #button_changeNet{
     margin-top: 1em;
-    margin-left: 62em;
+    margin-left: 72em;
     -webkit-margin-start: 77em;
 
   }
@@ -102,7 +106,7 @@ body,html{
   #button_prevision{
   color:#ff7f50;
   border:0.8em solid #ff7f50; 
-  margin-left: 62em;
+  margin-left: 72em;
   -webkit-margin-start: 77em; /*chrome, deve precedere la definizione generale*/
   margin-top: -3em;
   }

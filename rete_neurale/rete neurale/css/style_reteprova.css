@@ -86,7 +86,7 @@ body,html{
   #button_prevision{
     color:#ff7f50;
     border:0.8em solid #ff7f50; 
-    margin-left: 62em; /*firefox e IE*/
+    margin-left: 72em; /*firefox e IE*/
     -webkit-margin-start: 77em; /*chrome, deve precedere la definizione generale*/
     margin-top: -3em;
   }
