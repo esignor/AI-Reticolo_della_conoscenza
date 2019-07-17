@@ -9,11 +9,11 @@ La libreria utilizzata per sviluppare la Rete neurale \`e stata \textit{ConvNetJ
 	\label{Prototipo interfaccia utente della Rete neurale di prova.}
 \end{figure}
 \noindent
-Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento ricevuti.
+Durante il periodo 24/05 - 31/05 mi sono occupata dello sviluppo di una Rete neurale in grado di ricevere in input un training set di dimensione 6 e di restituire una previsione sui dati di apprendimento generati.
 \noindent
-Il problema che la rete mira ad analizzare \`e quello discusso nel precedente capitolo \textit{Analisi dei dati di probabilit\`a}
+Il problema che la rete mira ad analizzare \`e quello discusso nel capitolo §\ref{Analisi dei dati}.
 \\\\
-Per agevolare l'apprendimento della rete, ed ottenere delle previsioni stabili, ho implementato due metodi di generazione randomica di dati in modo da far apprendere massicciamente la stessa.
+Per agevolare l'apprendimento della rete, ed ottenere delle previsioni stabili, ho implementato due metodi di generazione randomica di dati, in modo da far apprendere massicciamente la stessa.
 Il dato prodotto consiste in un vettore di 6 elementi, composto da  -1, 0 e 1 con il seguente criterio:
 \begin{itemize}
 \item \textbf{-1}: la domanda x \`e stata posta al candidato che ha risposto in maniera errata;
@@ -21,20 +21,20 @@ Il dato prodotto consiste in un vettore di 6 elementi, composto da  -1, 0 e 1 co
 \item \textbf{1}: la domanda x \`e stata posta al candidato che ha saputo rispondere correttamente.
 \end{itemize}
 \noindent
-Il primo metodo sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un grafo della conoscenza costruito ad hoc). Il secondo metodo ripropone quanto perseguito dal primo metodo, con il valore aggiunto, di generazione di un profilo randomico di un candidato, che tiene conto della  probabilit\`a di risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
+Il primo metodo sviluppato si occupa di generare un vettore di dati di apprendimento basandosi esclusivamente su come le domande sono interconnesse tra di loro (grazie all'uso di un Grafo della Conoscenza costruito ad hoc). Il secondo metodo ripropone quanto perseguito dal primo, con il valore aggiunto, di generazione di un profilo randomico per un candidato, che tiene conto della  probabilit\`a di risposta ad una domande seguendo la formula P(A)= $\frac{1}{3}+\frac{1}{6}P(S_1)+\frac{2}{3}P(S_2)$.
 
 \subsection{Test effettuati}
 \label{Test effettuati}
-Quando si parla di domande nel database, si fa riferimento se nel periodo citato alle 89 domande di logica.\\
-Alcune decisioni che ho preso per individuare l'architettura adeguata di rete possono essere cos]`i riassunte:
+Quando si parla di domande nel database, si fa riferimento principalmente ai test di logica svolti dai candidati.\\
+Alcune decisioni che ho preso per individuare l'architettura adeguata di rete possono essere così riassunte:
 \begin{enumerate}
 \item Una rete neurale non deve, per fornire dei dati attendibili, possedere un numero di neuroni troppo elevato rispetto al trainset effettuato; altrimenti la previsione  ritornerebbe l'identit\`a del vettore di input della stessa, come conseguenza diretta della capacit\`a troppo elevata di immagazzinare dati.
-\item I layers, ho deciso, di allenarli mediante tecnica di regressione, che permette l'inserimento in input di una funzione obiettivo e l'ottenimento di un risultato. L'output, anche in virgola mobile \`e composto di tanti elementi quanti sono i neuroni di regressione dichiarati. Per la mia rete di prova \`e sufficiente dichiarare  6 neuroni in regressione perch\`e l'output, appunto, che ci si aspetta dal sistema \`e di 6 elementi.
-\item Per costruire un dataset di dati consistente, che consenta alla rete di imparare qualcosa, ho costruito un Grafo della conoscenza con lo scopo di mettere in relazione degli argomenti d'interesse di pi\`u domande.
+\item I layers, ho deciso, di allenarli mediante tecnica di regressione, che permette l'inserimento in input di una funzione obiettivo e l'ottenimento di un risultato. L'output, anche in virgola mobile \`e composto da tanti elementi quanti sono i neuroni di regressione dichiarati. Per la mia rete di prova \`e sufficiente dichiarare  6 neuroni in regressione perch\`e l'output, appunto, che ci si aspetta dal sistema \`e di 6 elementi.
+\item Per costruire un dataset di dati consistente, che consenta alla rete di imparare qualcosa, ho costruito un Grafo della Conoscenza con lo scopo di mettere in relazione degli argomenti d'interesse di pi\`u domande.
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.60\linewidth]{./image/grafo_trainset.png}
-	\caption{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}
+	\caption{Grafo della Conoscenza rappresentante le relazioni esistenti tra il set di domande di prova.}
 	\label{Grafo rappresentante le relazioni esistenti tra il set di domande di prova.}
 \end{figure}
 \noindent
@@ -52,7 +52,7 @@ Di seguito riporto quanto \`e stato rilevato in fase di test.
 \subsubsection{Architettura  della rete: 4 neuroni per ciascuno dei 2 layers}
 \label{Configurazione della rete: 4 neuroni per ciascuno dei 2 layers}
 
-Architettura  della rete utilizzata:\\
+Architettura  della rete utilizzata:
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
 layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
@@ -77,20 +77,18 @@ I layers utilizzati sono 2 e compositi da 4 neuroni.
 [-0.021598804903572744,-0.1372509042342871,0.06611969158456255,
 0.018121335417653706,-0.11264571886853292,0.17520370837747462]\end{verbatim}
 Appaiono in relazione le domande 1, 2, 5 e 3, 4, 6.\\
-Gli scostamenti tra le coppie 2, 5 e 3, 6 sono consistenti con quelle che sono le relazioni di dipendenza, invece 1, 4 ha una differenza di 0.016 circa che parte da qualche millesimo fino 0.5
+Gli scostamenti tra le coppie 2, 5 e 3, 6 sono consistenti con quelle che sono le relazioni di dipendenza; invece 1, 4 ha una differenza di 0.016 circa che parte da qualche millesimo fino 0.5.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4; nel test in analisi questo non viene rispettato da nessuna delle coppie in analisi per differenze che vanno da qualche millesimo fino a 0.018 circa.
 \paragraph{Osservazioni}\mbox{}
 \label{Osservazioni su rete a 4 neuroni per ciascuno dei 2 layers}
 \\\\
 \noindent
-L'architettura testata si compone di 4 neuroni a layer su una base di 2000 test correndo il rischio di avere una rete che apprende troppo e come effetto negativo "veda" addirittura cose che non esistono. A prova di ci\`o sono i risultati non conformi alle attese.
-Dunque mi fermo qui con il test di tale architettura e riducendone il numero di neuroni presenti in ciascun layers e/o il numero di layers presenti.\\
-
-Le nuove architetture su cui ho effettuato i test sono esposte nei paragrafi seguenti.
+L'architettura testata si compone di 4 neuroni a layer su una base di 2000 test, con il rischio di avere una rete che apprende troppo e che come effetto negativo "veda" addirittura cose che non esistono. A prova di ci\`o sono i risultati non conformi alle attese.
+Ho scelto di conseguenza, di ridurre il numero di neuroni presenti in ciascun layers e/o il numero di layers presenti.
 
 \subsubsection{Architettura della rete a 2 neuroni per ciascuno dei 2 layers}
 \label{Architettura della rete a 2 neuroni per ciascuno dei 2 layers}
-Architettura  della rete utilizzata:\\
+Architettura  della rete utilizzata:
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
 layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});
@@ -137,10 +135,10 @@ Dai dati della previsione si nota come il candidato ha un'ottima probabilit\`a d
 Appaiono in relazione le domande 1, 2, 4, 5 e 3, 6.\\
 Gli scostamenti tra le coppie 1, 4 e 3, 6  e 2, 5 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4; in questo test la regola viene rispettata pienamente.\\
-Dai dati della previsione si nota come il candidato ha una discreta probabilit\`a di saper rispondere alla coppia 2 e 5, un p\`o meglio di saper rispondere alla coppie 1 e 4 e pi\`u di non saper saper rispondere alle 3 e 6 (come imposto dal vettore previsione).
+Dai dati della previsione si nota come il candidato ha una discreta probabilit\`a di saper rispondere alla coppia 2 e 5, un p\`o meglio di saper rispondere alla coppie 1 e 4 e di non saper saper rispondere alle 3 e 6 (come imposto dal vettore previsione).
 \end{itemize}
 
-\paragraph{Training set con generazione del profilo di un candidato e calcolo delle probabilit\`a di risposta a 2 neuroni per ciascuno dei 2 layers}\mbox{}
+\paragraph{Training set con generazione del profilo di un candidato con probabilit\`a su rete a 2 neuroni per ciascuno dei 2 layers}\mbox{}
 \label{Training set con generazione del profilo di un candidato e calcolo delle probabilita di risposta a 2 neuroni per ciascuno dei 2 layers}
 \\
 \noindent
@@ -151,7 +149,7 @@ Dai dati della previsione si nota come il candidato ha una discreta probabilit\`
 \end{verbatim}
 Appaiono in relazione le domande 1, 2, 4 e 3, 5, 6.\\
 Gli scostamenti tra la coppia 1, 4 e 3, 6 sono consistenti con  quelle che sono le relazioni di dipendenza fra le domande; invece per la coppia 2 e 5 i segni sono opposti con una differenza di 0.024.
-Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4, la regola viene rispettata pienamente. Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta che sul grafo della conoscenza.
+Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4, la regola viene rispettata pienamente. Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta.
 
 \item \begin{verbatim}Il vettore [0,0,1,0,1,0] ha previsione calcolata di
 [0.19494624113789977,0.1712744021266377,0.577963304906936,
@@ -160,7 +158,7 @@ Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispett
 Appaiono in relazione le domande 1, 2, 3, 4, 5, 6.\\
 Gli scostamenti tra le coppie 1 e 4 , 2 e 5, 3 e 6 sono consistenti con quelle che sono le relazioni di dipendenza fra le domande.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4, la regola non viene rispettata dalla domanda 1 in rapporto con la domanda per una differenza di 0.37 circa.
-Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta che sul grafo della conoscenza.
+Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta.
 
 \item \begin{verbatim}Il vettore [0,0,-1,0,0,0] ha previsione calcolata di
 [0.09845785763965222,0.015421380649956663,-0.5138068038427066,
@@ -169,7 +167,7 @@ Le anomalie riscontrate sono da ricondurre alla natura del vettore di training c
 Appaiono in relazione le domande 1, 2, 6 e 3, 4, 5.\\
 Gli scostamenti tra le coppie 1, 4 e 2, 5 e 3, 6 per una differenza tuttavia trascurabile  che oscilla dallo 0.2 allo 0.5.
 Le domande 3 e 6 si dovrebbero presentare con una positivit\`a inferiore rispetto a 1 e 4, la regola non vale per la coppa 6 e 4.
-Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta che sul grafo della conoscenza.
+Le anomalie riscontrate sono da ricondurre alla natura del vettore di training che si basa sul calcolo della probabilit\`a di una risposta.
 \end{itemize}
 
 
@@ -178,13 +176,13 @@ Le anomalie riscontrate sono da ricondurre alla natura del vettore di training c
 \\\\
 \noindent
 Confrontando i risultati ottenuti dalla rete con i layers impostati a 4 neuroni con quanto emerso dai dati risultanti dalla  rete a 2 neuroni; emerge come l'architettura  a 2 neuroni a layers \`e sicuramente quella che da i risultati attesi.\\
-Quanto emerso di discordate dal secondo training set \`e, come da aspettative, da associare alla natura stessa della creazione del set di dati.
+Quanto osservato di discordate nel secondo training set \`e, come da aspettative, da associare alla natura stessa della creazione del set di dati.
 
 
 \subsubsection{Architettura della rete a 4 neuroni per 1 layer}
 \label{Architettura della rete a 4 neuroni per 1 layer}
 
-Architettura della rete utilizzata:\\
+Architettura della rete utilizzata:
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
 layer_defs.push({type:'fc', num_neurons:4, activation: 'tanh'});
@@ -218,19 +216,19 @@ Dai dati della previsione si nota come il candidato non ha una buona probabilit\
 \label{Osservazioni su rete a 4 neuroni per 1 layer}
 \\\\
 \noindent
-\textit{Rispetto a quanto osservato nei casi precedenti, ancora l'architettura  che rispetta le attese \`e quella con 2 neuroni per 2 layers.}
+Rispetto a quanto osservato nei casi precedenti, ancora l'architettura  che rispetta le attese \`e quella con 2 neuroni per 2 layers.
 \\\\
 \noindent
-Tale conclusione ha perfettamente senso in quanto il Grafo della Conoscenza, che ho usato come base per costruire i vettori di apprendimento, \`e composto da 3 nodi (A, B, C) indicanti 3 neuroni. Il quarto pu\`o venire valutato come un nodo della rete utile per parametri in entrata e in uscita.
+Tale conclusione ha perfettamente senso, in quanto il Grafo della Conoscenza, che ho usato come base per costruire i vettori di apprendimento, \`e composto da 3 nodi (A, B, C) indicanti 3 neuroni. Il quarto pu\`o venire valutato come un nodo della rete utile per parametri in entrata e in uscita.
 \\\\
-Per estendere maggiormente la mia conoscenza della rete, ho provveduto ad aumentare progressivamente il numero di neuroni a layers e osservarne le interazioni. Svolgendo ci\`o mi sono accorta che il risultato ottenuto dalla previsione era il pi\`u possibile vicino al vettore previsione; causa di un numero eccessivo di neuroni dati alla rete per l'apprendimento rispetto al training set svolto. La situazione \`e generatrice di overfitting e non attendibilit\`a dei dati raccolti.
-L'architettura a 1 e 2 neuroni invece presenta una buona capacit\`a di previsione in quasi tutti i casi, per\`o tende ad andare in underfitting, come riporto di seguito:
+Per estendere maggiormente la mia conoscenza della rete, ho provveduto ad aumentare progressivamente il numero di neuroni a layers e osservarne le interazioni. Svolgendo ci\`o mi sono accorta che il risultato ottenuto dalla previsione era il pi\`u possibile vicino al vettore previsione quando facevo uso di un numero eccessivo di neuroni rispetto al training set svolto. La situazione \`e generatrice di overfitting e non attendibilit\`a dei dati raccolti.
+Un'architettura con 1 neurone nel primo e 2 nel secondo layer , invece, presenta una buona capacit\`a di previsione in quasi tutti i casi, per\`o tende ad andare in underfitting, come riporto di seguito:
 \begin{verbatim}
 Il vettore [0,0,0,0,0,1] ha previsione calcolata di
 [0.5613347853884025,0.8310670629630683,-1.03049430206139,
 0.5492731069379962,0.5679700877862532,-0.8637707232817535]
 \end{verbatim}
-Il numero di neuroni non \`e sufficiente per memorizzare che la domanda 6 deve essere positiva, e comporta a cascata la correttezza anche delle domande 3, 4 e 1. La situazione si presenta simile se il layer con 1 neurone \`e posto al di sotto.
+Il numero di neuroni non \`e sufficiente per memorizzare che la domanda 6 deve essere positiva, e comporta a cascata la non correttezza anche delle domande 3, 4 e 1. La situazione si presenta simile, se il layer con 1 neurone \`e posto al di sotto.
 
 
 \subsection{Sviluppo della rete delle domande nel database}
@@ -240,7 +238,7 @@ Il numero di neuroni non \`e sufficiente per memorizzare che la domanda 6 deve e
 \label{Montaggio e configurazione della rete per le domande di logica}
 
 Durante la settimana dal 03/06 al 07/06 la mia attivit\`a principale \`e stata il montaggio e la configurazione della Rete neurale, inerente il database aziendale con dataset i colloqui ai candidati per le domande di logica.
-Inoltre ho rivolto parte delle ore a modificare e ottimizzare quanto gi\`a implementato nella Rete di prova, in modo che ogni cosa implementata sulla rete del database \`e presente anche in versione ridotta.\\\\
+Inoltre ho rivolto parte delle ore a modificare e ottimizzare quanto gi\`a implementato nella Rete di prova, in modo che ogni cosa implementata sulla rete del database sia presente anche in versione ridotta.\\\\
 Per rendere pi\`u comprensibile le previsioni di probabilit\`a ottenute, a seguito dell'addestramento della rete e della data in pasto del vettore previsione, ho realizzato un'immagine canvas in cui ogni domanda viene raffigurata con un quadrattino colorato, in base alla previsione risultante (verde se a 1, bianco a 0, rosso a -1, gradazioni di bianco - verde e bianco - rosso per i valori intermedi).
 \begin{figure}[H]
 \centering
@@ -256,7 +254,7 @@ Per rendere pi\`u comprensibile le previsioni di probabilit\`a ottenute, a segui
 	\label{Rete neurale del database aziendale.}
 \end{figure}
 \noindent
-Una prima architettura su cui ho deciso di analizzare i risultati della rete del database a 89 domande di logica, basandomi anche sul quanto appreso dalla Rete neurale di prova e dal numero di vettori di test utilizzati (1245 vettori x 89), \`e stata la seguente:
+Una prima architettura su cui ho deciso di analizzare i risultati della rete del database a 89 domande di logica, usando quanto ho appreso dalla Rete di prova e tenendo in conto del numero di vettori di test utilizzati (1245 vettori x 89), \`e stata la seguente:
 \begin{verbatim}
 layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:89});
@@ -273,24 +271,15 @@ momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 Ho aggiunto un layer e messo un numero di neuroni per layer in modo da formare un romboide.
 
-\subsubsection{Natura delle domande di logica contenute nel database aziendale}
-\label{Natura delle domande di logica contenute nel database aziendale}
-
-Analizzando il training set dei vettori ho riscontrato tali correlazioni:
-\begin{itemize}
-\item Solo una piccola parte delle domande di logica, presenti nel database, vengono svolte durante un colloquio con un candidato. In media una decina su 89 possibili.
-\item Dalla rete sembra che le domande abbiano qualche correlazione, tuttavia la configurazione attuale ne rende difficoltosa l'individuazione.
-\end{itemize}
-
 
 \subsubsection{Test e Documentazione}
 \label{Test e Documentazione}
-Durante la settimana dal 10/06 al 18/06 ho effettuato quanto definito al interno del Piano di Lavoro come "Test e Documentazione".
+Durante la settimana dal 10/06 al 18/06 ho svolto attività di test e documentazione del lavoro svolto.
 
 \paragraph{Test nella Rete di prova}\mbox{}\\\\
 \label{Test nella Rete di prova}
 \noindent
-Architettura della rete utilizzata:\\
+Architettura della rete utilizzata:
 \begin{verbatim}layer_defs = [];
 layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:6});
 layer_defs.push({type:'fc', num_neurons:2, activation: 'tanh'});
@@ -343,28 +332,28 @@ Quanto mostrato dal dettaglio delle domande ha il seguente significato per un ca
 \begin{itemize}
 \item \textit{se la domanda 1 \`e settata a -1 (non corretta)}: la rete prevede che la domanda 1 e 4 non abbiano una probabilit\`a alta di essere risposte in modo corretto (bianco con sfumature di verde); la 3 e 6 una probabilit\`a molto alta di venire risposte in modo sbagliato (rosso), la 2 e la 5 di non venire nemmeno poste (verde con qualche sfumatura di bianco).
 \item \textit{se la domanda 2 \`e settata a -1 (non corretta)}: la rete prevede che la domanda 1 e 4 abbiano una probabilit\`a non molto alta di essere risposte in modo non corretto (verde con qualche sfumatura di bianco); la 3 e 6 una buona probabilit\`a di venire risposte in modo sbagliato (rosa), la 2 e la 5 di venire date in modo non corretto (rosa molto attenuato).
-\item \textit{se la domanda 3 \`e settata a -1 (non corretta)}: la rete prevede che la domanda 3 e 6 abbiano una probabilit\`a comunque alta di essere risposte in modo non corretto (rosso); la 1 e 4 con bassa probabilit\`a di venire risposte in modo corretto (bianco con qualche sfumatura di verde) perch\`e pi\`u semplici delle domande 3 e 6, la 2 e la 5 di non venire nemmeno poste o comunque basso di venire risposto correttamente(bianco con sfumature di verde).
+\item \textit{se la domanda 3 \`e settata a -1 (non corretta)}: la rete prevede che la domanda 3 e 6 abbiano una probabilit\`a  alta di essere risposte in modo non corretto (rosso); la 1 e 4 con bassa probabilit\`a di venire risposte in modo corretto (bianco con qualche sfumatura di verde) perch\`e pi\`u semplici delle domande 3 e 6, la 2 e la 5 di non venire nemmeno poste o comunque bassa probabilità di venire risposte correttamente (bianco con sfumature di verde).
 \item \textit{se la domanda 4 \`e settata a -1 (non corretta)}: la rete prevede un risultato  identico a quanto ottenuto dalla domanda 1.
 \item \textit{se la domanda 5 \`e settata a -1 (non corretta)}: la rete prevede un risultato similare a quanto ottenuto dalla domanda 2. Cambia solo quanto previsto dalle domande 3 e 6 che si presentano con un rosa un p\`o meno intenso, in quanto non  correlate alla coppia di domande 2 e 5.
 \item \textit{se la domanda 6 \`e settata a -1 (non corretta)}: la rete prevede un risultato simile a quanto ottenuto dalla domanda 3. La coppia 2 e 5 hanno una probabilit\`a maggiore di essere date correttamente (bianco con sfumature di verde) perch\`e non correlate alle domande 3 e 6.
 \end{itemize}
 \end{itemize}
 
-\paragraph{Test nella Rete del database}\mbox{}\\
+\paragraph{Test nella Rete del database}
 \label{Test nella Rete del database}
 \noindent
 \subparagraph{Architetture testate}\mbox{}\\\\
 \label{Architetture testate}
 \noindent
 Durante tutto il periodo ho effettuato una serie di test su molteplici architettura della rete, con gradi di correlazione tra le domande pari al 100\%  fino ad un differenziale massimo di 5 punti colore, rispetto al canvas risultante per ogni domanda \footnote{valutando i cluster generati}.\\
-Tuttavia non sono, durante questo periodo, riuscita ad individuare un'architettura sufficientemente stabile per prevedere risultati attendibili.\\
+Tuttavia non sono riuscita ad individuare un'architettura sufficientemente stabile per prevedere risultati attendibili.\\
 Fattori dominanti, che impediscono la scelta di una configurazione nel caso trattato, sono:
 \begin{itemize}
 \item La molteplicit\`a di dati che hanno aumentato esponenzialmente  la complessit\`a di analisi, rispetto alla Rete di prova;
-\item la creazione stessa del set di input, parzialmente randomica.
+\item la creazione stessa del set di input: composto da una probabilità discreta, ma non conosciuta, che il candidato abbia saputo rispondere solo per fortuna.
 \end{itemize}
 \noindent
-I fattori sopra citati vengono trattati approfonditamente nella sezione \ref{Costruzione del Reticolo della Conoscenza}.\\
+I fattori sopra citati vengono trattati approfonditamente nella sezione \ref{Costruzione del Reticolo della Conoscenza}.\\\\
 \noindent
 Architettura della rete utilizzata:
 \begin{itemize}
@@ -404,8 +393,7 @@ Dagli screen della rete riportati sopra appare come "sembrano" domande:
 \item \textit{semplici} la 18, 22, 34, 35, 37, 39, 41, 44, 48, 50, 51, 52, 53, 54, 55, 56, 57, 59, 60, 67, 69,  71, 72, 77, 79, 80, 82, 84, 87 e 88. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 18, 22, 40 e 59.
 \item \textit{difficili} la 3, 4, 6, 13, 16, 19, 24, 25, 26, 36, 38, 42, 43, 46, 49, 61, 63, 65, 66, 70, 78, 81, 85 e 89. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 6, 13, 19, 36, 38, 42, 46 e 70.
 \end{itemize}
-\item Analisi orizzontale:
-Appaiono in accoppiate le seguenti domande:
+\item Analisi orizzontale, appaiono accoppiate le seguenti domande:
 \begin{itemize}
 \item 2, 3, 4, 5;
 \item 7, 8, 9;
@@ -445,8 +433,7 @@ Dagli screen della rete riportati sopra appare come "sembrano" domande:
 \item \textit{semplici} la 18, 22, 34, 35, 37, 38, 39, 41, 44, 48, 50, 51, 52, 54, 55, 56, 67, 69,  71, 72, 77, 79, 80, 82, 84, 87 e 88. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 18, 22, 38, 52 e 57.
 \item \textit{difficili} la 3, 4, 6, 13, 19, 27, 36, 38, 42, 43, 46, 61, 62, 65, 70. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 6, 13, 19, 36, 38, 42, 46, 61 e 62.
 \end{itemize}
-\item Analisi orizzontale:
-Appaiono accoppiate le seguenti domande:
+\item Analisi orizzontale appaiono accoppiate le seguenti domande:
 \begin{itemize}
 \item rimaste consistenti con il vettore [1, 1, 1, 1, 1, 1].
 \end{itemize}
@@ -482,23 +469,22 @@ Noto che aumentando il numero di neuroni sull'unico layer esistente, il valore d
 \end{figure}
 \noindent
 
-Dagli screen della rete riportati sopra appare come la situazione appare meno lineare del caso analizzato precedentemente. 
-Le domande non vengono separate per linee rete; ma per aree di relazione. Appare come "sembrano" domande:
+Dagli screen della rete riportati sopra appare come la situazione meno lineare rispetto al caso analizzato precedentemente. 
+Le domande non vengono separate per linee rette; ma per aree di relazione. Appare come "sembrano" domande:
 \begin{enumerate}
 \item Analisi verticale:
 \begin{itemize}
 \item \textit{semplici} la 18, 22, 34, 35, 37, 39, 41, 44, 48, 50, 51, 52, 53, 54, 55, 56, 57, 59, 60, 67, 69,  71, 72, 77, 79, 80, 82, 84, 87 e 88. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 18, 22, 40 e 59.
 \item \textit{difficili} la 3, 4, 6, 13, 16, 19, 24, 25, 26, 36, 38, 42, 43, 46, 49, 61, 63, 65, 66, 70, 78, 81, 85 e 89. Inoltre di queste sembrano in relazione ancora pi\`u stretta le domande 6, 13, 19, 36, 38, 42, 46 e 70.
 \end{itemize}
-\item Analisi orizzontale:
-Appaiono in relazione stretta le seguenti domande:
+\item Analisi orizzontale, appaiono in relazione stretta le seguenti domande:
 \begin{itemize}
-\item Vengono meno le relazioni individuate precedentemente.
+\item Vengono meno le relazioni individuate nella configurazione precedentemente.
 \end{itemize}
 \end{enumerate}
 \noindent
 
-Architetture sottoposte ad analisi:
+Altre architetture sottoposte a test:
 \item \begin{verbatim}
 trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 momentum:0.1, batch_size:10, l2_decay:0.001});
@@ -880,32 +866,32 @@ trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01,
 momentum:0.1, batch_size:10, l2_decay:0.001});
 \end{verbatim}
 \end{itemize}
-
-Avvalendomi dello studio approfondito del testo delle 89 domande di logica e dai test sopra effettuati, ho tratto le seguenti considerazioni in merito all'architettura di Rete:
+\noindent
+Avvalendomi dello studio approfondito del testo delle 89 domande di logica e dai test sopra effettuati, ho tratto le seguenti considerazioni sull'architettura di una rete:
 \begin{itemize}
 \item Un layer non \`e sufficiente per trattare il problema in esame. Si si aspetta che i dati si aggreghino per argomento:  due macro argomenti principali (serie e eulero-venn) e la parte restante, domande senza un vero e proprio tema, concorrente a creare il pavimento della Rete;
 \item Un numero di neuroni superiore a 11 per hidden layer genera situazioni riconducibili all'overfitting.
 \end{itemize}
 \noindent
-L'obiettivo di individuare una configurazione di rete abbastanza "forte", da permettere un riscontro di correlazioni e cluster esistenti, nella stessa, \`e tuttavia fallito. I risultati ottenuti non sono sufficienti per riuscire a trarre delle conclusioni ragionevoli. Per proseguire il mio studio \`e stato indispensabile avvalersi di altri strumenti di supporto, come la tecnica di {P}rincipal \textbf{C}omponent \textbf{A}nalysis.
+L'obiettivo di individuare una configurazione di rete abbastanza "forte", da permettere un riscontro di correlazioni e cluster esistenti, nella stessa, \`e tuttavia fallito. I risultati ottenuti non sono sufficienti per riuscire a trarre delle conclusioni ragionevoli. Per proseguire il mio studio \`e stato indispensabile avvalersi di altri strumenti di supporto, come la tecnica di \textbf{P}rincipal \textbf{C}omponent \textbf{A}nalysis.
 
 
 \subsection{Funzionalit\`a offerte dall'interfaccia della Rete neurale costruita}
 \label{Funzionalita offerte dall'interfaccia della Rete neurale}
-La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere analisi di una grande quantit\`a dati, mirata alla previsione dei risultati. L'applicativo realizzato offre le seguenti funzionalit\`a:
+La Rete neurale sviluppata \`e stata pensata per una persona che deve svolgere analisi su una grande quantit\`a dati, mirata alla previsione dei risultati. L'applicativo realizzato offre le seguenti funzionalit\`a:
 \begin{itemize}
 \item Caricamento dei dati con l'utilizzo di formati \textit{CSV} o \textit{TXT};
 \item Possibilit\`a di visualizzare i dati caricati direttamente su pagina web. Ogni risposta viene presentata con codice di test e codice della domanda;
 \item Possibilit\`a di visualizzare i dati caricati nella Rete mediante formato JSON. In questo modo la rete post apprendimento viene salvata ed \`e possibile visualizzare come ogni nodo pesa ogni variabile. Inoltre l'ultima rete salvata pu\`o venire caricata in ogni momento e riutilizzata;
 \item La Rete neurale \`e fornita di due textarea: 
 \begin{itemize}
-\item La prima che permette la visualizzazione e la modifica dell'architettura in uso, con indicazione della tipologia di trainer utilizzato. Questa sezione permette la modifica delle variabili di configurazione. Se si desidera modificare il numero di domande analizzate dalla rete \`e d'obbligo modificare il numero di neuroni espressi nella regressione, di previsione, di configurazione e index della rete;
+\item La prima che permette la visualizzazione e la modifica dell'architettura in uso, con indicazione della tipologia di trainer utilizzato. Questa sezione permette la modifica delle variabili di configurazione. 
 \item La seconda che consente la visualizzazione dei risultati ottenuti dalla Rete.
 \end{itemize}
 \item \`E possibile settare la previsione che si vuole ottenere, mediante un'area di inserimento con box a radio. Il valore di default imposto \`e 0. 
-\item Per ogni previsione svolta viene visualizzato non solo il risultato della stessa numericamente espresso all'interno della seconda textarea; ma viene anche rappresentato visivamente per mezzo di canvas;
+\item Per ogni previsione svolta viene visualizzato non solo il risultato della stessa, numericamente espresso all'interno della seconda textarea, ma viene anche rappresentato visivamente per mezzo di canvas;
 \item \`E offerta la funzionalit\`a di inserimento dei parametri di differenziale con filtro sulla colorazione, che permette l'indicazione dei cluster esistenti;
-\item \`E possibile visualizzare per ogni elemento soggetto alla previsione il dettaglio della previsione stessa. Questa viene presentata visivamente per mezzo di canvas;
+\item \`E possibile visualizzare per ogni elemento, soggetto alla previsione, il dettaglio della previsione stessa. Questa viene presentata visivamente per mezzo di canvas;
 \item \`E possibile eliminare lo storico dei dati stampati nella seconda textarea.
 \end{itemize}
 
@@ -920,14 +906,14 @@ Gli \textit{attori} esistenti all'interno del sistema che interagiscono con esso
 \item \textbf{Utente osservatore}: utente che agisce direttamente sulla Rete neurale, in modo da effettuare osservazioni ed analisi dei dati di interesse.
 \end{itemize}
 
-\paragraph{Casi d'uso}\mbox{}
+\paragraph{Casi d'uso}\mbox{}\\
 \label{Casi d'uso}
 \noindent
 Ogni caso d'uso è composto dalle seguenti parti:
       \begin{itemize}
-      \item \textbf{Identificativo}: composto dalla numerazione appena descritta sopra seguita da una stringa testuale che rappresenta la funzionalità che si vuole modellare;
+      \item \textbf{Identificativo}: composto da una stringa testuale, che rappresenta la funzionalità che si vuole modellare, seguita da un codice numerico;
       \item \textbf{Descrizione}: contiene una breve descrizione del caso d'uso;
-      \item \textbf{Attori}: l'attore è  tutto ciò che è esterno al sistema e con il quale interagisce. Un'attore si suddivide in due categorie:
+      \item \textbf{Attori}: l'attore è  tutto ciò che è esterno al sistema e con il quale interagisce. Un attore si suddivide in due categorie:
         \begin{itemize}
         \item \textbf{Attore primario}: che interagisce direttamente con il sistema;
         \item \textbf{Attore secondario}: entità esterna che interagisce con il sistema; ma con l'obiettivo di far raggiungere all'attore principale il suo scopo.
@@ -1765,15 +1751,15 @@ I requisiti sono e classificati come segue:
 \item \textbf{Importanza}: ogni requisito può appartenere solo ad una delle classi di importanza elencate di seguito:
 \begin{itemize}
 \item \textbf{O (Requisito Obbligatorio)}: requisito fondamentale per la corretta realizzazione del progetto;
-\item \textbf{D (Requisito Desiderabile)}: requisito non fondamentale al progetto ma il cui soddisfacimento comporterebbe una maggiore completezza del prodotto;
+\item \textbf{D (Requisito Desiderabile)}: requisito non fondamentale al progetto, ma il cui soddisfacimento comporterebbe una maggiore completezza del prodotto;
 \item \textbf{F (Requisito Facoltativo)}: requisito non richiesto per il corretto funzionamento del prodotto, ma che se incluso porterebbe valore aggiunto al progetto. Prima di soddisfare tale categoria di requisiti \`e indispensabile svolgere analisi di tempi e costi, per evitare ritardi nella consegna e/o costi superiori a
 quelli preventivati.
 \end{itemize}
 \item \textbf{Tipologia}: Di seguito sono riportate le tipologie di requisito:
 \begin{itemize}
-\item \textbf{V}: Identifica un requisito di Vincolo, ovvero descrive vincoli sui servizi offerti dal sistema; 
-\item \textbf{F}: Identifica un requisito Funzionale, ovvero descrive servizi o funzioni offerti dal sistema
-\item \textbf{Q}: Identifica un requisito di Qualit\`a, ovvero descrive i vincoli di qualità da realizzare quali manutenibilità, sicurezza, portabilità, disponibilità, ecc\dots,
+\item \textbf{V}: identifica un requisito di Vincolo, ovvero descrive vincoli sui servizi offerti dal sistema; 
+\item \textbf{F}: identifica un requisito Funzionale, ovvero descrive servizi o funzioni offerti dal sistema;
+\item \textbf{Q}: identifica un requisito di Qualit\`a, ovvero descrive i vincoli di qualità da realizzare quali manutenibilità, sicurezza, portabilità, disponibilità, ecc\dots,
 \end{itemize}
 \item \textbf{Codice}: Ogni requisito è formato da un codice numerico progressivo che lo identifica in modo univoco.
 \noindent
@@ -1785,7 +1771,7 @@ quelli preventivati.
 \end{itemize}
 \noindent
 Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} raggiunto al termine del progetto di stage.
-
+\pagebreak
 \subparagraph{Requisiti Funzionali}\mbox{}
 \label{Requisiti Funzionali}
 
@@ -1882,27 +1868,27 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 	\hline
 	\textbf{Tipo} & \textbf{Obbligatorio} & \textbf{Facoltativo} & \textbf{Desiderabile} & \textbf{Totale} \\\hline\hline
 	   
-\textbf{Funzionale} & 10 & 12 & 6 & 28 \\
+\textbf{Funzionale} & 10 & 12 & 6 & \textbf{28} \\
 	   \hline
-\textbf{di Vicolo} & 1 & 3 & 1 & 5 \\
+\textbf{di Vicolo} & 1 & 3 & 1 & \textbf{5} \\
 	   \hline
-\textbf{di Qualit\`a} & 1 & 0 & 0 & 1 \\
+\textbf{di Qualit\`a} & 1 & 0 & 0 & \textbf{1} \\
 	   \hline
-\textbf{Totale} & 12 & 16 & 7 & 35 \\
+\textbf{Totale} & \textbf{12} & \textbf{16} & \textbf{7} & \textbf{35} \\
 \hline
 
 \caption{Resoconto dei Requisiti}\label{tab:resoconto dei requisiti}
 \end{longtable}
 
 
-\subsubsection{Interfaccia utente Rete neurale definitiva}
+\subsubsection{Interfaccia utente Rete neurale - Definitiva}
 \label{Interfaccia utente Rete neurale}
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_finale.png}
 	\caption{Interfaccia finale utente della Rete neurale di prova - Visione box inserimento architettura e visualizzazione storico.}
-	\label{Interfaccia finale utente della Rete neurale di prova -1.}
+	\label{Interfaccia finale utente della Rete neurale di prova - 1.}
 \end{figure}
 \noindent
 
@@ -1925,8 +1911,8 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \begin{figure}[H]
 \centering
 	\includegraphics[width=1\linewidth]{./image/first_index.png}
-	\caption{Interfaccia finale utente della Rete neurale del database -Visuale di accesso alla Rete, con scelta del numero di domande da analizzare.}
-	\label{Interfaccia finale utente della Rete neurale del database -Visuale di accesso alla Rete, con scelta del numero di domande da analizzare.}
+	\caption{Interfaccia finale utente della Rete neurale del database - Visuale di accesso alla rete, con scelta del numero di domande da analizzare.}
+	\label{Interfaccia finale utente della Rete neurale del database - Visuale di accesso alla rete, con scelta del numero di domande da analizzare.}
 \end{figure}
 \noindent
 
@@ -1934,7 +1920,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db.png}
 	\caption{Interfaccia finale utente della Rete neurale del database - Visione caricamento file dati.}
-	\label{Interfaccia finale utente della Rete neurale del database -1.}
+	\label{Interfaccia finale utente della Rete neurale del database - 1.}
 \end{figure}
 \noindent
 
@@ -1942,7 +1928,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db2.png}
 	\caption{Interfaccia finale utente della Rete neurale del database - Visione box con storico delle operazioni e canvas generale.}
-	\label{Interfaccia finale utente della Rete neurale del database -2.}
+	\label{Interfaccia finale utente della Rete neurale del database - 2.}
 \end{figure}
 \noindent
 
@@ -1950,6 +1936,6 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 \centering
 	\includegraphics[width=1\linewidth]{./image/Rete-di-prova_db3.png}
 	\caption{Interfaccia finale utente della Rete neurale del database - Visione errore rilevato durante la configurazione dell'architettura.}
-	\label{Interfaccia finale utente della Rete neurale del database -3.}
+	\label{Interfaccia finale utente della Rete neurale del database - 3.}
 \end{figure}
 \noindent

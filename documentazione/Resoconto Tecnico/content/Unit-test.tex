@@ -2,7 +2,7 @@
 
 \subsection{Test d'unit\`a}
 \label{Test d'unita}
-Per eseguire, con successo, i test d'unità è necessario procedere all'installazione, se non gi\`a presenti, dei moduli node\_js e delle componenti aggiuntive necessarie ad una corretta esecuzione degli script. Di seguito riporto le istruzioni per poter effettuare con successo la build dei test implementati.\\
+Per eseguire, con successo, i test d'unità è necessario procedere all'installazione, se non gi\`a presenti, dei moduli node\_js e delle componenti aggiuntive necessarie ad una corretta esecuzione degli script. Di seguito riporto le istruzioni per poter effettuare con successo la build dei test implementati \footnote{Se al esecuzione del comando da shall npm test viene generato un errore, seguire i seguenti passi di installazione}.\\
 Prima di tutto l'utente deve aprire una \textit{shell da terminale} e spostarsi all'interno delle sottocartelle rete\_neurale/rete neurale nella repository "AI-Reticolo\_della\_conoscenza".
 Per poter eseguire i test d'unit\`a su qualsiasi sistema operativo, \`e necessarie procedere alle seguenti installazioni:
 \begin{enumerate}
@@ -14,7 +14,7 @@ Per poter eseguire i test d'unit\`a su qualsiasi sistema operativo, \`e necessar
 \end{enumerate}
 \noindent
 Per mandare in esecuzione i test digitare da terminale il comando \textbf{npm test}.\\
-Javascript \`e un linguaggio lato client, da browser. I test automatici sono stati sviluppati trasformando le singole unit\`a in moduli node esportati. La sintassi exports poco si adatta all'utilizzo dei browser\footnote{Il supporto viene offerto da Safari 10.1, Chrome 61, Firefox 54, Edge 16} per questo ho deciso di omettere le keywords exports come preambolo dei metodi soggetti a test; tale aggiunta \`e riservata all'utente nel momento precedente al test running.
+Javascript \`e un linguaggio lato client, da browser. I test automatici sono stati sviluppati trasformando le singole unit\`a in moduli node esportati. La sintassi exports poco si adatta all'utilizzo dei browser\footnote{Il supporto viene offerto da Safari 10.1, Chrome 61, Firefox 54, Edge 16} per questo ho deciso di omettere le keywords exports come preambolo dei metodi soggetti a test; tale aggiunta \`e di competenza dell'utente nel momento precedente al test running.
 
 \begin{figure}[H]
 \centering
@@ -25,7 +25,7 @@ Javascript \`e un linguaggio lato client, da browser. I test automatici sono sta
 \noindent
 
 \subsection{Sistema operativo e browser}
-Il progetto \`e stato sviluppato su sistema operativo Linux e ripetutamente testato per tutta la durata dello stage sul sistema operativo Windows messo a disposizione in ufficio. L'applicativo della Rete neurale \`e sviluppato ad doc per browser Chrome in cui il caricamento di grandi moli di dati ha prestazioni migliori. Sconsiglio l'utilizzo della Rete neurale in uso per i dati del database su Microsoft Edge e Firefox , in quanto il caricamento del file di allenamento \`e molto lento.
+Il progetto \`e stato sviluppato su sistema operativo Linux e testato sul sistema operativo Windows, messo a disposizione in ufficio. L'applicativo della Rete neurale \`e sviluppato ad hoc per browser Chrome in cui il caricamento di grandi moli di dati ha nettamente prestazioni migliori. Sconsiglio l'utilizzo dell'applicativo sviluppato su Microsoft Edge e Firefox , in quanto il caricamento del file di allenamento \`e molto lento \footnote{se il file ha dimensioni superiore a 1000 entry.}.
 
 \subsubsection{Specifiche di sviluppo}
 \label{Specifiche di sviluppo}
