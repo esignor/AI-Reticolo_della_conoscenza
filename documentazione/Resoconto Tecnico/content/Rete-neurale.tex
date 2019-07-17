@@ -1067,7 +1067,7 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \textbf{UC1.1.3: Visualizzazione messaggio di errore di inconsistenza del set di dati rispetto alla configurazione della Rete}\mbox{}
 \label{UC1.1.3: Visualizzazione messaggio di errore di inconsistenza del set di dati rispetto alla configurazione della Rete}
 \begin{itemize}
-\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto, il numero di domande del set di dati \`e differente alla configurazione della Rete, imposta inizialmente dall'utente
+\item \textbf{Descrizione}: Il file nel formato corretto viene caricato nel sistema, che non \`e in grado di processare alcuna informazione in quanto, il numero di domande del set di dati \`e differente alla configurazione della Rete, imposta inizialmente dall'utente;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha richiesto alla Rete di caricare un file;
 \item \textbf{Postcondizione}: Il sistema produce un messaggio d'errore per l'utente; con il quale quest'ultimo viene informato nella non conformit\`a del file scelto, rispetto al numero di domande da processare in rapporto alla configurazione della Rete;
@@ -1205,7 +1205,7 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale. Esso pu\`o procedere ad aggiungere un layer intermedio nella Rete;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}:La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
+\item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a aggiungendo un nuovo layer intermedio;
 \item \textbf{Scenario principale}:
 \begin{enumerate}
@@ -1241,7 +1241,7 @@ Ogni caso d'uso è composto dalle seguenti parti:
 \label{UC7.1.3: Modifica layer intermedio esistente}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente ha la possibilit\`a di modificare un layer intermedio presente nella Rete
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di modificare un layer intermedio presente nella Rete;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a 
@@ -1281,7 +1281,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC7.2: Gestione operazioni di configurazione dell'architettura non concesse}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze e ai valori delle variabili di cui necessit\`a per compiere le osservazioni sulla Ret; ma non tutte le operazioni di modifica/cancellazione possono venire compiute.
+\item \textbf{Descrizione}: L'utente ha la possibilit\`a di riconfigurare l'architettura della Rete neurale in base alle proprie esigenze e ai valori delle variabili di cui necessit\`a per compiere le osservazioni sulla Rete; ma non tutte le operazioni di modifica/cancellazione possono venire compiute.
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: La Rete desiderata dall'utente non esiste, e di conseguenza l'utente non ha ancora effettuato alcuna operazione su di essa;
 \item \textbf{Postcondizione}: L'utente ha provveduto a configurare la Rete in base alle proprie necessit\`a;
@@ -1427,7 +1427,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{itemize}
 \item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia modificato nel layer di input il tipo dello stesso;
 \item \textbf{Attori}: Utente osservatore;
-\item \textbf{Precondizione}: L'utente ha fornito un tipo nel layer di input
+\item \textbf{Precondizione}: L'utente ha fornito un tipo nel layer di input;
 \item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a del tipo richiesto con la natura della Rete;
 \item \textbf{Scenario principale}: All'utente viene indicato l'errore con l'indicazione della correzione necessaria per il corretto funzionamento dalla Rete.
 \end{itemize}
@@ -1483,7 +1483,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \label{UC7.11: Visualizzazione messaggio di errore per cancellazione numero di neuroni sui layers intermedi}
 \noindent
 \begin{itemize}
-\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui effettuato la cancellazione in uno dei layers intermedi del numero di neuroni presenti;
+\item \textbf{Descrizione}: L'utente visualizza un messaggio di errore nel caso in cui abbia effettuato la cancellazione in uno dei layers intermedi del numero di neuroni presenti;
 \item \textbf{Attori}: Utente osservatore;
 \item \textbf{Precondizione}: L'utente ha eliminato il numero di neuroni da un layer intermedio;
 \item \textbf{Postcondizione}: Il sistema ha fornito all'utente la visualizzazione di un messaggio di errore che indica l'incompatibilit\`a dell'operazione richiesta con la natura della Rete;
@@ -1582,7 +1582,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \begin{enumerate}
 \item L'utente sceglie il contenuto del vettore previsione:
 \begin{enumerate}
-\item L'utente sceglie la risposta alla domanda n = {1,...,dim | dim numero di domande scelte, 89 o 120} con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata e 1 risposta corretta.
+\item L'utente sceglie la risposta alla domanda n = 1,...,dim con dim numero di domande scelte, 89 o 120, con uno dei seguenti valori: 0 risposta non data, -1 risposta sbagliata e 1 risposta corretta.
 \end{enumerate}
 \end{enumerate}
 \end{itemize}
@@ -1596,7 +1596,7 @@ provvedendo a ridefinire il contenuto di un layer intermedio;
 \item \textbf{Precondizione}: L'utente ha inserito i parametri su cui effettuare previsione su una Rete' addestrata;
 \item \textbf{Postcondizione}: L'utente ha confermato i dati inseriti e innescato il calcolo della previsione;
 \item \textbf{Scenario principale}: L'utente conferma i differenziali di accoppiamento e il vettore previsione inseriti nell'applicativo.
-\textbf{Estensioni:}
+\item \textbf{Estensioni:}
 \begin{enumerate}
 \item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un valore stringa. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC8.4);
 \item L'utente ha inserito per uno o pi\`u dei parametri di clusterizzazione un valore vuoto. Viene ritornato un messaggio esplicativo che indica l'impossibilit\`a di terminare l'operazione (UC8.5);
@@ -1790,30 +1790,35 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 	    ROF2.3 & L'utente pu\`o effettuare la configurazione dell'architettura  mediante la modifica di hidden layers gi\`a presenti & Completato \\
 	     ROF2.3 & L'utente per effettuare la configurazione dell'architettura deve inserire almeno un hidden layers  & Completato \\
 	    \hline
-     ROF3 & L'utente pu\`o effettuare del vettore previsione su cui effettuare la previsione sui dati addestrati della Rete  & Completato \\
+     ROF3 & L'utente pu\`o effettuare l'inserimento del vettore previsione su cui effettuare la previsione & Completato \\
     \hline
      ROF4 & L'utente visualizza il valore delle previsioni ottenute dalla Rete nella textarea dedicata & Completato \\
+     \hline
 	    RDF5 & L'utente pu\`o salvare i dati addestrati della Rete & Completato \\
 	    \hline
 	    RDF6 & L'utente pu\`o visualizzare i dati addestrati della Rete salvati in formato JSON & Completato \\
 	    \hline
 	    RDF7 & L'utente pu\`o visualizzare i dati inseriti della Rete e su cui effettuare la previsione & Completato \\
+	    \hline
     RDF8 & L'utente pu\`o effettuare l'inserimento dei parametri di clusterizzazione sui dati addestrati della Rete & Completato \\
+    \hline
     RDF9.1 & L'utente pu\`o effettuare l'inserimento del primo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
    RDF9.2 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
 		RDF9.3 & L'utente pu\`o effettuare l'inserimento del secondo parametro di differenziale di accoppiamento per effettuare la clusterizzazione delle domande  & Completato \\
     \hline 
     RDF10 & L'utente visualizza mediante tecnologia canvas i risultati di previsione & Completato \\
     RDF10.1 & L'utente visualizza mediante tecnologia canvas il dettaglio dei risultati di previsione & Completato \\
+\hline    
     RDF11 & L'Utente pu\`o scegliere il numero di domande, tra quelle proposte, su cui effettuare l'analisi della Rete & Completato \\
-    RDF11.1 & L'Utente pu\`o scegliere come numero di domande su cui effettuare l'analisi della Rete la dimensione 89 & Completato \\
-    RDF11.2 &  L'Utente pu\`o scegliere come numero di domande su cui effettuare l'analisi della Rete la dimensione 120 & Completato \\
+    RDF11.1 & L'Utente pu\`o sceglier,e come numero di domande su cui effettuare l'analisi della Rete, dimensione 89 & Completato \\
+    RDF11.2 &  L'Utente pu\`o scegliere, come numero di domande su cui effettuare l'analisi della Rete, dimensione 120 & Completato \\
     \hline
-    RFF12 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours ottenute dalla Rete nella textarea dedicata & Completato \\
+    RFF12 & L'utente visualizza il valore delle previsioni espresse in termini RGB colours, nella textarea dedicata & Completato \\
     \hline
-    RFF13 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento ottenute dalla Rete nella textarea dedicata & Completato \\
+    RFF13 & L'utente visualizza la clusterizzazione delle domande ottenuta dai parametri di differenziale di accoppiamento, nella textarea dedicata & Completato \\
     \hline 
      RFF14 & L'utente visualizza i dati inseriti della Rete all'interno nella textarea dedicata dell'applicativo & Completato \\
+     \hline
 	   RFF15 & L'utente pu\`o visualizzare i dati inseriti nella Rete  su una pagina secondaria reindirizzata dall'applicativo & Completato \\
 	   \hline
 	  RFF16 & L'utente pu\`o effettuare la cancellazione dello storico delle operazioni eseguite & Completato \\
@@ -1834,7 +1839,7 @@ Ogni requisito riporta lo stato di avanzamento \textit{Completo/Incompleto} ragg
 	   
 	   ROV1 & Deve essere possibile utilizzare l'applicativo almeno in uno dei seguenti browser: Chrome, Firefox, Internet Explorer e Mocrosoft Edge & Completato  \\
 	   \hline
-	   RDV2 & La Rete Neurale deve essere sviluppata usando ConvNet.JS & Completato  \\
+	   RDV2 & La Rete Neurale è consigliabile sia sviluppata usando ConvNet.JS & Completato  \\
 	   \hline
 	   RDV3 & il linguaggio consigliato per lo sviluppo \`e javascript e HTML  & Completato \\
 	   \hline
