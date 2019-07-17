@@ -1,6 +1,6 @@
-lunedi 20 maggio
-
 1 SETTIMANA
+
+lunedi 20 maggio
 - studio documentazione ConvNet.js (https://cs.stanford.edu/people/karpathy/convnetjs/): Getting started, Documentation, intro
 - ricerca su github progetto reti neurali con uso della libreria ConvNet (da terminare);
 - inzio studio problema delle coppie di eventi (A,B domande);
@@ -24,6 +24,7 @@ venerdi 24 maggio
  L'input rappresenta il vettore del numero di domanda [1,2,3..]; l'otput rappresenta un vettore con tanti valori quanto e' la dimensione del vettore in input e un valore e' uno tra -1(risposta sbagliata), 0(risposta non data) e 1(risposta esatta) [1,0, 0, -1]. Il fine sara' addestrare la rete a comprendere se un candidato sapra' rispondere o meno, sulla base dei test di addestramento, a una specifica domanda
 
 2SETTIMANA
+
 lunedi 27 maggio
 - continuo sviluppo rete neurale: sistemati box (a numerosita' dinamica) per l'emissione dei dati di input e di output, creati bottoni e form per il trainer dei dati e la previsione, implementazione metodi di update (per il trainer) e prevision, documentazione e commento del codice.
 
@@ -53,6 +54,7 @@ venerdi 31 maggio
 
 
 3 SETTIMANA
+
 lunedi 3 giugno
 - documentato e ottimizzato codice del rete di test
 - documentato e continuata documentazione "Reti neurali" in base al codice ottimizzato
