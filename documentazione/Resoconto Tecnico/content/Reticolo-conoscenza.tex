@@ -163,7 +163,7 @@ Il fenomeno sorprendente, che mette in luce l'importanza di avere un valore 0 di
 	\label{Risultati della Rete di test con un set di dati puro (esclusivamente 1 e -1), vettore previsione [0, 0, 0, -1, 0, 0].}
 \end{figure}
 \noindent
-Non avere un valore a 0 porta le previsioni imposte alle singole domande, valutate in coppia, a mostrare come unica relazione stretta esistente quella tra la coppia coinvolta; rendendo meno possibile ogni altra assunzione sulle altre coppie \footnote{La presenza dello 0 mitiga questo aspetto.}. Ad esempio, le domande 2 e 4 vengono colorate di verdino nella previsione della domanda 1 e di rosso nella domanda 3 e 6. Questo ha un impatto sulla previsione visiva della Rete, dal quale risulta impossibile la previsione di domande figlie e genitori.\\
+Non avere un valore a 0 porta le Rete a valutate come uniche relazioni, strette, esclusivamente quella tra la coppia coinvolta; rendendo meno possibile ogni altra assunzione sulle altre coppie \footnote{La presenza dello 0 mitiga questo aspetto.}. Ad esempio, le domande 2 e 4 vengono colorate di verdino nella previsione della domanda 1 e di rosso nella domanda 4. Questo ha un impatto negativo sia sulla previsione visiva della Rete, dal quale risulta impossibile la previsione di domande figlie e genitori, che nella costruzione del Reticolo della Conoscenza, in cui non può essere preso come valore di riferimento distanza 0.\\
 La matrice correlazione ottenuta, tuttavia dal modello della PCA, risulta perfettamente allineata con le aspettative delle coppie di domande e delle previsioni, questo \`e possibile solo perch\`e i dati e le previsioni vengono valutati nella loro generalit\`a e non tra coppia di domande.
 
 
@@ -613,7 +613,7 @@ I risultati sono di poco discostanti, rispetto ai risultati ottenuti dalla confi
 
 \begin{figure}[H]
 \centering
-	\includegraphics[width=0.70\linewidth]{./image/collage_reticolo-logica(2,4,10).png}
+	\includegraphics[width=0.80\linewidth]{./image/collage_reticolo-logica(2,4,10).png}
 	\caption{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
 	\label{Sequenza di creazione del Reticolo della Conoscenza layers(2, 4, 10) - Cluster Based.}
 \end{figure}
