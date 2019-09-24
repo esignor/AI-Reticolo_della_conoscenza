@@ -23,7 +23,7 @@ venerdi 24 maggio
 - inizio implementazione nuova rete neurale sulla base di uno spazio di input e output di dimesione 6.
  L'input rappresenta il vettore del numero di domanda [1,2,3..]; l'otput rappresenta un vettore con tanti valori quanto e' la dimensione del vettore in input e un valore e' uno tra -1(risposta sbagliata), 0(risposta non data) e 1(risposta esatta) [1,0, 0, -1]. Il fine sara' addestrare la rete a comprendere se un candidato sapra' rispondere o meno, sulla base dei test di addestramento, a una specifica domanda
 
-2SETTIMANA
+2 SETTIMANA
 
 lunedi 27 maggio
 - continuo sviluppo rete neurale: sistemati box (a numerosita' dinamica) per l'emissione dei dati di input e di output, creati bottoni e form per il trainer dei dati e la previsione, implementazione metodi di update (per il trainer) e prevision, documentazione e commento del codice.
@@ -72,10 +72,10 @@ mercoledi 5 giugno
 - implementato il metoodo normalizatioVectorTestPivoting che fornisce i vettori di training partendo da un file csv ottimale (risposte_logica_liv1_pivot.csv')
 - continuazione documentazione test con diversi vettori di previsione (es [0, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]) per la rete di prova
 
-giovedi 6 maggio
+giovedi 6 giugno
  - continuazione test su rete neurale di prova e correzione bug
 
-venerdi 7 maggio
+venerdi 7 giugno
  - trovato bug nel metodo update (passavo all'apprendimento un vettore alla volta, quando invece e' indispensabile avere un batch), ridefinita l'interfaccia della rete di prba (ottimizzata e tolti componenti aggiuntivi come bottone di train, box di input)
 - montata e configurata rete neurale del db
 - stesa sezione documentazione test rete finale di prova
@@ -84,14 +84,14 @@ venerdi 7 maggio
 - inizio primi test sulla rete del db
 
 4 SETTIMANA
-lunedi 10 maggio
+lunedi 10 giugno
 - sviluppata funzionalita' (sia nella rete di prova che del db) che mostra l'impatto che ogni elemento del vettore previsione ha sulla sua rispettiva domanda e come oscillano le restanti n-1. Modificati i rispettivi css e incorportati i metodi animationPrevision_detail e prevision_singleElement
 
-martedi 11 maggio
+martedi 11 giugno
 - controllo del codice prodotto (rete neurale di prova e db) e ottimizzazione delle funzioni  normalizationVectorTestPivot(), normalizationVectorTest_standard() con eliminazione variabile globale var Test
 - stesa documentazione per test con dettaglio delle previsioni sulla rete di prova, e valutate previsioni al dettaglio sulla rete del database con diverse architetture (riscontrata per maggiore chiarezza dei risultati raggiunti la necessita' di creare un cluster dei dati)
 
-- mercoledi 12 maggio
+- mercoledi 12 giugno
 sviluppo metodo cluster che permette di infividuare le coppie di domande in relazione stretta tra di loro, all'interno della rete
 - test su diverse architetture della rete , usando la funzione cluster, per studiare i comportamenti della stessa.
 
@@ -128,7 +128,7 @@ martedi 25 giugno
 
 6 SETTIMANA
 
-mercoledi 26 settembre
+mercoledi 26 giugno
 - traslazione da D3.js a "Reticolo della Conoscenza" costruito con la tesi di Matteo
 - costruzione del metodo vettore_Reticolo che prepara i dati da dare in pasto al Reticolo della Conoscenza
 - Test sul Reticolo della Conoscenza creato mediante previsioni e delta della Rete
@@ -136,12 +136,12 @@ mercoledi 26 settembre
 - Valutazione possibilita' di avere altri test d'unita' (non andata a buon fine)
 - creato file CSV che contiene il delta di previsioni per un architettura a 2 layers con 8 neuroni ciascuno
 
-giovedi 27 settembre
+giovedi 27 giugno
 - revisionata e riletta documentazione sulla PCA (dato anche un breve sguardo a quanto scritto per la sezione sulla Rete Neurale)
 - creati due nuovi test (#Test4) d'unita che testano il comportamento del modulo configure e configure_db: per farlo ho rivisto se nel codice fosse possibile eliminare alcune variabili globali
 - creato file CSV che contiene il delta di previsioni per un architettura a 2 layers con 12 neuroni ciascuno
 
-venerdi 28 settembre
+venerdi 28 giugno
 - studio dell'applicativo per costruir il Reticolo della Conoscenza
 - Prova del applicativo su dati ottenuti dalla Rete neurale del database con 2 layers composti da 6, 8, 10, 12 neuroni
 - Inizio scrittura documentazione per l'uso del Reticolo e costruzione dello stesso
@@ -155,6 +155,8 @@ martedi 2 luglio
 - inserita nell'interfaccia anche la possibilita' di cercare i cluster in funzione del secondo e terzo parametro rgb
 - sistemato css della rete di prova e delle domande nel database in modo che sia il piu' usabile e adattabile a piu' device (test in ufficio)
 - ricerca oscillazione nella costruzione del Reticolo della Conoscenza non andata a buon fine (creato ulteriore metodo che genera input a 1 o -1 e ancora il Reticolo non rispecchia le aspettative)
+
+7 SETTIMANA
 
  mercoledi 3 luglio
 - sistemato canvas di dettaglio in modo che si adatti il piu' possibile almeno al pc dell'ufficio
@@ -184,6 +186,8 @@ mercoledi 10 luglio
 - Costruita Rete neurale per il database basandomi sulle domande di eulero-venn e le serie
 - Testati i risultati con diverse architetture
 - Continuata documentazione
+
+8 SETTIMANA
 
 giovedi 11 luglio
 - Continuazione test sulla rete delle domande in modo da stabilire l'architettura piu' conforme per il Reticolo
