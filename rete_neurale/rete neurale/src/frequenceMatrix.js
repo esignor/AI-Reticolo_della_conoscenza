@@ -112,6 +112,9 @@ frequenceMatrixPos = function (array, dim) {
  * 
  */
 
+
+ 
+
 frequenceMatrixNeg = function (array, dim) {
     var numPresenze = [];
     var numPositive = [];

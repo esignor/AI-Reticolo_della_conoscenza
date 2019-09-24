@@ -20,9 +20,10 @@ function insertDati(dim) {
      var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
      console.log(frequencePos);
      console.log(frequenceNeg);*/
+     
 
 
-    /*for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
+    for (var n = 0; n < 2000; ++n) { // genero n vettori per il training
    
            // generatore standard
           var Aux= generator_input_probability(dim);
@@ -32,7 +33,7 @@ function insertDati(dim) {
        }
   
        update(ArrayInput, dim);
-       var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
+       /*var frequencePos = frequenceMatrixPos(ArrayInput, dim); //in uso per generare csv da passare all'applicativo per creare il Reticolo sui dati di frequenza 
        var frequenceNeg = frequenceMatrixNeg(ArrayInput, dim);
        
 

@@ -100,7 +100,7 @@ function addFields_db(dim){
   var input = document.createElement("input"); // bottone che attiva la previsione
   input.id = "button_prevision";
   input.type = "submit";
-  input.value = "prevision trainer";
+  input.value = "previsione sull'addestramento";
   input.setAttribute('onclick', 'contentMethod_db("prevision_db")'); // 
   container.appendChild(document.createElement("br")) // quando faccio il submit i valori dei campi sono inseriti 
   div.appendChild(input); //appendo prevision
